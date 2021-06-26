@@ -36,9 +36,9 @@ public class DexterityStat : AbstractStatBase
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        SpeedGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        AgilityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        ReflexesGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        SpeedGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        AgilityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        ReflexesGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
     }
 
     #endregion

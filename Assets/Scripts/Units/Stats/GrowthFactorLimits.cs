@@ -4,8 +4,6 @@
 public class GrowthFactorLimits : ScriptableObject
 {
     public GrowthFactor Min;
-
+    public GrowthFactor Mean;
     public GrowthFactor Max;
-
-    public GrowthFactor GetMean() => GrowthFactor.Average(Min, Max);
 }

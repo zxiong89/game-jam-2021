@@ -36,9 +36,9 @@ public class WisdomStat : AbstractStatBase
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        WillGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        SenseGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        SpiritGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        WillGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        SenseGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        SpiritGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
     }
 
     #endregion

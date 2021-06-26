@@ -36,9 +36,9 @@ public class ConstitutionStat : AbstractStatBase
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        StaminaGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        EnduranceGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        VitalityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        StaminaGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        EnduranceGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        VitalityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
     }
 
     #endregion

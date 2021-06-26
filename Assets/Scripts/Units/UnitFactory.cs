@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UnitFactory : MonoBehaviour
 {
@@ -26,7 +24,7 @@ public class UnitFactory : MonoBehaviour
 
     public Unit RandomizeUnit()
     {
-        int age = Random.Range(ageLimits.Min, ageLimits.Max);
+        int age = (int) FloatExtensions.Randomize(ageLimits.Min, ageLimits.Max, ageLimits.Mean);
         int level = Random.Range(1, age);
         var stats = new StatBlock(level, growthLimits);
         return new Unit(level, age, stats);

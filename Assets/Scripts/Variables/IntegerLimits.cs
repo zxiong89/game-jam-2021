@@ -4,5 +4,6 @@
 public class IntegerLimits : ScriptableObject
 {
     public int Min;
+    public int Mean;
     public int Max;
 }

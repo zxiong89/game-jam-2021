@@ -36,9 +36,9 @@ public class IntelligenceStat : AbstractStatBase
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        IntellectGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        MindGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
-        KnowledgeGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        IntellectGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        MindGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        KnowledgeGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
     }
 
     #endregion

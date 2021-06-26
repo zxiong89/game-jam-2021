@@ -31,13 +31,13 @@ public struct GrowthFactor
         };
     }
 
-    public static GrowthFactor Randomize(GrowthFactor min, GrowthFactor max)
+    public static GrowthFactor Randomize(GrowthFactor min, GrowthFactor max, GrowthFactor mean)
     {
         return new GrowthFactor
         {
-            EarlyMod = FloatExtensions.Randomize(min.EarlyMod, max.EarlyMod),
-            LinearMod = FloatExtensions.Randomize(min.LinearMod, max.LinearMod),
-            LateMod = FloatExtensions.Randomize(min.LateMod, max.LateMod)
+            EarlyMod = FloatExtensions.Randomize(min.EarlyMod, max.EarlyMod, mean.EarlyMod),
+            LinearMod = FloatExtensions.Randomize(min.LinearMod, max.LinearMod, mean.LinearMod),
+            LateMod = FloatExtensions.Randomize(min.LateMod, max.LateMod, mean.LateMod)
         };
     }
 }
