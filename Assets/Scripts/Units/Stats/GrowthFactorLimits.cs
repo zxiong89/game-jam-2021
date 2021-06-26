@@ -3,11 +3,9 @@
 [CreateAssetMenu(menuName = "Variables/GrowthLimits")]
 public class GrowthFactorLimits : ScriptableObject
 {
-    [SerializeField]
-    private GrowthFactor min;
+    public GrowthFactor Min;
 
-    [SerializeField]
-    private GrowthFactor max;
+    public GrowthFactor Max;
 
-    public GrowthFactor GetMean() => GrowthFactor.Average(min, max);
+    public GrowthFactor GetMean() => GrowthFactor.Average(Min, Max);
 }

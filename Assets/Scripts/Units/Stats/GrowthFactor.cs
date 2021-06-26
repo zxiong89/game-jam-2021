@@ -30,4 +30,14 @@ public struct GrowthFactor
             LateMod = FloatExtensions.Average(late.ToArray())
         };
     }
+
+    public static GrowthFactor Randomize(GrowthFactor min, GrowthFactor max)
+    {
+        return new GrowthFactor
+        {
+            EarlyMod = FloatExtensions.Randomize(min.EarlyMod, max.EarlyMod),
+            LinearMod = FloatExtensions.Randomize(min.LinearMod, max.LinearMod),
+            LateMod = FloatExtensions.Randomize(min.LateMod, max.LateMod)
+        };
+    }
 }
