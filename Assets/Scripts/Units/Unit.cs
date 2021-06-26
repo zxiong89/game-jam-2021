@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Unity.Mathematics;
 
-public class Unit : MonoBehaviour
+public class Unit
 {
     #region Fields/Properties
     private int level;
@@ -16,29 +14,25 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public int Age;
     public StatBlock Stats;
+
     #endregion
 
-    #region Growth Limits
-    [SerializeField]
-    GrowthFactorLimits growthLimits;
+    #region Constructors
+
+    public Unit(int level, int age, StatBlock stats)
+    {
+        Level = level;
+        Age = age;
+        Stats = stats;
+    }
+
     #endregion
 
     #region Methods
+
     public void LevelUp() => Level++;
-    #endregion 
 
-    #region MonoBehavior
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     #endregion
 }

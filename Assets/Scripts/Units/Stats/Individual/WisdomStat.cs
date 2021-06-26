@@ -1,17 +1,8 @@
 ﻿
 [System.Serializable]
-public struct WisdomStat
+public class WisdomStat : AbstractStatBase
 {
-    /// <summary>
-    /// Updates the current values based on the base stats, growth factor, and level
-    /// </summary>
-    /// <param name="level"></param>
-    public void Update(int level)
-    {
-        Will = StatExtensions.CalculateStat(level, WillBase, WillGrowth);
-        Sense = StatExtensions.CalculateStat(level, SenseBase, SenseGrowth);
-        Spirit = StatExtensions.CalculateStat(level, SpiritBase, SpiritGrowth);
-    }
+    #region Fields/Properties
 
     public float WillBase;
     public float SenseBase;
@@ -21,17 +12,43 @@ public struct WisdomStat
     public float Sense { private set; get; }
     public float Spirit { private set; get; }
 
-    public float Value
-    {
-        get => FloatExtensions.Average(Will, Sense, Spirit);
-    }
-
     public GrowthFactor WillGrowth;
     public GrowthFactor SenseGrowth;
     public GrowthFactor SpiritGrowth;
 
-    public GrowthFactor Growth
+    #endregion
+
+    #region Stat Base Public Methods
+
+    public override void Update(int level)
     {
-        get => GrowthFactor.Average(WillGrowth, SenseGrowth, SpiritGrowth);
+        Will = StatExtensions.CalculateStat(level, WillBase, WillGrowth);
+        Sense = StatExtensions.CalculateStat(level, SenseBase, SenseGrowth);
+        Spirit = StatExtensions.CalculateStat(level, SpiritBase, SpiritGrowth);
     }
+
+    public override void RandomizeBaseStats()
+    {
+        Will = StatExtensions.Randomize();
+        Sense = StatExtensions.Randomize();
+        Spirit = StatExtensions.Randomize();
+    }
+
+    public override void RandomizeGrowthStats(GrowthFactorLimits limits)
+    {
+        WillGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        SenseGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        SpiritGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+    }
+
+    #endregion
+
+    #region StatBase Protected Methods
+
+    protected override float[] getStats() => new[] { Will, Sense, Spirit };
+
+    protected override GrowthFactor[] getGrowthFactors() => new[] { WillGrowth, SenseGrowth, SpiritGrowth };
+
+    #endregion
+
 }

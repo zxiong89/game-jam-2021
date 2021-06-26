@@ -1,43 +1,53 @@
 ﻿
 [System.Serializable]
-public struct ConstitutionStat
+public class ConstitutionStat : AbstractStatBase
 {
-    /// <summary>
-    /// Updates the current values based on the base stats, growth factor, and level
-    /// </summary>
-    /// <param name="level"></param>
-    public void Update(int level)
+    #region Fields/Properties
+
+    public float StaminaBase;
+    public float EnduranceBase;
+    public float VitalityBase;
+
+    public float Stamina { private set; get; }
+    public float Endurance { private set; get; }
+    public float Vitality { private set; get; }
+
+    public GrowthFactor StaminaGrowth;
+    public GrowthFactor EnduranceGrowth;
+    public GrowthFactor VitalityGrowth;
+
+    #endregion
+
+    #region Stat Base Public Methods
+
+    public override void Update(int level)
     {
         Stamina = StatExtensions.CalculateStat(level, StaminaBase, StaminaGrowth);
         Endurance = StatExtensions.CalculateStat(level, EnduranceBase, EnduranceGrowth);
         Vitality = StatExtensions.CalculateStat(level, VitalityBase, VitalityGrowth);
     }
 
-    public float StaminaBase;
-    public float EnduranceBase;
-    public float VitalityBase;
-
-    public float Stamina { private set;  get; }
-    public float Endurance { private set; get; }
-    public float Vitality { private set; get; }
-
-    /// <summary>
-    /// Returns the average constitution value
-    /// </summary>
-    public float Value
+    public override void RandomizeBaseStats()
     {
-        get => FloatExtensions.Average(Stamina + Endurance + Vitality);
+        Stamina = StatExtensions.Randomize();
+        Endurance = StatExtensions.Randomize();
+        Vitality = StatExtensions.Randomize();
     }
 
-    public GrowthFactor StaminaGrowth;
-    public GrowthFactor EnduranceGrowth;
-    public GrowthFactor VitalityGrowth;
-
-    /// <summary>
-    /// Returns the average constitution growth factor
-    /// </summary>
-    public GrowthFactor Growth
+    public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        get => GrowthFactor.Average(StaminaGrowth, EnduranceGrowth, VitalityGrowth);
+        StaminaGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        EnduranceGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        VitalityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
     }
+
+    #endregion
+
+    #region StatBase Protected Methods
+
+    protected override float[] getStats() => new[] { Stamina, Endurance, Vitality };
+
+    protected override GrowthFactor[] getGrowthFactors() => new[] { StaminaGrowth, EnduranceGrowth, VitalityGrowth };
+
+    #endregion
 }

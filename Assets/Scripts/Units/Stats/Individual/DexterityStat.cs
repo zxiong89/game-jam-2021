@@ -1,17 +1,8 @@
 ﻿
 [System.Serializable]
-public struct DexterityStat
+public class DexterityStat : AbstractStatBase
 {
-    /// <summary>
-    /// Updates the current values based on the base stats, growth factor, and level
-    /// </summary>
-    /// <param name="level"></param>
-    public void Update(int level)
-    {
-        Speed = StatExtensions.CalculateStat(level, SpeedBase, SpeedGrowth);
-        Agility = StatExtensions.CalculateStat(level, AgilityBase, AgilityGrowth);
-        Reflexes = StatExtensions.CalculateStat(level, ReflexesBase, ReflexesGrowth);
-    }
+    #region Fields/Properties
 
     public float SpeedBase;
     public float AgilityBase;
@@ -21,23 +12,42 @@ public struct DexterityStat
     public float Agility { private set; get; }
     public float Reflexes { private set; get; }
 
-    /// <summary>
-    /// Returns the average dexterity value
-    /// </summary>
-    public float Value
-    {
-        get => FloatExtensions.Average(Speed + Agility + Reflexes);
-    }
-
     public GrowthFactor SpeedGrowth;
     public GrowthFactor AgilityGrowth;
     public GrowthFactor ReflexesGrowth;
 
-    /// <summary>
-    /// Returns the average dexterity growth factor
-    /// </summary>
-    public GrowthFactor Growth
+    #endregion
+
+    #region Stat Base Public Methods
+
+    public override void Update(int level)
     {
-        get => GrowthFactor.Average(SpeedGrowth, AgilityGrowth, ReflexesGrowth);
+        Speed = StatExtensions.CalculateStat(level, SpeedBase, SpeedGrowth);
+        Agility = StatExtensions.CalculateStat(level, AgilityBase, AgilityGrowth);
+        Reflexes = StatExtensions.CalculateStat(level, ReflexesBase, ReflexesGrowth);
     }
+
+    public override void RandomizeBaseStats()
+    {
+        Speed = StatExtensions.Randomize();
+        Agility = StatExtensions.Randomize();
+        Reflexes = StatExtensions.Randomize();
+    }
+
+    public override void RandomizeGrowthStats(GrowthFactorLimits limits)
+    {
+        SpeedGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        AgilityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        ReflexesGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+    }
+
+    #endregion
+
+    #region StatBase Protected Methods
+
+    protected override float[] getStats() => new[] { Speed, Agility, Reflexes };
+
+    protected override GrowthFactor[] getGrowthFactors() => new[] { SpeedGrowth, AgilityGrowth, ReflexesGrowth };
+
+    #endregion
 }

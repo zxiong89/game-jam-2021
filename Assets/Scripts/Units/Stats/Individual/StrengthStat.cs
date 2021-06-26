@@ -1,17 +1,8 @@
 ﻿
 [System.Serializable]
-public struct StrengthStat
+public class StrengthStat : AbstractStatBase
 {
-    /// <summary>
-    /// Updates the current values based on the base stats, growth factor, and level
-    /// </summary>
-    /// <param name="level"></param>
-    public void Update(int level)
-    {
-        Power = StatExtensions.CalculateStat(level, PowerBase, PowerGrowth);
-        Brawn = StatExtensions.CalculateStat(level, BrawnBase, BrawnGrowth);
-        Body = StatExtensions.CalculateStat(level, BodyBase, BodyGrowth);
-    }
+    #region Fields/Properties
 
     public float PowerBase;
     public float BrawnBase;
@@ -21,23 +12,42 @@ public struct StrengthStat
     public float Brawn { private set; get; }
     public float Body { private set; get; }
 
-    /// <summary>
-    /// Returns the average strength value
-    /// </summary>
-    public float Value
-    {
-        get => FloatExtensions.Average(Power + Brawn + Body);
-    }
-
     public GrowthFactor PowerGrowth;
     public GrowthFactor BrawnGrowth;
     public GrowthFactor BodyGrowth;
 
-    /// <summary>
-    /// Returns the average strength growth factor
-    /// </summary>
-    public GrowthFactor Growth
+    #endregion
+
+    #region Stat Base Public Methods
+
+    public override void Update(int level)
     {
-        get => GrowthFactor.Average(PowerGrowth, BrawnGrowth, BodyGrowth);
+        Power = StatExtensions.CalculateStat(level, PowerBase, PowerGrowth);
+        Brawn = StatExtensions.CalculateStat(level, BrawnBase, BrawnGrowth);
+        Body = StatExtensions.CalculateStat(level, BodyBase, BodyGrowth);
     }
+
+    public override void RandomizeBaseStats()
+    {
+        Power = StatExtensions.Randomize();
+        Brawn = StatExtensions.Randomize();
+        Body = StatExtensions.Randomize();
+    }
+
+    public override void RandomizeGrowthStats(GrowthFactorLimits limits)
+    {
+        PowerGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        BrawnGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        BodyGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+    }
+
+    #endregion
+
+    #region StatBase Protected Methods
+
+    protected override float[] getStats() => new[] { Power, Brawn, Body };
+
+    protected override GrowthFactor[] getGrowthFactors() => new[] { PowerGrowth, BrawnGrowth, BodyGrowth };
+
+    #endregion
 }

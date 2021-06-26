@@ -1,17 +1,8 @@
 ﻿
 [System.Serializable]
-public struct IntelligenceStat
+public class IntelligenceStat : AbstractStatBase
 {
-    /// <summary>
-    /// Updates the current values based on the base stats, growth factor, and level
-    /// </summary>
-    /// <param name="level"></param>
-    public void Update(int level)
-    {
-        Intellect = StatExtensions.CalculateStat(level, IntellectBase, IntellectGrowth);
-        Mind = StatExtensions.CalculateStat(level, MindBase, MindGrowth);
-        Knowledge = StatExtensions.CalculateStat(level, KnowledgeBase, KnowledgeGrowth);
-    }
+    #region Fields/Properties
 
     public float IntellectBase;
     public float MindBase;
@@ -21,23 +12,42 @@ public struct IntelligenceStat
     public float Mind { private set; get; }
     public float Knowledge { private set; get; }
 
-    /// <summary>
-    /// Returns the average intelligence value
-    /// </summary>
-    public float Value
-    {
-        get => FloatExtensions.Average(Intellect + Mind + Knowledge);
-    }
-
     public GrowthFactor IntellectGrowth;
     public GrowthFactor MindGrowth;
     public GrowthFactor KnowledgeGrowth;
 
-    /// <summary>
-    /// Returns the average intelligence growth factor
-    /// </summary>
-    public GrowthFactor Growth
+    #endregion
+
+    #region Stat Base Public Methods
+
+    public override void Update(int level)
     {
-        get => GrowthFactor.Average(IntellectGrowth, MindGrowth, KnowledgeGrowth);
+        Intellect = StatExtensions.CalculateStat(level, IntellectBase, IntellectGrowth);
+        Mind = StatExtensions.CalculateStat(level, MindBase, MindGrowth);
+        Knowledge = StatExtensions.CalculateStat(level, KnowledgeBase, KnowledgeGrowth);
     }
+
+    public override void RandomizeBaseStats()
+    {
+        Intellect = StatExtensions.Randomize();
+        Mind = StatExtensions.Randomize();
+        Knowledge = StatExtensions.Randomize();
+    }
+
+    public override void RandomizeGrowthStats(GrowthFactorLimits limits)
+    {
+        IntellectGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        MindGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+        KnowledgeGrowth = GrowthFactor.Randomize(limits.Min, limits.Max);
+    }
+
+    #endregion
+
+    #region StatBase Protected Methods
+
+    protected override float[] getStats() => new[] { Intellect, Mind, Knowledge };
+
+    protected override GrowthFactor[] getGrowthFactors() => new[] { IntellectGrowth, MindGrowth, KnowledgeGrowth };
+
+    #endregion
 }
