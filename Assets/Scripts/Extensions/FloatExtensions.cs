@@ -18,7 +18,7 @@ public static class FloatExtensions
     }
 
     /// <summary>
-    /// Using a guassian distrubution, get a random number.
+    /// Using a guassian distrubution, get a random between the range.
     /// </summary>
     /// <param name="min"></param>
     /// <param name="max"></param>

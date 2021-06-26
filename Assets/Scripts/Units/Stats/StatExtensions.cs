@@ -9,4 +9,6 @@ public static class StatExtensions
             + (growth.LinearMod * level)
             + (growth.LateMod * Mathf.Pow(level, 2f));
     }
+
+    public static float Randomize(int min = 10, int max = 30) => Random.Range(min, max);
 }
