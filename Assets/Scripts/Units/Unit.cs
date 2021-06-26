@@ -21,10 +21,7 @@ public class Unit : MonoBehaviour
 
     #region Growth Limits
     [SerializeField]
-    private GrowthFactor maxGrowth;
-
-    [SerializeField]
-    private GrowthFactor minGrowth;
+    GrowthFactorLimits growthLimits;
     #endregion
 
     #region Methods

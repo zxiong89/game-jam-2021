@@ -30,6 +30,6 @@
 
     public GrowthFactor Growth
     {
-        get => GrowthFactor.AverageGrowthFactor(WillGrowth, SenseGrowth, SpiritGrowth);
+        get => GrowthFactor.Average(WillGrowth, SenseGrowth, SpiritGrowth);
     }
 }

@@ -36,6 +36,6 @@
     /// </summary>
     public GrowthFactor Growth
     {
-        get => GrowthFactor.AverageGrowthFactor(IntellectGrowth, MindGrowth, KnowledgeGrowth);
+        get => GrowthFactor.Average(IntellectGrowth, MindGrowth, KnowledgeGrowth);
     }
 }

@@ -36,6 +36,6 @@
     /// </summary>
     public GrowthFactor Growth
     {
-        get => GrowthFactor.AverageGrowthFactor(PowerGrowth, BrawnGrowth, BodyGrowth);
+        get => GrowthFactor.Average(PowerGrowth, BrawnGrowth, BodyGrowth);
     }
 }
