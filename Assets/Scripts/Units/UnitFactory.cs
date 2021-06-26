@@ -26,8 +26,8 @@ public class UnitFactory : MonoBehaviour
 
     public Unit RandomizeUnit()
     {
-        int age = 1;
-        int level = 1;
+        int age = Random.Range(ageLimits.Min, ageLimits.Max);
+        int level = Random.Range(1, age);
         var stats = new StatBlock(level, growthLimits);
         return new Unit(level, age, stats);
     }
