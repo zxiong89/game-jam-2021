@@ -4,10 +4,10 @@
 public class GrowthFactorLimits : ScriptableObject
 {
     [SerializeField]
-    private GrowthFactor max;
-
-    [SerializeField]
     private GrowthFactor min;
 
-    public GrowthFactor GetMean() => GrowthFactor.Average(max, min);
+    [SerializeField]
+    private GrowthFactor max;
+
+    public GrowthFactor GetMean() => GrowthFactor.Average(min, max);
 }
