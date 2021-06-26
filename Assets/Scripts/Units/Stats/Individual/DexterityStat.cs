@@ -1,4 +1,6 @@
-﻿public struct DexterityStat
+﻿
+[System.Serializable]
+public struct DexterityStat
 {
     /// <summary>
     /// Updates the current values based on the base stats, growth factor, and level

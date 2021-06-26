@@ -1,4 +1,6 @@
-﻿public struct IntelligenceStat
+﻿
+[System.Serializable]
+public struct IntelligenceStat
 {
     /// <summary>
     /// Updates the current values based on the base stats, growth factor, and level

@@ -1,4 +1,6 @@
-﻿public struct StrengthStat
+﻿
+[System.Serializable]
+public struct StrengthStat
 {
     /// <summary>
     /// Updates the current values based on the base stats, growth factor, and level

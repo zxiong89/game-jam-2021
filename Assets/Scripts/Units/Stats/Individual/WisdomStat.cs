@@ -1,4 +1,6 @@
-﻿public struct WisdomStat
+﻿
+[System.Serializable]
+public struct WisdomStat
 {
     /// <summary>
     /// Updates the current values based on the base stats, growth factor, and level

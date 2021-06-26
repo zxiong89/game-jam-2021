@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+[System.Serializable]
 public struct GrowthFactor
 {
     public float EarlyMod;

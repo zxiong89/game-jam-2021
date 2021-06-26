@@ -1,4 +1,6 @@
-﻿public struct ConstitutionStat
+﻿
+[System.Serializable]
+public struct ConstitutionStat
 {
     /// <summary>
     /// Updates the current values based on the base stats, growth factor, and level

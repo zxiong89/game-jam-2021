@@ -1,4 +1,6 @@
-﻿public class StatBlock
+﻿
+[System.Serializable]
+public class StatBlock
 {
     public StrengthStat Str;
 
