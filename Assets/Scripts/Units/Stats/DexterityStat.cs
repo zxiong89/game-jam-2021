@@ -1,8 +1,23 @@
 ﻿public struct DexterityStat
 {
-    public float Speed;
-    public float Agility;
-    public float Reflexes;
+    /// <summary>
+    /// Updates the current values based on the base stats, growth factor, and level
+    /// </summary>
+    /// <param name="level"></param>
+    public void Update(int level)
+    {
+        Speed = StatExtensions.CalculateStat(level, SpeedBase, SpeedGrowth);
+        Agility = StatExtensions.CalculateStat(level, AgilityBase, AgilityGrowth);
+        Reflexes = StatExtensions.CalculateStat(level, ReflexesBase, ReflexesGrowth);
+    }
+
+    public float SpeedBase;
+    public float AgilityBase;
+    public float ReflexesBase;
+
+    public float Speed { private set; get; }
+    public float Agility { private set; get; }
+    public float Reflexes { private set; get; }
 
     /// <summary>
     /// Returns the average dexterity value
@@ -21,14 +36,6 @@
     /// </summary>
     public GrowthFactor Growth
     {
-        get
-        {
-            return new GrowthFactor()
-            {
-                EarlyMod = FloatExtensions.Average(SpeedGrowth.EarlyMod, AgilityGrowth.EarlyMod, ReflexesGrowth.EarlyMod),
-                LinearMod = FloatExtensions.Average(SpeedGrowth.EarlyMod, AgilityGrowth.EarlyMod, ReflexesGrowth.EarlyMod),
-                LateMod = FloatExtensions.Average(SpeedGrowth.EarlyMod, AgilityGrowth.EarlyMod, ReflexesGrowth.EarlyMod)
-            };
-        }
+        get => GrowthFactor.AverageGrowthFactor(SpeedGrowth, AgilityGrowth, ReflexesGrowth);
     }
 }

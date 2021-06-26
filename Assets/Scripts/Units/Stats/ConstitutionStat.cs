@@ -1,8 +1,23 @@
 ﻿public struct ConstitutionStat
 {
-    public float Stamina;
-    public float Endurance;
-    public float Vitality;
+    /// <summary>
+    /// Updates the current values based on the base stats, growth factor, and level
+    /// </summary>
+    /// <param name="level"></param>
+    public void Update(int level)
+    {
+        Stamina = StatExtensions.CalculateStat(level, StaminaBase, StaminaGrowth);
+        Endurance = StatExtensions.CalculateStat(level, EnduranceBase, EnduranceGrowth);
+        Vitality = StatExtensions.CalculateStat(level, VitalityBase, VitalityGrowth);
+    }
+
+    public float StaminaBase;
+    public float EnduranceBase;
+    public float VitalityBase;
+
+    public float Stamina { private set;  get; }
+    public float Endurance { private set; get; }
+    public float Vitality { private set; get; }
 
     /// <summary>
     /// Returns the average constitution value
@@ -21,14 +36,6 @@
     /// </summary>
     public GrowthFactor Growth
     {
-        get
-        {
-            return new GrowthFactor()
-            {
-                EarlyMod = FloatExtensions.Average(StaminaGrowth.EarlyMod, EnduranceGrowth.EarlyMod, VitalityGrowth.EarlyMod),
-                LinearMod = FloatExtensions.Average(StaminaGrowth.EarlyMod, EnduranceGrowth.EarlyMod, VitalityGrowth.EarlyMod),
-                LateMod = FloatExtensions.Average(StaminaGrowth.EarlyMod, EnduranceGrowth.EarlyMod, VitalityGrowth.EarlyMod)
-            };
-        }
+        get => GrowthFactor.AverageGrowthFactor(StaminaGrowth, EnduranceGrowth, VitalityGrowth);
     }
 }

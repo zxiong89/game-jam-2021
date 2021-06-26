@@ -1,8 +1,23 @@
 ﻿public struct IntelligenceStat
 {
-    public float Intellect;
-    public float Mind;
-    public float Knowledge;
+    /// <summary>
+    /// Updates the current values based on the base stats, growth factor, and level
+    /// </summary>
+    /// <param name="level"></param>
+    public void Update(int level)
+    {
+        Intellect = StatExtensions.CalculateStat(level, IntellectBase, IntellectGrowth);
+        Mind = StatExtensions.CalculateStat(level, MindBase, MindGrowth);
+        Knowledge = StatExtensions.CalculateStat(level, KnowledgeBase, KnowledgeGrowth);
+    }
+
+    public float IntellectBase;
+    public float MindBase;
+    public float KnowledgeBase;
+
+    public float Intellect { private set; get; }
+    public float Mind { private set; get; }
+    public float Knowledge { private set; get; }
 
     /// <summary>
     /// Returns the average intelligence value
@@ -21,14 +36,6 @@
     /// </summary>
     public GrowthFactor Growth
     {
-        get
-        {
-            return new GrowthFactor()
-            {
-                EarlyMod = FloatExtensions.Average(IntellectGrowth.EarlyMod, MindGrowth.EarlyMod, KnowledgeGrowth.EarlyMod),
-                LinearMod = FloatExtensions.Average(IntellectGrowth.EarlyMod, MindGrowth.EarlyMod, KnowledgeGrowth.EarlyMod),
-                LateMod = FloatExtensions.Average(IntellectGrowth.EarlyMod, MindGrowth.EarlyMod, KnowledgeGrowth.EarlyMod)
-            };
-        }
+        get => GrowthFactor.AverageGrowthFactor(IntellectGrowth, MindGrowth, KnowledgeGrowth);
     }
 }
