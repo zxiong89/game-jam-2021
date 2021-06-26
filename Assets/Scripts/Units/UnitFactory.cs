@@ -7,6 +7,9 @@ public class UnitFactory : MonoBehaviour
     #region Growth Limits
     [SerializeField]
     GrowthFactorLimits growthLimits;
+
+    [SerializeField]
+    IntegerLimits ageLimits;
     #endregion
 
     // Start is called before the first frame update
