@@ -1,4 +1,5 @@
-﻿public class StrengthAugment : BaseAugment
+﻿[System.Serializable]
+public class StrengthAugment : BaseAugment
 {
     public AugmentModifiers PowerAugment;
     public AugmentModifiers BrawnAugment;

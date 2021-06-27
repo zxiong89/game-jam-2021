@@ -1,4 +1,5 @@
-﻿public class DexterityAugment : BaseAugment
+﻿[System.Serializable]
+public class DexterityAugment : BaseAugment
 {
     public AugmentModifiers SpeedAugment;
     public AugmentModifiers AgilityAugment;

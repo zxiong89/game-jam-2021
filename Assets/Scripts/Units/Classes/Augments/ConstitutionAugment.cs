@@ -1,4 +1,5 @@
-﻿public class ConstitutionAugment : BaseAugment
+﻿[System.Serializable]
+public class ConstitutionAugment : BaseAugment
 {
     public AugmentModifiers StaminaAugment;
     public AugmentModifiers EnduranceAugment;

@@ -1,4 +1,5 @@
-﻿public abstract class UnitClass 
+﻿[System.Serializable]
+public class UnitClass 
 {
     protected StrengthAugment Str;
     protected ConstitutionAugment Con;

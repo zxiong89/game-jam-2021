@@ -1,4 +1,5 @@
-﻿public class WisdomAugment : BaseAugment
+﻿[System.Serializable]
+public class WisdomAugment : BaseAugment
 {
     public AugmentModifiers WillAugment;
     public AugmentModifiers SenseAugment;

@@ -1,4 +1,5 @@
-﻿public struct AugmentModifiers 
+﻿[System.Serializable]
+public struct AugmentModifiers 
 {
     public float PhyAtkMod;
     public float MagAtkMod;
@@ -6,13 +7,13 @@
     public float AtkSupMod;
     public float DefSupMod;
 
-    public AugmentModifiers(float phyAtkMod, float magAtkMod, float defMod, float atkSupMod, float defSupMod)
+    public AugmentModifiers(AugmentModifiers copy)
     {
-        PhyAtkMod = phyAtkMod;
-        MagAtkMod = magAtkMod;
-        DefMod = defMod;
-        AtkSupMod = atkSupMod;
-        DefSupMod = defSupMod;
+        PhyAtkMod = copy.PhyAtkMod;
+        MagAtkMod = copy.MagAtkMod;
+        DefMod = copy.DefMod;
+        AtkSupMod = copy.AtkSupMod;
+        DefSupMod = copy.DefSupMod;
     }
 
     public void AugmentPartyStat(PartyStats party, float stat)
