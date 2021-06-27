@@ -18,10 +18,12 @@ public struct AugmentModifiers
 
     public void AugmentPartyStat(PartyStats party, float stat)
     {
-        party.PhyAtk += PhyAtkMod * stat;
-        party.MagAtk += MagAtkMod * stat;
-        party.Def += DefMod * stat;
-        party.AtkSup += AtkSupMod * stat;
-        party.DefSup += DefSupMod * stat;
+        party.PhyAtk += augmentStat(PhyAtkMod, stat);
+        party.MagAtk += augmentStat(MagAtkMod, stat);
+        party.Def += augmentStat(DefMod, stat);
+        party.AtkSup += augmentStat(AtkSupMod, stat);
+        party.DefSup += augmentStat(DefSupMod, stat);
     }
+
+    private float augmentStat(float mod, float stat) => (1 + mod) * stat;
 }

@@ -1,30 +1,20 @@
 ﻿[System.Serializable]
 public class UnitClass 
 {
-    protected StrengthAugment Str;
-    protected ConstitutionAugment Con;
-    protected DexterityAugment Dex;
-    protected IntelligenceAugment Int;
-    protected WisdomAugment Wis;
+    public UnitClassData Data;
 
-    public UnitClass(StrengthAugment str_aug, ConstitutionAugment con_aug,
-        DexterityAugment dex_aug, IntelligenceAugment int_aug, WisdomAugment wis_aug)
+    public UnitClass()
     {
-        Str = str_aug;
-        Con = con_aug;
-        Dex = dex_aug;
-        Int = int_aug;
-        Wis = wis_aug;
     }
 
-    public virtual PartyStats CalcContribution(StatBlock block)
+    public virtual PartyStats CalcContribution(StatBlock player)
     {
         PartyStats stats = new PartyStats();
-        Str.AugmentPartyStats(stats, block.Str);
-        Con.AugmentPartyStats(stats, block.Con);
-        Dex.AugmentPartyStats(stats, block.Dex);
-        Int.AugmentPartyStats(stats, block.Int);
-        Wis.AugmentPartyStats(stats, block.Wis);
+        Data.Str.AugmentPartyStats(stats, player.Str);
+        Data.Con.AugmentPartyStats(stats, player.Con);
+        Data.Dex.AugmentPartyStats(stats, player.Dex);
+        Data.Int.AugmentPartyStats(stats, player.Int);
+        Data.Wis.AugmentPartyStats(stats, player.Wis);
         return stats;
     }
 
