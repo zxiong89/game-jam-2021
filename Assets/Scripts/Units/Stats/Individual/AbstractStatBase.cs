@@ -4,7 +4,12 @@ using UnityEngine;
 
 public abstract class AbstractStatBase
 {
+    public abstract string DisplayName { get; }
+    public abstract string Abbreviation { get; }
+
+
     protected abstract float[] getStats();
+
     /// <summary>
     /// Returns the average value
     /// </summary>

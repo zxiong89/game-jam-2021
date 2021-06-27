@@ -3,6 +3,8 @@
 public class StrengthStat : AbstractStatBase
 {
     #region Fields/Properties
+    public override string DisplayName => "Strength";
+    public override string Abbreviation => "Str";
 
     public float PowerBase;
     public float BrawnBase;

@@ -3,6 +3,8 @@
 public class DexterityStat : AbstractStatBase
 {
     #region Fields/Properties
+    public override string DisplayName => "Dexterity";
+    public override string Abbreviation => "Dex";
 
     public float SpeedBase;
     public float AgilityBase;

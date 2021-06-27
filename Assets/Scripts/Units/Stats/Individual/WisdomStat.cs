@@ -3,6 +3,8 @@
 public class WisdomStat : AbstractStatBase
 {
     #region Fields/Properties
+    public override string DisplayName => "Wisdom";
+    public override string Abbreviation => "Wis";
 
     public float WillBase;
     public float SenseBase;

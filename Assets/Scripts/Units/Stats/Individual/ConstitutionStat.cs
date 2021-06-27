@@ -4,6 +4,9 @@ public class ConstitutionStat : AbstractStatBase
 {
     #region Fields/Properties
 
+    public override string DisplayName => "Constitution";
+    public override string Abbreviation => "Con";
+
     public float StaminaBase;
     public float EnduranceBase;
     public float VitalityBase;

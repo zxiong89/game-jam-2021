@@ -3,6 +3,8 @@
 public class IntelligenceStat : AbstractStatBase
 {
     #region Fields/Properties
+    public override string DisplayName => "Intelligence";
+    public override string Abbreviation => "Int";
 
     public float IntellectBase;
     public float MindBase;
