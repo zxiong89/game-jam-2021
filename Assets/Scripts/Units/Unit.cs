@@ -3,6 +3,9 @@
 public class Unit
 {
     #region Fields/Properties
+    public string DisplayName { get; set; }
+
+
     private int level;
     public int Level
     {

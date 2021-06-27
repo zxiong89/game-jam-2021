@@ -36,9 +36,11 @@ public class StatBlock
     public void RandomizeGrowthFactors(GrowthFactorLimits limits)
     {
         Str.RandomizeGrowthStats(limits);
-        Con.RandomizeGrowthStats(limits); 
+        Con.RandomizeGrowthStats(limits);
         Dex.RandomizeGrowthStats(limits);
         Int.RandomizeGrowthStats(limits);
         Wis.RandomizeGrowthStats(limits);
     }
+
+    public AbstractStatBase[] GetStats() => new AbstractStatBase[]{ Str, Con, Dex, Int, Wis };
 }

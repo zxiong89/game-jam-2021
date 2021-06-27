@@ -8,8 +8,17 @@ public class UnitDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI unitName;
 
-    public void SetName(string newName)
+    [SerializeField]
+    private StatsGroup statsGroup;
+
+    public Unit currentUnit { get; set; }
+
+    public void DisplayUnit(Unit unitToDisplay)
     {
-        unitName.text = newName;
+        currentUnit = unitToDisplay;
+        unitName.text = unitToDisplay.DisplayName;
+        statsGroup.SetStats(currentUnit.Stats);
     }
+
+
 }
