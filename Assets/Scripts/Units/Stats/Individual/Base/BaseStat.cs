@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractStatBase
+public abstract class BaseStat
 {
     protected abstract float[] getStats();
     /// <summary>

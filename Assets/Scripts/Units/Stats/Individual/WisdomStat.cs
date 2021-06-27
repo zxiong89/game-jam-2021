@@ -1,6 +1,6 @@
 ﻿
 [System.Serializable]
-public class WisdomStat : AbstractStatBase
+public class WisdomStat : BaseStat
 {
     #region Fields/Properties
 
