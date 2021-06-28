@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: {fileID: 3033914905848144163}
-  classDisplay: {fileID: 0}
+  classDisplay: {fileID: 1944361801998161113}
   statsGroup: {fileID: 9121163457280684591}
 --- !u!114 &9013467734713917919
 MonoBehaviour:
