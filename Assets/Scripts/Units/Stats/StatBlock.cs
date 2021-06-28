@@ -42,5 +42,5 @@ public class StatBlock
         Wis.RandomizeGrowthStats(limits);
     }
 
-    public AbstractStatBase[] GetStats() => new AbstractStatBase[]{ Str, Con, Dex, Int, Wis };
+    public BaseStat[] GetStats() => new BaseStat[]{ Str, Con, Dex, Int, Wis };
 }
