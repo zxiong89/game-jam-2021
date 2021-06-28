@@ -1,6 +1,6 @@
 ﻿
 [System.Serializable]
-public class ConstitutionStat : AbstractStatBase
+public class ConstitutionStat : BaseStat
 {
     #region Fields/Properties
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractStatBase
+public abstract class BaseStat
 {
     public abstract string DisplayName { get; }
     public abstract string Abbreviation { get; }

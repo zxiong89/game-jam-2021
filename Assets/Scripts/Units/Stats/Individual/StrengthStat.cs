@@ -1,6 +1,6 @@
 ﻿
 [System.Serializable]
-public class StrengthStat : AbstractStatBase
+public class StrengthStat : BaseStat
 {
     #region Fields/Properties
     public override string DisplayName => "Strength";

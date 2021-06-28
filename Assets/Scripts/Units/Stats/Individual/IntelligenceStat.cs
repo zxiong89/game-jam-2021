@@ -1,6 +1,6 @@
 ﻿
 [System.Serializable]
-public class IntelligenceStat : AbstractStatBase
+public class IntelligenceStat : BaseStat
 {
     #region Fields/Properties
     public override string DisplayName => "Intelligence";

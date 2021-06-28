@@ -1,6 +1,6 @@
 ﻿
 [System.Serializable]
-public class DexterityStat : AbstractStatBase
+public class DexterityStat : BaseStat
 {
     #region Fields/Properties
     public override string DisplayName => "Dexterity";

@@ -19,6 +19,7 @@ public class Unit
 
     public int Age;
     public StatBlock Stats;
+    public UnitClass Class;
 
     #endregion
 
@@ -36,6 +37,8 @@ public class Unit
     #region Methods
 
     public void LevelUp() => Level++;
+
+    public PartyStats CalcContribution(bool isFrontline) => Class.CalcContribution(Stats, isFrontline);
 
     #endregion
 }
