@@ -2,7 +2,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Units/ClassSelection")]
+[System.Serializable]
 public class UnitClassSelection : ScriptableObject
 {
-    public List<UnitClassData> Classes;
+    public UnitClassData[] Classes;
 }
