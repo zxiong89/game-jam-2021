@@ -26,9 +26,8 @@ public static class FloatExtensions
     public static float Randomize(float min, float max, float mean)
     {
         var guassian = NextGaussian();
-        var variance = guassian < 0.0 ? (mean - min) : (max - mean);
+        var variance = guassian < 0.0 ? (min - mean) : (max - mean);
         return (float)(mean + variance * guassian);
-
     }
 
     /// <summary>
