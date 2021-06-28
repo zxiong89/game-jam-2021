@@ -2,8 +2,8 @@
 public class UnitClassData
 {
     public string Name;
-    public float FrontlineMod;
-    public float BacklineMod;
+    public PartyStats FrontlineMod;
+    public PartyStats BacklineMod;
     public StrengthAugment Str;
     public ConstitutionAugment Con;
     public DexterityAugment Dex;
