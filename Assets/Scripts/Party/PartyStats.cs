@@ -1,4 +1,5 @@
-﻿public struct PartyStats 
+﻿[System.Serializable]
+public struct PartyStats 
 {
     public float PhyAtk;
     public float MagAtk;

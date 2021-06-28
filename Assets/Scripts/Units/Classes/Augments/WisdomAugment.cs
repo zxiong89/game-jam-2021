@@ -5,13 +5,13 @@ public class WisdomAugment : BaseAugment
     public AugmentModifiers SenseAugment;
     public AugmentModifiers SpiritAugment;
 
-    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat)
+    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat, PartyStats formationMod)
     {
         if (baseStat is WisdomStat stat)
         {
-            WillAugment.AugmentPartyStat(party, stat.Will);
-            SenseAugment.AugmentPartyStat(party, stat.Sense);
-            SpiritAugment.AugmentPartyStat(party, stat.Spirit);
+            WillAugment.AugmentPartyStat(party, stat.Will, formationMod);
+            SenseAugment.AugmentPartyStat(party, stat.Sense, formationMod);
+            SpiritAugment.AugmentPartyStat(party, stat.Spirit, formationMod);
         }
     }
 }
