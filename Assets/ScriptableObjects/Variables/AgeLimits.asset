@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: AgeLimits
   m_EditorClassIdentifier: 
   Min: 18
+  Mean: 21
   Max: 65

@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400d105c8ee7dc947bca12583b9e9fdf, type: 3}
   m_Name: UnitGrowthLimits
   m_EditorClassIdentifier: 
-  max:
-    EarlyMod: 20
-    LinearMod: 3
-    LateMod: 0.04
-  min:
+  Min:
     EarlyMod: 1
     LinearMod: 0.5
     LateMod: 0.01
+  Mean:
+    EarlyMod: 10
+    LinearMod: 1
+    LateMod: 0.02
+  Max:
+    EarlyMod: 20
+    LinearMod: 3
+    LateMod: 0.04
