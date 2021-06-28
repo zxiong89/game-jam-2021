@@ -2,11 +2,11 @@
 [System.Serializable]
 public class StatBlock
 {
-    public StrengthStat Str;
-    public ConstitutionStat Con;
-    public DexterityStat Dex;
-    public IntelligenceStat Int;
-    public WisdomStat Wis;
+    public StrengthStat Str = new StrengthStat();
+    public ConstitutionStat Con = new ConstitutionStat();
+    public DexterityStat Dex = new DexterityStat();
+    public IntelligenceStat Int = new IntelligenceStat();
+    public WisdomStat Wis = new WisdomStat();
 
     public StatBlock(int level, GrowthFactorLimits limits)
     {
