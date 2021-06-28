@@ -9,6 +9,9 @@ public class UnitDisplay : MonoBehaviour
     private TextMeshProUGUI unitName;
 
     [SerializeField]
+    private TextMeshProUGUI classDisplay;
+
+    [SerializeField]
     private StatsGroup statsGroup;
 
     public Unit currentUnit { get; set; }
@@ -17,8 +20,15 @@ public class UnitDisplay : MonoBehaviour
     {
         currentUnit = unitToDisplay;
         unitName.text = unitToDisplay.DisplayName;
+        DisplayClass(unitToDisplay.Level.ToString(), "Demon Hunter (Test)");
         statsGroup.SetStats(currentUnit.Stats);
     }
 
+    public void DisplayClass(string level, string unitClass)
+    {
+        string displayString = "Lv " + level;
+        if (unitClass != "") displayString += " " + unitClass;
+        classDisplay.text = displayString;
+    }
 
 }

@@ -13,7 +13,7 @@ public class TraitDisplay : MonoBehaviour
 
     public void SetTrait(string name, string description, Color textColor)
     {
-        traitName.text = name;
+        traitName.text = name + ":";
         traitName.color = textColor;
         traitDescription.text = description;
     }
