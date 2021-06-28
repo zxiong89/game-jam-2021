@@ -35,7 +35,7 @@ public class Unit
 
     public void LevelUp() => Level++;
 
-    public PartyStats CalcContribution() => Class.CalcContribution(Stats);
+    public PartyStats CalcContribution(bool isFrontline) => Class.CalcContribution(Stats, isFrontline);
 
     #endregion
 }

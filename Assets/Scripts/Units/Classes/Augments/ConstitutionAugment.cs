@@ -5,13 +5,13 @@ public class ConstitutionAugment : BaseAugment
     public AugmentModifiers EnduranceAugment;
     public AugmentModifiers VitalityAugment;
 
-    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat)
+    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat, PartyStats formationMod)
     {
         if (baseStat is ConstitutionStat stat)
         {
-            StaminaAugment.AugmentPartyStat(party, stat.Stamina);
-            EnduranceAugment.AugmentPartyStat(party, stat.Endurance);
-            VitalityAugment.AugmentPartyStat(party, stat.Vitality);
+            StaminaAugment.AugmentPartyStat(party, stat.Stamina, formationMod);
+            EnduranceAugment.AugmentPartyStat(party, stat.Endurance, formationMod);
+            VitalityAugment.AugmentPartyStat(party, stat.Vitality, formationMod);
         }
     }
 }
