@@ -12,4 +12,544 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086f9089a32890f4789fe12531a73cb8, type: 3}
   m_Name: IntClasses
   m_EditorClassIdentifier: 
-  Classes: []
+  Classes:
+  - Name: Spellblade
+    FrontlineMod:
+      PhyAtk: 0.3
+      MagAtk: 0.7
+      Def: 1
+      AtkSup: 1
+      DefSup: 1
+    BacklineMod:
+      PhyAtk: 0.1
+      MagAtk: 0.4
+      Def: 0.5
+      AtkSup: 0.5
+      DefSup: 0.5
+    Str:
+      PowerAugment:
+        PhyAtkMod: 2
+        MagAtkMod: 2
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 1
+      BrawnAugment:
+        PhyAtkMod: 0.6
+        MagAtkMod: 0.6
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0.3
+      BodyAugment:
+        PhyAtkMod: 1.4
+        MagAtkMod: 1.4
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0.7
+    Con:
+      StaminaAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      EnduranceAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      VitalityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Dex:
+      SpeedAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      AgilityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      ReflexesAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Int:
+      IntellectAugment:
+        PhyAtkMod: 3
+        MagAtkMod: 3
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 1.5
+      MindAugment:
+        PhyAtkMod: 2
+        MagAtkMod: 2
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 1
+      KnowledgeAugment:
+        PhyAtkMod: 1
+        MagAtkMod: 1
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0.5
+    Wis:
+      WillAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SenseAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SpiritAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+  - Name: Warlock
+    FrontlineMod:
+      PhyAtk: 0.5
+      MagAtk: 0.5
+      Def: 0.5
+      AtkSup: 0.5
+      DefSup: 0.5
+    BacklineMod:
+      PhyAtk: 0.7
+      MagAtk: 1.3
+      Def: 1
+      AtkSup: 1
+      DefSup: 1
+    Str:
+      PowerAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BrawnAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BodyAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Con:
+      StaminaAugment:
+        PhyAtkMod: 1
+        MagAtkMod: 1
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 2
+      EnduranceAugment:
+        PhyAtkMod: 0.3
+        MagAtkMod: 0.3
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0.6
+      VitalityAugment:
+        PhyAtkMod: 0.7
+        MagAtkMod: 0.7
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 1.4
+    Dex:
+      SpeedAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      AgilityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      ReflexesAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Int:
+      IntellectAugment:
+        PhyAtkMod: 1
+        MagAtkMod: 1
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 2
+      MindAugment:
+        PhyAtkMod: 1.5
+        MagAtkMod: 1.5
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 3
+      KnowledgeAugment:
+        PhyAtkMod: 0.5
+        MagAtkMod: 0.5
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 1
+    Wis:
+      WillAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SenseAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SpiritAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+  - Name: Alchemist
+    FrontlineMod:
+      PhyAtk: 0.2
+      MagAtk: 0.2
+      Def: 0.5
+      AtkSup: 0.55
+      DefSup: 0.55
+    BacklineMod:
+      PhyAtk: 0.4
+      MagAtk: 0.4
+      Def: 1
+      AtkSup: 1.1
+      DefSup: 1.1
+    Str:
+      PowerAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BrawnAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BodyAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Con:
+      StaminaAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      EnduranceAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      VitalityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Dex:
+      SpeedAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 1
+        DefSupMod: 2
+      AgilityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0.3
+        DefSupMod: 0.6
+      ReflexesAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0.7
+        DefSupMod: 1.4
+    Int:
+      IntellectAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 1
+        DefSupMod: 2
+      MindAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0.5
+        DefSupMod: 1
+      KnowledgeAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 1.5
+        DefSupMod: 3
+    Wis:
+      WillAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SenseAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SpiritAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+  - Name: Wizard
+    FrontlineMod:
+      PhyAtk: 0
+      MagAtk: 0
+      Def: 0
+      AtkSup: 0
+      DefSup: 0
+    BacklineMod:
+      PhyAtk: 0
+      MagAtk: 1
+      Def: 1
+      AtkSup: 1
+      DefSup: 1
+    Str:
+      PowerAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BrawnAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BodyAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Con:
+      StaminaAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      EnduranceAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      VitalityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Dex:
+      SpeedAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      AgilityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      ReflexesAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Int:
+      IntellectAugment:
+        PhyAtkMod: 5
+        MagAtkMod: 5
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      MindAugment:
+        PhyAtkMod: 3
+        MagAtkMod: 3
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      KnowledgeAugment:
+        PhyAtkMod: 4
+        MagAtkMod: 4
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Wis:
+      WillAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SenseAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      SpiritAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+  - Name: Sorcerer
+    FrontlineMod:
+      PhyAtk: 0
+      MagAtk: 0
+      Def: 0
+      AtkSup: 0
+      DefSup: 0
+    BacklineMod:
+      PhyAtk: 0
+      MagAtk: 1
+      Def: 1
+      AtkSup: 1
+      DefSup: 1
+    Str:
+      PowerAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BrawnAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      BodyAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Con:
+      StaminaAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      EnduranceAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      VitalityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Dex:
+      SpeedAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      AgilityAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+      ReflexesAugment:
+        PhyAtkMod: 0
+        MagAtkMod: 0
+        DefMod: 0
+        AtkSupMod: 0
+        DefSupMod: 0
+    Int:
+      IntellectAugment:
+        PhyAtkMod: 2
+        MagAtkMod: 2
+        DefMod: 0
+        AtkSupMod: 1
+        DefSupMod: 0
+      MindAugment:
+        PhyAtkMod: 3
+        MagAtkMod: 3
+        DefMod: 0
+        AtkSupMod: 1.5
+        DefSupMod: 0
+      KnowledgeAugment:
+        PhyAtkMod: 1
+        MagAtkMod: 1
+        DefMod: 0
+        AtkSupMod: 0.5
+        DefSupMod: 0
+    Wis:
+      WillAugment:
+        PhyAtkMod: 2
+        MagAtkMod: 2
+        DefMod: 0
+        AtkSupMod: 1
+        DefSupMod: 0
+      SenseAugment:
+        PhyAtkMod: 0.6
+        MagAtkMod: 0.6
+        DefMod: 0
+        AtkSupMod: 0.3
+        DefSupMod: 0
+      SpiritAugment:
+        PhyAtkMod: 1.4
+        MagAtkMod: 1.4
+        DefMod: 0
+        AtkSupMod: 0.7
+        DefSupMod: 0
