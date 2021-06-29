@@ -3,8 +3,9 @@ public class UnitClass
 {
     public UnitClassData Data;
 
-    public UnitClass()
+    public UnitClass(UnitClassData data)
     {
+        Data = data;
     }
 
     public virtual PartyStats CalcContribution(StatBlock player, bool isFrontline)

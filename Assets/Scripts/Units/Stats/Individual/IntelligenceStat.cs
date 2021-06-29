@@ -29,11 +29,11 @@ public class IntelligenceStat : BaseStat
         Knowledge = StatExtensions.CalculateStat(level, KnowledgeBase, KnowledgeGrowth);
     }
 
-    public override void RandomizeBaseStats()
+    public override void RandomizeBaseStats(IntegerLimits baseStats)
     {
-        Intellect = StatExtensions.Randomize();
-        Mind = StatExtensions.Randomize();
-        Knowledge = StatExtensions.Randomize();
+        Intellect = StatExtensions.Randomize(baseStats);
+        Mind = StatExtensions.Randomize(baseStats);
+        Knowledge = StatExtensions.Randomize(baseStats);
     }
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)

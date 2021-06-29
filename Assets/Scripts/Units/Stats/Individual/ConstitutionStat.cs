@@ -30,11 +30,11 @@ public class ConstitutionStat : BaseStat
         Vitality = StatExtensions.CalculateStat(level, VitalityBase, VitalityGrowth);
     }
 
-    public override void RandomizeBaseStats()
+    public override void RandomizeBaseStats(IntegerLimits baseStats)
     {
-        Stamina = StatExtensions.Randomize();
-        Endurance = StatExtensions.Randomize();
-        Vitality = StatExtensions.Randomize();
+        Stamina = StatExtensions.Randomize(baseStats);
+        Endurance = StatExtensions.Randomize(baseStats);
+        Vitality = StatExtensions.Randomize(baseStats);
     }
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)

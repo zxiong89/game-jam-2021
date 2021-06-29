@@ -29,11 +29,11 @@ public class DexterityStat : BaseStat
         Reflexes = StatExtensions.CalculateStat(level, ReflexesBase, ReflexesGrowth);
     }
 
-    public override void RandomizeBaseStats()
+    public override void RandomizeBaseStats(IntegerLimits baseStats)
     {
-        Speed = StatExtensions.Randomize();
-        Agility = StatExtensions.Randomize();
-        Reflexes = StatExtensions.Randomize();
+        Speed = StatExtensions.Randomize(baseStats);
+        Agility = StatExtensions.Randomize(baseStats);
+        Reflexes = StatExtensions.Randomize(baseStats);
     }
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)

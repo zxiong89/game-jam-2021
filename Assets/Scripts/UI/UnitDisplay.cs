@@ -22,20 +22,20 @@ public class UnitDisplay : MonoBehaviour
 
     public Unit currentUnit { get; set; }
 
-    public void DisplayUnit(Unit unitToDisplay)
+    public void DisplayUnit(Unit unit)
     {
-        currentUnit = unitToDisplay;
-        unitName.text = unitToDisplay.DisplayName;
-        DisplayClass(unitToDisplay.Level.ToString(), "Demon Hunter (Test)");
+        currentUnit = unit;
+        unitName.text = unit.DisplayName;
+        DisplayClass(unit.Level, unit.Class.Data.Name);
         statsGroup?.SetStats(currentUnit.Stats);
     }
 
-    public void DisplayClass(string level, string unitClass)
+    public void DisplayClass(int level, string unitClass)
     {
         if (classDisplay != null) classDisplay.text = unitClass;
 
         if (levelClassDisplay == null && levelDisplay == null) return;
-        string levelTxt = string.Format("Lv {0}",level);
+        string levelTxt = string.Format("Lv {0}",level.ToString());
         if (levelDisplay != null) levelDisplay.text = levelTxt;
 
         if (levelClassDisplay != null)

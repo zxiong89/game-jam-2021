@@ -27,7 +27,7 @@ public abstract class BaseStat
         get => GrowthFactor.Average(getGrowthFactors());
     }
 
-    public abstract void RandomizeBaseStats();
+    public abstract void RandomizeBaseStats(IntegerLimits baseStats);
     public abstract void RandomizeGrowthStats(GrowthFactorLimits limits);
 
     /// <summary>

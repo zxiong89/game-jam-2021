@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75589bb49300b9d4daec5abaf91d188e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseStatLimits: {fileID: 11400000, guid: 59bf7e491201e1642b461722b4052fd8, type: 2}
   growthLimits: {fileID: 11400000, guid: 0dc0c8c71ac30bf449329f253df78660, type: 2}
   ageLimits: {fileID: 11400000, guid: a8b0de4871161444ba1e655ac6ad18a4, type: 2}
+  classes:
+  - {fileID: 11400000, guid: 38b71f288e6b53f49b6754f9b5ce6a8f, type: 2}
+  - {fileID: 11400000, guid: 3583baa44451f734fa37dde1618b4658, type: 2}
+  - {fileID: 11400000, guid: 6bed4e1179500d2409131cd51b2b203b, type: 2}
+  - {fileID: 11400000, guid: e9ae105393e20bb4ba136d011e6c2f35, type: 2}
+  - {fileID: 11400000, guid: feb1d81b3fafb844c8185df5af1329d2, type: 2}
