@@ -657,6 +657,7 @@ MonoBehaviour:
   classDisplay: {fileID: 5394857812094884467}
   levelDisplay: {fileID: 765635284617453326}
   levelClassDisplay: {fileID: 0}
+  ageDisplay: {fileID: 0}
   statsGroup: {fileID: 0}
 --- !u!114 &6115201440856120706
 MonoBehaviour:
@@ -1792,6 +1793,11 @@ PrefabInstance:
       propertyPath: unitName
       value: 
       objectReference: {fileID: 3033914905848144163}
+    - target: {fileID: 830359596815933216, guid: daeac1cac5ee8184fa2fbb0b90c74836,
+        type: 3}
+      propertyPath: ageDisplay
+      value: 
+      objectReference: {fileID: 3042293587908333577}
     - target: {fileID: 830359596815933216, guid: daeac1cac5ee8184fa2fbb0b90c74836,
         type: 3}
       propertyPath: classDisplay

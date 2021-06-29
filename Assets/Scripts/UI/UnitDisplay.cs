@@ -18,6 +18,9 @@ public class UnitDisplay : MonoBehaviour
     private TextMeshProUGUI levelClassDisplay;
 
     [SerializeField]
+    private TextMeshProUGUI ageDisplay;
+
+    [SerializeField]
     private StatsGroup statsGroup;
 
     public Unit currentUnit { get; set; }
@@ -26,6 +29,7 @@ public class UnitDisplay : MonoBehaviour
     {
         currentUnit = unit;
         unitName.text = unit.DisplayName;
+        if (ageDisplay) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
         DisplayClass(unit.Level, unit.Class.Data.Name);
         statsGroup?.SetStats(currentUnit.Stats);
     }
