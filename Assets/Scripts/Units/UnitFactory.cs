@@ -27,6 +27,6 @@ public class UnitFactory : MonoBehaviour
         int age = (int) FloatExtensions.Randomize(ageLimits.Min, ageLimits.Max, ageLimits.Mean);
         int level = Random.Range(1, age);
         var stats = new StatBlock(level, growthLimits);
-        return new Unit(level, age, stats);
+        return new Unit("Jeff" ,level, age, stats);
     }
 }

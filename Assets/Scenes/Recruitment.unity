@@ -4387,6 +4387,7 @@ GameObject:
   - component: {fileID: 1705603865}
   - component: {fileID: 1705603866}
   - component: {fileID: 1705603867}
+  - component: {fileID: 1705603868}
   m_Layer: 5
   m_Name: RecruitmentGrid
   m_TagString: Untagged
@@ -4475,6 +4476,20 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
+--- !u!114 &1705603868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705603863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bf001feee8b9d4c9b0b6969ec41f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumePrefab: {fileID: 7854724789524646170, guid: 929fc55525c95bd419eb0c41638e88c5,
+    type: 3}
 --- !u!1 &1707962678
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,6 +4501,7 @@ GameObject:
   - component: {fileID: 1707962679}
   - component: {fileID: 1707962681}
   - component: {fileID: 1707962680}
+  - component: {fileID: 1707962682}
   m_Layer: 5
   m_Name: RecruitmentPanel
   m_TagString: Untagged
@@ -4555,6 +4571,24 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &1707962682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707962678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348fbd74d9a699345a2811481b7a8188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bannerText: {fileID: 1714957425}
+  grid: {fileID: 1705603868}
+  PrevButton: {fileID: 581494144}
+  NextButton: {fileID: 1088947482}
+  testFactory: {fileID: 8596437405809330125, guid: ca94dc295e131054b9b66a3385b0307d,
+    type: 3}
 --- !u!1 &1714957422
 GameObject:
   m_ObjectHideFlags: 0

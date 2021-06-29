@@ -9,16 +9,23 @@ public class UnitResumeDisplay : MonoBehaviour
     private SpriteRenderer sprite;
 
     [SerializeField]
+    private TextMeshProUGUI nameAndLevels;
+
+    [SerializeField]
     private StatsGroup statsGroup;
 
     [SerializeField]
-    private TextMeshProUGUI traits;
+    private TextMeshProUGUI traitsText;
 
     [SerializeField]
-    private TextMeshProUGUI fee;
+    private TextMeshProUGUI feeText;
 
-    private void SetResume()
+    public void SetResume(Unit unitToDisplay, int fee)
     {
+        nameAndLevels.text = unitToDisplay.DisplayName + " " + GenericStrings.LevelAbbr + unitToDisplay.Level;
+        statsGroup.SetStats(unitToDisplay.Stats);
+        traitsText.text = "Vigilant, Brawny, Sluggish";
+        feeText.text = fee.ToString() + " " + GenericStrings.CurrencySymbol;
 
     }
 }

@@ -577,6 +577,7 @@ GameObject:
   - component: {fileID: 3136266869076420641}
   - component: {fileID: 4759416818703992475}
   - component: {fileID: 6979294553737342}
+  - component: {fileID: 4414508451167303748}
   m_Layer: 5
   m_Name: UnitResumeDisplay
   m_TagString: Untagged
@@ -704,6 +705,23 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &4414508451167303748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854724789524646170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f00a0bdaf44f1142a3e390981511daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  nameAndLevels: {fileID: 8379385571197024301}
+  statsGroup: {fileID: 4471341186303750875}
+  traitsText: {fileID: 7025322510604899428}
+  feeText: {fileID: 9175390852858515315}
 --- !u!1001 &5993821318126413880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1404,3 +1422,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5993821318126413880}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4471341186303750875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1359188077441721629, guid: c137438583a61474e90c7218911183dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5993821318126413880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a36059ac3f8654391d4f8328d326a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

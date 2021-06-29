@@ -25,8 +25,9 @@ public class Unit
 
     #region Constructors
 
-    public Unit(int level, int age, StatBlock stats)
+    public Unit(string name, int level, int age, StatBlock stats)
     {
+        DisplayName = name;
         Level = level;
         Age = age;
         Stats = stats;
