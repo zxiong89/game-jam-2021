@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 public class UnitFactory : MonoBehaviour
 {
-    #region Growth Limits
-
     [SerializeField]
     private IntegerLimits baseStatLimits;
 
@@ -16,22 +15,19 @@ public class UnitFactory : MonoBehaviour
     [SerializeField]
     private UnitClassSelection[] classes;
 
-    #endregion
+    [SerializeField]
+    private string nameJsonFile;
 
-    // Start is called before the first frame update
-    private void Start()
+    private string[] names;
+
+    private void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-
     }
 
     public Unit RandomizeUnit()
     {
+        LoadNames();
+        int n = Random.Range(0, names.Length - 1);
         int age = (int) FloatExtensions.Randomize(ageLimits.Min, ageLimits.Max, ageLimits.Mean);
         int level = Random.Range(1, age);
         var stats = new StatBlock(level, baseStatLimits, growthLimits);
@@ -41,6 +37,15 @@ public class UnitFactory : MonoBehaviour
         int c = Random.Range(0, selections.Classes.Length - 1);
         UnitClassData classData = selections.Classes[c];
 
-        return new Unit("jeff", level, age, stats, classData);
+        return new Unit(names[n], level, age, stats, classData);
+    }
+
+    private void LoadNames()
+    {
+        if (names != null && names.Length > 0) return;
+        var asset = Resources.Load<TextAsset>(string.Format("Json/{0}", nameJsonFile));
+        StringArrayWrapper wrapper = JsonUtility.FromJson<StringArrayWrapper>(asset.text);
+        names = wrapper.Items;
+        Resources.UnloadAsset(asset);
     }
 }
