@@ -24,7 +24,7 @@ public class RecruitmentGrid : MonoBehaviour
     {
         for (int i = transform.childCount; i > 0; i--)
         {
-            Destroy(transform.GetChild(i - 1));
+            Destroy(transform.GetChild(i - 1).gameObject);
         }
     }
 }
