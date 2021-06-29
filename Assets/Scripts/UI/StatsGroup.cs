@@ -17,7 +17,7 @@ public class StatsGroup : MonoBehaviour
             StatsDisplay curStatDisplay = statDisplays[i];
             BaseStat curStat = statsArr[i];
             curStatDisplay.SetLabel(curStat.Abbreviation);
-            curStatDisplay.SetValue(curStat.Value.ToString());
+            curStatDisplay.SetValue(Mathf.Floor(curStat.Value).ToString());
         }
     }
 }
