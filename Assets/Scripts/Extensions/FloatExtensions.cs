@@ -2,6 +2,7 @@
 
 public static class FloatExtensions
 {
+    private readonly static Random rand = new Random();
     /// <summary>
     /// Returns the average of a number of float variables
     /// </summary>
@@ -38,7 +39,6 @@ public static class FloatExtensions
     /// <returns></returns>
     public static double NextGaussian(float stdDev = 1/3f)
     {
-        Random rand = new Random();
         double randNormal;
         do
         {

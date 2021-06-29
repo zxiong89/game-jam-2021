@@ -21,11 +21,12 @@ public class UnitDisplay : MonoBehaviour
         currentUnit = unitToDisplay;
         unitName.text = unitToDisplay.DisplayName;
         DisplayClass(unitToDisplay.Level.ToString(), "Demon Hunter (Test)");
-        statsGroup.SetStats(currentUnit.Stats);
+        statsGroup?.SetStats(currentUnit.Stats);
     }
 
     public void DisplayClass(string level, string unitClass)
     {
+        if (classDisplay == null) return;
         string displayString = "Lv " + level;
         if (unitClass != "") displayString += " " + unitClass;
         classDisplay.text = displayString;
