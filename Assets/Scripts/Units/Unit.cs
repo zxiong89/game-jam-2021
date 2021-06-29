@@ -5,7 +5,6 @@ public class Unit
     #region Fields/Properties
     public string DisplayName { get; set; }
 
-
     private int level;
     public int Level
     {
@@ -25,11 +24,13 @@ public class Unit
 
     #region Constructors
 
-    public Unit(int level, int age, StatBlock stats)
+    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data)
     {
+        DisplayName = name;
         Level = level;
         Age = age;
         Stats = stats;
+        Class = new UnitClass(data);
     }
 
     #endregion
