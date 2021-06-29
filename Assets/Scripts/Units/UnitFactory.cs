@@ -22,11 +22,11 @@ public class UnitFactory : MonoBehaviour
 
     private void Awake()
     {
+        LoadNames();
     }
 
     public Unit RandomizeUnit()
     {
-        LoadNames();
         int n = Random.Range(0, names.Length - 1);
         int age = (int) FloatExtensions.Randomize(ageLimits.Min, ageLimits.Max, ageLimits.Mean);
         int level = Random.Range(1, age);
@@ -40,6 +40,11 @@ public class UnitFactory : MonoBehaviour
         return new Unit(names[n], level, age, stats, classData);
     }
 
+    /// <summary>
+    /// Load names from the Json.
+    /// Names22K - https://github.com/dominictarr/random-name
+    /// Names5k - https://github.com/smashew/NameDatabases
+    /// </summary>
     private void LoadNames()
     {
         if (names != null && names.Length > 0) return;
