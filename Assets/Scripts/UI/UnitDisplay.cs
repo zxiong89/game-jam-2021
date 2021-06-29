@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class UnitDisplay : MonoBehaviour
@@ -31,7 +29,11 @@ public class UnitDisplay : MonoBehaviour
         unitName.text = unit.DisplayName;
         if (ageDisplay) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
         DisplayClass(unit.Level, unit.Class.Data.Name);
-        statsGroup?.SetStats(currentUnit.Stats);
+        if (statsGroup != null)
+        {
+            statsGroup?.SetStats(currentUnit.Stats);
+            statsGroup?.SetSubStats(currentUnit.Stats);
+        }
     }
 
     public void DisplayClass(int level, string unitClass)

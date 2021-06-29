@@ -20,4 +20,10 @@ public class StatsDisplay : MonoBehaviour
     {
         value.text = newValue.ToString("N0");
     }
+
+    public void SetLabelValue(string newLabel, float newValue)
+    {
+        SetLabel(newLabel);
+        SetValue(newValue);
+    }
 }
