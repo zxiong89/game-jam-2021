@@ -12,6 +12,12 @@ public class UnitDisplay : MonoBehaviour
     private TextMeshProUGUI classDisplay;
 
     [SerializeField]
+    private TextMeshProUGUI levelDisplay;
+
+    [SerializeField]
+    private TextMeshProUGUI levelClassDisplay;
+
+    [SerializeField]
     private StatsGroup statsGroup;
 
     public Unit currentUnit { get; set; }
@@ -26,10 +32,16 @@ public class UnitDisplay : MonoBehaviour
 
     public void DisplayClass(string level, string unitClass)
     {
-        if (classDisplay == null) return;
-        string displayString = "Lv " + level;
-        if (unitClass != "") displayString += " " + unitClass;
-        classDisplay.text = displayString;
+        if (classDisplay != null) classDisplay.text = unitClass;
+
+        if (levelClassDisplay == null && levelDisplay == null) return;
+        string levelTxt = string.Format("Lv {0}",level);
+        if (levelDisplay != null) levelDisplay.text = levelTxt;
+
+        if (levelClassDisplay != null)
+        {
+            levelClassDisplay.text = string.Format("{0} {1}", level, unitClass);
+        }
     }
 
 }
