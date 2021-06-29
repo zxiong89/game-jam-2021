@@ -33,6 +33,7 @@ public static class FloatExtensions
 
     /// <summary>
     /// Return a number between -1 to 1, inclusive, in a normal distrubution
+    /// Based on https://stackoverflow.com/questions/218060/random-gaussian-variables
     /// </summary>
     /// <param name="mean"></param>
     /// <param name="stdDev"> Standard deviation. </param>
