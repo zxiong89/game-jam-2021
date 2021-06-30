@@ -19,8 +19,6 @@ public class RecruitmentGrid : MonoBehaviour
     [SerializeField]
     private int GRID_LIMIT = 4;
 
-    private List<RecruitmentData> potentialRecruits = new List<RecruitmentData>();
-
     private int currentTier;
 
     public void LoadRoster(int tier)
@@ -64,20 +62,6 @@ public class RecruitmentGrid : MonoBehaviour
         resume.SetResume(new RecruitmentData(unit));
     }
 
-    public void AddToGrid(Unit[] units)
-    {       
-        ClearGrid();
-        for (int i = 0; i < units.Length; i++)
-        {
-            var data = new RecruitmentData(units[i]);
-            potentialRecruits.Add(data);
-
-            var newResumeObj = Instantiate(resumePrefab, this.transform);
-            var resumeDisplay = newResumeObj.GetComponent<UnitResumeDisplay>();
-            resumeDisplay.SetResume(data);
-        }
-    }
-
     public void ClearGrid()
     {
         for (int i = transform.childCount; i > 0; i--)
@@ -88,8 +72,9 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void RemoveUnit(RecruitmentData removalData)
     {
-        int index = potentialRecruits.FindIndex((data) => data == removalData);
+        List<Unit> roster = shopRosters.tierRosters[currentTier];
+        int index = roster.FindIndex((data) => data == removalData.UnitForHire);
         Destroy(transform.GetChild(index).gameObject);
-        potentialRecruits.RemoveAt(index);
+        roster.RemoveAt(index);
     }
 }

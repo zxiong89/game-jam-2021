@@ -18,15 +18,6 @@ public class RecruitmentShop : MonoBehaviour
     private GameObject NextButton;
 
     [SerializeField]
-    private UnitFactory testFactory;
-
-    [SerializeField]
-    private IntegerLimits[] ageLimits;
-
-    [SerializeField]
-    private RecruitmentShopRosters shopRosters;
-
-    [SerializeField]
     private Guild playerGuild;
 
     private int curPage = 0;
@@ -34,30 +25,31 @@ public class RecruitmentShop : MonoBehaviour
     private void Start()
     {
         LoadPage(0);
-        var units = new Unit[4];
-        for (int i = 0; i < 4; i++)
-        {
-            units[i] = testFactory.RandomizeUnit(ageLimits[i]);
-        }
-
-        grid.AddToGrid(units);
     }
 
     public void LoadPage(int pageNumber)
     {
-        var units = shopRosters.tierRosters[pageNumber];
-        while(units.Count < 4)
-        {
-            units.Add(testFactory.RandomizeUnit(ageLimits[pageNumber]));
-        }
-        grid.AddToGrid(units);
-        curPage = pageNumber;
+        grid.LoadRoster(curPage);
+        UpdatePageButtons();
+    }
+
+    public void ChangePage(int difference)
+    {
+        curPage += difference;
+        LoadPage(curPage);
+    }
+
+    private void UpdatePageButtons()
+    {
+        PrevButton.gameObject.SetActive(curPage > 0);
+        NextButton.gameObject.SetActive(curPage < 3);
     }
 
     public void BidForUnit(RecruitmentData data)
     {
         if(playerGuild.Gold <= data.Fee)
         {
+            Debug.Log("Ya ain't got enough dough");
             //Tell player they don't have enough gold.
         }
         else
