@@ -5,7 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Guild")]
 public class Guild : ScriptableObject
 {
+    [SerializeField]
+    private IntEvent goldChangedEvent;
+
     public List<Unit> Roster = new List<Unit>();
 
-    public int Gold = 10000;
+    [SerializeField]
+    private int gold;
+
+    public int Gold
+    {
+        get { return gold; }
+        set { 
+            gold = value;
+            goldChangedEvent.Raise(value);
+        }
+    }
+
+
 }

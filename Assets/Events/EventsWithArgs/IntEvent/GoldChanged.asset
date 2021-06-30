@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095c0d2e972c96a4592a5897e0493b48, type: 3}
-  m_Name: PlayerGuild
+  m_Script: {fileID: 11500000, guid: 4e435900fd1cb0647973409a9eea464b, type: 3}
+  m_Name: GoldChanged
   m_EditorClassIdentifier: 
-  goldChangedEvent: {fileID: 11400000, guid: 68f71e914cabd714c8c1916292c123f6, type: 2}
-  gold: 15543
