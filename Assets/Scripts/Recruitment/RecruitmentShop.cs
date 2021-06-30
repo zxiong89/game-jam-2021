@@ -28,6 +28,7 @@ public class RecruitmentShop : MonoBehaviour
     public void LoadPage(int pageNumber)
     {
         grid.LoadRoster(curPage);
+        UpdateBanner(curPage);
         UpdatePageButtons();
     }
 
@@ -35,6 +36,11 @@ public class RecruitmentShop : MonoBehaviour
     {
         curPage += difference;
         LoadPage(curPage);
+    }
+
+    private void UpdateBanner(int tier)
+    {
+        bannerText.text = (AdventurerTierHelpers.Convert(tier)).ToString() + " Adventurers";
     }
 
     private void UpdatePageButtons()
