@@ -6,7 +6,7 @@ using TMPro;
 public class StatsGroup : MonoBehaviour
 {
     [SerializeField]
-    private StatsDisplay[] statDisplays;
+    private LabelValueDisplay[] statDisplays;
 
     [SerializeField]
     private SubStatsDisplay[] subStatDisplays; 
@@ -19,9 +19,9 @@ public class StatsGroup : MonoBehaviour
         for (int i = 0; i < statsArr.Length; i++)
         {
 
-            StatsDisplay curStatDisplay = statDisplays[i];
+            LabelValueDisplay curStatDisplay = statDisplays[i];
             BaseStat curStat = statsArr[i];
-            curStatDisplay.SetLabelValue(curStat.Abbreviation, curStat.Value);
+            curStatDisplay.SetLabelValue(curStat.Abbreviation, FloatExtensions.ToString(curStat.Value));
         }
     }
 
@@ -44,33 +44,42 @@ public class StatsGroup : MonoBehaviour
 
         if (stat is StrengthStat str)
         {
-            subStats.StatDisplay[0].SetLabelValue(nameof(str.Power), str.Power);
-            subStats.StatDisplay[1].SetLabelValue(nameof(str.Brawn), str.Brawn);
-            subStats.StatDisplay[2].SetLabelValue(nameof(str.Body), str.Body);
+            setSubStatsDisplayForSingle(subStats.StatDisplay,
+                nameof(str.Power), nameof(str.Brawn), nameof(str.Body),
+                str.Power, str.Brawn, str.Body);
         }
         else if (stat is ConstitutionStat con)
         {
-            subStats.StatDisplay[0].SetLabelValue(nameof(con.Stamina), con.Stamina);
-            subStats.StatDisplay[1].SetLabelValue(nameof(con.Endurance), con.Endurance);
-            subStats.StatDisplay[2].SetLabelValue(nameof(con.Vitality), con.Vitality);
+            setSubStatsDisplayForSingle(subStats.StatDisplay,
+                nameof(con.Stamina), nameof(con.Endurance), nameof(con.Vitality),
+                con.Stamina, con.Endurance, con.Vitality);
         }
         else if (stat is DexterityStat dex)
         {
-            subStats.StatDisplay[0].SetLabelValue(nameof(dex.Speed), dex.Speed);
-            subStats.StatDisplay[1].SetLabelValue(nameof(dex.Agility), dex.Agility);
-            subStats.StatDisplay[2].SetLabelValue(nameof(dex.Reflexes), dex.Reflexes);
+            setSubStatsDisplayForSingle(subStats.StatDisplay,
+                nameof(dex.Speed), nameof(dex.Agility), nameof(dex.Reflexes),
+                dex.Speed, dex.Agility, dex.Reflexes);
         }
         else if (stat is IntelligenceStat intStat)
         {
-            subStats.StatDisplay[0].SetLabelValue(nameof(intStat.Intellect), intStat.Intellect);
-            subStats.StatDisplay[1].SetLabelValue(nameof(intStat.Mind), intStat.Mind);
-            subStats.StatDisplay[2].SetLabelValue(nameof(intStat.Knowledge), intStat.Knowledge);
+            setSubStatsDisplayForSingle(subStats.StatDisplay,
+                nameof(intStat.Intellect), nameof(intStat.Mind), nameof(intStat.Knowledge),
+                intStat.Intellect, intStat.Mind, intStat.Knowledge);
         }
         else if (stat is WisdomStat wis)
         {
-            subStats.StatDisplay[0].SetLabelValue(nameof(wis.Will), wis.Will);
-            subStats.StatDisplay[1].SetLabelValue(nameof(wis.Sense), wis.Sense);
-            subStats.StatDisplay[2].SetLabelValue(nameof(wis.Spirit), wis.Spirit);
+            setSubStatsDisplayForSingle(subStats.StatDisplay, 
+                nameof(wis.Will), nameof(wis.Sense), nameof(wis.Spirit), 
+                wis.Will, wis.Sense, wis.Spirit);
         }
+    }
+
+    private void setSubStatsDisplayForSingle(LabelValueDisplay[] displays, 
+        string l1, string l2, string l3, 
+        float v1, float v2, float v3)
+    {
+        displays[0].SetLabelValue(l1, FloatExtensions.ToString(v1));
+        displays[1].SetLabelValue(l2, FloatExtensions.ToString(v2));
+        displays[2].SetLabelValue(l3, FloatExtensions.ToString(v3));
     }
 }
