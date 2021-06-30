@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Recruitment Shop Rosters")]
@@ -16,5 +15,4 @@ public class RecruitmentShopRosters : ScriptableObject
     public void AddExperienced(Unit unitToAdd) => AddUnitToTier(unitToAdd, 1);
     public void addExpert(Unit unitToAdd) => AddUnitToTier(unitToAdd, 2);
     public void addVeteran(Unit unitToAdd) => AddUnitToTier(unitToAdd, 3);
-
 }
