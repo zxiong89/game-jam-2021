@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class UnitDisplay : MonoBehaviour
@@ -12,24 +10,44 @@ public class UnitDisplay : MonoBehaviour
     private TextMeshProUGUI classDisplay;
 
     [SerializeField]
+    private TextMeshProUGUI levelDisplay;
+
+    [SerializeField]
+    private TextMeshProUGUI levelClassDisplay;
+
+    [SerializeField]
+    private TextMeshProUGUI ageDisplay;
+
+    [SerializeField]
     private StatsGroup statsGroup;
 
     public Unit currentUnit { get; set; }
 
-    public void DisplayUnit(Unit unitToDisplay)
+    public void DisplayUnit(Unit unit)
     {
-        currentUnit = unitToDisplay;
-        unitName.text = unitToDisplay.DisplayName;
-        DisplayClass(unitToDisplay.Level.ToString(), "Demon Hunter (Test)");
-        statsGroup?.SetStats(currentUnit.Stats);
+        currentUnit = unit;
+        unitName.text = unit.DisplayName;
+        if (ageDisplay != null) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
+        DisplayClass(unit.Level, unit.Class.Data.Name);
+        if (statsGroup != null)
+        {
+            statsGroup?.SetStats(currentUnit.Stats);
+            statsGroup?.SetSubStats(currentUnit.Stats);
+        }
     }
 
-    public void DisplayClass(string level, string unitClass)
+    public void DisplayClass(int level, string unitClass)
     {
-        if (classDisplay == null) return;
-        string displayString = "Lv " + level;
-        if (unitClass != "") displayString += " " + unitClass;
-        classDisplay.text = displayString;
+        if (classDisplay != null) classDisplay.text = unitClass;
+
+        if (levelClassDisplay == null && levelDisplay == null) return;
+        string levelTxt = string.Format("Lv {0}",level);
+        if (levelDisplay != null) levelDisplay.text = levelTxt;
+
+        if (levelClassDisplay != null)
+        {
+            levelClassDisplay.text = string.Format("{0} {1}", levelTxt, unitClass);
+        }
     }
 
 }

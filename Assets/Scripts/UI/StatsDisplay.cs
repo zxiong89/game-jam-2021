@@ -16,8 +16,14 @@ public class StatsDisplay : MonoBehaviour
         label.text = newLabel + ":";
     }
 
-    public void SetValue(string newValue)
+    public void SetValue(float newValue)
     {
-        value.text = newValue;
+        value.text = newValue.ToString("N0");
+    }
+
+    public void SetLabelValue(string newLabel, float newValue)
+    {
+        SetLabel(newLabel);
+        SetValue(newValue);
     }
 }

@@ -29,11 +29,11 @@ public class WisdomStat : BaseStat
         Spirit = StatExtensions.CalculateStat(level, SpiritBase, SpiritGrowth);
     }
 
-    public override void RandomizeBaseStats()
+    public override void RandomizeBaseStats(IntegerLimits baseStats)
     {
-        Will = StatExtensions.Randomize();
-        Sense = StatExtensions.Randomize();
-        Spirit = StatExtensions.Randomize();
+        Will = StatExtensions.Randomize(baseStats);
+        Sense = StatExtensions.Randomize(baseStats);
+        Spirit = StatExtensions.Randomize(baseStats);
     }
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)

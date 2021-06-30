@@ -29,11 +29,11 @@ public class StrengthStat : BaseStat
         Body = StatExtensions.CalculateStat(level, BodyBase, BodyGrowth);
     }
 
-    public override void RandomizeBaseStats()
+    public override void RandomizeBaseStats(IntegerLimits baseStats)
     {
-        Power = StatExtensions.Randomize();
-        Brawn = StatExtensions.Randomize();
-        Body = StatExtensions.Randomize();
+        Power = StatExtensions.Randomize(baseStats);
+        Brawn = StatExtensions.Randomize(baseStats);
+        Body = StatExtensions.Randomize(baseStats);
     }
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)

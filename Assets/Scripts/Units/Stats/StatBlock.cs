@@ -8,9 +8,9 @@ public class StatBlock
     public IntelligenceStat Int = new IntelligenceStat();
     public WisdomStat Wis = new WisdomStat();
 
-    public StatBlock(int level, GrowthFactorLimits limits)
+    public StatBlock(int level, IntegerLimits baseStats, GrowthFactorLimits limits)
     {
-        RandomizeBaseStats();
+        RandomizeBaseStats(baseStats);
         RandomizeGrowthFactors(limits);
         UpdateStats(level);
     }
@@ -24,13 +24,13 @@ public class StatBlock
         Wis.Update(level);
     }
 
-    public void RandomizeBaseStats()
+    public void RandomizeBaseStats(IntegerLimits baseStats)
     {
-        Str.RandomizeBaseStats();
-        Con.RandomizeBaseStats();
-        Dex.RandomizeBaseStats();
-        Int.RandomizeBaseStats();
-        Wis.RandomizeBaseStats();
+        Str.RandomizeBaseStats(baseStats);
+        Con.RandomizeBaseStats(baseStats);
+        Dex.RandomizeBaseStats(baseStats);
+        Int.RandomizeBaseStats(baseStats);
+        Wis.RandomizeBaseStats(baseStats);
     }
 
     public void RandomizeGrowthFactors(GrowthFactorLimits limits)
