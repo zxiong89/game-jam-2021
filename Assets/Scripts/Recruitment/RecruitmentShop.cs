@@ -27,8 +27,9 @@ public class RecruitmentShop : MonoBehaviour
 
     public void LoadPage(int pageNumber)
     {
-        grid.LoadRoster(curPage);
-        UpdateBanner(curPage);
+        AdventurerTier tier = AdventurerTierHelpers.Convert(pageNumber);
+        grid.LoadRoster(tier);
+        UpdateBanner(tier);
         UpdatePageButtons();
     }
 
@@ -38,9 +39,9 @@ public class RecruitmentShop : MonoBehaviour
         LoadPage(curPage);
     }
 
-    private void UpdateBanner(int tier)
+    private void UpdateBanner(AdventurerTier tier)
     {
-        bannerText.text = (AdventurerTierHelpers.Convert(tier)).ToString() + " Adventurers";
+        bannerText.text = tier.ToString() + " Adventurers";
     }
 
     private void UpdatePageButtons()

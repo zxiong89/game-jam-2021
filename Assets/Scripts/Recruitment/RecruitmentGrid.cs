@@ -18,12 +18,11 @@ public class RecruitmentGrid : MonoBehaviour
     [SerializeField]
     private int GRID_LIMIT = 4;
 
-    private int currentTier;
+    private AdventurerTier currentTier;
 
-    public void LoadRoster(int tier)
+    public void LoadRoster(AdventurerTier tier)
     {
-        currentTier = tier;
-        List<Unit> roster = shopRosters.tierRosters[tier];
+        List<Unit> roster = shopRosters.GetRoster(tier);
         for (int i = 0; i < GRID_LIMIT; i++)
         {
             Unit unitToAdd;
@@ -37,11 +36,13 @@ public class RecruitmentGrid : MonoBehaviour
             }
             AddResumeToGrid(unitToAdd, i);
         }
+
+        currentTier = tier;
     }
 
-    private Unit AddNewUnitToRoster(List<Unit> roster, int tier)
+    private Unit AddNewUnitToRoster(List<Unit> roster, AdventurerTier tier)
     {
-        var newUnit = testFactory.RandomizeUnit(ageLimits[tier]);
+        var newUnit = testFactory.RandomizeUnit(ageLimits[(int)tier]);
         roster.Add(newUnit);
         return newUnit;
     }
@@ -71,7 +72,7 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void RemoveUnit(RecruitmentData removalData)
     {
-        List<Unit> roster = shopRosters.tierRosters[currentTier];
+        List<Unit> roster = shopRosters.GetRoster(currentTier);
         int index = roster.FindIndex((data) => data == removalData.UnitForHire);
         Destroy(transform.GetChild(index).gameObject);
         roster.RemoveAt(index);
