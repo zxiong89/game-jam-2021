@@ -27,7 +27,7 @@ public class UnitDisplay : MonoBehaviour
     {
         currentUnit = unit;
         unitName.text = unit.DisplayName;
-        if (ageDisplay) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
+        if (ageDisplay != null) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
         DisplayClass(unit.Level, unit.Class.Data.Name);
         if (statsGroup != null)
         {
@@ -41,12 +41,12 @@ public class UnitDisplay : MonoBehaviour
         if (classDisplay != null) classDisplay.text = unitClass;
 
         if (levelClassDisplay == null && levelDisplay == null) return;
-        string levelTxt = string.Format("Lv {0}",level.ToString());
+        string levelTxt = string.Format("Lv {0}",level);
         if (levelDisplay != null) levelDisplay.text = levelTxt;
 
         if (levelClassDisplay != null)
         {
-            levelClassDisplay.text = string.Format("{0} {1}", level, unitClass);
+            levelClassDisplay.text = string.Format("{0} {1}", levelTxt, unitClass);
         }
     }
 
