@@ -20,30 +20,31 @@ public class RecruitmentShop : MonoBehaviour
     [SerializeField]
     private UnitFactory testFactory;
 
-    private const float priceScalingFactor = 1.075f;
-    private const float priceSpread = .25f;
-    private const float priceMin = 1f - priceSpread;
-    private const float priceMax = 1f + priceSpread;
-
     [SerializeField]
     private IntegerLimits[] ageLimits;
+
+    [SerializeField]
+    private Roster guildRoster;
+
+    [SerializeField]
+    private Guild playerGuild;
 
     private void Start()
     {
         var units = new Unit[4];
-        int[] fees = new int[4];
         for (int i = 0; i < 4; i++)
         {
             units[i] = testFactory.RandomizeUnit(ageLimits[i]);
-            fees[i] = CalcFee(units[i]);
         }
 
-        grid.AddToGrid(units, fees);
+        grid.AddToGrid(units);
     }
 
-    private int CalcFee(Unit unit)
+    public void BidForUnit(RecruitmentData data)
     {
-        float startingPrice = (Mathf.Pow(priceScalingFactor, unit.Level) * 100);
-        return Mathf.FloorToInt(FloatExtensions.Randomize( priceMin * startingPrice, startingPrice, priceMax * startingPrice));
+        guildRoster.Units.Add(data.UnitForHire);
+        grid.RemoveUnit(data);
     }
+
+
 }

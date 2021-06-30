@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b395483a3a8507418d9515ad10ccdd6, type: 3}
   m_Name: ApprenticeAgeLimits
   m_EditorClassIdentifier: 
-  Min: 15
-  Mean: 18
-  Max: 22
+  Min: 18
+  Mean: 20
+  Max: 24

@@ -30,7 +30,7 @@ public class UnitFactory : MonoBehaviour
     public Unit RandomizeUnit(IntegerLimits curAgeLimits)
     {
         int age = (int)FloatExtensions.Randomize(curAgeLimits.Min, curAgeLimits.Max, curAgeLimits.Mean);
-        int level = Random.Range(curAgeLimits.Min, age);
+        int level = Random.Range(curAgeLimits.Min / 6 - 2, age);
         var stats = new StatBlock(level, growthLimits);
         return new Unit("Jeff", level, age, stats);
     }

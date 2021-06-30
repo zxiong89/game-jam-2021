@@ -20,12 +20,24 @@ public class UnitResumeDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI feeText;
 
-    public void SetResume(Unit unitToDisplay, int fee)
+    [SerializeField]
+    private RecruitmentEvent recruitmentOfferEvent;
+
+    private RecruitmentData recruitmentData;
+
+    public void SetResume(RecruitmentData data)
     {
+        Unit unitToDisplay = data.UnitForHire;
+        int fee = data.Fee;
         nameAndLevels.text = unitToDisplay.DisplayName + " " + GenericStrings.LevelAbbr + unitToDisplay.Level;
         statsGroup.SetStats(unitToDisplay.Stats);
         traitsText.text = "Vigilant, Brawny, Sluggish";
         feeText.text = fee.ToString() + " " + GenericStrings.CurrencySymbol;
+        recruitmentData = data;
+    }
 
+    public void SubmitBid()
+    {
+        recruitmentOfferEvent.Raise(recruitmentData);
     }
 }
