@@ -974,52 +974,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1428184540}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1462676538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8179666908824056966, guid: d23d85f4a5a691e44ab6048cd6c78059,
-    type: 3}
-  m_PrefabInstance: {fileID: 1839385841}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1462676540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462676538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e01c068c7ed1927429dd0845066dba8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvents:
-  - {fileID: 11400000, guid: 5b0a50f91e5ced34b823062e8f29c07f, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1462676541}
-        m_MethodName: BidForUnit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1462676541 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8179666908824056970, guid: d23d85f4a5a691e44ab6048cd6c78059,
-    type: 3}
-  m_PrefabInstance: {fileID: 1839385841}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462676538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 348fbd74d9a699345a2811481b7a8188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1466011883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,6 +3605,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8179666908824056970, guid: d23d85f4a5a691e44ab6048cd6c78059,
+        type: 3}
+      propertyPath: playerGuild
+      value: 
+      objectReference: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7,
+        type: 2}
     - target: {fileID: 8179666908842093023, guid: d23d85f4a5a691e44ab6048cd6c78059,
         type: 3}
       propertyPath: m_AnchorMax.y

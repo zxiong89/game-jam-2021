@@ -24,13 +24,16 @@ public class RecruitmentShop : MonoBehaviour
     private IntegerLimits[] ageLimits;
 
     [SerializeField]
-    private Roster guildRoster;
+    private RecruitmentShopRosters shopRosters;
 
     [SerializeField]
     private Guild playerGuild;
 
+    private int curPage = 0;
+
     private void Start()
     {
+        LoadPage(0);
         var units = new Unit[4];
         for (int i = 0; i < 4; i++)
         {
@@ -40,11 +43,28 @@ public class RecruitmentShop : MonoBehaviour
         grid.AddToGrid(units);
     }
 
-    public void BidForUnit(RecruitmentData data)
+    public void LoadPage(int pageNumber)
     {
-        guildRoster.Units.Add(data.UnitForHire);
-        grid.RemoveUnit(data);
+        var units = shopRosters.tierRosters[pageNumber];
+        while(units.Count < 4)
+        {
+            units.Add(testFactory.RandomizeUnit(ageLimits[pageNumber]));
+        }
+        grid.AddToGrid(units);
+        curPage = pageNumber;
     }
 
-
+    public void BidForUnit(RecruitmentData data)
+    {
+        if(playerGuild.Gold <= data.Fee)
+        {
+            //Tell player they don't have enough gold.
+        }
+        else
+        {
+            playerGuild.Gold -= data.Fee;
+            playerGuild.Roster.Add(data.UnitForHire);
+            grid.RemoveUnit(data);
+        }
+    }
 }
