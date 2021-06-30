@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UnitResumeDisplay : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class UnitResumeDisplay : MonoBehaviour
         traitsText.text = "Vigilant, Brawny, Sluggish";
         feeText.text = fee.ToString() + " " + GenericStrings.CurrencySymbol;
         recruitmentData = data;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     public void SubmitBid()
