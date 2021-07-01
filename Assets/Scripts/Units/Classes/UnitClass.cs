@@ -10,13 +10,13 @@ public class UnitClass
 
     public virtual PartyStats CalcContribution(StatBlock player, bool isFrontline)
     {
-        PartyStats stats = new PartyStats();
         PartyStats lineMod = isFrontline ? Data.FrontlineMod : Data.BacklineMod;
-        Data.Str.AugmentPartyStats(stats, player.Str, lineMod);
-        Data.Con.AugmentPartyStats(stats, player.Con, lineMod);
-        Data.Dex.AugmentPartyStats(stats, player.Dex, lineMod);
-        Data.Int.AugmentPartyStats(stats, player.Int, lineMod);
-        Data.Wis.AugmentPartyStats(stats, player.Wis, lineMod);
+        PartyStats stats = 
+            Data.Str.AugmentPartyStats(player.Str, lineMod)
+            + Data.Con.AugmentPartyStats(player.Con, lineMod)
+            + Data.Dex.AugmentPartyStats(player.Dex, lineMod)
+            + Data.Int.AugmentPartyStats(player.Int, lineMod)
+            + Data.Wis.AugmentPartyStats(player.Wis, lineMod);
         return stats;
     }
 

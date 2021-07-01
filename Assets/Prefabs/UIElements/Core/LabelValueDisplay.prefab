@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8931251787078606388}
   - component: {fileID: 4046665351794413623}
-  - component: {fileID: 6328585268698933436}
   - component: {fileID: 8878451959252763753}
+  - component: {fileID: 4537584625717130727}
   m_Layer: 5
-  m_Name: StatsDisplay
+  m_Name: LabelValueDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,20 +65,6 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &6328585268698933436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090701548614012791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15be51c8801a3f041a1f08a9b98c1722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  label: {fileID: 5879009652344522414}
-  value: {fileID: 6697029384860101090}
 --- !u!114 &8878451959252763753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +79,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &4537584625717130727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090701548614012791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40dac5f87e173d4eaeab2ce711019af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 5879009652344522414}
+  value: {fileID: 6697029384860101090}
 --- !u!1 &6679076776970290861
 GameObject:
   m_ObjectHideFlags: 0
