@@ -1,20 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PartySelectionDisplay : MonoBehaviour
 {
-    public Party Party { get; set; }
+    [SerializeField]
+    private PartyUnitSelection[] unitDisplays;
 
-    // Start is called before the first frame update
-    void Start()
+    private Party party;
+    public Party Party 
     {
-        
-    }
+        get => party;
+        set
+        {
+            party = value;
+            for(var i = 0; i < unitDisplays.Length; i++)
+            {
+                if (unitDisplays[i] == null) return; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+                if (party == null) unitDisplays[i].Unit = null;
+                else 
+                {
+                    var line = i < PartyLine.MAX_SIZE ? party.FrontLine : party.BackLine;
+                    unitDisplays[i].Unit = line[i % PartyLine.MAX_SIZE];
+                }
+            }
+        }
     }
 }

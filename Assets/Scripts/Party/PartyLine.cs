@@ -5,7 +5,7 @@ using UnityEngine;
 public class PartyLine
 {
     #region Constants
-    private const int MAX_SIZE = 3;
+    public const int MAX_SIZE = 3;
     #endregion
 
     #region Fields/Properties
