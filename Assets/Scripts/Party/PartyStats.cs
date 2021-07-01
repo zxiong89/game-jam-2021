@@ -7,6 +7,8 @@ public struct PartyStats
     public float AtkSup;
     public float DefSup;
 
+    public float Atk => PhyAtk + MagAtk;
+
     public PartyStats(PartyStats copy)
     {
         PhyAtk = copy.PhyAtk;
