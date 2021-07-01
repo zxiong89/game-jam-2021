@@ -21,7 +21,7 @@ public struct PartyStats
     public static PartyStats operator +(PartyStats a) => a;
     public static PartyStats operator +(PartyStats a, PartyStats b)
     {
-        return new PartyStats
+        return new PartyStats()
         {
             PhyAtk = a.PhyAtk + b.PhyAtk,
             MagAtk = a.MagAtk + b.MagAtk,
