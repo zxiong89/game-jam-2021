@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PartyUnitSelector : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PartyUnitSelector : MonoBehaviour
 
     [SerializeField]
     private UnitEvent onUnitSelected;
+
+    [SerializeField]
+    private Toggle selectorPrefab;
 
     public void OnUnitSelected(Unit unit)
     {
