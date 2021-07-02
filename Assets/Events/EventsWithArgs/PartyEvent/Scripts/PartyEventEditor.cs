@@ -1,18 +1,21 @@
 ﻿using UnityEditor;
 
 [CustomEditor(typeof(PartyEvent))]
-public class PartyEventEditor : BaseGameEventEditor<Party>
+public class PartyEventEditor : BaseGameEventEditor<PartyEventArgs>
 {
     UnitFactory factory;
 
-    protected override Party CreateEventArgs()
+    protected override PartyEventArgs CreateEventArgs()
     {
         Party p = new Party();
         for (int i = 0; i < 6; i++)
         {
             p.AddUnit(factory.RandomizeUnit());
         }
-        return p;
+        return new PartyEventArgs()
+        {
+            Party = p
+        };
     }
 
     protected override void DisplayEditorFields()

@@ -49,7 +49,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8439337660949135371}
-        m_MethodName: set_Party
+        m_MethodName: SetParty
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

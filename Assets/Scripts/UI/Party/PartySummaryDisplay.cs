@@ -11,10 +11,10 @@ public class PartySummaryDisplay : MonoBehaviour
 
     public Party Party { get; private set; }
 
-    public void DisplayParty(Party party)
+    public void DisplayParty(PartyEventArgs args)
     {
-        Party = party;
+        Party = args.Party;
         if (nameDisplay != null) nameDisplay.text = Party.Name;
-        stats?.DisplayPartyStats(party.Stats);
+        stats?.DisplayPartyStats(Party.Stats);
     }
 }
