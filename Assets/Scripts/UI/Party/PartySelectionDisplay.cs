@@ -3,6 +3,9 @@
 public class PartySelectionDisplay : MonoBehaviour
 {
     [SerializeField]
+    private Guild guild;
+
+    [SerializeField]
     private PartyUnitSelection[] unitDisplays;
 
     private Party party;
@@ -24,5 +27,10 @@ public class PartySelectionDisplay : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetParty(PartyEventArgs args)
+    {
+        Party = args.Party;
     }
 }

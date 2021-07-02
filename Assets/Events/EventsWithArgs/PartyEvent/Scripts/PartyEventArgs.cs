@@ -2,6 +2,6 @@
 public class PartyEventArgs
 {
     public Party Party;
-    public PartySelectionDisplay Display;
+    public PartyUnitSelection Selection;
     public Unit Unit;
 }
