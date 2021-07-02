@@ -71,6 +71,7 @@ public class RecruitmentShop : MonoBehaviour
             var popupArgs = new PopupEventArgs()
             {
                 Content = unitDetails,
+                AcceptTextOverride = "Hire",
                 AcceptCallback = (gameObject) =>
                 {
                     playerGuild.Gold -= data.Fee;

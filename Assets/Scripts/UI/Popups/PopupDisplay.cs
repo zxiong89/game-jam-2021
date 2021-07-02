@@ -16,19 +16,27 @@ public class PopupDisplay : MonoBehaviour
     [SerializeField]
     private GameObject buttonPrefab;
 
-    public void DisplayPopup(PopupEventArgs args)
+    private PopupCreator parent;
+
+    public void DisplayPopup(PopupEventArgs args, PopupCreator newParent)
     {
+        parent = newParent;
         LoadContent(args.Content);
         if(args.AcceptCallback != null)
         {
-            AddAcceptButton("Accept", args.AcceptCallback);
-            AddCloseButton("Cancel");
+            AddAcceptButton(GetButtonText(args.AcceptTextOverride, "Accept"), args.AcceptCallback);
+            AddCloseButton(GetButtonText(args.CloseTextOverride, "Cancel"));
         }
         else
         {
-            AddCloseButton("Close");
+            AddCloseButton(GetButtonText(args.CloseTextOverride, "Close"));
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
+
+    private string GetButtonText(string overrideText, string defaultText)
+    {
+        return (overrideText == null) ? defaultText : overrideText;
     }
 
     private void LoadContent(GameObject popupContent)
@@ -67,6 +75,7 @@ public class PopupDisplay : MonoBehaviour
 
     private void ClosePopup()
     {
+        parent.PopupClosed();
         Destroy(gameObject);
     }
 
