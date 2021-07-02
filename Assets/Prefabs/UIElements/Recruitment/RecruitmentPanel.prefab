@@ -178,6 +178,9 @@ MonoBehaviour:
   PrevButton: {fileID: 8179666907828068400}
   NextButton: {fileID: 6195710448062652046}
   playerGuild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
+  unitDetailsPopup: {fileID: 3033914906151439363, guid: 9e6d7d9eb83c7e94395f86909ad743cd,
+    type: 3}
+  showPopup: {fileID: 11400000, guid: 448c3c37bfcd54645baba8830a365654, type: 2}
 --- !u!114 &1462676540
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PopupDisplay : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject contentContainer;
+
+    private GameObject content;
+
+    [SerializeField]
+    private GameObject buttonsContainer;
+
+    [SerializeField]
+    private GameObject buttonPrefab;
+
+    public void DisplayPopup(PopupEventArgs args)
+    {
+        LoadContent(args.Content);
+        if(args.AcceptCallback != null)
+        {
+            AddAcceptButton("Accept", args.AcceptCallback);
+            AddCloseButton("Cancel");
+        }
+        else
+        {
+            AddCloseButton("Close");
+        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
+
+    private void LoadContent(GameObject popupContent)
+    {
+        popupContent.transform.SetParent(contentContainer.transform, false);
+        content = popupContent;
+    }
+
+    private void LoadButtons(List<Action<GameObject>> acceptFunc, List<string> buttons)
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        { 
+            GameObject buttonObj = Instantiate(buttonPrefab, buttonsContainer.transform);
+            var button = buttonObj.GetComponent<BaseButton>();
+            button.SetText(buttons[i]);
+            if(acceptFunc != null && i == 0)
+            {
+                button.SetCallback(() => acceptFunc[i](content));
+            }
+        }
+    }
+
+    private BaseButton CreateButton(string buttonText)
+    {
+        GameObject buttonObj = Instantiate(buttonPrefab, buttonsContainer.transform);
+        var button = buttonObj.GetComponent<BaseButton>();
+        button.SetText(buttonText);
+        return button;
+    }
+
+    private void AddCloseButton(string buttonText)
+    {
+        BaseButton button = CreateButton(buttonText);
+        button.SetCallback(ClosePopup);
+    }
+
+    private void ClosePopup()
+    {
+        Destroy(gameObject);
+    }
+
+    private void AddAcceptButton(string buttonText, Action<GameObject> callback)
+    {
+        BaseButton button = CreateButton(buttonText);
+        button.SetCallback(() => {
+            callback(content);
+            ClosePopup();
+        });
+    }
+}

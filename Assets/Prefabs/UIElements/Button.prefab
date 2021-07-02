@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 3296234680779148702}
+  buttonComponent: {fileID: 3296234681069991258}
 --- !u!114 &3296234681069991259
 MonoBehaviour:
   m_ObjectHideFlags: 0
