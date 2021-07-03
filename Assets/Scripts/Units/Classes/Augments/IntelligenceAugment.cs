@@ -5,14 +5,16 @@ public class IntelligenceAugment : BaseAugment
     public AugmentModifiers MindAugment;
     public AugmentModifiers KnowledgeAugment;
 
-    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat, PartyStats formationMod)
+    public override PartyStats AugmentPartyStats(BaseStat baseStat, PartyStats formationMod)
     {
         if (baseStat is IntelligenceStat stat)
         {
-            IntellectAugment.AugmentPartyStat(party, stat.Intellect, formationMod);
-            MindAugment.AugmentPartyStat(party, stat.Mind, formationMod);
-            KnowledgeAugment.AugmentPartyStat(party, stat.Knowledge, formationMod);
+            return 
+                IntellectAugment.AugmentPartyStat(stat.Intellect, formationMod)
+                + MindAugment.AugmentPartyStat(stat.Mind, formationMod)
+                + KnowledgeAugment.AugmentPartyStat(stat.Knowledge, formationMod);
         }
+        return new PartyStats();
     }
 }
 

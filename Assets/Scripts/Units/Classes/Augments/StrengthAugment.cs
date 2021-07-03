@@ -5,14 +5,16 @@ public class StrengthAugment : BaseAugment
     public AugmentModifiers BrawnAugment;
     public AugmentModifiers BodyAugment;
 
-    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat, PartyStats formationMod)
+    public override PartyStats AugmentPartyStats(BaseStat baseStat, PartyStats formationMod)
     {
         if (baseStat is StrengthStat stat)
         {
-            PowerAugment.AugmentPartyStat(party, stat.Power, formationMod);
-            BrawnAugment.AugmentPartyStat(party, stat.Brawn, formationMod);
-            BodyAugment.AugmentPartyStat(party, stat.Body, formationMod);
+            return
+                PowerAugment.AugmentPartyStat(stat.Power, formationMod)
+                + BrawnAugment.AugmentPartyStat(stat.Brawn, formationMod)
+                + BodyAugment.AugmentPartyStat(stat.Body, formationMod);
         }
+        return new PartyStats();
     }
 }
 

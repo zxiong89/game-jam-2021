@@ -62,4 +62,6 @@ public static class FloatExtensions
         double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
         return stdDev * randStdNormal;
     }
+
+    public static string ToString(float f) => f.ToString("N0");
 }

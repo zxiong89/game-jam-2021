@@ -5,14 +5,16 @@ public class DexterityAugment : BaseAugment
     public AugmentModifiers AgilityAugment;
     public AugmentModifiers ReflexesAugment;
 
-    public override void AugmentPartyStats(PartyStats party, BaseStat baseStat, PartyStats formationMod)
+    public override PartyStats AugmentPartyStats(BaseStat baseStat, PartyStats formationMod)
     {
         if (baseStat is DexterityStat stat)
         {
-            SpeedAugment.AugmentPartyStat(party, stat.Speed, formationMod);
-            AgilityAugment.AugmentPartyStat(party, stat.Agility, formationMod);
-            ReflexesAugment.AugmentPartyStat(party, stat.Reflexes, formationMod);
+            return
+                SpeedAugment.AugmentPartyStat(stat.Speed, formationMod)
+                + AgilityAugment.AugmentPartyStat(stat.Agility, formationMod)
+                + ReflexesAugment.AugmentPartyStat(stat.Reflexes, formationMod);
         }
+        return new PartyStats();
     }
 }
 

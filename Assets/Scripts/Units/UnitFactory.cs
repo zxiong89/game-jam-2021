@@ -32,6 +32,7 @@ public class UnitFactory : MonoBehaviour
 
     public Unit RandomizeUnit(IntegerLimits curAgeLimits)
     {
+        LoadNames();
         int n = Random.Range(0, names.Length - 1);
         int age = (int)FloatExtensions.Randomize(curAgeLimits.Min, curAgeLimits.Max, curAgeLimits.Mean);
         int level = Random.Range(curAgeLimits.Min, age);

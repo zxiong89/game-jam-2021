@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StatsDisplay : MonoBehaviour
+public class LabelValueDisplay : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI label;
@@ -16,12 +16,12 @@ public class StatsDisplay : MonoBehaviour
         label.text = newLabel + ":";
     }
 
-    public void SetValue(float newValue)
+    public void SetValue(string newValue)
     {
-        value.text = newValue.ToString("N0");
+        value.text = newValue;
     }
 
-    public void SetLabelValue(string newLabel, float newValue)
+    public void SetLabelValue(string newLabel, string newValue)
     {
         SetLabel(newLabel);
         SetValue(newValue);
