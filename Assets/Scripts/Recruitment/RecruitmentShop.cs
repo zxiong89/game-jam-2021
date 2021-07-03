@@ -18,6 +18,12 @@ public class RecruitmentShop : MonoBehaviour
     [SerializeField]
     private Guild playerGuild;
 
+    [SerializeField]
+    private GameObject unitDetailsPopup;
+
+    [SerializeField]
+    private PopupEvent showPopup;
+
     private int curPage = 0;
 
     private void Start()
@@ -59,9 +65,22 @@ public class RecruitmentShop : MonoBehaviour
         }
         else
         {
-            playerGuild.Gold -= data.Fee;
-            playerGuild.Roster.Add(data.UnitForHire);
-            grid.RemoveUnit(data);
+            var unitDetails = Instantiate(unitDetailsPopup);
+            unitDetails.GetComponentInChildren<UnitDisplay>().DisplayUnit(data.UnitForHire);
+
+            var popupArgs = new PopupEventArgs()
+            {
+                Content = unitDetails,
+                AcceptTextOverride = "Hire",
+                AcceptCallback = (gameObject) =>
+                {
+                    playerGuild.Gold -= data.Fee;
+                    playerGuild.Roster.Add(data.UnitForHire);
+                    grid.RemoveUnit(data);
+
+                }
+            };
+            showPopup.Raise(popupArgs);
         }
     }
 }
