@@ -16,6 +16,8 @@ public class PartyLine
     #endregion
 
     #region Methods
+    public bool Contains(Unit unit) => units.Contains(unit);
+
     public bool HasRoom() => (units.Count < MAX_SIZE);
 
     public bool AddUnit(Unit unit)

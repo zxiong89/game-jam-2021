@@ -374,9 +374,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selection: {fileID: 0}
+  CurrentParty: {fileID: 11400000, guid: 814b2c5ec62e96642b0dbc4c7eb4274c, type: 2}
   guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
   unitSelectedEvent: {fileID: 11400000, guid: 1b5db38f2a84c194581ee371dd0af74b, type: 2}
   onUnitSelected: {fileID: 11400000, guid: 7a8565bf9c3fdaa4bab64b269deaf5ac, type: 2}
+  selectorPrefab: {fileID: 8583164975411895083, guid: a5fc32e4ea11d4745a1001af83a59ed0,
+    type: 3}
+  contentContainer: {fileID: 212737848}
 --- !u!114 &7568271756704519318
 MonoBehaviour:
   m_ObjectHideFlags: 0

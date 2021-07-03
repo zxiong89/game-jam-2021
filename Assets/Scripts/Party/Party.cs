@@ -17,6 +17,8 @@ public class Party
     #endregion
 
     #region Methods
+    public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
+
     /// <summary>
     /// Update Party Stats
     /// </summary>

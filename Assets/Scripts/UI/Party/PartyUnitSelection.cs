@@ -15,6 +15,9 @@ public class PartyUnitSelection : MonoBehaviour
     private PartyUnitSelector selector;
 
     [SerializeField]
+    private Transform selectorParent; 
+
+    [SerializeField]
     private PartyEvent onUnitChanged;
 
     public Unit Unit
@@ -32,7 +35,8 @@ public class PartyUnitSelection : MonoBehaviour
 
     public void StartUnitSelection()
     {
-        var obj = GameObject.Instantiate<PartyUnitSelector>(selector, this.transform);
+        var obj = GameObject.Instantiate<PartyUnitSelector>(selector, selectorParent, true);
         obj.Selection = this;
+        obj.PopulateRoster();
     }
 }

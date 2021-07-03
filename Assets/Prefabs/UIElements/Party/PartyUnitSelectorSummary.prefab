@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 10
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
@@ -136,7 +136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 207.5, y: 0}
+  m_AnchoredPosition: {x: 205, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10559543665987499
@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 4900478573058176942}
   - component: {fileID: 3034751440441807538}
   - component: {fileID: 8583164975411895083}
+  - component: {fileID: 319251435992143634}
   m_Layer: 0
   m_Name: PartyUnitSelectorSummary
   m_TagString: Untagged
@@ -300,6 +301,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &319251435992143634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6377504239297138316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7177745022a9cdd43951116d17fc8406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: {fileID: 8429101356299110517}
+  classDisplay: {fileID: 0}
+  levelDisplay: {fileID: 0}
+  levelClassDisplay: {fileID: 7704996814491818104}
+  ageDisplay: {fileID: 0}
+  statsGroup: {fileID: 7533404169561889142}
 --- !u!1 &6415215237268181620
 GameObject:
   m_ObjectHideFlags: 0

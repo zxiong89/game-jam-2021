@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 208776167440014865}
   - component: {fileID: 6624615982792855088}
   - component: {fileID: 3311681374110529149}
+  - component: {fileID: 7947969950765903732}
   m_Layer: 0
   m_Name: PartyUnitSelectionSlot
   m_TagString: Untagged
@@ -91,6 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitDisplay: {fileID: 3311681374110529149}
   unitSummary: {fileID: 8899238770592825796}
+  guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
+  selector: {fileID: 4210221765026334745, guid: ec1de5680dee2ce4fb2f4ba763e8d82b,
+    type: 3}
+  onUnitChanged: {fileID: 11400000, guid: 1b5db38f2a84c194581ee371dd0af74b, type: 2}
 --- !u!114 &3311681374110529149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +114,60 @@ MonoBehaviour:
   levelClassDisplay: {fileID: 0}
   ageDisplay: {fileID: 0}
   statsGroup: {fileID: 6433886358205212177}
+--- !u!114 &7947969950765903732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156380567617890122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 208776167440014865}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6624615982792855088}
+        m_MethodName: StartUnitSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4469127178325702645
 GameObject:
   m_ObjectHideFlags: 0

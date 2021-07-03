@@ -3,26 +3,31 @@
 public class PartySelectionDisplay : MonoBehaviour
 {
     [SerializeField]
+    private PartyData partyData;
+
+    [SerializeField]
     private Guild guild;
 
     [SerializeField]
     private PartyUnitSelection[] unitDisplays;
 
-    private Party party;
     public Party Party 
     {
-        get => party;
+        get => partyData.Party;
         set
         {
-            party = value;
+            partyData.Party = value;
             for(var i = 0; i < unitDisplays.Length; i++)
             {
                 if (unitDisplays[i] == null) return; 
 
-                if (party == null) unitDisplays[i].Unit = null;
+                if (partyData.Party == null) unitDisplays[i].Unit = null;
                 else 
                 {
-                    var line = i < PartyLine.MAX_SIZE ? party.FrontLine : party.BackLine;
+                    var line = i < PartyLine.MAX_SIZE ? 
+                        partyData.Party.FrontLine 
+                        : 
+                        partyData.Party.BackLine;
                     unitDisplays[i].Unit = line[i % PartyLine.MAX_SIZE];
                 }
             }
