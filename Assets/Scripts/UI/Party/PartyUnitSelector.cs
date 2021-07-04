@@ -18,12 +18,12 @@ public class PartyUnitSelector : MonoBehaviour
 
     [SerializeField]
     private Guild guild;
-
+    
     private ToggleGroup toggleGroup;
 
-    private void Start()
+    private void Awake()
     {
-        toggleGroup = this.GetComponent<ToggleGroup>();
+        toggleGroup = contentContainer.gameObject.GetComponent<ToggleGroup>();
     }
 
     public void PopulateRoster(Unit currentUnit)
