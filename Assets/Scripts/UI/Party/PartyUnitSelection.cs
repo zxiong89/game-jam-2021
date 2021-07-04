@@ -2,23 +2,31 @@
 
 public class PartyUnitSelection : MonoBehaviour
 {
+    [Header("Display")]
+
     [SerializeField]
     private UnitDisplay unitDisplay;
 
     [SerializeField]
     private GameObject unitSummary;
 
+    [Header("Data")]
+
     [SerializeField]
     private Guild guild;
 
-    [SerializeField]
-    private PartyUnitSelector selector;
-
-    [SerializeField]
-    private Transform selectorParent; 
+    [Header("Events")]
 
     [SerializeField]
     private PartyEvent onUnitChanged;
+
+    [Header("Pop-up")]
+
+    [SerializeField]
+    private PopupEvent createPopupEvent;
+
+    [SerializeField]
+    private PartyUnitSelector selector;
 
     public Unit Unit
     {
@@ -35,8 +43,13 @@ public class PartyUnitSelection : MonoBehaviour
 
     public void StartUnitSelection()
     {
-        var obj = GameObject.Instantiate<PartyUnitSelector>(selector, selectorParent, true);
+        var obj = GameObject.Instantiate<PartyUnitSelector>(selector);
         obj.Selection = this;
         obj.PopulateRoster();
+
+        createPopupEvent.Raise(new PopupEventArgs()
+        {
+            Content = obj.gameObject
+        });
     }
 }
