@@ -4,43 +4,46 @@ using UnityEngine.UI;
 
 public class PartyUnitSelector : MonoBehaviour
 {
-    public PartyUnitSelection Selection;
+    [Header("Display")]
+
+    [SerializeField]
+    private Toggle toggleSummaryPrefab;
+
+    [SerializeField]
+    private Transform contentContainer;
+
+    [Header("Data")]
 
     public PartyData CurrentParty;
 
     [SerializeField]
     private Guild guild;
 
-    [SerializeField]
-    private PartyEvent unitSelectedEvent;
+    private ToggleGroup toggleGroup;
 
-    [SerializeField]
-    private UnitEvent onUnitSelected;
+    private void Start()
+    {
+        toggleGroup = this.GetComponent<ToggleGroup>();
+    }
 
-    [SerializeField]
-    private Toggle selectorPrefab;
-
-    [SerializeField]
-    private Transform contentContainer;
-
-    public void PopulateRoster()
+    public void PopulateRoster(Unit currentUnit)
     {
         if (guild == null) return;
         if (CurrentParty == null && CurrentParty.Party == null) return;
 
-        instantiateUnitSelector(Selection?.Unit, true);
+        instantiateUnitSelector(currentUnit, true);
 
-        foreach (Unit u in CurrentParty.Party.FrontLine)
-        {
-            if (u == Selection?.Unit) return;
-            instantiateUnitSelector(Selection.Unit, true);
-        }
+        //foreach (Unit u in CurrentParty.Party.FrontLine)
+        //{
+        //    if (u == Selection?.Unit) return;
+        //    instantiateUnitSelector(Selection.Unit, true);
+        //}
 
-        foreach (Unit u in CurrentParty.Party.BackLine)
-        {
-            if (u == Selection?.Unit) return;
-            instantiateUnitSelector(Selection.Unit, true);
-        }
+        //foreach (Unit u in CurrentParty.Party.BackLine)
+        //{
+        //    if (u == Selection?.Unit) return;
+        //    instantiateUnitSelector(Selection.Unit, true);
+        //}
 
         foreach (Unit u in guild.Roster)
         {
@@ -52,19 +55,20 @@ public class PartyUnitSelector : MonoBehaviour
     private void instantiateUnitSelector(Unit unit, bool isOn = false)
     {
         if (unit == null) return;
-        var obj = GameObject.Instantiate<Toggle>(selectorPrefab, contentContainer);
-        obj.isOn = isOn;
-        var unitDisplay = obj.GetComponent<UnitDisplay>();
+        var toggle = GameObject.Instantiate<Toggle>(toggleSummaryPrefab, contentContainer);
+        toggle.isOn = isOn;
+        toggle.group = toggleGroup;
+        var unitDisplay = toggle.GetComponent<UnitDisplay>();
         if (unitDisplay == null) return;
         unitDisplay.DisplayUnit(unit);
     }
 
-    public void OnUnitSelected(Unit unit)
+    public Unit GetSelectedUnit()
     {
-        unitSelectedEvent.Raise(new PartyEventArgs()
-        {
-            Selection = this.Selection,
-            Unit = unit
-        });
+        var toggle = ToggleExtensions.FindSelectedToggle(toggleGroup);
+        if (toggle == null) return null;
+
+        var unitDisplay = toggle.GetComponent<UnitDisplay>();
+        return unitDisplay?.currentUnit;
     }
 }

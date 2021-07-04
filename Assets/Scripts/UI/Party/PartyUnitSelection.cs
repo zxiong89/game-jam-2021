@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PartyUnitSelection : MonoBehaviour
 {
@@ -15,10 +17,14 @@ public class PartyUnitSelection : MonoBehaviour
     [SerializeField]
     private Guild guild;
 
-    [Header("Events")]
+    [SerializeField]
+    public PartyData currentParty;
 
     [SerializeField]
-    private PartyEvent onUnitChanged;
+    private bool isFrontline = true;
+
+    [SerializeField]
+    private PartyUnitSelection higherPrioritySelection;
 
     [Header("Pop-up")]
 
@@ -43,13 +49,50 @@ public class PartyUnitSelection : MonoBehaviour
 
     public void StartUnitSelection()
     {
-        var obj = GameObject.Instantiate<PartyUnitSelector>(selector);
-        obj.Selection = this;
-        obj.PopulateRoster();
+        var selector = GameObject.Instantiate<PartyUnitSelector>(this.selector);
+        selector.PopulateRoster(Unit);
+
+        var scrollRect = selector.GetComponent<ScrollRect>();
+        if (scrollRect != null)
+        {
+            scrollRect.verticalScrollbar.value = 0;
+        }
 
         createPopupEvent.Raise(new PopupEventArgs()
         {
-            Content = obj.gameObject
+            Content = selector.gameObject,
+            AcceptCallback = (GameObject gameObject) => SwitchOutUnit(selector),
+            AcceptTextOverride = "Switch"
         });
+    }
+
+    public void SwitchOutUnit(PartyUnitSelector selector)
+    {
+        if (selector == null) return;
+        var unit = selector.GetSelectedUnit();
+        if (unit == null) return;
+
+        if (!CanSetHigherLinePriority(unit)) 
+        {
+            currentParty.Party.RemoveUnit(Unit);
+            Unit = unit; 
+        }
+        if (isFrontline) currentParty.Party.AddToFrontLine(unit);
+        else currentParty.Party.AddToBackLine(unit);
+    }
+
+    public bool CanSetHigherLinePriority(Unit unit)
+    {
+        if (higherPrioritySelection != null)
+        {
+            if (higherPrioritySelection.CanSetHigherLinePriority(unit)) return true;
+            if (higherPrioritySelection.Unit == null)
+            {
+                higherPrioritySelection.Unit = unit;
+                return true;
+            }
+        }
+        return false;
+
     }
 }

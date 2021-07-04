@@ -361,6 +361,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 20, z: 0, w: 20}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &3818722730363580536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522988924157543351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!114 &4210221765026334745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,13 +387,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selection: {fileID: 0}
-  CurrentParty: {fileID: 11400000, guid: 814b2c5ec62e96642b0dbc4c7eb4274c, type: 2}
-  guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
-  unitSelectedEvent: {fileID: 11400000, guid: 1b5db38f2a84c194581ee371dd0af74b, type: 2}
-  onUnitSelected: {fileID: 11400000, guid: 7a8565bf9c3fdaa4bab64b269deaf5ac, type: 2}
-  selectorPrefab: {fileID: 8583164975411895083, guid: a5fc32e4ea11d4745a1001af83a59ed0,
+  toggleSummaryPrefab: {fileID: 8583164975411895083, guid: a5fc32e4ea11d4745a1001af83a59ed0,
     type: 3}
   contentContainer: {fileID: 212737848}
+  CurrentParty: {fileID: 11400000, guid: 814b2c5ec62e96642b0dbc4c7eb4274c, type: 2}
+  guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
 --- !u!114 &7568271756704519318
 MonoBehaviour:
   m_ObjectHideFlags: 0

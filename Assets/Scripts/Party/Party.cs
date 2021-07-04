@@ -86,6 +86,7 @@ public class Party
     /// <returns>true if the unit was removed, false otherwise</returns>
     public bool RemoveUnit(Unit unit)
     {
+        if (unit == null) return false;
         if (frontLine.RemoveUnit(unit))
         {
             stats -= unit.CalcContribution(true);
