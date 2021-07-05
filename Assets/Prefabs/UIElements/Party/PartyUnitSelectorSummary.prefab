@@ -136,7 +136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 205, y: 0}
+  m_AnchoredPosition: {x: 207.5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10559543665987499
@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 3034751440441807538}
   - component: {fileID: 8583164975411895083}
   - component: {fileID: 319251435992143634}
+  - component: {fileID: 1272437701735423086}
   m_Layer: 0
   m_Name: PartyUnitSelectorSummary
   m_TagString: Untagged
@@ -299,7 +300,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1272437701735423086}
+        m_MethodName: OnValueChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &319251435992143634
 MonoBehaviour:
@@ -319,6 +331,19 @@ MonoBehaviour:
   levelClassDisplay: {fileID: 7704996814491818104}
   ageDisplay: {fileID: 0}
   statsGroup: {fileID: 7533404169561889142}
+--- !u!114 &1272437701735423086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6377504239297138316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86b73bfac30814488eb21a406ef54ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDeltaEvent: {fileID: 11400000, guid: f914d5f36c1fc6d41921f1b1ee483ff4, type: 2}
 --- !u!1 &6415215237268181620
 GameObject:
   m_ObjectHideFlags: 0

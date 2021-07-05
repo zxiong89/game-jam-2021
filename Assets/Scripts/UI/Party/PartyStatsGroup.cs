@@ -17,9 +17,31 @@ public class PartyStatsGroup : MonoBehaviour
         displaySinglePartyStat(displays[5], nameof(stats.DefSup), stats.DefSup);
     }
 
-    private void displaySinglePartyStat(PartyStatDisplay display, string label, float value)
+    private void displaySinglePartyStat(PartyStatDisplay display, string label, float value, float? deltaVal = null)
     {
         display.labelValue.SetLabelValue(label, FloatExtensions.ToString(value));
-        display.delta.text = "";
+        displaySinglePartyStatDelta(display, deltaVal);
+    }
+
+    public void DisplayPartyStatsDelta(PartyStats stats)
+    {
+        if (displays == null || displays.Length != 6) return;
+
+        displaySinglePartyStatDelta(displays[0], stats.Atk);
+        displaySinglePartyStatDelta(displays[1], stats.Def);
+        displaySinglePartyStatDelta(displays[2], stats.PhyAtk);
+        displaySinglePartyStatDelta(displays[3], stats.MagAtk);
+        displaySinglePartyStatDelta(displays[4], stats.AtkSup);
+        displaySinglePartyStatDelta(displays[5], stats.DefSup);
+    }
+
+    private void displaySinglePartyStatDelta(PartyStatDisplay display, float? deltaVal)
+    {
+        if (deltaVal == null) display.delta.text = "";
+        else
+        {
+            display.delta.text = string.Format("({0})",FloatExtensions.ToString(deltaVal.Value));
+            display.delta.color = deltaVal < 0 ? Color.red : Color.green;
+        }
     }
 }

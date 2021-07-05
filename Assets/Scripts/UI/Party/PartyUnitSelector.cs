@@ -16,6 +16,8 @@ public class PartyUnitSelector : MonoBehaviour
 
     public PartyData CurrentParty;
 
+    public bool IsFrontline;
+
     [SerializeField]
     private Guild guild;
     
@@ -46,9 +48,12 @@ public class PartyUnitSelector : MonoBehaviour
         var toggle = GameObject.Instantiate<Toggle>(toggleSummaryPrefab, contentContainer);
         toggle.isOn = isOn;
         toggle.group = toggleGroup;
+        
+        var partySummaryDisplay = toggle.GetComponent<PartyUnitSelectorSummary>();
+        if (partySummaryDisplay != null) partySummaryDisplay.IsFrontline = IsFrontline;
+
         var unitDisplay = toggle.GetComponent<UnitDisplay>();
-        if (unitDisplay == null) return;
-        unitDisplay.DisplayUnit(unit);
+        if (unitDisplay != null) unitDisplay.DisplayUnit(unit);
     }
 
     public Unit GetSelectedUnit()

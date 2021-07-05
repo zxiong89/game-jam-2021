@@ -56,6 +56,7 @@ public class PartyUnitSelection : MonoBehaviour
     {
         var selector = GameObject.Instantiate<PartyUnitSelector>(this.selector);
         selector.PopulateRoster(Unit);
+        selector.IsFrontline = isFrontline;
 
         var scrollRect = selector.GetComponent<ScrollRect>();
         if (scrollRect != null)

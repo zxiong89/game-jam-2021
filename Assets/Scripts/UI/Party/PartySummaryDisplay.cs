@@ -17,4 +17,9 @@ public class PartySummaryDisplay : MonoBehaviour
         if (nameDisplay != null) nameDisplay.text = Party.Name;
         stats?.DisplayPartyStats(Party.Stats);
     }
+
+    public void DisplayPartyDelta(PartyEventArgs args)
+    {
+        stats.DisplayPartyStatsDelta(args.PartyStats);
+    }
 }
