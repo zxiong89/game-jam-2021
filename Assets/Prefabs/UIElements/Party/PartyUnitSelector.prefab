@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
+  m_AllowSwitchOff: 1
 --- !u!1 &427245592
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +391,7 @@ MonoBehaviour:
     type: 3}
   contentContainer: {fileID: 212737848}
   CurrentParty: {fileID: 11400000, guid: 814b2c5ec62e96642b0dbc4c7eb4274c, type: 2}
+  IsFrontline: 0
   guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
 --- !u!114 &7568271756704519318
 MonoBehaviour:

@@ -7,6 +7,8 @@ public class PartyUnitSelectorSummary : MonoBehaviour
 
     public bool IsFrontline;
 
+    public PartyStats? Baseline;
+
     private UnitDisplay unitDisplay;
 
     private void Awake()
@@ -18,9 +20,11 @@ public class PartyUnitSelectorSummary : MonoBehaviour
     {
         if (selected && unitDisplay.currentUnit != null)
         {
+            var newContributions = unitDisplay.currentUnit.CalcContribution(IsFrontline);
             showDeltaEvent.Raise(new PartyEventArgs()
             {
-                PartyStats = unitDisplay.currentUnit.CalcContribution(IsFrontline)
+                PartyStats = Baseline != null ? 
+                    Baseline.Value - newContributions : newContributions
             });
         }
     }

@@ -33,16 +33,21 @@ public class PartyUnitSelector : MonoBehaviour
         if (guild == null) return;
         if (CurrentParty == null && CurrentParty.Party == null) return;
 
-        instantiateUnitSelector(currentUnit, true);
+        PartyStats? baseline = null;
+        if (currentUnit != null)
+        {
+            baseline = currentUnit.CalcContribution(IsFrontline);
+            instantiateUnitSelector(currentUnit, baseline, true);
+        }
 
         foreach (Unit u in guild.Roster)
         {
             if (CurrentParty.Party.Contains(u)) continue;
-            instantiateUnitSelector(u, false);
+            instantiateUnitSelector(u, baseline, false);
         }
     }
 
-    private void instantiateUnitSelector(Unit unit, bool isOn = false)
+    private void instantiateUnitSelector(Unit unit, PartyStats? baseline, bool isOn = false)
     {
         if (unit == null) return;
         var toggle = GameObject.Instantiate<Toggle>(toggleSummaryPrefab, contentContainer);
@@ -50,7 +55,11 @@ public class PartyUnitSelector : MonoBehaviour
         toggle.group = toggleGroup;
         
         var partySummaryDisplay = toggle.GetComponent<PartyUnitSelectorSummary>();
-        if (partySummaryDisplay != null) partySummaryDisplay.IsFrontline = IsFrontline;
+        if (partySummaryDisplay != null)
+        {
+            partySummaryDisplay.IsFrontline = IsFrontline;
+            partySummaryDisplay.Baseline = baseline;
+        }
 
         var unitDisplay = toggle.GetComponent<UnitDisplay>();
         if (unitDisplay != null) unitDisplay.DisplayUnit(unit);
