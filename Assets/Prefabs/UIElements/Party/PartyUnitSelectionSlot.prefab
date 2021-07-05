@@ -94,6 +94,9 @@ MonoBehaviour:
   unitSummary: {fileID: 8899238770592825796}
   guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
   currentParty: {fileID: 11400000, guid: 814b2c5ec62e96642b0dbc4c7eb4274c, type: 2}
+  isFrontline: 1
+  higherPrioritySelection: {fileID: 0}
+  partyUpdatedEvent: {fileID: 11400000, guid: 517bdd6de21c9e640baf871cc6541859, type: 2}
   createPopupEvent: {fileID: 11400000, guid: 448c3c37bfcd54645baba8830a365654, type: 2}
   selector: {fileID: 4210221765026334745, guid: ec1de5680dee2ce4fb2f4ba763e8d82b,
     type: 3}

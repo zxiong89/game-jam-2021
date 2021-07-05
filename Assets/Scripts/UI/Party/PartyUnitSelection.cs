@@ -26,6 +26,11 @@ public class PartyUnitSelection : MonoBehaviour
     [SerializeField]
     private PartyUnitSelection higherPrioritySelection;
 
+    [Header("Events")]
+
+    [SerializeField]
+    private PartyEvent partyUpdatedEvent;
+
     [Header("Pop-up")]
 
     [SerializeField]
@@ -79,6 +84,10 @@ public class PartyUnitSelection : MonoBehaviour
         }
         if (isFrontline) currentParty.Party.AddToFrontLine(unit);
         else currentParty.Party.AddToBackLine(unit);
+        partyUpdatedEvent.Raise(new PartyEventArgs()
+        {
+            Party = currentParty.Party
+        });
     }
 
     public bool CanSetHigherLinePriority(Unit unit)

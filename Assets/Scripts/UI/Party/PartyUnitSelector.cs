@@ -33,18 +33,6 @@ public class PartyUnitSelector : MonoBehaviour
 
         instantiateUnitSelector(currentUnit, true);
 
-        //foreach (Unit u in CurrentParty.Party.FrontLine)
-        //{
-        //    if (u == Selection?.Unit) return;
-        //    instantiateUnitSelector(Selection.Unit, true);
-        //}
-
-        //foreach (Unit u in CurrentParty.Party.BackLine)
-        //{
-        //    if (u == Selection?.Unit) return;
-        //    instantiateUnitSelector(Selection.Unit, true);
-        //}
-
         foreach (Unit u in guild.Roster)
         {
             if (CurrentParty.Party.Contains(u)) continue;
