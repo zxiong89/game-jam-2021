@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UnitDisplay : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class UnitDisplay : MonoBehaviour
     [SerializeField]
     private StatsGroup statsGroup;
 
+    [SerializeField]
+    private TraitsGroup traitsGroup;
+
     public Unit currentUnit { get; set; }
 
     public void DisplayUnit(Unit unit)
@@ -34,6 +38,8 @@ public class UnitDisplay : MonoBehaviour
             statsGroup?.SetStats(currentUnit.Stats);
             statsGroup?.SetSubStats(currentUnit.Stats);
         }
+        if (traitsGroup != null) traitsGroup.DisplayTraits(unit.Traits);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
     public void DisplayClass(int level, string unitClass)
@@ -48,6 +54,7 @@ public class UnitDisplay : MonoBehaviour
         {
             levelClassDisplay.text = string.Format("{0} {1}", levelTxt, unitClass);
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
 }

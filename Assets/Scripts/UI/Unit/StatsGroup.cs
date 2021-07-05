@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class StatsGroup : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class StatsGroup : MonoBehaviour
             BaseStat curStat = statsArr[i];
             curStatDisplay.SetLabelValue(curStat.Abbreviation, FloatExtensions.ToString(curStat.Value));
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     public void SetSubStats(StatBlock stats)
@@ -33,6 +35,7 @@ public class StatsGroup : MonoBehaviour
             BaseStat curStat = statsArr[i];
             setSubStatsForSingle(subStatsDisplay, curStat);
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     private void setSubStatsForSingle(SubStatsDisplay subStats, BaseStat stat)

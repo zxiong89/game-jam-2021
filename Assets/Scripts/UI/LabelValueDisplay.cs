@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LabelValueDisplay : MonoBehaviour
 {
@@ -25,5 +24,6 @@ public class LabelValueDisplay : MonoBehaviour
     {
         SetLabel(newLabel);
         SetValue(newValue);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }
