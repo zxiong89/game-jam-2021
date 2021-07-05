@@ -1,4 +1,6 @@
-﻿using Unity.Mathematics;
+﻿using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEngine;
 
 public class Unit
 {
@@ -19,6 +21,13 @@ public class Unit
     public int Age;
     public StatBlock Stats;
     public UnitClass Class;
+
+    public List<Trait> Traits = new List<Trait>()
+    {
+        new Trait() { Name = "Sleepy", Description = "zzz", Color = Color.yellow },
+        new Trait() { Name = "Verbose", Description = "A long string of text to make the text wrap and ensure the text still looks good when it is wrapping inside the traits group.", Color = Color.red },
+        new Trait() { Name = "Surprised", Description = "O.O O.O", Color = Color.green }
+    };
 
     #endregion
 
