@@ -98,7 +98,7 @@ MonoBehaviour:
   higherPrioritySelection: {fileID: 0}
   partyUpdatedEvent: {fileID: 11400000, guid: 517bdd6de21c9e640baf871cc6541859, type: 2}
   createPopupEvent: {fileID: 11400000, guid: 448c3c37bfcd54645baba8830a365654, type: 2}
-  selector: {fileID: 4210221765026334745, guid: ec1de5680dee2ce4fb2f4ba763e8d82b,
+  popupPrefab: {fileID: 2322454638114196907, guid: 758609c0b5f8387449d42a01e55c1ac1,
     type: 3}
 --- !u!114 &3311681374110529149
 MonoBehaviour:

@@ -37,6 +37,8 @@ public class PartyStatsGroup : MonoBehaviour
 
     private void displaySinglePartyStatDelta(PartyStatDisplay display, float? deltaVal)
     {
+        if (display.delta == null) return;
+
         if (deltaVal == null) display.delta.text = "";
         else
         {

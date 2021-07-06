@@ -540,7 +540,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PartyUnitSelector
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6169431013142810974, guid: 02d104602479c9941a251907b37b01bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02d104602479c9941a251907b37b01bd, type: 3}
 --- !u!1 &8522988924157543351 stripped
 GameObject:

@@ -37,7 +37,7 @@ public class PartyUnitSelection : MonoBehaviour
     private PopupEvent createPopupEvent;
 
     [SerializeField]
-    private PartyUnitSelector selector;
+    private PartyUnitSelectionPopup popupPrefab;
 
     public Unit Unit
     {
@@ -54,28 +54,23 @@ public class PartyUnitSelection : MonoBehaviour
 
     public void StartUnitSelection()
     {
-        var selector = GameObject.Instantiate<PartyUnitSelector>(this.selector);
-        selector.IsFrontline = isFrontline;
-        selector.PopulateRoster(Unit);
-
-        var scrollRect = selector.GetComponent<ScrollRect>();
-        if (scrollRect != null)
-        {
-            scrollRect.verticalScrollbar.value = 0;
-        }
+        var popup = GameObject.Instantiate<PartyUnitSelectionPopup>(popupPrefab);
+        popup.PopulatePartySummary(currentParty.Party);
+        popup.PopulateRoster(Unit, isFrontline);
 
         createPopupEvent.Raise(new PopupEventArgs()
         {
-            Content = selector.gameObject,
-            AcceptCallback = (GameObject gameObject) => SwitchOutUnit(selector),
-            AcceptTextOverride = "Switch"
+            Content = popup.gameObject,
+            AcceptCallback = (GameObject gameObject) => SwitchOutUnit(popup),
+            AcceptTextOverride = "Swap",
+            CancelCallback = (GameObject gameObject) => RaiseAndUpdatePartyDisplay()
         });
     }
 
-    public void SwitchOutUnit(PartyUnitSelector selector)
+    public void SwitchOutUnit(PartyUnitSelectionPopup popup)
     {
-        if (selector == null) return;
-        var unit = selector.GetSelectedUnit();
+        if (popup == null) return;
+        var unit = popup.GetSelectedUnit();
         if (unit == null) return;
 
         if (!CanSetHigherLinePriority(unit)) 
@@ -85,6 +80,11 @@ public class PartyUnitSelection : MonoBehaviour
         }
         if (isFrontline) currentParty.Party.AddToFrontLine(unit);
         else currentParty.Party.AddToBackLine(unit);
+        RaiseAndUpdatePartyDisplay();
+    }
+    
+    public void RaiseAndUpdatePartyDisplay()
+    {
         partyUpdatedEvent.Raise(new PartyEventArgs()
         {
             Party = currentParty.Party
