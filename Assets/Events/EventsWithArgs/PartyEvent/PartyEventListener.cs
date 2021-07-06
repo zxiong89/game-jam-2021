@@ -1,3 +1,3 @@
-﻿public class PartyEventListener : BaseGameEventListener<Party, PartyEvent, PartyEventResponse>
+﻿public class PartyEventListener : BaseGameEventListener<PartyEventArgs, PartyEvent, PartyEventResponse>
 {
 }

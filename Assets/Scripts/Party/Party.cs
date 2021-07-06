@@ -4,7 +4,7 @@
 public class Party
 {
     #region Fields/Properties
-    public string Name;
+    public string Name = "Party";
 
     private PartyLine frontLine = new PartyLine();
     public IReadOnlyList<Unit> FrontLine { get => frontLine.Units; }
@@ -17,6 +17,8 @@ public class Party
     #endregion
 
     #region Methods
+    public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
+
     /// <summary>
     /// Update Party Stats
     /// </summary>
@@ -84,6 +86,7 @@ public class Party
     /// <returns>true if the unit was removed, false otherwise</returns>
     public bool RemoveUnit(Unit unit)
     {
+        if (unit == null) return false;
         if (frontLine.RemoveUnit(unit))
         {
             stats -= unit.CalcContribution(true);

@@ -16,4 +16,6 @@ public struct PopupEventArgs
     public string AcceptTextOverride { get; set; }
 
     public Action<GameObject> AcceptCallback { get; set; }
+
+    public Action<GameObject> CancelCallback { get; set; }
 }
