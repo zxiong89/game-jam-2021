@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class RecruitmentShop : MonoBehaviour
+public class RecruitmentShop : MonoBehaviour, IMainDisplay
 {
     [SerializeField]
     private TextMeshProUGUI bannerText;
@@ -82,5 +82,10 @@ public class RecruitmentShop : MonoBehaviour
             };
             showPopup.Raise(popupArgs);
         }
+    }
+
+    public void LoadGlobals(Globals globals)
+    {
+        grid.Initialize(globals.UnitFactory);
     }
 }

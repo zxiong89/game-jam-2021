@@ -16,7 +16,7 @@ public class MainDisplayLoader : MonoBehaviour
         ClearDisplay();
         GameObject displayObj = Instantiate(prefab, transform);
         var display = displayObj.GetComponent<IMainDisplay>();
-        display.LoadGlobals(globals);
+        display?.LoadGlobals(globals);
     }
 
     private void ClearDisplay()

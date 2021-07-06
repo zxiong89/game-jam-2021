@@ -4,9 +4,6 @@ using UnityEngine;
 public class RecruitmentGrid : MonoBehaviour
 {
     [SerializeField]
-    private UnitFactory testFactory;
-
-    [SerializeField]
     private IntegerLimits[] ageLimits;
 
     [SerializeField]
@@ -19,6 +16,13 @@ public class RecruitmentGrid : MonoBehaviour
     private int GRID_LIMIT = 4;
 
     private AdventurerTier currentTier;
+
+    private UnitFactory unitFactory;
+
+    public void Initialize(UnitFactory newUnitFactory)
+    {
+        unitFactory = newUnitFactory;
+    }
 
     public void LoadRoster(AdventurerTier tier)
     {
@@ -42,7 +46,7 @@ public class RecruitmentGrid : MonoBehaviour
 
     private Unit AddNewUnitToRoster(List<Unit> roster, AdventurerTier tier)
     {
-        var newUnit = testFactory.RandomizeUnit(ageLimits[(int)tier]);
+        var newUnit = unitFactory.RandomizeUnit(ageLimits[(int)tier]);
         roster.Add(newUnit);
         return newUnit;
     }
