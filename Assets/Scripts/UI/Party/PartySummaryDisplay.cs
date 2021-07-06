@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PartySummaryDisplay : MonoBehaviour
 {
@@ -19,10 +20,12 @@ public class PartySummaryDisplay : MonoBehaviour
         Party.UpdatePartyStats();
         if (nameDisplay != null) nameDisplay.text = Party.Name;
         stats?.DisplayPartyStats(Party.Stats);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     public void DisplayPartyDelta(PartyEventArgs args)
     {
         stats.DisplayPartyStatsDelta(args.PartyStats);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }
