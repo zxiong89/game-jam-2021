@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Loads a prefab into the main display.
+/// Might want to load by Resource address if references get too memory intensive
+/// </summary>
 public class MainDisplayLoader : MonoBehaviour
 {
     [SerializeField]
-    private GameObject globals;
+    private Globals globals;
 
     public void LoadMenuOption(GameObject prefab)
     {
         ClearDisplay();
-        GameObject.Instantiate(prefab, transform);
+        GameObject displayObj = Instantiate(prefab, transform);
+        var display = displayObj.GetComponent<IMainDisplay>();
+        display.LoadGlobals(globals);
     }
 
     private void ClearDisplay()
