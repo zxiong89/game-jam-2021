@@ -49,9 +49,9 @@ public class PartyUnitSelection : MonoBehaviour
         {
             if (unitDisplay != null)
             {
+                unitSummary.SetActive(value != null);
                 if (value != null) unitDisplay.DisplayUnit(value);
                 else unitDisplay.currentUnit = value;
-                unitSummary.SetActive(unitDisplay.currentUnit != null);
             }
         }
     }
