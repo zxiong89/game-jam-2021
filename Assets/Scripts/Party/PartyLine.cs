@@ -5,7 +5,7 @@ using UnityEngine;
 public class PartyLine
 {
     #region Constants
-    private const int MAX_SIZE = 3;
+    public const int MAX_SIZE = 3;
     #endregion
 
     #region Fields/Properties
@@ -16,6 +16,8 @@ public class PartyLine
     #endregion
 
     #region Methods
+    public bool Contains(Unit unit) => units.Contains(unit);
+
     public bool HasRoom() => (units.Count < MAX_SIZE);
 
     public bool AddUnit(Unit unit)
