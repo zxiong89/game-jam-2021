@@ -11,6 +11,8 @@ public class PartyUnitSelectorSummary : MonoBehaviour
 
     private UnitDisplay unitDisplay;
 
+    private bool wasSelected = false;
+
     private void Awake()
     {
         unitDisplay = GetComponent<UnitDisplay>();
@@ -18,7 +20,18 @@ public class PartyUnitSelectorSummary : MonoBehaviour
 
     public void OnValueChange(bool selected)
     {
-        if (selected && unitDisplay.currentUnit != null)
+        if (!selected)
+        {
+            if (wasSelected)
+            {
+                showDeltaEvent.Raise(new PartyEventArgs()
+                {
+                    PartyStats = Baseline != null ?
+                        new PartyStats() - Baseline.Value : new PartyStats()
+                }); ;
+            }
+        }
+        else if (unitDisplay.currentUnit != null)
         {
             var newContributions = unitDisplay.currentUnit.CalcContribution(IsFrontline);
             showDeltaEvent.Raise(new PartyEventArgs()
@@ -27,5 +40,6 @@ public class PartyUnitSelectorSummary : MonoBehaviour
                     Baseline.Value - newContributions : newContributions
             });
         }
+        wasSelected = selected;
     }
 }

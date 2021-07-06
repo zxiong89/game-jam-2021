@@ -46,7 +46,8 @@ public class PartyUnitSelection : MonoBehaviour
         {
             if (unitDisplay != null)
             {
-                unitDisplay.DisplayUnit(value);
+                if (value != null) unitDisplay.DisplayUnit(value);
+                else unitDisplay.currentUnit = value;
                 unitSummary.SetActive(unitDisplay.currentUnit != null);
             }
         }
@@ -71,7 +72,13 @@ public class PartyUnitSelection : MonoBehaviour
     {
         if (popup == null) return;
         var unit = popup.GetSelectedUnit();
-        if (unit == null) return;
+        if (unit == null)
+        {
+            currentParty.Party.RemoveUnit(Unit);
+            Unit = null;
+            RaiseAndUpdatePartyDisplay();
+            return;
+        } 
 
         if (!CanSetHigherLinePriority(unit)) 
         {
