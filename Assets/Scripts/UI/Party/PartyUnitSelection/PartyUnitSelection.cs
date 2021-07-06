@@ -26,6 +26,9 @@ public class PartyUnitSelection : MonoBehaviour
     [SerializeField]
     private PartyUnitSelection higherPrioritySelection;
 
+    [SerializeField]
+    private PartyUnitSelection lowerPrioritySelection;
+
     [Header("Events")]
 
     [SerializeField]
@@ -75,7 +78,7 @@ public class PartyUnitSelection : MonoBehaviour
         if (unit == null)
         {
             currentParty.Party.RemoveUnit(Unit);
-            Unit = null;
+            Unit = lowerPrioritySelection?.removeFromLowerPrioritySelection();
             RaiseAndUpdatePartyDisplay();
             return;
         } 
@@ -88,6 +91,13 @@ public class PartyUnitSelection : MonoBehaviour
         if (isFrontline) currentParty.Party.AddToFrontLine(unit);
         else currentParty.Party.AddToBackLine(unit);
         RaiseAndUpdatePartyDisplay();
+    }
+
+    private Unit removeFromLowerPrioritySelection()
+    {
+        var u = Unit;
+        Unit = lowerPrioritySelection?.removeFromLowerPrioritySelection();
+        return u;
     }
     
     public void RaiseAndUpdatePartyDisplay()
