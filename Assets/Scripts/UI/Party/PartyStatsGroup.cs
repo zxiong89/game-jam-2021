@@ -43,7 +43,7 @@ public class PartyStatsGroup : MonoBehaviour
         else
         {
             display.delta.text = string.Format("({0})",FloatExtensions.ToString(deltaVal.Value));
-            display.delta.color = deltaVal < 0 ? Color.red : Color.green;
+            display.delta.color = deltaVal == 0 ? Color.grey : deltaVal < 0 ? Color.red : Color.green;
         }
     }
 }
