@@ -28,10 +28,16 @@ public class PartySelectionDisplay : MonoBehaviour
                         partyData.Party.FrontLine 
                         : 
                         partyData.Party.BackLine;
-                    unitDisplays[i].Unit = line[i % PartyLine.MAX_SIZE];
+
+                    unitDisplays[i].Unit = line == null || i >= line.Count ? null : line[i % PartyLine.MAX_SIZE];
                 }
             }
         }
+    }
+
+    public void CopyAndSetParty(PartyEventArgs args)
+    {
+        Party = new Party(args.Party);
     }
 
     public void SetParty(PartyEventArgs args)

@@ -16,7 +16,29 @@ public class Party
     public ref readonly PartyStats Stats => ref stats;
     #endregion
 
+    #region Constructors
+    public Party()
+    {
+
+    }
+
+    public Party(Party copy)
+    {
+        Name = copy.Name;
+        foreach(var u in copy.frontLine.Units)
+        {
+            frontLine.AddUnit(u);
+        }
+
+        foreach (var u in copy.backLine.Units)
+        {
+            backLine.AddUnit(u);
+        }
+    }
+    #endregion
+
     #region Methods
+
     public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
 
     /// <summary>
