@@ -33,6 +33,10 @@ public class PartyDetailsPanel : MonoBehaviour
     public void ClosePanel()
     {
         this.gameObject.SetActive(false);
-        partiesSelectionDisplay?.SetActive(true);
+        if (partiesSelectionDisplay != null)
+        {
+            partiesSelectionDisplay.SetActive(true);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(partiesSelectionDisplay.GetComponent<RectTransform>());
+        }
     }
 }

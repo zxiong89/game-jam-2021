@@ -64,13 +64,13 @@ public class PartiesSelectionPanel : MonoBehaviour
         if (partyDetailsDisplay != null) {
             partyDetailsDisplay.gameObject.SetActive(true);
             partyDetailsDisplay.PartyData = findPartyData(summary.Party);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(partyDetailsDisplay.GetComponent<RectTransform>());
         }
 
         onPartySelected.Raise(new PartyEventArgs()
         {
             Party = summary.Party
         });
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     private PartyData findPartyData(Party party)
