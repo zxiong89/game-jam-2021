@@ -91,7 +91,6 @@ public class Unit
         if(ParentRoster != null)
         {
             ParentRoster.Remove(this);
-            ParentRoster = null;
         }
     }
     #endregion

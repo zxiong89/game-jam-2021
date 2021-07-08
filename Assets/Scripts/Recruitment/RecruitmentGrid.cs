@@ -73,10 +73,4 @@ public class RecruitmentGrid : MonoBehaviour
             Destroy(transform.GetChild(i - 1).gameObject);
         }
     }
-
-    public void RemoveUnit(RecruitmentData removalData)
-    {
-        shopRosters.GetRoster(currentTier).Remove(removalData.UnitForHire);
-        RefreshGridDisplay();
-    }
 }

@@ -23,12 +23,15 @@ public class PartyDetailsPanel : MonoBehaviour
     [SerializeField]
     private GameObject partiesSelectionDisplay;
 
+    [SerializeField]
+    private UnitRoster inPartiesRoster;
+
     public void AcceptChanges()
     {
         ClosePanel();
         var added = selectionDisplay.Party.UnitDifference(PartyData.Party);
         var removed = PartyData.Party.UnitDifference(selectionDisplay.Party);
-        foreach (var u in added) guild.Roster.Remove(u);
+        foreach (var u in added) inPartiesRoster.Add(u);
         foreach (var u in removed) guild.Roster.Add(u);
         PartyData.Party = selectionDisplay.Party;
         partyChangesAccepted.Raise(new PartyEventArgs()
