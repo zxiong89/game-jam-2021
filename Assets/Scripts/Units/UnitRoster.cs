@@ -30,8 +30,11 @@ public class UnitRoster : ScriptableObject, IEnumerable<Unit>
 
     public void Remove(Unit unitToRemove)
     {
-        Roster.Remove(unitToRemove);
-        unitToRemove.ParentRoster = null;
+        if(unitToRemove.ParentRoster == this)
+        {
+            Roster.Remove(unitToRemove);
+            unitToRemove.ParentRoster = null;
+        }
     }
 
     public int Count { 
