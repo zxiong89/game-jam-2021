@@ -8,10 +8,16 @@ public class Guild : ScriptableObject
     [SerializeField]
     private IntEvent goldChangedEvent;
 
-    public List<Unit> Roster = new List<Unit>();
+    [SerializeField]
+    public UnitRoster Roster;
 
     [SerializeField]
     private int gold;
+
+    public void Initialize()
+    {
+        gold = 15000;
+    }
 
     public int Gold
     {

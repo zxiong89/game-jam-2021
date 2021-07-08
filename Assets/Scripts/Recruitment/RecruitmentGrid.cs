@@ -26,7 +26,7 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void LoadRoster(AdventurerTier tier)
     {
-        List<Unit> roster = shopRosters.GetRoster(tier);
+        UnitRoster roster = shopRosters.GetRoster(tier);
         for (int i = 0; i < GRID_LIMIT; i++)
         {
             Unit unitToAdd;
@@ -38,32 +38,32 @@ public class RecruitmentGrid : MonoBehaviour
             {
                 unitToAdd = AddNewUnitToRoster(roster, tier);
             }
-            AddResumeToGrid(unitToAdd, i);
         }
-
         currentTier = tier;
+        RefreshGridDisplay();
     }
 
-    private Unit AddNewUnitToRoster(List<Unit> roster, AdventurerTier tier)
+    private Unit AddNewUnitToRoster(UnitRoster roster, AdventurerTier tier)
     {
         var newUnit = unitFactory.RandomizeUnit(ageLimits[(int)tier]);
         roster.Add(newUnit);
         return newUnit;
     }
 
-    private void AddResumeToGrid(Unit unit, int index)
+    private void AddResumeToGrid(Unit unit)
     {
-        GameObject resumeObj;
-        if(index < transform.childCount)
-        {
-            resumeObj = transform.GetChild(index).gameObject;
-        }
-        else
-        {
-            resumeObj = Instantiate(resumePrefab, this.transform);
-        }
+        GameObject resumeObj = Instantiate(resumePrefab, this.transform);
         var resume = resumeObj.GetComponent<UnitResumeDisplay>();
-        resume.SetResume(new RecruitmentData(unit));
+        resume.SetResume(unit.RecruitmentData);
+    }
+
+    public void RefreshGridDisplay()
+    {
+        ClearGrid();
+        foreach(var unit in shopRosters.GetRoster(currentTier))
+        {
+            AddResumeToGrid(unit);
+        }
     }
 
     public void ClearGrid()
@@ -76,9 +76,7 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void RemoveUnit(RecruitmentData removalData)
     {
-        List<Unit> roster = shopRosters.GetRoster(currentTier);
-        int index = roster.FindIndex((data) => data == removalData.UnitForHire);
-        Destroy(transform.GetChild(index).gameObject);
-        roster.RemoveAt(index);
+        shopRosters.GetRoster(currentTier).Remove(removalData.UnitForHire);
+        RefreshGridDisplay();
     }
 }
