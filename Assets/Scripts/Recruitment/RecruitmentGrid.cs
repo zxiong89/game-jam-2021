@@ -26,19 +26,23 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void LoadRoster(AdventurerTier tier)
     {
-        UnitRoster roster = shopRosters.GetRoster(tier);
-        for (int i = 0; i < GRID_LIMIT; i++)
+        if (true)
         {
-            Unit unitToAdd;
-            if(i < roster.Count)
-            {
-                unitToAdd = roster[i];
-            }
-            else
-            {
-                unitToAdd = AddNewUnitToRoster(roster, tier);
-            }
+            shopRosters.RefreshRosters(unitFactory);
         }
+        UnitRoster roster = shopRosters.GetRoster(tier);
+        //for (int i = 0; i < GRID_LIMIT; i++)
+        //{
+        //    Unit unitToAdd;
+        //    if(i < roster.Count)
+        //    {
+        //        unitToAdd = roster[i];
+        //    }
+        //    else
+        //    {
+        //        unitToAdd = AddNewUnitToRoster(roster, tier);
+        //    }
+        //}
         currentTier = tier;
         RefreshGridDisplay();
     }
