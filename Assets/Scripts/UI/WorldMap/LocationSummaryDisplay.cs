@@ -26,4 +26,9 @@ public class LocationSummaryDisplay : MonoBehaviour
         description.text = data.Description;
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
+
+    public void AssignOrRecallParties()
+    {
+
+    }
 }

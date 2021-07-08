@@ -9,7 +9,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private Toggle summaryTogglePrefab;
 
     [SerializeField]
-    private PartyData[] parties;
+    private PartyCollection allParties;
 
     [Header("Events")]
     [SerializeField]
@@ -31,7 +31,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private void Start()
     {
         int i = 1;
-        foreach (var p in parties)
+        foreach (var p in allParties.Parties)
         {
             p.Party = new Party();
             p.Party.Name = "Party " + i++;
@@ -75,7 +75,7 @@ public class PartiesSelectionPanel : MonoBehaviour
 
     private PartyData findPartyData(Party party)
     {
-        foreach(var p in parties)
+        foreach(var p in allParties.Parties)
         {
             if (p.Party == party) return p;
         }
@@ -86,11 +86,11 @@ public class PartiesSelectionPanel : MonoBehaviour
     {
         if (args.PartyData == null) return;
 
-        for (var i = 0; i < parties.Length; i++)
+        for (var i = 0; i < allParties.Parties.Length; i++)
         {
-            if (parties[i] == args.PartyData)
+            if (allParties.Parties[i] == args.PartyData)
             {
-                summaryDisplays[i].DisplayParty(parties[i].Party);
+                summaryDisplays[i].DisplayParty(allParties.Parties[i].Party);
                 break;
             }
         }

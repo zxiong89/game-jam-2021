@@ -154,10 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   summaryTogglePrefab: {fileID: 3391393786486605242, guid: 496ace079111083429842663955fefc6,
     type: 3}
-  parties:
-  - {fileID: 11400000, guid: 7c1e59e2f045ede4a927e1d2434db1a6, type: 2}
-  - {fileID: 11400000, guid: f5e1635e3efe2fa418b3039fa3288d12, type: 2}
-  - {fileID: 11400000, guid: 9411be6ab9be12b4db4f26556ca2702b, type: 2}
+  allParties: {fileID: 11400000, guid: c7c3472f77b3fa742a6eba8060046285, type: 2}
   onPartySelected: {fileID: 11400000, guid: 016a6356ae8070941a005753ecbdcecc, type: 2}
   partiesToggleGroup: {fileID: 1150441817657743184}
   editPartyButton: {fileID: 4779142934239473388}

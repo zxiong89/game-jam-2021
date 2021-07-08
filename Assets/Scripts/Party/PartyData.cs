@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName ="Data/PartyData")]
+[CreateAssetMenu(menuName ="Party/PartyData")]
 public class PartyData : ScriptableObject
 {
     public Party Party;
