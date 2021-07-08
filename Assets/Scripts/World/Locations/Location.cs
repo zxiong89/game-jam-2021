@@ -6,6 +6,9 @@ public class Location : MonoBehaviour
 {
     public string Name { get; set; }
 
+    [SerializeField]
+    private LocationData data;
+
     // Start is called before the first frame update
     private void Start()
     {
