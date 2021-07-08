@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldMapPanel : MonoBehaviour
 {
     [SerializeField]
-    private GameObject content;
+    private Transform content;
 
     [SerializeField]
     private WorldMapData data;
@@ -16,10 +17,12 @@ public class WorldMapPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var l in data.Locations)
+        foreach (var loc in data.Locations)
         {
-
+            var display = GameObject.Instantiate<LocationSummaryDisplay>(locationSummaryPrefab, content.transform);
+            display.SetLocationData(loc);
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(content.gameObject.GetComponent<RectTransform>());
     }
 
 }

@@ -6,6 +6,14 @@ using UnityEngine;
 public class LocationData : ScriptableObject
 {
     [SerializeField]
+    private string locationName;
+    public string Name { get => locationName; }
+
+    [SerializeField]
+    private string description;
+    public string Description { get => description; }
+
+    [SerializeField]
     private List<CombatData> combatEncounters;
 
     [SerializeField]

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb798f6a891e3fc4b8cecab07921f5ee, type: 3}
   m_Name: WorldMapData
   m_EditorClassIdentifier: 
-  Locations: []
+  Locations:
+  - {fileID: 11400000, guid: b7185d38ceb577b478de81656422ff4b, type: 2}
