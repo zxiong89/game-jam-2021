@@ -9,6 +9,11 @@ public class SimulationManager : MonoBehaviour
 
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
 
+    [SerializeField]
+    private QuestCollection allQuests;
+
+    public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
+
     public void Resume()
     {
         Time.fixedDeltaTime = .5f;
@@ -22,6 +27,6 @@ public class SimulationManager : MonoBehaviour
     private void FixedUpdate()
     {
         this.UnitSimulator.UpdateUnits(allUnits.Units);
-        //Update Quests
+        this.QuestSimulator.UpdateQuests(allQuests.Quests);
     }
 }
