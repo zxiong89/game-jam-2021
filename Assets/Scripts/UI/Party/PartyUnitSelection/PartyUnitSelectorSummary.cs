@@ -36,8 +36,8 @@ public class PartyUnitSelectorSummary : MonoBehaviour
             var newContributions = unitDisplay.currentUnit.CalcContribution(IsFrontline);
             showDeltaEvent.Raise(new PartyEventArgs()
             {
-                PartyStats = Baseline != null ? 
-                    Baseline.Value - newContributions : newContributions
+                PartyStats = Baseline != null ?
+                    newContributions - Baseline.Value : newContributions
             });
         }
         wasSelected = selected;

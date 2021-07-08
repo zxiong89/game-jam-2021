@@ -28,8 +28,8 @@ public class PartySelectionDisplay : MonoBehaviour
                         partyData.Party.FrontLine 
                         : 
                         partyData.Party.BackLine;
-
-                    unitDisplays[i].Unit = line == null || i >= line.Count ? null : line[i % PartyLine.MAX_SIZE];
+                    var index = i % PartyLine.MAX_SIZE;
+                    unitDisplays[i].Unit = line == null || index >= line.Count ? null : line[index];
                 }
             }
         }

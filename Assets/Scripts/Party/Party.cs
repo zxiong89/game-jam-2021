@@ -38,6 +38,21 @@ public class Party
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Returns a list of units in this party that are not in the other
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public List<Unit> UnitDifference(Party other)
+    {
+        var diff = new List<Unit>();
+
+        foreach(var u in FrontLine)  if (!other.Contains(u)) diff.Add(u);
+        
+        foreach (var u in BackLine) if (!other.Contains(u)) diff.Add(u);
+
+        return diff;
+    }
 
     public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
 

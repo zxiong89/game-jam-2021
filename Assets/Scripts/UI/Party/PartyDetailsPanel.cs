@@ -6,6 +6,9 @@ public class PartyDetailsPanel : MonoBehaviour
     public PartyData PartyData;
 
     [SerializeField]
+    private Guild guild;
+
+    [SerializeField]
     private PartySelectionDisplay selectionDisplay;
 
     [SerializeField]
@@ -23,6 +26,10 @@ public class PartyDetailsPanel : MonoBehaviour
     public void AcceptChanges()
     {
         ClosePanel();
+        var added = selectionDisplay.Party.UnitDifference(PartyData.Party);
+        var removed = PartyData.Party.UnitDifference(selectionDisplay.Party);
+        foreach (var u in added) guild.Roster.Remove(u);
+        foreach (var u in removed) guild.Roster.Add(u);
         PartyData.Party = selectionDisplay.Party;
         partyChangesAccepted.Raise(new PartyEventArgs()
         {
