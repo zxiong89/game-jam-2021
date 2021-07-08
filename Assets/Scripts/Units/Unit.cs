@@ -15,6 +15,22 @@ public class Unit
         {
             level = value;
             Stats?.UpdateStats(level);
+            recruitmentData = null;
+        }
+    }
+
+    private int experience;
+
+    public int Experience
+    {
+        get { return experience; }
+        set { 
+            experience = value;
+            if(experience > 100)
+            {
+                Level += experience / 100;
+                experience %= 100;
+            }
         }
     }
 
@@ -28,6 +44,20 @@ public class Unit
         new Trait() { Name = "Verbose", Description = "A long string of text to make the text wrap and ensure the text still looks good when it is wrapping inside the traits group.", Color = Color.red },
         new Trait() { Name = "Surprised", Description = "O.O O.O", Color = Color.green }
     };
+
+    public UnitRoster ParentRoster;
+    public bool IsRetired = false;
+
+    private RecruitmentData recruitmentData = null;
+
+    public RecruitmentData RecruitmentData
+    {
+        get { 
+            if(recruitmentData == null) recruitmentData = new RecruitmentData(this);
+            return recruitmentData; 
+        }
+        private set { recruitmentData = value; }
+    }
 
     #endregion
 
@@ -50,5 +80,18 @@ public class Unit
 
     public PartyStats CalcContribution(bool isFrontline) => Class.CalcContribution(Stats, isFrontline);
 
+    public void Retire()
+    {
+        FreeUnit();
+        IsRetired = true;
+    }
+
+    public void FreeUnit()
+    {
+        if(ParentRoster != null)
+        {
+            ParentRoster.Remove(this);
+        }
+    }
     #endregion
 }

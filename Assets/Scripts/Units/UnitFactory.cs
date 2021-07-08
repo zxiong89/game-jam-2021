@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class UnitFactory : MonoBehaviour
@@ -19,6 +20,12 @@ public class UnitFactory : MonoBehaviour
     private string nameJsonFile;
 
     private string[] names;
+
+    [SerializeField]
+    private UnitCollection activeUnits;
+
+    [SerializeField]
+    private UnitRoster freeAgentRoster;
 
     private void Awake()
     {
@@ -43,7 +50,10 @@ public class UnitFactory : MonoBehaviour
         int c = Random.Range(0, selections.Classes.Length - 1);
         UnitClassData classData = selections.Classes[c];
 
-        return new Unit(names[n], level, age, stats, classData);
+        var newUnit = new Unit(names[n], level, age, stats, classData);
+        activeUnits?.Units.Add(newUnit);
+        freeAgentRoster?.Add(newUnit);
+        return newUnit;
     }
 
     /// <summary>

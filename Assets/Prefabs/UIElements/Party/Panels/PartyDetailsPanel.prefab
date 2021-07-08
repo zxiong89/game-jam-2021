@@ -85,6 +85,7 @@ MonoBehaviour:
   partyChangesAccepted: {fileID: 11400000, guid: 8f602b96aa78f464d8f5cf55e647f5f5,
     type: 2}
   partiesSelectionDisplay: {fileID: 0}
+  inPartiesRoster: {fileID: 11400000, guid: 1f7af61ce8a49d94a91f96d41db29333, type: 2}
 --- !u!114 &4712066685799881113
 MonoBehaviour:
   m_ObjectHideFlags: 0

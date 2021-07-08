@@ -4,21 +4,16 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Recruitment Shop Rosters")]
 public class RecruitmentShopRosters : ScriptableObject
 {
-    public Dictionary<AdventurerTier, List<Unit>> rosters = new Dictionary<AdventurerTier, List<Unit>>()
-        {
-            { AdventurerTier.Apprentice, new List<Unit>() },
-            { AdventurerTier.Experienced, new List<Unit>() },
-            { AdventurerTier.Expert, new List<Unit>() },
-            { AdventurerTier.Veteran, new List<Unit>() },
-        };
-
+    [SerializeField]
+    private UnitRoster[] shopRosters;
+  
     public void AddUnitToTier(Unit unitToAdd, AdventurerTier tier)
     {
-        rosters[tier].Add(unitToAdd);
+        shopRosters[(int)tier].Add(unitToAdd);
     }
     
-    public List<Unit> GetRoster(AdventurerTier tier)
+    public UnitRoster GetRoster(AdventurerTier tier)
     {
-        return rosters[tier];
+        return shopRosters[(int)tier];
     }
 }

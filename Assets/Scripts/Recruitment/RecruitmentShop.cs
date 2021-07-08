@@ -76,7 +76,7 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
                 {
                     playerGuild.Gold -= data.Fee;
                     playerGuild.Roster.Add(data.UnitForHire);
-                    grid.RemoveUnit(data);
+                    grid.RefreshGridDisplay();
 
                 }
             };
