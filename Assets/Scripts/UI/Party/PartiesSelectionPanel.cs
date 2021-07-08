@@ -11,6 +11,9 @@ public class PartiesSelectionPanel : MonoBehaviour
     [SerializeField]
     private PartyCollection allParties;
 
+    [SerializeField]
+    private QuestCollection allQuests;
+
     [Header("Events")]
     [SerializeField]
     private PartyEvent onPartySelected;
@@ -20,11 +23,21 @@ public class PartiesSelectionPanel : MonoBehaviour
     [SerializeField]
     private ToggleGroup partiesToggleGroup;
 
+    [Header("Editing")]
+
     [SerializeField]
     private Button editPartyButton;
 
     [SerializeField]
     private PartyDetailsPanel partyDetailsDisplay;
+
+    [Header("Questing")]
+
+    [SerializeField]
+    private Button assignButton;
+
+    [SerializeField]
+    private Button recallButton;
 
     private List<PartySummaryDisplay> summaryDisplays = new List<PartySummaryDisplay>();
 
@@ -39,8 +52,9 @@ public class PartiesSelectionPanel : MonoBehaviour
             toggle.group = partiesToggleGroup;
             toggle.onValueChanged.AddListener((bool selected) =>
             {
-                if (selected) editPartyButton.interactable = true;
-                else disableEditParty();
+                var selectedToggle = ToggleExtensions.FindSelectedToggle(partiesToggleGroup);
+                changeEditButtonState(selected, selectedToggle);
+                changeQuestButtonStates(selectedToggle);
             });
 
             var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
@@ -50,20 +64,56 @@ public class PartiesSelectionPanel : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    private void disableEditParty() =>
-        editPartyButton.interactable = (ToggleExtensions.FindSelectedToggle(partiesToggleGroup) != null);
+    private void changeEditButtonState(bool selected, Toggle toggle)
+    {
+        if (selected) editPartyButton.interactable = true;
+        else editPartyButton.interactable = (toggle != null);
+    }
 
-    public void ExpandPartyDetails()
+    private void changeQuestButtonStates(Toggle toggle)
+    {
+        if (toggle != null)
+        {
+            var partyData = findPartyDataFromToggle(toggle);
+            if (partyData != null)
+            {
+                var isQuesting = allQuests.IsQuesting(partyData.Party);
+                assignButton.gameObject.SetActive(!isQuesting);
+                recallButton.gameObject.SetActive(isQuesting);
+                return;
+            }
+        }
+        assignButton.gameObject.SetActive(false);
+        recallButton.gameObject.SetActive(false);
+    }
+
+    private PartyData findSelectedPartyDataAndDeselect()
     {
         Toggle toggle = ToggleExtensions.FindSelectedToggle(partiesToggleGroup);
         toggle.isOn = false;
+        return findPartyDataFromToggle(toggle); ;
+    }
+
+    private PartyData findPartyDataFromToggle(Toggle toggle)
+    {
+        var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
+        foreach (var p in allParties.Parties)
+        {
+            if (p.Party == summary.Party) return p;
+        }
+        return null;
+    }
+
+    public void ExpandPartyDetails()
+    {
+        PartySummaryDisplay summary = null;
+        var party = findSelectedPartyDataAndDeselect();
 
         this.gameObject.SetActive(false);
 
-        var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
         if (partyDetailsDisplay != null) {
             partyDetailsDisplay.gameObject.SetActive(true);
-            partyDetailsDisplay.PartyData = findPartyData(summary.Party);
+            partyDetailsDisplay.PartyData = party;
             LayoutRebuilder.ForceRebuildLayoutImmediate(partyDetailsDisplay.GetComponent<RectTransform>());
         }
 
@@ -71,15 +121,6 @@ public class PartiesSelectionPanel : MonoBehaviour
         {
             Party = summary.Party
         });
-    }
-
-    private PartyData findPartyData(Party party)
-    {
-        foreach(var p in allParties.Parties)
-        {
-            if (p.Party == party) return p;
-        }
-        return null;
     }
 
     public void UpdateSummaryDisplay(PartyEventArgs args)

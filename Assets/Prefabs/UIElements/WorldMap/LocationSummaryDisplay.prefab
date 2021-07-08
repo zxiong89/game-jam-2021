@@ -312,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameDisplay: {fileID: 665863259}
   description: {fileID: 1904534803}
+  createPopup: {fileID: 11400000, guid: 448c3c37bfcd54645baba8830a365654, type: 2}
 --- !u!114 &2083285247
 MonoBehaviour:
   m_ObjectHideFlags: 0

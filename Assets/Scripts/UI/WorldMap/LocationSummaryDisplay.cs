@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,10 +23,5 @@ public class LocationSummaryDisplay : MonoBehaviour
         nameDisplay.text = data.Name;
         description.text = data.Description;
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
-    }
-
-    public void AssignOrRecallParties()
-    {
-
     }
 }
