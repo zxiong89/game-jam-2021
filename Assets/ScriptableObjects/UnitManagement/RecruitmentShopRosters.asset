@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f83487da074f3a458576b4302cd80c7, type: 3}
   m_Name: RecruitmentShopRosters
   m_EditorClassIdentifier: 
+  shopRosters:
+  - {fileID: 11400000, guid: 9ae0ff90cce3d0d49a9f53940a3ae2e6, type: 2}
+  - {fileID: 11400000, guid: 27e7399845b63ef4cb54d1d854a291a3, type: 2}
+  - {fileID: 11400000, guid: 105da217c75c23543a8caec181091045, type: 2}
+  - {fileID: 11400000, guid: 267a5f671b82b38489c5c2b6db6a16af, type: 2}
