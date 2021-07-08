@@ -16,7 +16,44 @@ public class Party
     public ref readonly PartyStats Stats => ref stats;
     #endregion
 
+    #region Constructors
+    public Party()
+    {
+
+    }
+
+    public Party(Party copy)
+    {
+        Name = copy.Name;
+        foreach(var u in copy.frontLine.Units)
+        {
+            frontLine.AddUnit(u);
+        }
+
+        foreach (var u in copy.backLine.Units)
+        {
+            backLine.AddUnit(u);
+        }
+    }
+    #endregion
+
     #region Methods
+    /// <summary>
+    /// Returns a list of units in this party that are not in the other
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public List<Unit> UnitDifference(Party other)
+    {
+        var diff = new List<Unit>();
+
+        foreach(var u in FrontLine)  if (!other.Contains(u)) diff.Add(u);
+        
+        foreach (var u in BackLine) if (!other.Contains(u)) diff.Add(u);
+
+        return diff;
+    }
+
     public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
 
     /// <summary>

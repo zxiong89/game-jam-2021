@@ -45,6 +45,6 @@ public abstract class BaseGameEventListener<T, E, UER> : MonoBehaviour,
 
     public void OnEventRaised(T eventArgs)
     {
-        unityEventResponse.Invoke(eventArgs);
+        unityEventResponse?.Invoke(eventArgs);
     }
 }
