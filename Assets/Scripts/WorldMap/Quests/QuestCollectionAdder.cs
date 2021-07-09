@@ -5,10 +5,10 @@ using UnityEngine;
 public class QuestCollectionAdder : MonoBehaviour
 {
     [SerializeField]
-    private QuestCollection questCollection;
+    private QuestCollection activeQuests;
 
     public void AddToQuest(PartyEventArgs args)
     {
-        questCollection.Quests.Add(new Quest(args.Party, args.Location));
+        activeQuests.Quests.Add(new Quest(args.Party, args.Location));
     }
 }

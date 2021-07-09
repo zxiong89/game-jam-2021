@@ -9,10 +9,10 @@ public class PartiesSelectionPanel : MonoBehaviour
     private Toggle summaryTogglePrefab;
 
     [SerializeField]
-    private PartyCollection allParties;
+    private PartyCollection activeParties;
 
     [SerializeField]
-    private QuestCollection allQuests;
+    private QuestCollection activeQuests;
 
     [Header("Events")]
     [SerializeField]
@@ -50,7 +50,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private void Start()
     {
         int i = 1;
-        foreach (var p in allParties.Parties)
+        foreach (var p in activeParties.Parties)
         {
             p.Party = new Party();
             p.Party.Name = "Party " + i++;
@@ -83,7 +83,7 @@ public class PartiesSelectionPanel : MonoBehaviour
             var partyData = findPartyDataFromToggle(toggle);
             if (partyData != null)
             {
-                var isQuesting = partyData.Party.IsQuesting(allQuests);
+                var isQuesting = partyData.Party.IsQuesting(activeQuests);
                 assignButton.gameObject.SetActive(!isQuesting);
                 recallButton.gameObject.SetActive(isQuesting);
                 return;
@@ -103,7 +103,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private PartyData findPartyDataFromToggle(Toggle toggle)
     {
         var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
-        foreach (var p in allParties.Parties)
+        foreach (var p in activeParties.Parties)
         {
             if (p.Party == summary.Party) return p;
         }
@@ -132,11 +132,11 @@ public class PartiesSelectionPanel : MonoBehaviour
     {
         if (args.PartyData == null) return;
 
-        for (var i = 0; i < allParties.Parties.Length; i++)
+        for (var i = 0; i < activeParties.Parties.Length; i++)
         {
-            if (allParties.Parties[i] == args.PartyData)
+            if (activeParties.Parties[i] == args.PartyData)
             {
-                summaryDisplays[i].DisplayParty(allParties.Parties[i].Party);
+                summaryDisplays[i].DisplayParty(activeParties.Parties[i].Party);
                 break;
             }
         }

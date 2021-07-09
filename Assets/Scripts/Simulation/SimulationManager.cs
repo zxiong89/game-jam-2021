@@ -10,7 +10,7 @@ public class SimulationManager : MonoBehaviour
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
 
     [SerializeField]
-    private QuestCollection allQuests;
+    private QuestCollection activeQuests;
 
     public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
 
@@ -22,6 +22,6 @@ public class SimulationManager : MonoBehaviour
     private void FixedUpdate()
     {
         this.UnitSimulator.UpdateUnits(allUnits.Units);
-        this.QuestSimulator.UpdateQuests(allQuests.Quests);
+        this.QuestSimulator.UpdateQuests(activeQuests.Quests);
     }
 }

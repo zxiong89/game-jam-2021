@@ -39,9 +39,9 @@ public class Party
 
     #region Methods
 
-    public bool IsQuesting(QuestCollection allQuests)
+    public bool IsQuesting(QuestCollection activeQuests)
     {
-        foreach (var q in allQuests.Quests)
+        foreach (var q in activeQuests.Quests)
         {
             if (q.Party == this) return true;
         }
