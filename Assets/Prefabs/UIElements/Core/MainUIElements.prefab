@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -120,12 +120,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239447469256236220}
         m_MethodName: SetGameSpeed
-        m_Mode: 4
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 5
+          m_IntArgument: 2
+          m_FloatArgument: 2
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -182,6 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeedEvent: {fileID: 11400000, guid: 2803f94f216507f48b07f852909ee85f, type: 2}
+  speedButtonImages:
+  - {fileID: 5431637317576565900}
+  - {fileID: 8508333940723990424}
+  - {fileID: 3625497031731346604}
+  speedButtonSpeeds: 000000000100000005000000
 --- !u!114 &2257944339162612687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,11 +332,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239447469256236220}
         m_MethodName: SetGameSpeed
-        m_Mode: 4
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2018,7 +2023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2079,7 +2084,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239447469256236220}
         m_MethodName: SetGameSpeed
-        m_Mode: 4
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
