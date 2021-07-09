@@ -48,6 +48,21 @@ public class Party
         return false;
     }
 
+    public void StopQuesting(QuestCollection activeQuests)
+    {
+        List<Quest> questsToRemove = new List<Quest>();
+
+        foreach (var q in activeQuests.Quests)
+        {
+            if (q.Party == this) questsToRemove.Add(q);
+        }
+
+        foreach (var r in questsToRemove)
+        {
+            activeQuests.Quests.Remove(r);
+        }
+    }
+
     /// <summary>
     /// Returns a list of units in this party that are not in the other
     /// </summary>

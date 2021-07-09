@@ -162,4 +162,12 @@ public class PartiesSelectionPanel : MonoBehaviour
         if (locationData == null) return;
         activeQuests.Quests.Add(new Quest(party, locationData));
     }
+
+    public void RecallParty()
+    {
+        var partyData = findSelectedPartyDataAndDeselect();
+        if (partyData == null) return;
+
+        partyData.Party.StopQuesting(activeQuests);
+    }
 }
