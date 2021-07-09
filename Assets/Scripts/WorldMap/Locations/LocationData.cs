@@ -45,4 +45,22 @@ public class LocationData : ScriptableObject
 
         return new Exploration(explorationEncounters[Random.Range(0, explorationEncounters.Count - 1)]);
     }
+
+    private Encounter spawnCombatEncounter()
+    {
+        float max = 0f;
+        foreach(var data in combatEncounters)
+        {
+            max += data.SpawnRate;
+        }
+
+        float i = Random.Range(0, max);
+        foreach(var data in combatEncounters)
+        {
+            if (i <= data.SpawnRate) return new Combat(data);
+            i -= data.SpawnRate; 
+        }
+
+        return new Combat(combatEncounters[0]); // fail-safe but should never hit
+    }
 }
