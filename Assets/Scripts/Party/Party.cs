@@ -66,14 +66,14 @@ public class Party
         }
     }
 
-    public float DealDamage(EnemyStats enemy)
+    public float DealDamage(CreatureStats enemy)
     {
         var totalAtk = calcAtk(Stats.PhyAtk, Stats.AtkSup, enemy.PhyResist);
         totalAtk += calcAtk(Stats.MagAtk, Stats.AtkSup, enemy.MagResist);
         return floorDamage(totalAtk - enemy.Def);
     }
 
-    public float TakeDamage(EnemyStats enemy)
+    public float TakeDamage(CreatureStats enemy)
     {
         return floorDamage(enemy.Atk - CalcTotalDef());
     }

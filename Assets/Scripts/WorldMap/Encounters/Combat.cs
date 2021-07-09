@@ -2,12 +2,12 @@
 
 public class Combat : Encounter
 {
-    private EnemyStats stats;
+    private CreatureStats stats;
     private float hp;
 
     public Combat(CombatData data)
     {
-        stats = EnemyStats.Create(data);
+        stats = CreatureStats.Create(data);
         hp = stats.Hp; 
     }
 
@@ -17,7 +17,7 @@ public class Combat : Encounter
 
     public override bool IsComplete() => hp <= 0f;
 
-    public override string LogString() => stats.Creature;
+    public override string LogString() => stats.Name;
 
     public override int Run(Party party, int ticks)
     {
