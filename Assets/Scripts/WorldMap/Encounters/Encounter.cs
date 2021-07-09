@@ -6,10 +6,8 @@ public abstract class Encounter
     {
     }
 
-    public abstract int Run(Party party, int ticks);
+    public abstract EncounterResults Run(Party party, int turns);
     public abstract string LogString();
-    public abstract bool IsComplete();
 
-    public abstract float GetExp();
-    public abstract float GetGold();
+    public abstract bool IsComplete();
 }
