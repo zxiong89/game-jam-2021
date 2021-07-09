@@ -1459,5 +1459,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7,
         type: 2}
+    - target: {fileID: 8347412704459361023, guid: 44fe0f9438df6b448b09203740e9e6fd,
+        type: 3}
+      propertyPath: shopRosters
+      value: 
+      objectReference: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44fe0f9438df6b448b09203740e9e6fd, type: 3}
