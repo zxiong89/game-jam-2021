@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameDisplay: {fileID: 665863259}
   description: {fileID: 1904534803}
-  Toggle: {fileID: 0}
+  Toggle: {fileID: 4356132760826463908}
 --- !u!114 &2083285247
 MonoBehaviour:
   m_ObjectHideFlags: 0

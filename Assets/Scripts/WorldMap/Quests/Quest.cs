@@ -19,6 +19,7 @@ public class Quest
     public void Adventure(float ticks = STARTING_TICKS)
     {
         if (curEncounter == null) return;
+
         float remainingTicks = curEncounter.Run(Party, ticks);
         while (remainingTicks > 0) 
         {
