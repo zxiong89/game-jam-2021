@@ -13,14 +13,7 @@ MonoBehaviour:
   m_Name: SlimeForest
   m_EditorClassIdentifier: 
   locationName: Slime Forest
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed
-    lectus vestibulum mattis ullamcorper. Cursus turpis massa tincidunt dui. Fames
-    ac turpis egestas maecenas pharetra. At erat pellentesque adipiscing commodo
-    elit at. Tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed. Ullamcorper
-    eget nulla facilisi etiam dignissim diam. Pellentesque sit amet porttitor eget
-    dolor morbi. Pellentesque id nibh tortor id aliquet lectus proin nibh. Turpis
-    egestas integer eget aliquet nibh praesent tristique magna sit.
+  description: A quiet green forest where many new adventures begin their careers.
   combatEncounters: []
   combatEncounterRate: 40
   trapEncounters: []

@@ -6,7 +6,10 @@ public abstract class Encounter
     {
     }
 
-    public abstract float Run(Party party, float ticks);
-    public abstract string Name();
-    public abstract float Completion();
+    public abstract int Run(Party party, int ticks);
+    public abstract string LogString();
+    public abstract bool IsComplete();
+
+    public abstract float GetExp();
+    public abstract float GetGold();
 }

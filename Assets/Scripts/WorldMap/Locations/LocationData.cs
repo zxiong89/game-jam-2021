@@ -10,6 +10,7 @@ public class LocationData : ScriptableObject
     public string Name { get => locationName; }
 
     [SerializeField]
+    [TextArea]
     private string description;
     public string Description { get => description; }
 
@@ -20,12 +21,6 @@ public class LocationData : ScriptableObject
     private float combatEncounterRate;
 
     [SerializeField]
-    private List<TrapData> trapEncounters;
-
-    [SerializeField]
-    private float trapEncounterRate;
-
-    [SerializeField]
     private List<ExplorationData> explorationEncounters;
 
     public Encounter SpawnEncounter()
@@ -34,23 +29,13 @@ public class LocationData : ScriptableObject
         
         if (rand < combatEncounterRate && combatEncounters.Count > 0)
         {
-            if (trapEncounters.Count == 0)
+            if (combatEncounters.Count == 0)
             {
                 Debug.LogError("No combat encounters to spawn");
                 return null;
             }
 
             return new Combat(combatEncounters[Random.Range(0, combatEncounters.Count - 1)]);
-        }
-        else if (rand < combatEncounterRate + trapEncounterRate && trapEncounters.Count > 0) 
-        {
-            if (trapEncounters.Count == 0)
-            {
-                Debug.LogError("No trap encounters to spawn");
-                return null;
-            }
-
-            return new Trap(trapEncounters[Random.Range(0, trapEncounters.Count - 1)]);
         }
         else if (explorationEncounters.Count == 0)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Quest
 {
-    public const float STARTING_TICKS = 100f;
+    public const int STARTING_TICKS = 10;
 
     public LocationData LocationData { get; private set; }
     public Party Party { get; private set; }
@@ -16,11 +16,14 @@ public class Quest
         Party = party;
     }
 
-    public void Adventure(float ticks = STARTING_TICKS)
+    public void Adventure(int ticks = STARTING_TICKS)
     {
-        if (curEncounter == null) return;
+        if (curEncounter == null || curEncounter.IsComplete())
+        {
+            curEncounter = LocationData.SpawnEncounter();
+        }
 
-        float remainingTicks = curEncounter.Run(Party, ticks);
+        int remainingTicks = curEncounter.Run(Party, ticks);
         while (remainingTicks > 0) 
         {
             curEncounter = LocationData.SpawnEncounter();
