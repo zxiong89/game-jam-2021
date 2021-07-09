@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allUnits: {fileID: 11400000, guid: e3befbc5e4c95fd47afa6eb7ffc9dc05, type: 2}
+  playerGuild: {fileID: 0}
+  shopRosters: {fileID: 0}
+  activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
 --- !u!114 &8347412704459361021
 MonoBehaviour:
   m_ObjectHideFlags: 0

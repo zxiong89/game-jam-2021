@@ -13,9 +13,57 @@ MonoBehaviour:
   m_Name: SlimeForest
   m_EditorClassIdentifier: 
   locationName: Slime Forest
-  description: A quiet green forest where many new adventures begin their careers.
-  combatEncounters: []
-  combatEncounterRate: 40
-  trapEncounters: []
-  trapEncounterRate: 20
-  explorationEncounters: []
+  description: A quiet green forest where many new adventurers begin their careers.
+  combatEncounters:
+  - Creature: Green Slime
+    Atk:
+      Min: 200
+      Max: 400
+    Def:
+      Min: 200
+      Max: 400
+    PhyResist: 0
+    MagResist: 0
+    Exp:
+      Min: 0
+      Max: 0
+    Gold:
+      Min: 0
+      Max: 0
+  - Creature: Blue Slime
+    Atk:
+      Min: 200
+      Max: 400
+    Def:
+      Min: 200
+      Max: 400
+    PhyResist: 0
+    MagResist: 0
+    Exp:
+      Min: 0
+      Max: 0
+    Gold:
+      Min: 0
+      Max: 0
+  combatEncounterRate: 50
+  explorationEncounters:
+  - Description: Buried Treasure
+    Time:
+      Min: 5
+      Max: 15
+    Exp:
+      Min: 0
+      Max: 0
+    Gold:
+      Min: 0
+      Max: 0
+  - Description: Hollow Tree
+    Time:
+      Min: 5
+      Max: 15
+    Exp:
+      Min: 0
+      Max: 0
+    Gold:
+      Min: 0
+      Max: 0

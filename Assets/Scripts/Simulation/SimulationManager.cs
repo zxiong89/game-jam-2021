@@ -13,7 +13,12 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     private RecruitmentShopRosters shopRosters;
 
+    [SerializeField]
+    private QuestCollection activeQuests;
+
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
+
+    public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
 
     //Might want to move initialization elsewhere, but doing it here for now for convenience
     private void Start()
