@@ -4,20 +4,16 @@ using UnityEngine;
 public class RecruitmentGrid : MonoBehaviour
 {
     [SerializeField]
-    private IntegerLimits[] ageLimits;
-
-    [SerializeField]
     private RecruitmentShopRosters shopRosters;
 
     [SerializeField]
     private GameObject resumePrefab;
 
-    [SerializeField]
-    private int GRID_LIMIT = 4;
-
     private AdventurerTier currentTier;
 
     private UnitFactory unitFactory;
+
+    private float LastShopRefresh = 0;
 
     public void Initialize(UnitFactory newUnitFactory)
     {
@@ -26,32 +22,13 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void LoadRoster(AdventurerTier tier)
     {
-        if (true)
+        if (LastShopRefresh == 0 || Time.time - LastShopRefresh > 60)
         {
             shopRosters.RefreshRosters(unitFactory);
+            LastShopRefresh = Time.time;
         }
-        UnitRoster roster = shopRosters.GetRoster(tier);
-        //for (int i = 0; i < GRID_LIMIT; i++)
-        //{
-        //    Unit unitToAdd;
-        //    if(i < roster.Count)
-        //    {
-        //        unitToAdd = roster[i];
-        //    }
-        //    else
-        //    {
-        //        unitToAdd = AddNewUnitToRoster(roster, tier);
-        //    }
-        //}
         currentTier = tier;
         RefreshGridDisplay();
-    }
-
-    private Unit AddNewUnitToRoster(UnitRoster roster, AdventurerTier tier)
-    {
-        var newUnit = unitFactory.RandomizeUnit(ageLimits[(int)tier]);
-        roster.Add(newUnit);
-        return newUnit;
     }
 
     private void AddResumeToGrid(Unit unit)
