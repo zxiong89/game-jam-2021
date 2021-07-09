@@ -38,6 +38,16 @@ public class Party
     #endregion
 
     #region Methods
+
+    public bool IsQuesting(QuestCollection allQuests)
+    {
+        foreach (var q in allQuests.Quests)
+        {
+            if (q.Party == this) return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Returns a list of units in this party that are not in the other
     /// </summary>

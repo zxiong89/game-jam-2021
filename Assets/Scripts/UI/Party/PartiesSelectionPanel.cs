@@ -39,6 +39,12 @@ public class PartiesSelectionPanel : MonoBehaviour
     [SerializeField]
     private Button recallButton;
 
+    [SerializeField]
+    private PopupEvent createPopup;
+
+    [SerializeField]
+    private WorldMapPanel worldMapPrefab;
+
     private List<PartySummaryDisplay> summaryDisplays = new List<PartySummaryDisplay>();
 
     private void Start()
@@ -77,7 +83,7 @@ public class PartiesSelectionPanel : MonoBehaviour
             var partyData = findPartyDataFromToggle(toggle);
             if (partyData != null)
             {
-                var isQuesting = allQuests.IsQuesting(partyData.Party);
+                var isQuesting = partyData.Party.IsQuesting(allQuests);
                 assignButton.gameObject.SetActive(!isQuesting);
                 recallButton.gameObject.SetActive(isQuesting);
                 return;
@@ -106,20 +112,19 @@ public class PartiesSelectionPanel : MonoBehaviour
 
     public void ExpandPartyDetails()
     {
-        PartySummaryDisplay summary = null;
-        var party = findSelectedPartyDataAndDeselect();
+        var partyData = findSelectedPartyDataAndDeselect();
 
         this.gameObject.SetActive(false);
 
         if (partyDetailsDisplay != null) {
             partyDetailsDisplay.gameObject.SetActive(true);
-            partyDetailsDisplay.PartyData = party;
+            partyDetailsDisplay.PartyData = partyData;
             LayoutRebuilder.ForceRebuildLayoutImmediate(partyDetailsDisplay.GetComponent<RectTransform>());
         }
 
         onPartySelected.Raise(new PartyEventArgs()
         {
-            Party = summary.Party
+            Party = partyData.Party
         });
     }
 
@@ -135,5 +140,15 @@ public class PartiesSelectionPanel : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void OpenQuestAssignment()
+    {
+        var toggle = findSelectedPartyDataAndDeselect();
+        var content = GameObject.Instantiate<WorldMapPanel>(worldMapPrefab);
+        createPopup.Raise(new PopupEventArgs()
+        {
+            Content = content.gameObject
+        });
     }
 }
