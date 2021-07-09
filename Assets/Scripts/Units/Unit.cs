@@ -16,20 +16,23 @@ public class Unit
             level = value;
             Stats?.UpdateStats(level);
             recruitmentData = null;
+            ExperienceToLevel = (int)math.pow(level, 3);
         }
     }
 
-    private int experience;
+    public int ExperienceToLevel { get; private set; }
 
+
+    private int experience;
     public int Experience
     {
         get { return experience; }
         set { 
             experience = value;
-            if(experience > 100)
+            while(experience > ExperienceToLevel)
             {
-                Level += experience / 100;
-                experience %= 100;
+                Level++;
+                experience -= ExperienceToLevel;
             }
         }
     }

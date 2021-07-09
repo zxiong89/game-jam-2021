@@ -13,12 +13,6 @@ public class Guild : ScriptableObject
 
     [SerializeField]
     private int gold;
-
-    public void Initialize()
-    {
-        gold = 15000;
-    }
-
     public int Gold
     {
         get { return gold; }
@@ -28,5 +22,8 @@ public class Guild : ScriptableObject
         }
     }
 
-
+    public void Initialize()
+    {
+        Gold = 6000;
+    }
 }

@@ -17,6 +17,13 @@ public class RecruitmentShopRosters : ScriptableObject
     [SerializeField]
     private int GRID_LIMIT = 4;
 
+    private float timeSinceLastRefresh = 0;
+
+    public void Initialize()
+    {
+        timeSinceLastRefresh = 0;
+    }
+
     public void AddUnitToTier(Unit unitToAdd, AdventurerTier tier)
     {
         shopRosters[(int)tier].Add(unitToAdd);
@@ -34,11 +41,15 @@ public class RecruitmentShopRosters : ScriptableObject
 
     public void RefreshRosters(UnitFactory factory)
     {
-        FreeUnits();
-        foreach (var tier in AdventurerTierHelpers.GetValues())
-        {
-            List<Unit> unitsInTier = FindUnitsInTier(freeAgentRoster, tier);
-            AddUnitsToShopRoster(tier, unitsInTier, factory);
+        if(timeSinceLastRefresh == 0 || Time.time - timeSinceLastRefresh > 60) 
+        { 
+            FreeUnits();
+            foreach (var tier in AdventurerTierHelpers.GetValues())
+            {
+                List<Unit> unitsInTier = FindUnitsInTier(freeAgentRoster, tier);
+                AddUnitsToShopRoster(tier, unitsInTier, factory);
+            }
+            timeSinceLastRefresh = Time.time;
         }
     }
 

@@ -13,8 +13,6 @@ public class RecruitmentGrid : MonoBehaviour
 
     private UnitFactory unitFactory;
 
-    private float LastShopRefresh = 0;
-
     public void Initialize(UnitFactory newUnitFactory)
     {
         unitFactory = newUnitFactory;
@@ -22,11 +20,7 @@ public class RecruitmentGrid : MonoBehaviour
 
     public void LoadRoster(AdventurerTier tier)
     {
-        if (LastShopRefresh == 0 || Time.time - LastShopRefresh > 60)
-        {
-            shopRosters.RefreshRosters(unitFactory);
-            LastShopRefresh = Time.time;
-        }
+        shopRosters.RefreshRosters(unitFactory);
         currentTier = tier;
         RefreshGridDisplay();
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +7,20 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     private UnitCollection allUnits;
 
-    public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
+    [SerializeField]
+    private Guild playerGuild;
 
     [SerializeField]
-    private QuestCollection activeQuests;
+    private RecruitmentShopRosters shopRosters;
 
-    public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
+    public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
+
+    //Might want to move initialization elsewhere, but doing it here for now for convenience
+    private void Start()
+    {
+        playerGuild.Initialize();
+        shopRosters.Initialize();
+    }
 
     public void PlayAtSpeed(float speed)
     {
