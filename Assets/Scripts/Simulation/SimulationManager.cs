@@ -7,7 +7,15 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     private UnitCollection allUnits;
 
+    [SerializeField]
+    private Guild playerGuild;
+
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
+
+    private void Start()
+    {
+        playerGuild.Initialize();
+    }
 
     public void PlayAtSpeed(float speed)
     {
