@@ -31,8 +31,8 @@ public class Unit
             experience = value;
             while(experience > ExperienceToLevel)
             {
-                Level++;
                 experience -= ExperienceToLevel;
+                Level++;
             }
         }
     }
