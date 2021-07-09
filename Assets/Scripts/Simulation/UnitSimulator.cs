@@ -57,7 +57,8 @@ public class UnitSimulator
 
     private void UpdateLevel(Unit unit)
     {
-        int expGained = Mathf.FloorToInt(FloatExtensions.Randomize(30, 110, 70));
+        float expToLevel = unit.ExperienceToLevel;
+        int expGained = Mathf.FloorToInt(FloatExtensions.Randomize(.3f * expToLevel, 1.1f * expToLevel, .7f * expToLevel));
         unit.Experience += expGained;
     }
 }
