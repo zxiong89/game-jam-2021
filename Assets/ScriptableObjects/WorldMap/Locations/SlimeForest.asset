@@ -15,36 +15,14 @@ MonoBehaviour:
   locationName: Slime Forest
   description: A quiet green forest where many new adventurers begin their careers.
   combatEncounters:
-  - Creature: Green Slime
-    Atk:
-      Min: 200
-      Max: 400
-    Def:
-      Min: 200
-      Max: 400
-    PhyResist: 0
-    MagResist: 0
-    Exp:
-      Min: 0
-      Max: 0
-    Gold:
-      Min: 0
-      Max: 0
-  - Creature: Blue Slime
-    Atk:
-      Min: 200
-      Max: 400
-    Def:
-      Min: 200
-      Max: 400
-    PhyResist: 0
-    MagResist: 0
-    Exp:
-      Min: 0
-      Max: 0
-    Gold:
-      Min: 0
-      Max: 0
+  - Creatures:
+    - Green Slime
+    - Red Slime
+    - Pink Slime
+    - Blue Slime
+    - Teal Slime
+    Type: {fileID: 11400000, guid: 517c90f940c8a1244a4b4d8312831a2c, type: 2}
+    SpawnRate: 10
   combatEncounterRate: 50
   explorationEncounters:
   - Description: Buried Treasure

@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b759c4664b373494ab240c73ea23d744, type: 3}
   m_Name: ForestSlime
   m_EditorClassIdentifier: 
-  Name: 
   Atk:
-    Min: 0
-    Max: 0
+    Min: 2000
+    Max: 4000
   Def:
-    Min: 0
-    Max: 0
+    Min: 2000
+    Max: 4000
   PhyResist: 0
   MagResist: 0
   Exp:
-    Min: 0
-    Max: 0
+    Min: 1
+    Max: 10
   Gold:
-    Min: 0
-    Max: 0
+    Min: 1
+    Max: 10
