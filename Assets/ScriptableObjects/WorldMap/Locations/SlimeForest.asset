@@ -22,26 +22,20 @@ MonoBehaviour:
     - Blue Slime
     - Teal Slime
     Type: {fileID: 11400000, guid: 517c90f940c8a1244a4b4d8312831a2c, type: 2}
-    SpawnRate: 10
-  combatEncounterRate: 50
+    SpawnRate: 1
+  - Creatures:
+    - Metal Slime
+    Type: {fileID: 11400000, guid: 783b0cd6f76306647b2cd3d5598c0aea, type: 2}
+    SpawnRate: 0.001
+  combatEncounterRate: 40
   explorationEncounters:
-  - Description: Buried Treasure
-    Time:
-      Min: 5
-      Max: 15
-    Exp:
-      Min: 0
-      Max: 0
-    Gold:
-      Min: 0
-      Max: 0
-  - Description: Hollow Tree
-    Time:
-      Min: 5
-      Max: 15
-    Exp:
-      Min: 0
-      Max: 0
-    Gold:
-      Min: 0
-      Max: 0
+  - Description:
+    - Hollow Tree
+    - Treasure Underneath Leaves
+    Type: {fileID: 11400000, guid: e29d27fe8e6c22f4ea1fd960ee9aa947, type: 2}
+    SpawnRate: 1
+  - Description:
+    - Buried Treasure
+    - Trapped Chest
+    Type: {fileID: 11400000, guid: 725fa8b8095311547a295d3a897722f6, type: 2}
+    SpawnRate: 0.01

@@ -1,8 +1,7 @@
 ﻿[System.Serializable]
 public struct ExplorationData
 {
-    public string Description;
-    public FloatRange Time;
-    public FloatRange Exp;
-    public FloatRange Gold;
+    public string[] Description;
+    public ExplorationType Type;
+    public float SpawnRate;
 }
