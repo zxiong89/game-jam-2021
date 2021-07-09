@@ -17,3 +17,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27e7399845b63ef4cb54d1d854a291a3, type: 2}
   - {fileID: 11400000, guid: 105da217c75c23543a8caec181091045, type: 2}
   - {fileID: 11400000, guid: 267a5f671b82b38489c5c2b6db6a16af, type: 2}
+  freeAgentRoster: {fileID: 11400000, guid: dbd10a8f2cde48749959a7634a8a4dfb, type: 2}
+  ageLimits:
+  - {fileID: 11400000, guid: cc9e0473f1ca0d24dbb00c09ec71a7af, type: 2}
+  - {fileID: 11400000, guid: 7279e6b1da22e9d49a843d985a6a7f2e, type: 2}
+  - {fileID: 11400000, guid: 9ae79594adf085245913e36e6d0ea851, type: 2}
+  - {fileID: 11400000, guid: cd3c3b201f907d84a9518cc3bed9eaae, type: 2}
+  GRID_LIMIT: 4

@@ -21,4 +21,17 @@ public static class AdventurerTierHelpers
             throw new Exception("Could not convert value to AdventurerTier");
         }
     }
+
+    private static AdventurerTier[] values =
+    {
+        AdventurerTier.Apprentice,
+        AdventurerTier.Experienced,
+        AdventurerTier.Expert,
+        AdventurerTier.Veteran
+    };
+
+    public static AdventurerTier[] GetValues()
+    {
+        return values;
+    }
 }

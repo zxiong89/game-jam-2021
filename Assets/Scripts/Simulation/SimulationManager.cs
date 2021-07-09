@@ -14,14 +14,9 @@ public class SimulationManager : MonoBehaviour
 
     public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
 
-    public void Resume()
+    public void PlayAtSpeed(float speed)
     {
-        Time.fixedDeltaTime = .5f;
-    }
-
-    public void Pause()
-    {
-        Time.fixedDeltaTime = 0;
+        Time.timeScale = speed;
     }
 
     private void FixedUpdate()

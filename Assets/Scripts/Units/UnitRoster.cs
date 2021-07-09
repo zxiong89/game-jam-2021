@@ -37,6 +37,11 @@ public class UnitRoster : ScriptableObject, IEnumerable<Unit>
         }
     }
 
+    public void RemoveAt(int index)
+    {
+        Roster.RemoveAt(index);
+    }
+
     public int Count { 
         get => Roster.Count;
     }
