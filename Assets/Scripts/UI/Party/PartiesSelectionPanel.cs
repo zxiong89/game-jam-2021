@@ -144,11 +144,22 @@ public class PartiesSelectionPanel : MonoBehaviour
 
     public void OpenQuestAssignment()
     {
-        var toggle = findSelectedPartyDataAndDeselect();
+        var partyData = findSelectedPartyDataAndDeselect();
+        if (partyData == null) return;
+
         var content = GameObject.Instantiate<WorldMapPanel>(worldMapPrefab);
         createPopup.Raise(new PopupEventArgs()
         {
-            Content = content.gameObject
+            Content = content.gameObject,
+            AcceptTextOverride = "Assign",
+            AcceptCallback = (GameObject obj) => assignQuestToParty(partyData.Party, content.GetSelectedLocation())
         });
+    }
+
+    private void assignQuestToParty(Party party, LocationData locationData)
+    {
+        if (party == null) return;
+        if (locationData == null) return;
+        activeQuests.Quests.Add(new Quest(party, locationData));
     }
 }

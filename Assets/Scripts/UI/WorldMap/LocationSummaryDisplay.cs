@@ -10,18 +10,20 @@ public class LocationSummaryDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI description;
 
-    private LocationData data;
+    public Toggle Toggle;
+
+    public LocationData Data { get; private set; }
 
     public void SetLocationData(LocationData data)
     {
-        this.data = data;
+        this.Data = data;
         DisplayLocationData();
     }
 
     public void DisplayLocationData()
     {
-        nameDisplay.text = data.Name;
-        description.text = data.Description;
+        nameDisplay.text = Data.Name;
+        description.text = Data.Description;
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
 }

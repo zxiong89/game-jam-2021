@@ -64,6 +64,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 93edd5f946a83f34aa61d702c373f0c0, type: 2}
   locationSummaryPrefab: {fileID: 2083285246, guid: 860d6a9cd99736745927bbc9c1b06a6b,
     type: 3}
+  group: {fileID: 7650835022698755836}
 --- !u!114 &2713627754569135290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,7 @@ GameObject:
   - component: {fileID: 2982183090347046185}
   - component: {fileID: 4571842731085726945}
   - component: {fileID: 4228303161263671330}
+  - component: {fileID: 7650835022698755836}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -254,6 +256,19 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &7650835022698755836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519716039194163010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!1 &2191898631005966865
 GameObject:
   m_ObjectHideFlags: 0
