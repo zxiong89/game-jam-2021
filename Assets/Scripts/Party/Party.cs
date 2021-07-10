@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 [System.Serializable]
 public class Party
 {
+    private const float SUPPORT_MOD_FACTOR = 10000f;
+
     #region Fields/Properties
     public string Name = "Party";
 
@@ -14,6 +18,8 @@ public class Party
 
     private PartyStats stats = new PartyStats();
     public ref readonly PartyStats Stats => ref stats;
+
+    public Quest LastQuest { get; set; }
     #endregion
 
     #region Constructors
@@ -34,10 +40,74 @@ public class Party
         {
             backLine.AddUnit(u);
         }
+
+        LastQuest = copy.LastQuest;
     }
     #endregion
 
     #region Methods
+
+    public bool IsQuesting(QuestCollection activeQuests)
+    {
+        foreach (var q in activeQuests.Quests)
+        {
+            if (q.Party == this) return true;
+        }
+        return false;
+    }
+
+    public Quest StopQuesting(QuestCollection activeQuests)
+    {
+        var questToRemove = activeQuests.Quests.Find((quest) => quest.Party == this);
+        if (questToRemove == null) return null;
+
+        activeQuests.Quests.Remove(questToRemove);
+        questToRemove.IsActive = false;
+        return questToRemove;
+    }
+
+    public void GiveExp(int exp)
+    {
+        foreach(var u in FrontLine)
+        {
+            u.Experience += exp;
+        }
+
+        foreach(var u in BackLine)
+        {
+            u.Experience += exp;
+        }
+    }
+
+    public float DealDamage(CreatureStats enemy)
+    {
+        var totalAtk = calcAtk(Stats.PhyAtk, Stats.AtkSup, enemy.PhyResist);
+        totalAtk += calcAtk(Stats.MagAtk, Stats.AtkSup, enemy.MagResist);
+        return floorDamage(totalAtk - enemy.Def);
+    }
+
+    public float TakeDamage(CreatureStats enemy)
+    {
+        return floorDamage(enemy.Atk - CalcTotalDef());
+    }
+
+    private float floorDamage(float damage) => Mathf.Max(damage, 0f);
+
+    public float CalcTotalAtk() => 
+        calcAtk(Stats.PhyAtk + Stats.MagAtk, Stats.AtkSup) + calcAtk(Stats.MagAtk, Stats.AtkSup);
+
+    public float CalcTotalDef() =>
+        Stats.Def * normalizeSupMod(Stats.DefSup);
+
+    private float calcAtk(float baseAtk, float supMod, float resistMod = 0f)
+    {
+        if (resistMod >= 1f) return 0f;
+        if (resistMod < 0f) resistMod = 0f;
+        return (1 - resistMod) * normalizeSupMod(supMod) * baseAtk;
+    }
+
+    private float normalizeSupMod(float supMod) => 1 + (supMod / SUPPORT_MOD_FACTOR);
+
     /// <summary>
     /// Returns a list of units in this party that are not in the other
     /// </summary>
@@ -47,12 +117,14 @@ public class Party
     {
         var diff = new List<Unit>();
 
-        foreach(var u in FrontLine)  if (!other.Contains(u)) diff.Add(u);
+        foreach(var u in FrontLine) if (!other.Contains(u)) diff.Add(u);
         
         foreach (var u in BackLine) if (!other.Contains(u)) diff.Add(u);
 
         return diff;
     }
+
+    public int UnitCount() => FrontLine.Count + BackLine.Count;
 
     public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
 

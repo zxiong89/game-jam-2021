@@ -11,5 +11,5 @@ public static class StatExtensions
     }
 
     public static float Randomize(IntegerLimits baseStats) 
-        => Random.Range(baseStats.Min, baseStats.Max);
+        => Random.Range(baseStats.Min, baseStats.Max + 1);
 }

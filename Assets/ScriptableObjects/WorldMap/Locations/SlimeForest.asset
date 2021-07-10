@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b840956b2d8a1cb4d8c5f15974262df9, type: 3}
+  m_Name: SlimeForest
+  m_EditorClassIdentifier: 
+  locationName: Slime Forest
+  description: A quiet green forest where many new adventurers begin their careers.
+  combatEncounters:
+  - Creatures:
+    - Green Slime
+    - Red Slime
+    - Pink Slime
+    - Blue Slime
+    - Teal Slime
+    Type: {fileID: 11400000, guid: 517c90f940c8a1244a4b4d8312831a2c, type: 2}
+    SpawnRate: 1
+  - Creatures:
+    - Metal Slime
+    Type: {fileID: 11400000, guid: 783b0cd6f76306647b2cd3d5598c0aea, type: 2}
+    SpawnRate: 0.001
+  combatEncounterRate: 40
+  explorationEncounters:
+  - Description:
+    - Herbs
+    - Loose Change
+    Type: {fileID: 11400000, guid: e29d27fe8e6c22f4ea1fd960ee9aa947, type: 2}
+    SpawnRate: 1
+  - Description:
+    - Buried Treasure
+    - Trapped Chest
+    Type: {fileID: 11400000, guid: 725fa8b8095311547a295d3a897722f6, type: 2}
+    SpawnRate: 0.01

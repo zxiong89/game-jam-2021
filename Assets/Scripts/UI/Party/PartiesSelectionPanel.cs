@@ -9,7 +9,13 @@ public class PartiesSelectionPanel : MonoBehaviour
     private Toggle summaryTogglePrefab;
 
     [SerializeField]
-    private PartyData[] parties;
+    private PartyCollection activeParties;
+
+    [SerializeField]
+    private QuestCollection activeQuests;
+
+    [SerializeField]
+    private Guild guild;
 
     [Header("Events")]
     [SerializeField]
@@ -20,18 +26,40 @@ public class PartiesSelectionPanel : MonoBehaviour
     [SerializeField]
     private ToggleGroup partiesToggleGroup;
 
+    [Header("Editing")]
+
     [SerializeField]
     private Button editPartyButton;
 
     [SerializeField]
     private PartyDetailsPanel partyDetailsDisplay;
 
+    [Header("Questing")]
+
+    [SerializeField]
+    private Button assignButton;
+
+    [SerializeField]
+    private Button recallButton;
+
+    [SerializeField]
+    private Button lastQuestButton;
+
+    [SerializeField]
+    private PopupEvent createPopup;
+
+    [SerializeField]
+    private WorldMapPanel worldMapPrefab;
+
+    [SerializeField]
+    private QuestLogPopup questLogPopupPrefab;
+
     private List<PartySummaryDisplay> summaryDisplays = new List<PartySummaryDisplay>();
 
     private void Start()
     {
         int i = 1;
-        foreach (var p in parties)
+        foreach (var p in activeParties.Parties)
         {
             p.Party = new Party();
             p.Party.Name = "Party " + i++;
@@ -39,8 +67,10 @@ public class PartiesSelectionPanel : MonoBehaviour
             toggle.group = partiesToggleGroup;
             toggle.onValueChanged.AddListener((bool selected) =>
             {
-                if (selected) editPartyButton.interactable = true;
-                else disableEditParty();
+                var selectedToggle = ToggleExtensions.FindSelectedToggle(partiesToggleGroup);
+                var partyData = selectedToggle != null ? findPartyDataFromToggle(selectedToggle) : null;
+                changeEditButtonState(partyData);
+                changeQuestButtonStates(partyData);
             });
 
             var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
@@ -50,49 +80,117 @@ public class PartiesSelectionPanel : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    private void disableEditParty() =>
-        editPartyButton.interactable = (ToggleExtensions.FindSelectedToggle(partiesToggleGroup) != null);
+    private void changeEditButtonState(PartyData partyData)
+    {
+        if (partyData == null) editPartyButton.interactable = false;
+        else editPartyButton.interactable = (partyData.Party.LastQuest == null);
+    }
 
-    public void ExpandPartyDetails()
+    private void changeQuestButtonStates(PartyData partyData)
+    {
+        if (partyData != null && partyData.Party.UnitCount() > 0)
+        {
+            var isQuesting = partyData.Party.IsQuesting(activeQuests);
+            assignButton.gameObject.SetActive(!isQuesting);
+            recallButton.gameObject.SetActive(isQuesting);
+            lastQuestButton.gameObject.SetActive(partyData.Party.LastQuest != null);
+            return;
+        }
+        assignButton.gameObject.SetActive(false);
+        recallButton.gameObject.SetActive(false);
+        lastQuestButton.gameObject.SetActive(false);
+    }
+
+    private PartyData findSelectedPartyDataAndDeselect()
     {
         Toggle toggle = ToggleExtensions.FindSelectedToggle(partiesToggleGroup);
         toggle.isOn = false;
+        return findPartyDataFromToggle(toggle); ;
+    }
+
+    private PartyData findPartyDataFromToggle(Toggle toggle)
+    {
+        var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
+        foreach (var p in activeParties.Parties)
+        {
+            if (p.Party == summary.Party) return p;
+        }
+        return null;
+    }
+
+    public void ExpandPartyDetails()
+    {
+        var partyData = findSelectedPartyDataAndDeselect();
 
         this.gameObject.SetActive(false);
 
-        var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
         if (partyDetailsDisplay != null) {
             partyDetailsDisplay.gameObject.SetActive(true);
-            partyDetailsDisplay.PartyData = findPartyData(summary.Party);
+            partyDetailsDisplay.PartyData = partyData;
             LayoutRebuilder.ForceRebuildLayoutImmediate(partyDetailsDisplay.GetComponent<RectTransform>());
         }
 
         onPartySelected.Raise(new PartyEventArgs()
         {
-            Party = summary.Party
+            Party = partyData.Party
         });
-    }
-
-    private PartyData findPartyData(Party party)
-    {
-        foreach(var p in parties)
-        {
-            if (p.Party == party) return p;
-        }
-        return null;
     }
 
     public void UpdateSummaryDisplay(PartyEventArgs args)
     {
         if (args.PartyData == null) return;
 
-        for (var i = 0; i < parties.Length; i++)
+        for (var i = 0; i < activeParties.Parties.Length; i++)
         {
-            if (parties[i] == args.PartyData)
+            if (activeParties.Parties[i] == args.PartyData)
             {
-                summaryDisplays[i].DisplayParty(parties[i].Party);
+                summaryDisplays[i].DisplayParty(activeParties.Parties[i].Party);
                 break;
             }
         }
+    }
+
+    public void OpenQuestAssignment()
+    {
+        var partyData = findSelectedPartyDataAndDeselect();
+        if (partyData == null) return;
+
+        var content = GameObject.Instantiate<WorldMapPanel>(worldMapPrefab);
+        createPopup.Raise(new PopupEventArgs()
+        {
+            Content = content.gameObject,
+            AcceptTextOverride = "Assign",
+            AcceptCallback = (GameObject obj) => assignQuestToParty(partyData.Party, content.GetSelectedLocation())
+        });
+    }
+
+    private void assignQuestToParty(Party party, LocationData locationData)
+    {
+        if (party == null) return;
+        if (locationData == null) return;
+        activeQuests.Quests.Add(new Quest(party, locationData));
+    }
+
+    public void RecallParty()
+    {
+        var partyData = findSelectedPartyDataAndDeselect();
+        if (partyData == null) return;
+
+        var quest = partyData.Party.StopQuesting(activeQuests);
+        guild.Gold += quest.GoldEarned;
+    }
+
+    public void OpenLastQuestLog()
+    {
+        var partyData = findSelectedPartyDataAndDeselect();
+        if (partyData == null) return;
+        if (partyData.Party.LastQuest == null) return;
+
+        var content = GameObject.Instantiate<QuestLogPopup>(questLogPopupPrefab);
+        content.SetQuestLog(partyData.Party.LastQuest);
+        createPopup.Raise(new PopupEventArgs()
+        {
+            Content = content.gameObject
+        });
     }
 }
