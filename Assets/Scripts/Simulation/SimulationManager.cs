@@ -16,6 +16,9 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     private QuestCollection activeQuests;
 
+    [SerializeField]
+    private IntegerVariable startingGold;
+
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
 
     public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
@@ -23,7 +26,7 @@ public class SimulationManager : MonoBehaviour
     //Might want to move initialization elsewhere, but doing it here for now for convenience
     private void Start()
     {
-        playerGuild.Initialize();
+        playerGuild.Initialize(startingGold.Value);
         shopRosters.Initialize();
     }
 

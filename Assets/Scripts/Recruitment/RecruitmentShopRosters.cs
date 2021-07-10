@@ -24,6 +24,20 @@ public class RecruitmentShopRosters : ScriptableObject
         timeSinceLastRefresh = 0;
     }
 
+    /// <summary>
+    /// Resets to the Shop rosters to a clean slate
+    /// Does not refresh the inventory, just empties it
+    /// </summary>
+    public void Reset()
+    {
+        foreach(var r in shopRosters)
+        {
+            r.Clear();
+        }
+        freeAgentRoster.Clear();
+        Initialize();
+    }
+
     public void AddUnitToTier(Unit unitToAdd, AdventurerTier tier)
     {
         shopRosters[(int)tier].Add(unitToAdd);

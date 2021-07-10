@@ -58,11 +58,8 @@ public class PartiesSelectionPanel : MonoBehaviour
 
     private void Start()
     {
-        int i = 1;
         foreach (var p in activeParties.Parties)
         {
-            p.Party = new Party();
-            p.Party.Name = "Party " + i++;
             var toggle = GameObject.Instantiate<Toggle>(summaryTogglePrefab, partiesToggleGroup.transform);
             toggle.group = partiesToggleGroup;
             toggle.onValueChanged.AddListener((bool selected) =>

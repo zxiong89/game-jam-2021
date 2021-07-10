@@ -22,8 +22,8 @@ public class Guild : ScriptableObject
         }
     }
 
-    public void Initialize()
+    public void Initialize(int gold)
     {
-        Gold = 6000;
+        Gold = gold;
     }
 }

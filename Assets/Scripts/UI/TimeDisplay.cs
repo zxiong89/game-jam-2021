@@ -9,11 +9,17 @@ public class TimeDisplay : MonoBehaviour
     [SerializeField]
     private int secondsPerYear = 20;
 
-    //Need to initialize this if we do save/load
+    [SerializeField]
+    private FloatVariable startingTime;
+
     private float currentTime = 0;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        currentTime = startingTime.Value;
+    }
+
+    private void Update()
     {
         currentTime += Time.deltaTime;
         display.text = DisplayTime(currentTime);

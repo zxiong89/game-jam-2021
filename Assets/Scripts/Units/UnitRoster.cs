@@ -52,4 +52,6 @@ public class UnitRoster : ScriptableObject, IEnumerable<Unit>
     {
         return Roster.FindAll(match);
     }
+
+    public void Clear() => Roster.Clear();
 }
