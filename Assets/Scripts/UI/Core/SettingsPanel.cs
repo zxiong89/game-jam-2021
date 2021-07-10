@@ -3,8 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class SettingsPanel : MonoBehaviour
 {
+    [SerializeField]
+    private GameManager gameManager;
+
     public void SaveGame()
     {
+        gameManager.SaveGame();
     }
 
     public void SaveAndExit()
