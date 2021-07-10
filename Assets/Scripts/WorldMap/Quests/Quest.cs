@@ -34,6 +34,7 @@ public class Quest
         maxPartyHp = party.CalcTotalDef();
         partyHp = maxPartyHp;
         IsActive = true;
+        party.LastQuest = this;
     }
 
     public string Log()
@@ -42,16 +43,19 @@ public class Quest
         var sb = new StringBuilder();
         sb.AppendLine($"{Party.Name} adventured in {LocationData.Name}");
         sb.AppendLine($"  Earned {goldEarned} gold");
-        sb.AppendLine($"  Gained {expGained} EXP per unit");
+        sb.AppendLine($"  Gained {expGained} EXP");
+        sb.AppendLine();
         if (defeated.Keys.Count > 0)
         {
+            sb.AppendLine();
             sb.AppendLine("  Defeated:");
-            sb.AppendLine(formatLogCounter(defeated));
+            sb.Append(formatLogCounter(defeated));
         }
         if (explored.Keys.Count > 0)
         {
+            sb.AppendLine();
             sb.AppendLine("  Found:");
-            sb.AppendLine(formatLogCounter(explored));
+            sb.Append(formatLogCounter(explored));
         }
         return sb.ToString();
     }
@@ -83,15 +87,18 @@ public class Quest
 
         if (curEncounter == null || curEncounter.IsComplete())
         {
-            var logCounter = curEncounter is Combat ? defeated : explored;
+            if (curEncounter != null)
+            {
+                var logCounter = curEncounter is Combat ? defeated : explored;
 
-            if (logCounter.ContainsKey(curEncounter.LogString()))
-            {
-                logCounter[curEncounter.LogString()]++;
-            }
-            else
-            {
-                logCounter.Add(curEncounter.LogString(), 1);
+                if (logCounter.ContainsKey(curEncounter.LogString()))
+                {
+                    logCounter[curEncounter.LogString()]++;
+                }
+                else
+                {
+                    logCounter.Add(curEncounter.LogString(), 1);
+                }
             }
             curEncounter = LocationData.SpawnEncounter();
         }

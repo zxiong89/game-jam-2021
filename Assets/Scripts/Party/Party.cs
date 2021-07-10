@@ -18,6 +18,8 @@ public class Party
 
     private PartyStats stats = new PartyStats();
     public ref readonly PartyStats Stats => ref stats;
+
+    public Quest LastQuest { get; set; }
     #endregion
 
     #region Constructors
@@ -38,6 +40,8 @@ public class Party
         {
             backLine.AddUnit(u);
         }
+
+        LastQuest = copy.LastQuest;
     }
     #endregion
 

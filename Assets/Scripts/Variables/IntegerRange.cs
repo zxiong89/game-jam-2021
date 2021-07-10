@@ -6,6 +6,6 @@ public struct IntegerRange
 
     public static int Random(IntegerRange range)
     {
-        return UnityEngine.Random.Range(range.Min, range.Max);
+        return UnityEngine.Random.Range(range.Min, range.Max+1);
     }
 }

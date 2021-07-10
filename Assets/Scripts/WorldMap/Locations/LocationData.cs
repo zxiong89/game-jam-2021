@@ -25,7 +25,7 @@ public class LocationData : ScriptableObject
 
     public Encounter SpawnEncounter()
     {
-        var rand = Random.Range(0, 100);
+        float rand = Random.Range(0f, 100f);
         
         if (rand < combatEncounterRate && combatEncounters.Count > 0)
         {

@@ -16,7 +16,7 @@ public struct ExplorationStats
             return new ExplorationStats();
         }
 
-        int i = Random.Range(0, data.Description.Length - 1);
+        int i = Random.Range(0, data.Description.Length);
         var type = data.Type;
         return new ExplorationStats()
         {

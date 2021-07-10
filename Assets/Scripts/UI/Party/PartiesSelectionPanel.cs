@@ -43,10 +43,16 @@ public class PartiesSelectionPanel : MonoBehaviour
     private Button recallButton;
 
     [SerializeField]
+    private Button lastQuestButton;
+
+    [SerializeField]
     private PopupEvent createPopup;
 
     [SerializeField]
     private WorldMapPanel worldMapPrefab;
+
+    [SerializeField]
+    private QuestLogPopup questLogPopupPrefab;
 
     private List<PartySummaryDisplay> summaryDisplays = new List<PartySummaryDisplay>();
 
@@ -89,11 +95,13 @@ public class PartiesSelectionPanel : MonoBehaviour
                 var isQuesting = partyData.Party.IsQuesting(activeQuests);
                 assignButton.gameObject.SetActive(!isQuesting);
                 recallButton.gameObject.SetActive(isQuesting);
+                lastQuestButton.gameObject.SetActive(partyData.Party.LastQuest != null);
                 return;
             }
         }
         assignButton.gameObject.SetActive(false);
         recallButton.gameObject.SetActive(false);
+        lastQuestButton.gameObject.SetActive(false);
     }
 
     private PartyData findSelectedPartyDataAndDeselect()
@@ -173,5 +181,19 @@ public class PartiesSelectionPanel : MonoBehaviour
 
         var quest = partyData.Party.StopQuesting(activeQuests);
         guild.Gold += quest.GoldEarned;
+    }
+
+    public void OpenLastQuestLog()
+    {
+        var partyData = findSelectedPartyDataAndDeselect();
+        if (partyData == null) return;
+        if (partyData.Party.LastQuest == null) return;
+
+        var content = GameObject.Instantiate<QuestLogPopup>(questLogPopupPrefab);
+        content.SetQuestLog(partyData.Party.LastQuest);
+        createPopup.Raise(new PopupEventArgs()
+        {
+            Content = content.gameObject
+        });
     }
 }

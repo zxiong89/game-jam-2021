@@ -20,7 +20,7 @@ public struct CreatureStats
             return new CreatureStats(); 
         }
 
-        int i = Random.Range(0, data.Creatures.Length - 1);
+        int i = Random.Range(0, data.Creatures.Length);
         var type = data.Type;
         float def = FloatRange.Random(type.Def);
         return new CreatureStats()
