@@ -9,6 +9,7 @@ public class Quest
     public const int MAX_RESTING_TURNS = 5;
     public const float HEALING_FACTOR = 0.05f;
 
+    public bool IsActive { get; set; } 
     public LocationData LocationData { get; private set; }
     
     public Party Party { get; private set; }
@@ -32,10 +33,12 @@ public class Quest
         Party = party;
         maxPartyHp = party.CalcTotalDef();
         partyHp = maxPartyHp;
+        IsActive = true;
     }
 
-    public string QuestLog()
+    public string Log()
     {
+        if (IsActive) return $"No log to display. {Party.Name} is currently adventuring in {LocationData.Name}.";
         var sb = new StringBuilder();
         sb.AppendLine($"{Party.Name} adventured in {LocationData.Name}");
         sb.AppendLine($"  Earned {goldEarned} gold");

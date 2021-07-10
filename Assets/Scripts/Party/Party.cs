@@ -58,6 +58,7 @@ public class Party
         if (questToRemove == null) return null;
 
         activeQuests.Quests.Remove(questToRemove);
+        questToRemove.IsActive = false;
         return questToRemove;
     }
 
