@@ -1939,6 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 6418899764914235417}
+  secondsPerYear: 20
 --- !u!114 &6418899765653197724
 MonoBehaviour:
   m_ObjectHideFlags: 0
