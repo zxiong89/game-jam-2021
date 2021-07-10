@@ -377,7 +377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6418899763646422790
@@ -1939,6 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 6418899764914235417}
+  secondsPerYear: 20
 --- !u!114 &6418899765653197724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3013,7 +3014,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 8405277221829403886, guid: 43af1e7c3c27283488c1f43af830735c,
+      objectReference: {fileID: 1024352408485862432, guid: da11b85d4d6ab154183484cf9d37a9c6,
         type: 3}
     - target: {fileID: 3296234681069991258, guid: aa9ce42357198ce459585d350351e5e1,
         type: 3}

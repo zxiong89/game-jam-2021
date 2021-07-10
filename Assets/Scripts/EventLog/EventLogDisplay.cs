@@ -13,6 +13,7 @@ public class EventLogDisplay : MonoBehaviour
 
     private void OnEnable()
     {
+        DisplayAllEventMessages();
         EventLog.OnNewMessageAdded += DisplayNewMessage;
     }
 
