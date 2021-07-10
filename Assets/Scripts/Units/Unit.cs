@@ -85,6 +85,9 @@ public class Unit
 
     public void Retire()
     {
+        if (ParentRoster.RosterType == Roster.Guild || ParentRoster.RosterType == Roster.Party) {
+            EventLog.AddMessage(DisplayName + " has retired." );
+        }
         FreeUnit();
         IsRetired = true;
     }

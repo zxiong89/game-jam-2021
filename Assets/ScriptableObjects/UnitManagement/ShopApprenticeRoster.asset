@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42871137590c63441aec7d41395b60b9, type: 3}
   m_Name: ShopApprenticeRoster
   m_EditorClassIdentifier: 
+  rosterType: 1

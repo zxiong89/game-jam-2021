@@ -9,6 +9,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = ("Units/Roster"))]
 public class UnitRoster : ScriptableObject, IEnumerable<Unit>
 {
+    [SerializeField]
+    private Roster rosterType;
+    public Roster RosterType
+    {
+        get { return rosterType; }
+    }
+
+
     List<Unit> Roster = new List<Unit>();
 
     IEnumerator IEnumerable.GetEnumerator()
