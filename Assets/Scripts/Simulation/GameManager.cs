@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private IntegerVariable startingGold;
 
-    private void Start()
+    public void StartNewOrLoadGame()
     {
         if (string.IsNullOrEmpty(filename.Value)) newGame();
         else loadGame(filename.Value);
@@ -53,6 +53,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void loadGame(string filename)
+    {
+
+    }
+
+    public void SaveGame()
     {
 
     }
