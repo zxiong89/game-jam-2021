@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Party/PartyCollection")]
+[System.Serializable]
 public class PartyCollection : ScriptableObject
 {
     public const int PARTY_COLLECTION_SIZE = 3;

@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +10,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private int newGameGold = 6000;
-
-    [SerializeField]
-    private Guild guild;
 
     [SerializeField]
     private UnitRosterManager unitManager;
@@ -30,10 +27,18 @@ public class GameManager : MonoBehaviour
     private StringVariable filename;
 
     [SerializeField]
-    private FloatVariable startingTime;
+    private FloatVariable currentTime;
 
     [SerializeField]
-    private IntegerVariable startingGold;
+    private IntegerVariable playerGold;
+
+    public void SaveGame()
+    {
+        if (string.IsNullOrEmpty(filename.Value)) filename.Value = "gamesave.save";
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + filename);
+        bf.Serialize(file,);
+    }
 
     public void StartNewOrLoadGame()
     {
@@ -48,16 +53,11 @@ public class GameManager : MonoBehaviour
         shopRosters.Reset();
         activeQuests.Clear();
         activeParties.Reset();
-        startingTime.Value = 0f;
-        startingGold.Value = newGameGold;
+        currentTime.Value = 0f;
+        playerGold.Value = newGameGold;
     }
 
     private void loadGame(string filename)
-    {
-
-    }
-
-    public void SaveGame()
     {
 
     }

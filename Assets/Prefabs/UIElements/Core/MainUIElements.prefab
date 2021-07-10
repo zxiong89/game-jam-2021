@@ -1940,7 +1940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 6418899764914235417}
   secondsPerYear: 20
-  startingTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
+  currentTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
 --- !u!114 &6418899765653197724
 MonoBehaviour:
   m_ObjectHideFlags: 0

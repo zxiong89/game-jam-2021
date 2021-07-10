@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldChangedEvent: {fileID: 11400000, guid: 68f71e914cabd714c8c1916292c123f6, type: 2}
   Roster: {fileID: 11400000, guid: 3b558b7b47d83754d9cc1215b08f448b, type: 2}
-  gold: 15543
+  gold: {fileID: 11400000, guid: 4a551af2b841510438263a3e33f4f012, type: 2}

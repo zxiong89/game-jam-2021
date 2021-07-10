@@ -7,6 +7,7 @@ using UnityEngine;
 /// A unit can only be in one roster at a time.
 /// </summary>
 [CreateAssetMenu(menuName = ("Units/Roster"))]
+[System.Serializable]
 public class UnitRoster : ScriptableObject, IEnumerable<Unit>
 {
     List<Unit> Roster = new List<Unit>();

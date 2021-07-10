@@ -10,19 +10,16 @@ public class TimeDisplay : MonoBehaviour
     private int secondsPerYear = 20;
 
     [SerializeField]
-    private FloatVariable startingTime;
-
-    private float currentTime = 0;
+    private FloatVariable currentTime;
 
     private void Start()
     {
-        currentTime = startingTime.Value;
     }
 
     private void Update()
     {
-        currentTime += Time.deltaTime;
-        display.text = DisplayTime(currentTime);
+        currentTime.Value += Time.deltaTime;
+        display.text = DisplayTime(currentTime.Value);
     }
 
     private string DisplayTime(float time)

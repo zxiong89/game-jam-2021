@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "WorldMap/LocationData")]
+[System.Serializable]
 public class LocationData : ScriptableObject
 {
     [SerializeField]

@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newGameGold: 6000
-  guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
   unitManager:
     InPartyRoster: {fileID: 11400000, guid: 1f7af61ce8a49d94a91f96d41db29333, type: 2}
     GuildRoster: {fileID: 11400000, guid: 3b558b7b47d83754d9cc1215b08f448b, type: 2}
@@ -52,5 +51,5 @@ MonoBehaviour:
   activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
   activeParties: {fileID: 11400000, guid: c7c3472f77b3fa742a6eba8060046285, type: 2}
   filename: {fileID: 11400000, guid: 0772b04621a5ce84cb2b3a5b54cf3675, type: 2}
-  startingTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
-  startingGold: {fileID: 11400000, guid: 4a551af2b841510438263a3e33f4f012, type: 2}
+  currentTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
+  playerGold: {fileID: 11400000, guid: 4a551af2b841510438263a3e33f4f012, type: 2}
