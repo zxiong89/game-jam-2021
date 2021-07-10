@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Quest
@@ -10,12 +10,21 @@ public class Quest
     public const float HEALING_FACTOR = 0.05f;
 
     public LocationData LocationData { get; private set; }
+    
     public Party Party { get; private set; }
+    
     private Encounter curEncounter;
+    
     private float partyHp;
     private float maxPartyHp;
+
+    private int expGained;
+
     private int goldEarned;
     public int GoldEarned { get => goldEarned; }
+
+    private Dictionary<string, int> defeated = new Dictionary<string, int>();
+    private Dictionary<string, int> explored = new Dictionary<string, int>();
 
     public Quest(Party party, LocationData location)
     {
@@ -25,9 +34,40 @@ public class Quest
         partyHp = maxPartyHp;
     }
 
+    public string QuestLog()
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine($"{Party.Name} adventured in {LocationData.Name}");
+        sb.AppendLine($"  Earned {goldEarned} gold");
+        sb.AppendLine($"  Gained {expGained} EXP per unit");
+        if (defeated.Keys.Count > 0)
+        {
+            sb.AppendLine("  Defeated:");
+            sb.AppendLine(formatLogCounter(defeated));
+        }
+        if (explored.Keys.Count > 0)
+        {
+            sb.AppendLine("  Found:");
+            sb.AppendLine(formatLogCounter(explored));
+        }
+        return sb.ToString();
+    }
+
+    private string formatLogCounter(Dictionary<string, int> logCounter)
+    {
+        var sb = new StringBuilder();
+        foreach (var key in logCounter.Keys)
+        {
+            sb.AppendLine(formatLogCounterKey(logCounter, key));
+        }
+        return sb.ToString();
+    }
+
+    private string formatLogCounterKey(Dictionary<string, int> logCounter, string key) =>
+        $"    {logCounter[key]} x {key}";
+
     public void Adventure(int turns = STARTING_TURNS)
     {
-
         do
         {
             turns = runAndProcess(turns);
@@ -40,13 +80,27 @@ public class Quest
 
         if (curEncounter == null || curEncounter.IsComplete())
         {
+            var logCounter = curEncounter is Combat ? defeated : explored;
+
+            if (logCounter.ContainsKey(curEncounter.LogString()))
+            {
+                logCounter[curEncounter.LogString()]++;
+            }
+            else
+            {
+                logCounter.Add(curEncounter.LogString(), 1);
+            }
             curEncounter = LocationData.SpawnEncounter();
         }
 
         var results = curEncounter.Run(Party, turns);
         if (results.DamageTaken != null) partyHp -= results.DamageTaken.Value;
         if (results.GoldGained != null) goldEarned += results.GoldGained.Value;
-        if (results.ExpGained != null) Party.GiveExp(results.ExpGained.Value);
+        if (results.ExpGained != null)
+        {
+            Party.GiveExp(results.ExpGained.Value);
+            expGained += results.ExpGained.Value;
+        }
 
         return results.turnsRemaining;
     }
