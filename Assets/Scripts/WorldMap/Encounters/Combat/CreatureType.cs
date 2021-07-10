@@ -10,6 +10,6 @@ public class CreatureType : ScriptableObject
     public FloatRange Def;
     public float PhyResist;
     public float MagResist;
-    public FloatRange Exp;
-    public FloatRange Gold;
+    public IntegerRange Exp;
+    public IntegerRange Gold;
 }

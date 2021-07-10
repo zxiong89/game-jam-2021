@@ -5,8 +5,8 @@ public struct ExplorationStats
 {
     public string Description;
     public float Time;
-    public float Exp;
-    public float Gold;
+    public int Exp;
+    public int Gold;
 
     public static ExplorationStats Create(ExplorationData data)
     {
@@ -22,8 +22,8 @@ public struct ExplorationStats
         {
             Description = data.Description[i],
             Time = FloatRange.Random(type.Time),
-            Exp = FloatRange.Random(type.Exp),
-            Gold = FloatRange.Random(type.Gold)
+            Exp = IntegerRange.Random(type.Exp),
+            Gold = IntegerRange.Random(type.Gold)
         };
     }
 }

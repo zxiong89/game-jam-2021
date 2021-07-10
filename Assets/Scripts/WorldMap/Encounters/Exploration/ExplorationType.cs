@@ -5,6 +5,6 @@
 public class ExplorationType : ScriptableObject
 {
     public FloatRange Time;
-    public FloatRange Exp;
-    public FloatRange Gold;
+    public IntegerRange Exp;
+    public IntegerRange Gold;
 }

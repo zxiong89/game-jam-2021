@@ -9,8 +9,8 @@ public struct CreatureStats
     public float Def;
     public float PhyResist;
     public float MagResist;
-    public float Exp;
-    public float Gold;
+    public int Exp;
+    public int Gold;
 
     public static CreatureStats Create(CombatData data)
     {
@@ -31,8 +31,8 @@ public struct CreatureStats
             Def = def,
             PhyResist = type.PhyResist,
             MagResist = type.MagResist,
-            Exp = FloatRange.Random(type.Exp),
-            Gold = FloatRange.Random(type.Gold)
+            Exp = IntegerRange.Random(type.Exp),
+            Gold = IntegerRange.Random(type.Gold)
         };
     }
 }

@@ -21,8 +21,8 @@ MonoBehaviour:
   PhyResist: 1
   MagResist: 0
   Exp:
-    Min: 10
-    Max: 20
+    Min: 100
+    Max: 200
   Gold:
     Min: 100
     Max: 200

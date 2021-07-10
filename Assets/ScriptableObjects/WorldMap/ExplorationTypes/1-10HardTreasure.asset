@@ -16,8 +16,8 @@ MonoBehaviour:
     Min: 10
     Max: 30
   Exp:
-    Min: 5
-    Max: 15
+    Min: 0
+    Max: 30
   Gold:
-    Min: 300
+    Min: 100
     Max: 1000

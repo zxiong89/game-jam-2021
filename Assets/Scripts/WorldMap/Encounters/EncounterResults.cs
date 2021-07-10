@@ -2,6 +2,6 @@
 {
     public int turnsRemaining;
     public float? DamageTaken;
-    public float? ExpGained;
-    public float? GoldGained;
+    public int? ExpGained;
+    public int? GoldGained;
 }

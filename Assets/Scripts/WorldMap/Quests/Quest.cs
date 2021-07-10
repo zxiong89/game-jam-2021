@@ -14,7 +14,8 @@ public class Quest
     private Encounter curEncounter;
     private float partyHp;
     private float maxPartyHp;
-    private float goldEarned;
+    private int goldEarned;
+    public int GoldEarned { get => goldEarned; }
 
     public Quest(Party party, LocationData location)
     {
@@ -26,10 +27,6 @@ public class Quest
 
     public void Adventure(int turns = STARTING_TURNS)
     {
-        if (curEncounter == null || curEncounter.IsComplete())
-        {
-            curEncounter = LocationData.SpawnEncounter();
-        }
 
         do
         {
@@ -40,16 +37,18 @@ public class Quest
     private int runAndProcess(int turns)
     {
         if (partyHp <= 0) return restAndHeal(turns);
+
+        if (curEncounter == null || curEncounter.IsComplete())
+        {
+            curEncounter = LocationData.SpawnEncounter();
+        }
+
         var results = curEncounter.Run(Party, turns);
         if (results.DamageTaken != null) partyHp -= results.DamageTaken.Value;
         if (results.GoldGained != null) goldEarned += results.GoldGained.Value;
-        if (results.ExpGained != null) awardExp(results.ExpGained.Value);
+        if (results.ExpGained != null) Party.GiveExp(results.ExpGained.Value);
+
         return results.turnsRemaining;
-    }
-
-    private void awardExp(float exp)
-    {
-
     }
 
     private int restAndHeal(int turns)

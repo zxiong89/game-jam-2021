@@ -14,6 +14,9 @@ public class PartiesSelectionPanel : MonoBehaviour
     [SerializeField]
     private QuestCollection activeQuests;
 
+    [SerializeField]
+    private Guild guild;
+
     [Header("Events")]
     [SerializeField]
     private PartyEvent onPartySelected;
@@ -168,6 +171,7 @@ public class PartiesSelectionPanel : MonoBehaviour
         var partyData = findSelectedPartyDataAndDeselect();
         if (partyData == null) return;
 
-        partyData.Party.StopQuesting(activeQuests);
+        var quest = partyData.Party.StopQuesting(activeQuests);
+        guild.Gold += quest.GoldEarned;
     }
 }

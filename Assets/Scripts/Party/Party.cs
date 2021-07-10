@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -51,18 +52,25 @@ public class Party
         return false;
     }
 
-    public void StopQuesting(QuestCollection activeQuests)
+    public Quest StopQuesting(QuestCollection activeQuests)
     {
-        List<Quest> questsToRemove = new List<Quest>();
+        var questToRemove = activeQuests.Quests.Find((quest) => quest.Party == this);
+        if (questToRemove == null) return null;
 
-        foreach (var q in activeQuests.Quests)
+        activeQuests.Quests.Remove(questToRemove);
+        return questToRemove;
+    }
+
+    public void GiveExp(int exp)
+    {
+        foreach(var u in FrontLine)
         {
-            if (q.Party == this) questsToRemove.Add(q);
+            u.Experience += exp;
         }
 
-        foreach (var r in questsToRemove)
+        foreach(var u in BackLine)
         {
-            activeQuests.Quests.Remove(r);
+            u.Experience += exp;
         }
     }
 
