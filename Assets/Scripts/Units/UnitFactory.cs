@@ -40,14 +40,14 @@ public class UnitFactory : MonoBehaviour
     public Unit RandomizeUnit(IntegerLimits curAgeLimits)
     {
         LoadNames();
-        int n = Random.Range(0, names.Length - 1);
+        int n = Random.Range(0, names.Length);
         int age = (int)FloatExtensions.Randomize(curAgeLimits.Min, curAgeLimits.Max, curAgeLimits.Mean);
         int level = Random.Range(curAgeLimits.Min, age);
         var stats = new StatBlock(level, baseStatLimits, growthLimits);
 
-        int s = Random.Range(0, classes.Length - 1);
+        int s = Random.Range(0, classes.Length);
         UnitClassSelection selections = classes[s];
-        int c = Random.Range(0, selections.Classes.Length - 1);
+        int c = Random.Range(0, selections.Classes.Length);
         UnitClassData classData = selections.Classes[c];
 
         var newUnit = new Unit(names[n], level, age, stats, classData);
