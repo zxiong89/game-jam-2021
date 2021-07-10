@@ -68,8 +68,9 @@ public class PartiesSelectionPanel : MonoBehaviour
             toggle.onValueChanged.AddListener((bool selected) =>
             {
                 var selectedToggle = ToggleExtensions.FindSelectedToggle(partiesToggleGroup);
-                changeEditButtonState(selected, selectedToggle);
-                changeQuestButtonStates(selectedToggle);
+                var partyData = selectedToggle != null ? findPartyDataFromToggle(selectedToggle) : null;
+                changeEditButtonState(partyData);
+                changeQuestButtonStates(partyData);
             });
 
             var summary = toggle.GetComponentInChildren<PartySummaryDisplay>();
@@ -79,25 +80,21 @@ public class PartiesSelectionPanel : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    private void changeEditButtonState(bool selected, Toggle toggle)
+    private void changeEditButtonState(PartyData partyData)
     {
-        if (selected) editPartyButton.interactable = true;
-        else editPartyButton.interactable = (toggle != null);
+        if (partyData == null) editPartyButton.interactable = false;
+        else editPartyButton.interactable = (partyData.Party.LastQuest == null);
     }
 
-    private void changeQuestButtonStates(Toggle toggle)
+    private void changeQuestButtonStates(PartyData partyData)
     {
-        if (toggle != null)
+        if (partyData != null && partyData.Party.UnitCount() > 0)
         {
-            var partyData = findPartyDataFromToggle(toggle);
-            if (partyData != null)
-            {
-                var isQuesting = partyData.Party.IsQuesting(activeQuests);
-                assignButton.gameObject.SetActive(!isQuesting);
-                recallButton.gameObject.SetActive(isQuesting);
-                lastQuestButton.gameObject.SetActive(partyData.Party.LastQuest != null);
-                return;
-            }
+            var isQuesting = partyData.Party.IsQuesting(activeQuests);
+            assignButton.gameObject.SetActive(!isQuesting);
+            recallButton.gameObject.SetActive(isQuesting);
+            lastQuestButton.gameObject.SetActive(partyData.Party.LastQuest != null);
+            return;
         }
         assignButton.gameObject.SetActive(false);
         recallButton.gameObject.SetActive(false);

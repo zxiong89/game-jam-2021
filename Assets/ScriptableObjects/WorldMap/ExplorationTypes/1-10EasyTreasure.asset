@@ -19,5 +19,5 @@ MonoBehaviour:
     Min: 0
     Max: 0
   Gold:
-    Min: 10
-    Max: 100
+    Min: 1
+    Max: 10

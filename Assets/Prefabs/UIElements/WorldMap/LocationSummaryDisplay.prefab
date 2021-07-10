@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 578745437613667340}
   toggleTransition: 1
-  graphic: {fileID: 4185995079581770789}
+  graphic: {fileID: 578745437613667340}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
@@ -492,8 +492,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6c85f6073350af042b7110b4a3329397, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: d88340d96c94ce746b8a8ad2231f449a, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -614,6 +614,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3885038764855906221, guid: 02d104602479c9941a251907b37b01bd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6169431013142810974, guid: 02d104602479c9941a251907b37b01bd,
         type: 3}
       propertyPath: m_VerticalFit

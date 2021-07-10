@@ -18,7 +18,7 @@ MonoBehaviour:
   Def:
     Min: 10000
     Max: 20000
-  PhyResist: 1
+  PhyResist: 0.75
   MagResist: 0
   Exp:
     Min: 100

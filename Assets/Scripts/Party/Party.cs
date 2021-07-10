@@ -124,6 +124,8 @@ public class Party
         return diff;
     }
 
+    public int UnitCount() => FrontLine.Count + BackLine.Count;
+
     public bool Contains(Unit unit) => frontLine.Contains(unit) || backLine.Contains(unit);
 
     /// <summary>

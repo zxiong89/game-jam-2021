@@ -30,8 +30,8 @@ MonoBehaviour:
   combatEncounterRate: 40
   explorationEncounters:
   - Description:
-    - Hollow Tree
-    - Treasure Underneath Leaves
+    - Herbs
+    - Loose Change
     Type: {fileID: 11400000, guid: e29d27fe8e6c22f4ea1fd960ee9aa947, type: 2}
     SpawnRate: 1
   - Description:
