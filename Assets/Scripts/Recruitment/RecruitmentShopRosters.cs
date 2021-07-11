@@ -45,12 +45,14 @@ public class RecruitmentShopRosters : ScriptableObject
     /// </summary>
     public void Reset()
     {
-        foreach(var r in shopRosters)
+        foreach (var r in shopRosters)
         {
             r.Clear();
         }
         freeAgentRoster.Clear();
         Initialize();
+    }
+
     public bool CheckHasUpdated()
     {
         if (unseenUpdates) return false;
