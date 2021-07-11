@@ -2,8 +2,8 @@
 
 public class RecruitmentData
 {
-    private const float PRICE_SCALING_FACTOR = 1.075f;
-    private const float PRICE_SPREAD = .25f;
+    private const float PRICE_SCALING_FACTOR = 1.125f;
+    private const float PRICE_SPREAD = .2f;
     private const float PRICE_MIN = 1f - PRICE_SPREAD;
     private const float PRICE_MAX = 1f + PRICE_SPREAD;
 
@@ -18,8 +18,8 @@ public class RecruitmentData
 
     private int CalcFee(Unit unit)
     {
-        float startingPrice = (Mathf.Pow(PRICE_SCALING_FACTOR, unit.Level) * 100);
-        return Mathf.FloorToInt(FloatExtensions.Randomize(PRICE_MIN * startingPrice, startingPrice, PRICE_MAX * startingPrice));
+        float startingPrice = (Mathf.Pow(PRICE_SCALING_FACTOR, unit.Level) * 30);
+        return Mathf.FloorToInt(FloatExtensions.Randomize(PRICE_MIN * startingPrice, PRICE_MAX * startingPrice, startingPrice));
     }
 
 }

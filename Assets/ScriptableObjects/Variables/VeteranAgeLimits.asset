@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b395483a3a8507418d9515ad10ccdd6, type: 3}
   m_Name: VeteranAgeLimits
   m_EditorClassIdentifier: 
-  Min: 45
+  Min: 46
   Mean: 50
-  Max: 65
+  Max: 55

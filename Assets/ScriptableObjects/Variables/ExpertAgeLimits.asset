@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b395483a3a8507418d9515ad10ccdd6, type: 3}
   m_Name: ExpertAgeLimits
   m_EditorClassIdentifier: 
-  Min: 35
+  Min: 36
   Mean: 40
-  Max: 49
+  Max: 45

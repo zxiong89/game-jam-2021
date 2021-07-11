@@ -105,6 +105,11 @@ public class Unit
         TraitModifiers = modifiers;
     }
 
+    public bool IsApprentice()
+    {
+        return Age <= 24;
+    }
+
     public void Retire()
     {
         if (ParentRoster.RosterType == Roster.Guild || ParentRoster.RosterType == Roster.Party) {

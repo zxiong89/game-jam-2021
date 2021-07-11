@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b395483a3a8507418d9515ad10ccdd6, type: 3}
   m_Name: ExperiencedAgeLimits
   m_EditorClassIdentifier: 
-  Min: 22
-  Mean: 27
-  Max: 40
+  Min: 25
+  Mean: 30
+  Max: 35
