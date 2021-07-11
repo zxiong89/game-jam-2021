@@ -13,7 +13,7 @@ public class UnitSimulator
     public void UpdateUnits(List<Unit> activeUnits, Guild playerGuild)
     {
         timeElapsed += Time.deltaTime;
-        if(timeElapsed >= 20)
+        if(timeElapsed >= SimulationConstants.SECONDS_PER_YEAR)
         {
             int totalWages = 0;
             for (int i = activeUnits.Count - 1; i >= 0; i--)
@@ -23,7 +23,7 @@ public class UnitSimulator
                 UpdateUnit(curUnit);
                 if (curUnit.IsRetired) activeUnits.RemoveAt(i);
             }
-            timeElapsed -= 20;
+            timeElapsed -= SimulationConstants.SECONDS_PER_YEAR;
             if(totalWages > 0)
             {
                 playerGuild.Gold -= totalWages;

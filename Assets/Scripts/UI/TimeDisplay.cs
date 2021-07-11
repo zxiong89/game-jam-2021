@@ -6,9 +6,6 @@ public class TimeDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI display;
 
-    [SerializeField]
-    private int secondsPerYear = 20;
-
     //Need to initialize this if we do save/load
     private float currentTime = 0;
 
@@ -26,13 +23,13 @@ public class TimeDisplay : MonoBehaviour
 
     private string DisplayYears(float time)
     {
-        int years =  Mathf.FloorToInt(time / secondsPerYear);
+        int years =  Mathf.FloorToInt(time / SimulationConstants.SECONDS_PER_YEAR);
         return years.ToString() + " yr";
     }
 
     private string DisplayMonths(float time)
     {
-        int months = Mathf.FloorToInt((time % secondsPerYear) / secondsPerYear * 12);
+        int months = Mathf.FloorToInt((time % SimulationConstants.SECONDS_PER_YEAR) / SimulationConstants.SECONDS_PER_YEAR * 12);
         return months + " mo";
     }
 }
