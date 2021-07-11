@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// Runs any initial game setup
 /// </summary>
 public class GameManager : MonoBehaviour
-{
+{   
     [SerializeField]
     private int newGameGold = 6000;
 
@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
-        if (string.IsNullOrEmpty(filename.Value)) filename.Value = "gamesave.save";
+        if (string.IsNullOrEmpty(filename.Value)) filename.Value = GenericStrings.DefaultFilename;
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + filename);
+        FileStream file = File.Create(GetFilePath(filename.Value));
         GameSave save = cacheGameState();
         bf.Serialize(file, save);
     }
@@ -73,6 +73,24 @@ public class GameManager : MonoBehaviour
 
     private void loadGame(string filename)
     {
-
+        BinaryFormatter bf = new BinaryFormatter();
+        var filepath = GetFilePath(filename);
+        FileStream file = File.Open(filepath, FileMode.Open);
+        GameSave save = (GameSave) bf.Deserialize(file);
+        unpack(save);
     }
+
+    private void unpack(GameSave save)
+    {
+        unitRosterManager.GuildRoster = save.UnitRosterManager.GuildRoster;
+        unitRosterManager.InPartyRoster = save.UnitRosterManager.InPartyRoster;
+        shopRosters.SetRosters(save.ShopRosters);
+        activeQuests.Quests = save.ActiveQuests.Quests;
+        activeParties.Parties = save.ActiveParties.Parties;
+        currentTime.Value = save.CurrentTime;
+        playerGold.Value = save.PlayerGold;
+    }
+
+    public static string GetFilePath(string filename) =>
+        Path.Combine(Application.persistentDataPath, filename);
 }

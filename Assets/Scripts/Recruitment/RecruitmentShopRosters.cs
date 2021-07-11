@@ -24,6 +24,19 @@ public class RecruitmentShopRosters : ScriptableObject
         timeSinceLastRefresh = 0;
     }
 
+    public void SetRosters(RecruitmentShopRosters copy)
+    {
+        if (copy.shopRosters.Length != shopRosters.Length) return;
+
+        Reset();
+        for (int i = 0; i < shopRosters.Length; i++) 
+        {
+            foreach (var u in copy.shopRosters[i]) shopRosters[i].Add(u);
+        }
+
+        foreach (var u in copy.freeAgentRoster) freeAgentRoster.Add(u);
+    }
+
     /// <summary>
     /// Resets to the Shop rosters to a clean slate
     /// Does not refresh the inventory, just empties it
