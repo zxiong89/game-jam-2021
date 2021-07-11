@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private int newGameGold = 6000;
 
     [SerializeField]
-    private UnitRosterManager unitManager;
+    private UnitRosterManager unitRosterManager;
 
     [SerializeField]
     private RecruitmentShopRosters shopRosters;
@@ -37,7 +37,21 @@ public class GameManager : MonoBehaviour
         if (string.IsNullOrEmpty(filename.Value)) filename.Value = "gamesave.save";
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + filename);
-        bf.Serialize(file,);
+        GameSave save = cacheGameState();
+        bf.Serialize(file, save);
+    }
+
+    private GameSave cacheGameState()
+    {
+        return new GameSave()
+        {
+            UnitRosterManager = unitRosterManager,
+            ShopRosters = shopRosters,
+            ActiveQuests = activeQuests,
+            ActiveParties = activeParties,
+            CurrentTime = currentTime.Value,
+            PlayerGold = playerGold.Value
+        };
     }
 
     public void StartNewOrLoadGame()
@@ -49,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void newGame()
     {
-        unitManager.Clear();
+        unitRosterManager.Clear();
         shopRosters.Reset();
         activeQuests.Clear();
         activeParties.Reset();
