@@ -19,7 +19,9 @@ public class RecruitmentData
     private int CalcFee(Unit unit)
     {
         float startingPrice = (Mathf.Pow(PRICE_SCALING_FACTOR, unit.Level) * 30);
-        return Mathf.FloorToInt(FloatExtensions.Randomize(PRICE_MIN * startingPrice, PRICE_MAX * startingPrice, startingPrice));
+        int hiringPrice = Mathf.FloorToInt(FloatExtensions.Randomize(PRICE_MIN * startingPrice, PRICE_MAX * startingPrice, startingPrice));
+        if (unit.IsApprentice()) hiringPrice /= 2;
+        return hiringPrice;
     }
 
 }
