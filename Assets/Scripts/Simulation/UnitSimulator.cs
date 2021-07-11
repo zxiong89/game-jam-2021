@@ -10,18 +10,40 @@ public class UnitSimulator
     private float timeElapsed;
 
 
-    public void UpdateUnits(List<Unit> activeUnits)
+    public void UpdateUnits(List<Unit> activeUnits, Guild playerGuild)
     {
         timeElapsed += Time.deltaTime;
         if(timeElapsed >= 20)
         {
+            int totalWages = 0;
             for (int i = activeUnits.Count - 1; i >= 0; i--)
             {
-                UpdateUnit(activeUnits[i]);
-                if (activeUnits[i].IsRetired) activeUnits.RemoveAt(i);
+                Unit curUnit = activeUnits[i];
+                totalWages += PayWages(curUnit);
+                UpdateUnit(curUnit);
+                if (curUnit.IsRetired) activeUnits.RemoveAt(i);
             }
             timeElapsed -= 20;
+            if(totalWages > 0)
+            {
+                playerGuild.Gold -= totalWages;
+                EventLog.AddMessage("Paid " + totalWages.ToString() + " G in wages to guild members.");
+            }
         }
+    }
+
+    private int PayWages(Unit curUnit)
+    {
+        int amountToPay;
+        if(!curUnit.IsApprentice() && curUnit.IsInPlayerGuild())
+        {
+            amountToPay = curUnit.RecruitmentData.Fee / 100;
+        }
+        else
+        {
+            amountToPay = 0;
+        }
+        return amountToPay;
     }
 
     private void UpdateUnit(Unit curUnit)

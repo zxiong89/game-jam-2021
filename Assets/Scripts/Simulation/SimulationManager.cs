@@ -34,7 +34,7 @@ public class SimulationManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.UnitSimulator.UpdateUnits(allUnits.Units);
+        this.UnitSimulator.UpdateUnits(allUnits.Units, playerGuild);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
         if (shopRosters.CheckHasUpdated()) {
             EventLog.AddMessage("New adventurers are looking for employment!");

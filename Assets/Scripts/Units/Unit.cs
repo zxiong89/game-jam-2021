@@ -110,9 +110,15 @@ public class Unit
         return Age <= 24;
     }
 
+    public bool IsInPlayerGuild()
+    {
+        Roster rosterType = ParentRoster.RosterType;
+        return rosterType == Roster.Guild || rosterType == Roster.Party;
+    }
+
     public void Retire()
     {
-        if (ParentRoster.RosterType == Roster.Guild || ParentRoster.RosterType == Roster.Party) {
+        if (IsInPlayerGuild()) {
             EventLog.AddMessage(DisplayName + " has retired." );
         }
         FreeUnit();
