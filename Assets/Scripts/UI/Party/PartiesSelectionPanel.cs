@@ -83,7 +83,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private void changeEditButtonState(PartyData partyData)
     {
         if (partyData == null) editPartyButton.interactable = false;
-        else editPartyButton.interactable = (partyData.Party.FindQuestInCollection(pastQuests) == null);
+        else editPartyButton.interactable = (partyData.Party.FindQuestInCollection(activeQuests) == null);
     }
 
     private void changeQuestButtonStates(PartyData partyData)
