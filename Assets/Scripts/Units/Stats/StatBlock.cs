@@ -12,16 +12,16 @@ public class StatBlock
     {
         RandomizeBaseStats(baseStats);
         RandomizeGrowthFactors(limits);
-        UpdateStats(level);
+        UpdateStats(level, new int[] { 0, 0, 0, 0, 0 });
     }
 
-    public void UpdateStats(int level)
+    public void UpdateStats(int level, int[] traitModifiers)
     {
-        Str.Update(level);
-        Con.Update(level);
-        Dex.Update(level);
-        Int.Update(level);
-        Wis.Update(level);
+        Str.Update(level, traitModifiers[0]);
+        Con.Update(level, traitModifiers[1]);
+        Dex.Update(level, traitModifiers[2]);
+        Int.Update(level, traitModifiers[3]);
+        Wis.Update(level, traitModifiers[4]);
     }
 
     public void RandomizeBaseStats(IntegerLimits baseStats)

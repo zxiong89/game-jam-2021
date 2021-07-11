@@ -19,6 +19,8 @@ public class RecruitmentShopRosters : ScriptableObject
 
     private float timeSinceLastRefresh = 0;
 
+    private bool unseenUpdates = true;
+
     public void Initialize()
     {
         timeSinceLastRefresh = 0;
@@ -49,6 +51,19 @@ public class RecruitmentShopRosters : ScriptableObject
         }
         freeAgentRoster.Clear();
         Initialize();
+    public bool CheckHasUpdated()
+    {
+        if (unseenUpdates) return false;
+        if (ShopHasUpdated())
+        {
+            unseenUpdates = true;
+        }
+        return unseenUpdates;
+    }
+
+    private bool ShopHasUpdated()
+    {
+        return Time.time - timeSinceLastRefresh > 60;
     }
 
     public void AddUnitToTier(Unit unitToAdd, AdventurerTier tier)
@@ -68,8 +83,8 @@ public class RecruitmentShopRosters : ScriptableObject
 
     public void RefreshRosters(UnitFactory factory)
     {
-        if(timeSinceLastRefresh == 0 || Time.time - timeSinceLastRefresh > 60) 
-        { 
+        if (timeSinceLastRefresh == 0 || ShopHasUpdated())
+        {
             FreeUnits();
             foreach (var tier in AdventurerTierHelpers.GetValues())
             {
@@ -77,6 +92,7 @@ public class RecruitmentShopRosters : ScriptableObject
                 AddUnitsToShopRoster(tier, unitsInTier, factory);
             }
             timeSinceLastRefresh = Time.time;
+            unseenUpdates = false;
         }
     }
 

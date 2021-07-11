@@ -22,11 +22,11 @@ public class IntelligenceStat : BaseStat
 
     #region Stat Base Public Methods
 
-    public override void Update(int level)
+    public override void Update(int level, int traitModifier)
     {
-        Intellect = StatExtensions.CalculateStat(level, IntellectBase, IntellectGrowth);
-        Mind = StatExtensions.CalculateStat(level, MindBase, MindGrowth);
-        Knowledge = StatExtensions.CalculateStat(level, KnowledgeBase, KnowledgeGrowth);
+        Intellect = StatExtensions.CalculateStat(level, IntellectBase, IntellectGrowth, traitModifier);
+        Mind = StatExtensions.CalculateStat(level, MindBase, MindGrowth, traitModifier);
+        Knowledge = StatExtensions.CalculateStat(level, KnowledgeBase, KnowledgeGrowth, traitModifier);
     }
 
     public override void RandomizeBaseStats(IntegerLimits baseStats)

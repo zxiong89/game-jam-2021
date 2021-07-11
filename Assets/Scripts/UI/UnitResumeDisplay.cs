@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +31,12 @@ public class UnitResumeDisplay : MonoBehaviour
         int fee = data.Fee;
         nameAndLevels.text = unitToDisplay.DisplayName + " " + GenericStrings.LevelAbbr + unitToDisplay.Level;
         statsGroup.SetStats(unitToDisplay.Stats);
-        traitsText.text = "Vigilant, Brawny, Sluggish";
+        var traitNames = new List<string>();
+        foreach(var trait in unitToDisplay.Traits)
+        {
+            traitNames.Add(trait.Name);
+        }
+        traitsText.text = string.Join(", ", traitNames.ToArray());
         feeText.text = fee.ToString() + " " + GenericStrings.CurrencySymbol;
         recruitmentData = data;
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());

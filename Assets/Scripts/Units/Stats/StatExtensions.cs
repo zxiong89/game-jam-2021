@@ -2,9 +2,9 @@
 
 public static class StatExtensions
 {
-    public static float CalculateStat(int level, float baseVal, GrowthFactor growth)
+    public static float CalculateStat(int level, float baseVal, GrowthFactor growth, int traitModifier)
     {
-        return baseVal
+        return baseVal + traitModifier
             + (growth.EarlyMod * Mathf.Sqrt(level))
             + (growth.LinearMod * level)
             + (growth.LateMod * Mathf.Pow(level, 2f));

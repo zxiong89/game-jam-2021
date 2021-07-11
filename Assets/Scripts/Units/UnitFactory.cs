@@ -17,6 +17,9 @@ public class UnitFactory : MonoBehaviour
     private UnitClassSelection[] classes;
 
     [SerializeField]
+    private TraitFactory traitFactory;
+
+    [SerializeField]
     private string nameJsonFile;
 
     private string[] names;
@@ -50,7 +53,12 @@ public class UnitFactory : MonoBehaviour
         int c = Random.Range(0, selections.Classes.Length);
         UnitClassData classData = selections.Classes[c];
 
-        var newUnit = new Unit(names[n], level, age, stats, classData);
+        var traits = new List<Trait>();
+        traits.Add(traitFactory.GetPositiveTrait());
+        traits.Add(traitFactory.GetPositiveTrait());
+        traits.Add(traitFactory.GetNegativeTrait());
+
+        var newUnit = new Unit(names[n], level, age, stats, classData, traits);
         activeUnits?.Units.Add(newUnit);
         freeAgentRoster?.Add(newUnit);
         return newUnit;
