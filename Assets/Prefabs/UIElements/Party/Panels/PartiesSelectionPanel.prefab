@@ -156,6 +156,7 @@ MonoBehaviour:
     type: 3}
   activeParties: {fileID: 11400000, guid: c7c3472f77b3fa742a6eba8060046285, type: 2}
   activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
+  pastQuests: {fileID: 11400000, guid: 102e1ff7a56e75942bff5e4ca10d0f50, type: 2}
   guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
   onPartySelected: {fileID: 11400000, guid: 016a6356ae8070941a005753ecbdcecc, type: 2}
   partiesToggleGroup: {fileID: 1150441817657743184}

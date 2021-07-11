@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newGameGold: 6000
-  unitManager:
+  unitRosterManager:
     InPartyRoster: {fileID: 11400000, guid: 1f7af61ce8a49d94a91f96d41db29333, type: 2}
     GuildRoster: {fileID: 11400000, guid: 3b558b7b47d83754d9cc1215b08f448b, type: 2}
   shopRosters: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011, type: 2}

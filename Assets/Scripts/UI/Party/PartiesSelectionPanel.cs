@@ -15,6 +15,9 @@ public class PartiesSelectionPanel : MonoBehaviour
     private QuestCollection activeQuests;
 
     [SerializeField]
+    private QuestCollection pastQuests;
+
+    [SerializeField]
     private Guild guild;
 
     [Header("Events")]
@@ -80,7 +83,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private void changeEditButtonState(PartyData partyData)
     {
         if (partyData == null) editPartyButton.interactable = false;
-        else editPartyButton.interactable = (partyData.Party.LastQuest == null);
+        else editPartyButton.interactable = (partyData.Party.FindQuestInCollection(pastQuests) == null);
     }
 
     private void changeQuestButtonStates(PartyData partyData)
@@ -90,7 +93,7 @@ public class PartiesSelectionPanel : MonoBehaviour
             var isQuesting = partyData.Party.IsQuesting(activeQuests);
             assignButton.gameObject.SetActive(!isQuesting);
             recallButton.gameObject.SetActive(isQuesting);
-            lastQuestButton.gameObject.SetActive(partyData.Party.LastQuest != null);
+            lastQuestButton.gameObject.SetActive(partyData.Party.FindQuestInCollection(pastQuests) != null);
             return;
         }
         assignButton.gameObject.SetActive(false);
@@ -165,7 +168,13 @@ public class PartiesSelectionPanel : MonoBehaviour
     {
         if (party == null) return;
         if (locationData == null) return;
-        activeQuests.Quests.Add(new Quest(party, locationData));
+
+        var oldQuest = party.FindQuestInCollection(pastQuests);
+        if (oldQuest != null) pastQuests.Quests.Remove(oldQuest);
+
+        var newQuest = new Quest(party, locationData);
+        activeQuests.Quests.Add(newQuest);
+        pastQuests.Quests.Add(newQuest);
     }
 
     public void RecallParty()
@@ -181,10 +190,11 @@ public class PartiesSelectionPanel : MonoBehaviour
     {
         var partyData = findSelectedPartyDataAndDeselect();
         if (partyData == null) return;
-        if (partyData.Party.LastQuest == null) return;
+        var quest = partyData.Party.FindQuestInCollection(pastQuests);
+        if (quest == null) return;
 
         var content = GameObject.Instantiate<QuestLogPopup>(questLogPopupPrefab);
-        content.SetQuestLog(partyData.Party.LastQuest);
+        content.SetQuestLog(quest);
         createPopup.Raise(new PopupEventArgs()
         {
             Content = content.gameObject

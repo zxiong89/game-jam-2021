@@ -35,7 +35,6 @@ public class Quest
         maxPartyHp = party.CalcTotalDef();
         partyHp = maxPartyHp;
         IsActive = true;
-        party.LastQuest = this;
     }
 
     public string Log()
