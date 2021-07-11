@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+[System.Serializable]
 public class Quest
 {
     public const int STARTING_TURNS = 10;
@@ -34,7 +35,6 @@ public class Quest
         maxPartyHp = party.CalcTotalDef();
         partyHp = maxPartyHp;
         IsActive = true;
-        party.LastQuest = this;
     }
 
     public string Log()

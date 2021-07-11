@@ -7,6 +7,7 @@ using UnityEngine;
 /// A unit can only be in one roster at a time.
 /// </summary>
 [CreateAssetMenu(menuName = ("Units/Roster"))]
+[System.Serializable]
 public class UnitRoster : ScriptableObject, IEnumerable<Unit>
 {
     [SerializeField]
@@ -60,4 +61,6 @@ public class UnitRoster : ScriptableObject, IEnumerable<Unit>
     {
         return Roster.FindAll(match);
     }
+
+    public void Clear() => Roster.Clear();
 }

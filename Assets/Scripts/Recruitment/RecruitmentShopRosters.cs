@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Recruitment Shop Rosters")]
+[System.Serializable]
 public class RecruitmentShopRosters : ScriptableObject
 {
     [SerializeField]
@@ -24,6 +24,33 @@ public class RecruitmentShopRosters : ScriptableObject
     public void Initialize()
     {
         timeSinceLastRefresh = 0;
+    }
+
+    public void SetRosters(RecruitmentShopRosters copy)
+    {
+        if (copy.shopRosters.Length != shopRosters.Length) return;
+
+        Reset();
+        for (int i = 0; i < shopRosters.Length; i++) 
+        {
+            foreach (var u in copy.shopRosters[i]) shopRosters[i].Add(u);
+        }
+
+        foreach (var u in copy.freeAgentRoster) freeAgentRoster.Add(u);
+    }
+
+    /// <summary>
+    /// Resets to the Shop rosters to a clean slate
+    /// Does not refresh the inventory, just empties it
+    /// </summary>
+    public void Reset()
+    {
+        foreach (var r in shopRosters)
+        {
+            r.Clear();
+        }
+        freeAgentRoster.Clear();
+        Initialize();
     }
 
     public bool CheckHasUpdated()
