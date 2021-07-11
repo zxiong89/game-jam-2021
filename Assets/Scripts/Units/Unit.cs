@@ -41,12 +41,7 @@ public class Unit
     public StatBlock Stats;
     public UnitClass Class;
 
-    public List<Trait> Traits = new List<Trait>()
-    {
-        new Trait() { Name = "Sleepy", Description = "zzz", Color = Color.yellow },
-        new Trait() { Name = "Verbose", Description = "A long string of text to make the text wrap and ensure the text still looks good when it is wrapping inside the traits group.", Color = Color.red },
-        new Trait() { Name = "Surprised", Description = "O.O O.O", Color = Color.green }
-    };
+    public List<Trait> Traits = new List<Trait>();
 
     public UnitRoster ParentRoster;
     public bool IsRetired = false;
@@ -66,13 +61,14 @@ public class Unit
 
     #region Constructors
 
-    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data)
+    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data, List<Trait> traits)
     {
         DisplayName = name;
         Level = level;
         Age = age;
         Stats = stats;
         Class = new UnitClass(data);
+        Traits = traits;
     }
 
     #endregion
