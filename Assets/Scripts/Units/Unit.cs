@@ -2,6 +2,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
+[System.Serializable]
 public class Unit
 {
     #region Fields/Properties

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Variables/IntegerLimits")]
+[System.Serializable]
 public class IntegerLimits : ScriptableObject
 {
     public int Min;

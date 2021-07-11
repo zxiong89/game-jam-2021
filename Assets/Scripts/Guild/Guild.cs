@@ -12,18 +12,18 @@ public class Guild : ScriptableObject
     public UnitRoster Roster;
 
     [SerializeField]
-    private int gold;
+    private IntegerVariable gold;
     public int Gold
     {
-        get { return gold; }
+        get { return gold.Value; }
         set { 
-            gold = value;
-            goldChangedEvent.Raise(value);
+            gold.Value = value;
+            goldChangedEvent.Raise(gold.Value);
         }
     }
 
     public void Initialize()
     {
-        Gold = 6000;
+        goldChangedEvent.Raise(gold.Value);
     }
 }

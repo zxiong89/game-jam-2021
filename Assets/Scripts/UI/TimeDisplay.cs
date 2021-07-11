@@ -6,14 +6,20 @@ public class TimeDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI display;
 
-    //Need to initialize this if we do save/load
-    private float currentTime = 0;
+    [SerializeField]
+    private int secondsPerYear = 20;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private FloatVariable currentTime;
+
+    private void Start()
     {
-        currentTime += Time.deltaTime;
-        display.text = DisplayTime(currentTime);
+    }
+
+    private void Update()
+    {
+        currentTime.Value += Time.deltaTime;
+        display.text = DisplayTime(currentTime.Value);
     }
 
     private string DisplayTime(float time)
