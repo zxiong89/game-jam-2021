@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Irrational
   m_EditorClassIdentifier: 
   color: {r: 0.754717, g: 0.12214563, b: 0, a: 1}
-  statModifiers: 000000000000000000000000f6ffffff00000000
+  statModifiers: 000000000000000000000000ecffffff00000000

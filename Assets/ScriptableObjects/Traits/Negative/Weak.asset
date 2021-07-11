@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Weak
   m_EditorClassIdentifier: 
   color: {r: 0.754717, g: 0.12214563, b: 0, a: 1}
-  statModifiers: f6ffffff00000000000000000000000000000000
+  statModifiers: ecffffff00000000000000000000000000000000

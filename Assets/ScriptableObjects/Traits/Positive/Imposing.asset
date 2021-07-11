@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089d0768b28d2694eb8d7ee7512940d5, type: 3}
   m_Name: Imposing
   m_EditorClassIdentifier: 
-  displayName: Imposing
   color: {r: 0, g: 1, b: 0, a: 1}
-  statModifiers: 0500000000000000000000000500000000000000
+  statModifiers: 0a00000000000000000000000a00000000000000

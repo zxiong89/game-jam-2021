@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089d0768b28d2694eb8d7ee7512940d5, type: 3}
   m_Name: Perceptive
   m_EditorClassIdentifier: 
-  displayName: Perceptive
-  description: +10 Wis
   color: {r: 0, g: 1, b: 0, a: 1}
-  statModifiers: 000000000000000000000000000000000a000000
+  statModifiers: 0000000000000000000000000000000014000000

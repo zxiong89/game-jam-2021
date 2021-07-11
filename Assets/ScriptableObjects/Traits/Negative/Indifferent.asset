@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Indifferent
   m_EditorClassIdentifier: 
   color: {r: 0.754717, g: 0.12214563, b: 0, a: 1}
-  statModifiers: 00000000fbffffff0000000000000000fbffffff
+  statModifiers: 00000000f6ffffff0000000000000000f6ffffff

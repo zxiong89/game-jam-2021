@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Disciplined
   m_EditorClassIdentifier: 
   color: {r: 0, g: 1, b: 0, a: 1}
-  statModifiers: 0000000000000000050000000000000005000000
+  statModifiers: 00000000000000000a000000000000000a000000

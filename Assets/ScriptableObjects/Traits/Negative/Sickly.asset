@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Sickly
   m_EditorClassIdentifier: 
   color: {r: 0.754717, g: 0.12214563, b: 0, a: 1}
-  statModifiers: fbffffff00000000fbffffff0000000000000000
+  statModifiers: f6ffffff00000000f6ffffff0000000000000000

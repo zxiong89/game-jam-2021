@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Lazy
   m_EditorClassIdentifier: 
   color: {r: 0.754717, g: 0.12214563, b: 0, a: 1}
-  statModifiers: fbfffffffbffffff000000000000000000000000
+  statModifiers: f6fffffff6ffffff000000000000000000000000

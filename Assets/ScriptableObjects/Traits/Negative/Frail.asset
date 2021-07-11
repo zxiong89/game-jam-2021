@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Frail
   m_EditorClassIdentifier: 
   color: {r: 0.754717, g: 0.12214563, b: 0, a: 1}
-  statModifiers: 0000000000000000f6ffffff0000000000000000
+  statModifiers: 0000000000000000ecffffff0000000000000000
