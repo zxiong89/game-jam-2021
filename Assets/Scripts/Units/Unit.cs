@@ -14,7 +14,7 @@ public class Unit
         set
         {
             level = value;
-            Stats?.UpdateStats(level);
+            Stats?.UpdateStats(level, traitModifiers);
             recruitmentData = null;
             ExperienceToLevel = (int)math.pow(level, 3);
         }
@@ -42,6 +42,18 @@ public class Unit
     public UnitClass Class;
 
     public List<Trait> Traits = new List<Trait>();
+    private int[] traitModifiers = new int[5] { 0, 0, 0, 0, 0 };
+
+    public int[] TraitModifiers
+    {
+        get { return traitModifiers; }
+        private set
+        {
+            traitModifiers = value;
+            Stats?.UpdateStats(Level, TraitModifiers);
+        }
+    }
+
 
     public UnitRoster ParentRoster;
     public bool IsRetired = false;
@@ -64,11 +76,12 @@ public class Unit
     public Unit(string name, int level, int age, StatBlock stats, UnitClassData data, List<Trait> traits)
     {
         DisplayName = name;
-        Level = level;
         Age = age;
         Stats = stats;
         Class = new UnitClass(data);
         Traits = traits;
+        CalcTraitModifiers();
+        Level = level;
     }
 
     #endregion
@@ -78,6 +91,19 @@ public class Unit
     public void LevelUp() => Level++;
 
     public PartyStats CalcContribution(bool isFrontline) => Class.CalcContribution(Stats, isFrontline);
+
+    private void CalcTraitModifiers()
+    {
+        var modifiers = new int[5];
+        foreach(var trait in Traits)
+        {
+            for (int i = 0; i < modifiers.Length; i++)
+            {
+                modifiers[i] += trait.StatModifiers[i];
+            }
+        }
+        TraitModifiers = modifiers;
+    }
 
     public void Retire()
     {

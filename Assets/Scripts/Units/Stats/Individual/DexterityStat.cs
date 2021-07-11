@@ -22,11 +22,11 @@ public class DexterityStat : BaseStat
 
     #region Stat Base Public Methods
 
-    public override void Update(int level)
+    public override void Update(int level, int traitModifier)
     {
-        Speed = StatExtensions.CalculateStat(level, SpeedBase, SpeedGrowth);
-        Agility = StatExtensions.CalculateStat(level, AgilityBase, AgilityGrowth);
-        Reflexes = StatExtensions.CalculateStat(level, ReflexesBase, ReflexesGrowth);
+        Speed = StatExtensions.CalculateStat(level, SpeedBase, SpeedGrowth, traitModifier);
+        Agility = StatExtensions.CalculateStat(level, AgilityBase, AgilityGrowth, traitModifier);
+        Reflexes = StatExtensions.CalculateStat(level, ReflexesBase, ReflexesGrowth, traitModifier);
     }
 
     public override void RandomizeBaseStats(IntegerLimits baseStats)

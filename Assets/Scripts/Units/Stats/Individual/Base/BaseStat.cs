@@ -34,6 +34,7 @@ public abstract class BaseStat
     /// Updates the current values based on the base stats, growth factor, and level
     /// </summary>
     /// <param name="level"></param>
-    public abstract void Update(int level);
+    /// <paarm name="traitModifiers"></paarm>
+    public abstract void Update(int level, int traitModifier);
 
 }

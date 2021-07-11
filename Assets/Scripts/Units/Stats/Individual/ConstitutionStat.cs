@@ -23,11 +23,11 @@ public class ConstitutionStat : BaseStat
 
     #region Stat Base Public Methods
 
-    public override void Update(int level)
+    public override void Update(int level, int traitModifier)
     {
-        Stamina = StatExtensions.CalculateStat(level, StaminaBase, StaminaGrowth);
-        Endurance = StatExtensions.CalculateStat(level, EnduranceBase, EnduranceGrowth);
-        Vitality = StatExtensions.CalculateStat(level, VitalityBase, VitalityGrowth);
+        Stamina = StatExtensions.CalculateStat(level, StaminaBase, StaminaGrowth, traitModifier);
+        Endurance = StatExtensions.CalculateStat(level, EnduranceBase, EnduranceGrowth, traitModifier);
+        Vitality = StatExtensions.CalculateStat(level, VitalityBase, VitalityGrowth, traitModifier);
     }
 
     public override void RandomizeBaseStats(IntegerLimits baseStats)
