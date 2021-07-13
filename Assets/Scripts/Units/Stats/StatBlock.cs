@@ -8,6 +8,11 @@ public class StatBlock
     public IntelligenceStat Int = new IntelligenceStat();
     public WisdomStat Wis = new WisdomStat();
 
+    public StatBlock()
+    {
+
+    }
+
     public StatBlock(int level, IntegerLimits baseStats, GrowthFactorLimits limits)
     {
         RandomizeBaseStats(baseStats);
