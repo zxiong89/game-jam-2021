@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class TimeDisplay : MonoBehaviour
@@ -7,35 +8,41 @@ public class TimeDisplay : MonoBehaviour
     private TextMeshProUGUI display;
 
     [SerializeField]
-    private int secondsPerYear = 20;
-
-    [SerializeField]
     private FloatVariable currentTime;
 
-    private void Start()
-    {
-    }
+    [SerializeField]
+    private RadialProgressBar monthProgressDisplay;
 
     private void Update()
     {
         currentTime.Value += Time.deltaTime;
-        display.text = DisplayTime(currentTime.Value);
+        (int years, int months, float monthsProgress) = CalculateTime(currentTime.Value);       
+        display.text = DisplayTime(years, months);
+        monthProgressDisplay.SetProgress(monthsProgress);
     }
 
-    private string DisplayTime(float time)
+    private (int, int, float) CalculateTime(float time)
     {
-        return DisplayYears(time) + " " + DisplayMonths(time);
+        int years = Mathf.FloorToInt(time / SimulationConstants.SECONDS_PER_YEAR);
+        float fullMonths = (time - (years * SimulationConstants.SECONDS_PER_YEAR)) / SimulationConstants.SECONDS_PER_YEAR * 12;
+        int monthsComplete = Mathf.FloorToInt(fullMonths);
+        float monthsProgress = fullMonths - monthsComplete;   
+
+        return (years, monthsComplete, monthsProgress);
     }
 
-    private string DisplayYears(float time)
+    private string DisplayTime(float years, float months)
     {
-        int years =  Mathf.FloorToInt(time / SimulationConstants.SECONDS_PER_YEAR);
+        return DisplayYears(years) + " " + DisplayMonths(months);
+    }
+
+    private string DisplayYears(float years)
+    {
         return years.ToString() + " yr";
     }
 
-    private string DisplayMonths(float time)
+    private string DisplayMonths(float months)
     {
-        int months = Mathf.FloorToInt((time % SimulationConstants.SECONDS_PER_YEAR) / SimulationConstants.SECONDS_PER_YEAR * 12);
         return months + " mo";
     }
 }
