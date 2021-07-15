@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class EventLog
 {
@@ -11,6 +9,8 @@ public static class EventLog
 
     public static event Action<LinkedListNode<string>> OnNewMessageAdded;
 
+    public static event Action<bool> NotifyUnreadMessages;
+
     public static void AddMessage(string message)
     {
         messages.AddLast(message);
@@ -18,11 +18,21 @@ public static class EventLog
         {
             messages.RemoveFirst();
         }
-        OnNewMessageAdded?.Invoke(messages.Last);
+
+        if(OnNewMessageAdded != null)
+        {
+            OnNewMessageAdded.Invoke(messages.Last);
+            NotifyUnreadMessages?.Invoke(false);
+        }
+        else
+        {
+            NotifyUnreadMessages?.Invoke(true);
+        }
     }
 
     public static LinkedList<string> GetMessages()
     {
+        NotifyUnreadMessages.Invoke(false);
         return messages;
     }
 }

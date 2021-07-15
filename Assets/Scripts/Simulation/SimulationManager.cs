@@ -36,8 +36,6 @@ public class SimulationManager : MonoBehaviour
     {
         this.UnitSimulator.UpdateUnits(allUnits.Units, playerGuild);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
-        if (shopRosters.CheckHasUpdated()) {
-            EventLog.AddMessage("New adventurers are looking for employment!");
-        }
+        shopRosters.CheckHasUpdated();
     }
 }

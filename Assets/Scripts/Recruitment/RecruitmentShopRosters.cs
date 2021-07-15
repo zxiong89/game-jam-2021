@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Recruitment Shop Rosters")]
@@ -20,6 +21,8 @@ public class RecruitmentShopRosters : ScriptableObject
     private float timeSinceLastRefresh = 0;
 
     private bool unseenUpdates = true;
+
+    public event Action<bool> ShopHasNewUnits;
 
     public void Initialize()
     {
@@ -59,6 +62,7 @@ public class RecruitmentShopRosters : ScriptableObject
         if (ShopHasUpdated())
         {
             unseenUpdates = true;
+            ShopHasNewUnits?.Invoke(true);
         }
         return unseenUpdates;
     }
@@ -95,6 +99,7 @@ public class RecruitmentShopRosters : ScriptableObject
             }
             timeSinceLastRefresh = Time.time;
             unseenUpdates = false;
+            ShopHasNewUnits?.Invoke(false);
         }
     }
 
