@@ -120,7 +120,13 @@ public class Unit
     public void Retire()
     {
         if (IsInPlayerGuild()) {
-            EventLog.AddMessage(DisplayName + " has retired." );
+            var args = new PopupEventArgs()
+            {
+                Text = DisplayName + " has retired.",
+                PausesTime = true
+            };
+            PopupMessage.ShowPopup(args);
+            EventLog.AddMessage(DisplayName + " has retired.", false);
         }
         FreeUnit();
         IsRetired = true;

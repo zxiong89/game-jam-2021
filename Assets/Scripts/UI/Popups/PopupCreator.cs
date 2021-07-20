@@ -10,6 +10,16 @@ public class PopupCreator : MonoBehaviour
     [SerializeField]
     private GameObject InteractionShield;
 
+    private void OnEnable()
+    {
+        PopupMessage.SetPopupCreator(this);
+    }
+
+    private void OnDisable()
+    {
+        PopupMessage.RemovePopupCreator(this);
+    }
+
     /// <summary>
     /// Creates and displays a popup
     /// </summary>
