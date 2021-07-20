@@ -11,7 +11,7 @@ public static class EventLog
 
     public static event Action<bool> NotifyUnreadMessages;
 
-    public static void AddMessage(string message)
+    public static void AddMessage(string message, bool shouldNotify = true)
     {
         messages.AddLast(message);
         while(messages.Count > MESSAGE_LIMIT)
@@ -22,9 +22,8 @@ public static class EventLog
         if(OnNewMessageAdded != null)
         {
             OnNewMessageAdded.Invoke(messages.Last);
-            NotifyUnreadMessages?.Invoke(false);
         }
-        else
+        else if (shouldNotify)
         {
             NotifyUnreadMessages?.Invoke(true);
         }
