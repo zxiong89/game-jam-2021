@@ -44,7 +44,7 @@ public class Guild : ScriptableObject
         {
             exp.Value = value;
             expChangedEvent.Raise(exp.Value);
-            levelChangedEvent.Raise(level);
+            levelChangedEvent.Raise(Level);
         }
     }
 

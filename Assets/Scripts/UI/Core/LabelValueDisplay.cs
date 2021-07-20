@@ -15,7 +15,17 @@ public class LabelValueDisplay : MonoBehaviour
         label.text = newLabel + ":";
     }
 
+    public void SetValue(int newValue) => SetValue(newValue.ToString());
+
+    public void SetValue(float newValue) => SetValue(FloatExtensions.ToString(newValue));
+
     public void SetValue(string newValue)
+    {
+        setValue(newValue);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
+
+    private void setValue(string newValue)
     {
         value.text = newValue;
     }
@@ -23,7 +33,7 @@ public class LabelValueDisplay : MonoBehaviour
     public void SetLabelValue(string newLabel, string newValue)
     {
         SetLabel(newLabel);
-        SetValue(newValue);
+        setValue(newValue);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }
