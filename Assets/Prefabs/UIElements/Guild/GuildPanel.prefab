@@ -154,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 3088480659248732555, guid: d44740dc12c75a3448a87996ea05e250,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 277.5
       objectReference: {fileID: 0}
     - target: {fileID: 3088480659248732555, guid: d44740dc12c75a3448a87996ea05e250,
         type: 3}
@@ -179,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 6769017659233026434, guid: d44740dc12c75a3448a87996ea05e250,
         type: 3}
       propertyPath: m_Name
-      value: GuildSummary
+      value: GuildStatistics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d44740dc12c75a3448a87996ea05e250, type: 3}
@@ -304,7 +304,7 @@ PrefabInstance:
     - target: {fileID: 6769017659233026434, guid: ca5ff095b17a9fd4e84ece5ddd05d8cb,
         type: 3}
       propertyPath: m_Name
-      value: GuildStats
+      value: GuildStatus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5ff095b17a9fd4e84ece5ddd05d8cb, type: 3}

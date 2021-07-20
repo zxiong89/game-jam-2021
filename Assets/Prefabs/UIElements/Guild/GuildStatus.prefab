@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 7492155357042415275, guid: 02d104602479c9941a251907b37b01bd,
         type: 3}
       propertyPath: m_Name
-      value: GuildStats
+      value: GuildStatus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02d104602479c9941a251907b37b01bd, type: 3}
