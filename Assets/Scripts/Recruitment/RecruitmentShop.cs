@@ -71,19 +71,6 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
             }
         };
         showPopup.Raise(popupArgs);
-
-        var unitDetails2 = Instantiate(unitDetailsPopup);
-        unitDetails2.GetComponentInChildren<UnitDisplay>().DisplayUnit(data.UnitForHire);
-        var popupArgs2 = new PopupEventArgs()
-        {
-            Content = unitDetails2,
-            AcceptTextOverride = "Hire",
-            AcceptCallback = (gameObject) =>
-            {
-                TryHireUnit(gameObject, data);
-            }
-        };
-        showPopup.Raise(popupArgs2);
     }
 
     private void TryHireUnit(GameObject hirePopup, RecruitmentData data)
