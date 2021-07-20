@@ -65,15 +65,15 @@ public class Guild : ScriptableObject
 
     private int setLevel(float exp)
     {
-        if (exp < 10e27f) return 10;
-        if (exp < 10e24f) return 9;
-        if (exp < 10e21f) return 8;
-        if (exp < 10e18f) return 7;
-        if (exp < 10e15f) return 6;
-        if (exp < 10e12f) return 5;
-        if (exp < 10e9f) return 4;
-        if (exp < 10e6f) return 3;
-        if (exp < 10e3f) return 2;
+        if (exp > FloatConstants.GuildLevel10) return 10;
+        if (exp > FloatConstants.GuildLevel9) return 9;
+        if (exp > FloatConstants.GuildLevel8) return 8;
+        if (exp > FloatConstants.GuildLevel7) return 7;
+        if (exp > FloatConstants.GuildLevel6) return 6;
+        if (exp > FloatConstants.GuildLevel5) return 5;
+        if (exp > FloatConstants.GuildLevel4) return 4;
+        if (exp > FloatConstants.GuildLevel3) return 3;
+        if (exp > FloatConstants.GuildLevel2) return 2;
         return 1;
     }
     #endregion
