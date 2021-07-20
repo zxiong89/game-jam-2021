@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,12 +15,35 @@ public class PopupDisplay : MonoBehaviour
     [SerializeField]
     private GameObject buttonPrefab;
 
+    [SerializeField]
+    private GameObject textPopupPrefab;
+
+    [SerializeField]
+    private GameEvent pauseGameEvent;
+
+    [SerializeField]
+    private GameEvent resumeGameEvent;
+
     private PopupCreator parent;
+
+    private PopupEventArgs popupArgs;
 
     public void DisplayPopup(PopupEventArgs args, PopupCreator newParent)
     {
+        popupArgs = args;
         parent = newParent;
-        LoadContent(args.Content);
+
+        if (args.PausesTime) pauseGameEvent.Raise();
+
+        if (args.Content)
+        {
+            LoadContent(args.Content);
+        }
+        else
+        {
+            LoadTextPopup(args);
+        }
+
         if(args.AcceptCallback != null)
         {
             AddAcceptButton(GetButtonText(args.AcceptTextOverride, "Accept"), args.AcceptCallback);
@@ -31,6 +53,7 @@ public class PopupDisplay : MonoBehaviour
         {
             AddCloseButton(GetButtonText(args.CloseTextOverride, "Close"), args.CancelCallback);
         }
+
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
@@ -39,24 +62,18 @@ public class PopupDisplay : MonoBehaviour
         return (overrideText == null) ? defaultText : overrideText;
     }
 
+    private void LoadTextPopup(PopupEventArgs args)
+    {
+        GameObject textPopupObj = Instantiate(textPopupPrefab, contentContainer.transform);
+        TextPopup textPopup = textPopupObj.GetComponent<TextPopup>();
+        textPopup.SetText(args.Text);
+        content = textPopupObj;
+    }
+
     private void LoadContent(GameObject popupContent)
     {
         popupContent.transform.SetParent(contentContainer.transform, false);
         content = popupContent;
-    }
-
-    private void LoadButtons(List<Action<GameObject>> acceptFunc, List<string> buttons)
-    {
-        for (int i = 0; i < buttons.Count; i++)
-        { 
-            GameObject buttonObj = Instantiate(buttonPrefab, buttonsContainer.transform);
-            var button = buttonObj.GetComponent<BaseButton>();
-            button.SetText(buttons[i]);
-            if(acceptFunc != null && i == 0)
-            {
-                button.SetCallback(() => acceptFunc[i](content));
-            }
-        }
     }
 
     private BaseButton CreateButton(string buttonText)
@@ -86,6 +103,7 @@ public class PopupDisplay : MonoBehaviour
 
     private void ClosePopup()
     {
+        if (popupArgs.PausesTime) resumeGameEvent.Raise();
         parent.PopupClosed();
         Destroy(gameObject);
     }

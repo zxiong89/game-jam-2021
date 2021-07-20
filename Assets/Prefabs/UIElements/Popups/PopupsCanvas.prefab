@@ -130,6 +130,8 @@ MonoBehaviour:
   popupContainerPrefab: {fileID: 3081119914275025758, guid: b4254cea7863d8541817cab74b917fb6,
     type: 3}
   InteractionShield: {fileID: 1384285532850728991}
+  PauseGameEvent: {fileID: 11400000, guid: 9caeda23fa8e7fc48ab054653dc258f1, type: 2}
+  ResumeGameEvent: {fileID: 11400000, guid: f2076fa430f74624bbac3cf1a9e47ed7, type: 2}
 --- !u!114 &2266729315901228660
 MonoBehaviour:
   m_ObjectHideFlags: 0

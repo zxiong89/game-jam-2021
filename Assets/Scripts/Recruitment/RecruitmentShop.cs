@@ -58,29 +58,49 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
 
     public void BidForUnit(RecruitmentData data)
     {
-        if(playerGuild.Gold <= data.Fee)
+        var unitDetails = Instantiate(unitDetailsPopup);
+        unitDetails.GetComponentInChildren<UnitDisplay>().DisplayUnit(data.UnitForHire);
+
+        var popupArgs = new PopupEventArgs()
         {
-            Debug.Log("Ya ain't got enough dough");
-            //Tell player they don't have enough gold.
+            Content = unitDetails,
+            AcceptTextOverride = "Hire",
+            AcceptCallback = (gameObject) =>
+            {
+                TryHireUnit(gameObject, data);
+            }
+        };
+        showPopup.Raise(popupArgs);
+
+        var unitDetails2 = Instantiate(unitDetailsPopup);
+        unitDetails2.GetComponentInChildren<UnitDisplay>().DisplayUnit(data.UnitForHire);
+        var popupArgs2 = new PopupEventArgs()
+        {
+            Content = unitDetails2,
+            AcceptTextOverride = "Hire",
+            AcceptCallback = (gameObject) =>
+            {
+                TryHireUnit(gameObject, data);
+            }
+        };
+        showPopup.Raise(popupArgs2);
+    }
+
+    private void TryHireUnit(GameObject hirePopup, RecruitmentData data)
+    {
+        if(playerGuild.Gold < data.Fee)
+        {
+            var popupArgs = new PopupEventArgs()
+            {
+                Text = "You don't have enough gold!",
+            };
+            showPopup.Raise(popupArgs);
         }
         else
         {
-            var unitDetails = Instantiate(unitDetailsPopup);
-            unitDetails.GetComponentInChildren<UnitDisplay>().DisplayUnit(data.UnitForHire);
-
-            var popupArgs = new PopupEventArgs()
-            {
-                Content = unitDetails,
-                AcceptTextOverride = "Hire",
-                AcceptCallback = (gameObject) =>
-                {
-                    playerGuild.Gold -= data.Fee;
-                    playerGuild.Roster.Add(data.UnitForHire);
-                    grid.RefreshGridDisplay();
-
-                }
-            };
-            showPopup.Raise(popupArgs);
+            playerGuild.Gold -= data.Fee;
+            playerGuild.Roster.Add(data.UnitForHire);
+            grid.RefreshGridDisplay();
         }
     }
 
