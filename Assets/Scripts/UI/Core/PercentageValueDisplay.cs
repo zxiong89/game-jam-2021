@@ -27,5 +27,5 @@ public class PercentageValueDisplay : MonoBehaviour
         }
     }
 
-    private float calcPercentage() => value / max * 100;
+    private string calcPercentage() => $"{FloatExtensions.ToString(value / max * 100)}%";
 }
