@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
 public class RecruitmentData
 {
     private const float PRICE_SCALING_FACTOR = 1.125f;
