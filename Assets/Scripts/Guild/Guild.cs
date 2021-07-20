@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Guild")]
+[CreateAssetMenu(menuName = "Guild/Guild")]
 public class Guild : ScriptableObject
 {
     [SerializeField]
-    private IntEvent goldChangedEvent;
+    public UnitRoster Roster;
+
+    #region Gold 
+    [Header("Gold")]
 
     [SerializeField]
-    public UnitRoster Roster;
+    private IntEvent goldChangedEvent;
 
     [SerializeField]
     private IntegerVariable gold;
@@ -21,6 +24,7 @@ public class Guild : ScriptableObject
             goldChangedEvent.Raise(gold.Value);
         }
     }
+    #endregion
 
     public void Initialize()
     {
