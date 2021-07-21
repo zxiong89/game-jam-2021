@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8347412704459360768
+--- !u!1 &784816145
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8347412704459361022}
-  - component: {fileID: 8347412704459361023}
-  - component: {fileID: 8347412704459361021}
+  - component: {fileID: 784816146}
+  - component: {fileID: 784816149}
+  - component: {fileID: 784816148}
+  - component: {fileID: 784816147}
   m_Layer: 0
-  m_Name: SimulationManager
+  m_Name: GameSpeedEventListeners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8347412704459361022
+--- !u!4 &784816146
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8347412704459360768}
+  m_GameObject: {fileID: 784816145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 590.0929, y: -1223.6334, z: -426.5296}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8347412704459361022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8347412704459361023
+--- !u!114 &784816149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8347412704459360768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d57578fcdc28f41a265e87fcb4f160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allUnits: {fileID: 11400000, guid: e3befbc5e4c95fd47afa6eb7ffc9dc05, type: 2}
-  playerGuild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
-  shopRosters: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011, type: 2}
-  activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
-  startingGold: {fileID: 11400000, guid: 4a551af2b841510438263a3e33f4f012, type: 2}
---- !u!114 &8347412704459361021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8347412704459360768}
+  m_GameObject: {fileID: 784816145}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e06ed5914e3a8e441a30affaaf99611b, type: 3}
@@ -77,3 +61,109 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &784816148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784816145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b23fed40f6309d4d86644466e7d016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent:
+  - {fileID: 11400000, guid: 9caeda23fa8e7fc48ab054653dc258f1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8347412704459361023}
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &784816147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784816145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b23fed40f6309d4d86644466e7d016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent:
+  - {fileID: 11400000, guid: f2076fa430f74624bbac3cf1a9e47ed7, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8347412704459361023}
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &8347412704459360768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8347412704459361022}
+  - component: {fileID: 8347412704459361023}
+  m_Layer: 0
+  m_Name: SimulationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8347412704459361022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347412704459360768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 590.0929, y: -1223.6334, z: -426.5296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 784816146}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8347412704459361023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347412704459360768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d57578fcdc28f41a265e87fcb4f160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUnits: {fileID: 11400000, guid: e3befbc5e4c95fd47afa6eb7ffc9dc05, type: 2}
+  playerGuild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
+  shopRosters: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011, type: 2}
+  activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
+  pausedSpeed: 0
+  activePauses: 0

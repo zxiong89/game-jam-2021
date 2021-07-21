@@ -10,6 +10,16 @@ public class PopupCreator : MonoBehaviour
     [SerializeField]
     private GameObject InteractionShield;
 
+    private void OnEnable()
+    {
+        PopupMessage.SetPopupCreator(this);
+    }
+
+    private void OnDisable()
+    {
+        PopupMessage.RemovePopupCreator(this);
+    }
+
     /// <summary>
     /// Creates and displays a popup
     /// </summary>
@@ -20,10 +30,19 @@ public class PopupCreator : MonoBehaviour
         PopupDisplay popup = popupObj.GetComponent<PopupDisplay>();
         InteractionShield.SetActive(true);
         popup.DisplayPopup(args, this);
+        InteractionShield.transform.SetSiblingIndex(transform.childCount - 2);
     }
 
     public void PopupClosed()
     {
-        InteractionShield.SetActive(false);
+        if (transform.childCount == 2)
+        {
+            InteractionShield.SetActive(false);
+        }
+        else
+        {
+            InteractionShield.transform.SetSiblingIndex(transform.childCount - 3);
+        }
+
     }
 }

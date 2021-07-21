@@ -20,6 +20,10 @@ public class SimulationManager : MonoBehaviour
 
     public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
 
+    private float setSpeed = 1;
+
+    private float activePauses = 0;
+
     //Might want to move initialization elsewhere, but doing it here for now for convenience
     private void Start()
     {
@@ -29,15 +33,36 @@ public class SimulationManager : MonoBehaviour
 
     public void PlayAtSpeed(float speed)
     {
+        setSpeed = speed;
         Time.timeScale = speed;
+    }
+
+    public void Resume()
+    {
+        activePauses--;
+        if(activePauses == 0)
+        {
+            Time.timeScale = setSpeed;
+        }
+        else if (activePauses < 0)
+        {
+            throw new System.Exception("Tried to resume simulation too many times. Check for unpaired Pause/Resume");
+        }
+    }
+
+    public void Pause()
+    {
+        if(activePauses == 0)
+        { 
+            Time.timeScale = 0;
+        }
+        activePauses++;
     }
 
     private void FixedUpdate()
     {
         this.UnitSimulator.UpdateUnits(allUnits.Units, playerGuild);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
-        if (shopRosters.CheckHasUpdated()) {
-            EventLog.AddMessage("New adventurers are looking for employment!");
-        }
+        shopRosters.CheckHasUpdated();
     }
 }

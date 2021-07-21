@@ -9,6 +9,15 @@ using UnityEngine;
 [System.Serializable]
 public struct PopupEventArgs
 {
+    /// <summary>
+    /// Fill this in for a basic text popup
+    /// </summary>
+    public string Text { get; set; }
+
+    /// <summary>
+    /// Provide a gameobject for popups with custom layouts. The Text property
+    /// is ignored if this is provided
+    /// </summary>
     public GameObject Content { get; set; }
 
     public string CloseTextOverride { get; set; }
@@ -18,4 +27,6 @@ public struct PopupEventArgs
     public Action<GameObject> AcceptCallback { get; set; }
 
     public Action<GameObject> CancelCallback { get; set; }
+
+    public bool PausesTime { get; set; }
 }
