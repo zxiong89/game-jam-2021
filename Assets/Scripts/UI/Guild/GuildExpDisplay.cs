@@ -8,7 +8,6 @@ public class GuildExpDisplay : MonoBehaviour
     public void SetValue(float value)
     {
         var max = getMax(value);
-        if (max == 0) 
         display?.SetValue(max == 0 ? "MAX" : $"{FloatExtensions.ToString(value / max * 100)}%");
     }
 

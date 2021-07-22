@@ -21,6 +21,7 @@ public class Quest
     private float maxPartyHp;
 
     private int expGained;
+    public int ExpGained { get => expGained; }
 
     private int goldEarned;
     public int GoldEarned { get => goldEarned; }

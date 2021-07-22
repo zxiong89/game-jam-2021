@@ -21,19 +21,13 @@ public class LabelValueDisplay : MonoBehaviour
 
     public void SetValue(string newValue)
     {
-        setValue(newValue);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-    }
-
-    private void setValue(string newValue)
-    {
         value.text = newValue;
     }
 
     public void SetLabelValue(string newLabel, string newValue)
     {
         SetLabel(newLabel);
-        setValue(newValue);
+        SetValue(newValue);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }
