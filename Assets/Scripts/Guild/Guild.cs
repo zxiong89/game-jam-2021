@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Guild/Guild")]
 public class Guild : ScriptableObject
 {
+    private bool isInitializing = true;
+
     [SerializeField]
     public UnitRoster Roster;
 
@@ -19,7 +21,19 @@ public class Guild : ScriptableObject
     public int Gold
     {
         get { return gold.Value; }
-        set { 
+        set {
+            if (!isInitializing)
+            {
+                int delta = value - gold.Value;
+                if (delta > 0)
+                {
+                    GuildStatistics.GoldGained += delta;
+                }
+                else if (delta < 0)
+                {
+                    GuildStatistics.GoldSpent -= delta;
+                }
+            }
             gold.Value = value;
             goldChangedEvent.Raise(gold.Value);
         }
@@ -82,5 +96,6 @@ public class Guild : ScriptableObject
     {
         goldChangedEvent.Raise(gold.Value);
         expChangedEvent.Raise(exp.Value);
+        isInitializing = false;
     }
 }

@@ -15,6 +15,8 @@ public class LabelValueDisplay : MonoBehaviour
         label.text = newLabel + ":";
     }
 
+    public void SetValue(double newValue) => SetValue(newValue.ToString("f0"));
+
     public void SetValue(int newValue) => SetValue(newValue.ToString());
 
     public void SetValue(float newValue) => SetValue(FloatExtensions.ToString(newValue));
