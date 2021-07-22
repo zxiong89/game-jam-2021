@@ -18,21 +18,6 @@ public class GuildStatusDisplay : MonoBehaviour
     {
         levelDisplay.SetValue(playerGuild.Level);
         expDisplay.SetValue(playerGuild.Exp);
-        rebuildLayout();
-    }
-
-    public void SetLevelDisplay(int level)
-    {
-        levelDisplay.SetValue(playerGuild.Level);
-        rebuildLayout();
-    }
-
-    public void SetExpDisplay(float exp)
-    {
-        expDisplay.SetValue(playerGuild.Exp);
-        rebuildLayout();
-    }
-
-    private void rebuildLayout() => 
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+    }
 }
