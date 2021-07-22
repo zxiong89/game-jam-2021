@@ -44,12 +44,6 @@ public class Guild : ScriptableObject
     [Header("Exp and Level")]
 
     [SerializeField]
-    private FloatEvent expChangedEvent;
-
-    [SerializeField]
-    private IntEvent levelChangedEvent;
-
-    [SerializeField]
     private FloatVariable exp;
     public float Exp
     {
@@ -57,8 +51,6 @@ public class Guild : ScriptableObject
         set
         {
             exp.Value = value;
-            expChangedEvent.Raise(exp.Value);
-            levelChangedEvent.Raise(Level);
         }
     }
 
@@ -95,7 +87,6 @@ public class Guild : ScriptableObject
     public void Initialize()
     {
         goldChangedEvent.Raise(gold.Value);
-        expChangedEvent.Raise(exp.Value);
         isInitializing = false;
     }
 }
