@@ -15,10 +15,10 @@ public class Combat : Encounter
 
     public override bool IsComplete() => hp <= 0;
 
-    public override EncounterResults Run(Party party, int turns)
+    public override EncounterResults Run(Party party, int turns, PartyStats globalMods)
     {
-        float dealt = party.DealDamage(stats);
-        float taken = party.TakeDamage(stats);
+        float dealt = party.DealDamage(stats, globalMods);
+        float taken = party.TakeDamage(stats, globalMods);
         int turnsNeeded = Mathf.CeilToInt(hp / dealt);
 
         if (turnsNeeded > turns)

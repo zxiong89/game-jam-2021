@@ -158,6 +158,8 @@ MonoBehaviour:
   activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
   pastQuests: {fileID: 11400000, guid: 102e1ff7a56e75942bff5e4ca10d0f50, type: 2}
   guild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
+  activeGuildPartyMods: {fileID: 11400000, guid: aa2fe023d1e61ec44a462e93e1e2e457,
+    type: 2}
   onPartySelected: {fileID: 11400000, guid: 016a6356ae8070941a005753ecbdcecc, type: 2}
   partiesToggleGroup: {fileID: 1150441817657743184}
   editPartyButton: {fileID: 4779142934239473388}

@@ -16,9 +16,9 @@ public class Exploration : Encounter
 
     public override bool IsComplete() => time <= 0;
 
-    public override EncounterResults Run(Party party, int turns)
+    public override EncounterResults Run(Party party, int turns, PartyStats globalMods)
     {
-        var explorationPerTurn = calcExplorationPerTurn(party) + turns;
+        var explorationPerTurn = calcExplorationPerTurn(party, globalMods) + turns;
         int turnsNeeded = Mathf.CeilToInt(time / explorationPerTurn);
 
         if (turns >= turnsNeeded)
@@ -40,6 +40,6 @@ public class Exploration : Encounter
         };
     }
 
-    private float calcExplorationPerTurn(Party party) =>
-        (party.CalcTotalAtk() + party.CalcTotalDef()) / PARTY_EXPLORATION_TURN_FACTOR; 
+    private float calcExplorationPerTurn(Party party, PartyStats globalMods) =>
+        (party.CalcTotalAtk(globalMods) + party.CalcTotalDef() * globalMods.Def) / PARTY_EXPLORATION_TURN_FACTOR; 
 }

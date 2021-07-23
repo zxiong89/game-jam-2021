@@ -29,13 +29,16 @@ public class Quest
     public Dictionary<string, int> Defeated = new Dictionary<string, int>();
     public Dictionary<string, int> Explored = new Dictionary<string, int>();
 
-    public Quest(Party party, LocationData location)
+    private GuildPartyModifier guildPartyModifier;
+
+    public Quest(Party party, LocationData location, GuildPartyModifier guildPartyModifier)
     {
         LocationData = location;
         Party = party;
         maxPartyHp = party.CalcTotalDef();
         partyHp = maxPartyHp;
         IsActive = true;
+        this.guildPartyModifier = guildPartyModifier;
     }
 
     public string Log()
@@ -104,12 +107,13 @@ public class Quest
             curEncounter = LocationData.SpawnEncounter();
         }
 
-        var results = curEncounter.Run(Party, turns);
+        var results = curEncounter.Run(Party, turns, guildPartyModifier.Modifiers);
         if (results.DamageTaken != null) partyHp -= results.DamageTaken.Value;
-        if (results.GoldGained != null) goldEarned += results.GoldGained.Value;
+        if (results.GoldGained != null) goldEarned += (int) (results.GoldGained.Value * guildPartyModifier.GoldModifier);
         if (results.ExpGained != null)
         {
-            Party.GiveExp(results.ExpGained.Value);
+            int exp = (int) (results.ExpGained.Value * guildPartyModifier.ExpModifier);
+            Party.GiveExp(exp);
             expGained += results.ExpGained.Value;
         }
 

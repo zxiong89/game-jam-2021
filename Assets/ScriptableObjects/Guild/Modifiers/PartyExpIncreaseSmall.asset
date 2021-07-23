@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9c07d9e6b091747aa6584ff38dbddb, type: 3}
   m_Name: PartyExpIncreaseSmall
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Small Quest Exp Bonus
   Modifiers:
     PhyAtk: 0
     MagAtk: 0

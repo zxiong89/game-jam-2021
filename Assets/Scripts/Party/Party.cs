@@ -84,31 +84,31 @@ public class Party
         }
     }
 
-    public float DealDamage(CreatureStats enemy)
+    public float DealDamage(CreatureStats enemy, PartyStats globalMods)
     {
-        var totalAtk = calcAtk(Stats.PhyAtk, Stats.AtkSup, enemy.PhyResist);
-        totalAtk += calcAtk(Stats.MagAtk, Stats.AtkSup, enemy.MagResist);
+        var totalAtk = calcAtk(Stats.PhyAtk, Stats.AtkSup, globalMods.PhyAtk, enemy.PhyResist);
+        totalAtk += calcAtk(Stats.MagAtk, Stats.AtkSup, globalMods.MagAtk, enemy.MagResist);
         return floorDamage(totalAtk - enemy.Def);
     }
 
-    public float TakeDamage(CreatureStats enemy)
+    public float TakeDamage(CreatureStats enemy, PartyStats globalModifiers)
     {
-        return floorDamage(enemy.Atk - CalcTotalDef());
+        return floorDamage(enemy.Atk - (CalcTotalDef() * globalModifiers.Def));
     }
 
     private float floorDamage(float damage) => Mathf.Max(damage, 0f);
 
-    public float CalcTotalAtk() => 
-        calcAtk(Stats.PhyAtk + Stats.MagAtk, Stats.AtkSup) + calcAtk(Stats.MagAtk, Stats.AtkSup);
+    public float CalcTotalAtk(PartyStats globalMods) => 
+        calcAtk(Stats.PhyAtk, Stats.AtkSup, globalMods.PhyAtk) + calcAtk(Stats.MagAtk, Stats.AtkSup, globalMods.MagAtk);
 
     public float CalcTotalDef() =>
         Stats.Def * normalizeSupMod(Stats.DefSup);
 
-    private float calcAtk(float baseAtk, float supMod, float resistMod = 0f)
+    private float calcAtk(float baseAtk, float supMod, float globalMod, float resistMod = 0f)
     {
         if (resistMod >= 1f) return 0f;
         if (resistMod < 0f) resistMod = 0f;
-        return (1 - resistMod) * normalizeSupMod(supMod) * baseAtk;
+        return (1 - resistMod) * normalizeSupMod(supMod) * globalMod * baseAtk;
     }
 
     private float normalizeSupMod(float supMod) => 1 + (supMod / SUPPORT_MOD_FACTOR);
