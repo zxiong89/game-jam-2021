@@ -13,10 +13,10 @@ public class GuildPartyModifierDisplay : MonoBehaviour
     private TextMeshProUGUI descriptionDisplay;
 
     [SerializeField]
-    private BaseButton buyButton;
+    private GuildPartyModifierShopBuyButton buyButton;
 
     [SerializeField]
-    private BaseButton rentButton;
+    private GuildPartyModifierShopRentButton rentButton;
 
     [SerializeField]
     private GuildShopPanel shopPanel;
@@ -29,16 +29,16 @@ public class GuildPartyModifierDisplay : MonoBehaviour
             this.mod = value;
             nameDisplay.text = mod.Name;
             descriptionDisplay.text = mod.Description;
-            buyButton.SetText(FormatBuyButton(mod.Cost));
-            rentButton.SetText(FormatBuyButton(mod.Rental));
+            buyButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
+            rentButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
             LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
     }
 
     public void DisplayGuildPartyModifier(GuildPartyModifier mod, GuildShopPanel shopPanel)
     {
-        this.mod = mod;
         this.shopPanel = shopPanel;
+        this.mod = mod;
     }
 
     public void BuyModifier()
@@ -51,9 +51,5 @@ public class GuildPartyModifierDisplay : MonoBehaviour
         shopPanel?.RentModifier(mod);
     }
 
-    public static string FormatBuyButton(int cost) =>
-        $"Buy ({cost} {GenericStrings.CurrencySymbol})";
-    public static string FormatRentalButton(int cost) =>
-        $"Rental ({cost} {GenericStrings.CurrencySymbol})";
 
 }

@@ -12,7 +12,14 @@ public class GuildShopPanel : MonoBehaviour
     private GuildPartyModifierCollection availableList;
 
     [SerializeField]
-    private GameObject prefab;
+    private GuildPartyModifierDisplay modifierDisplayPrefab;
+
+    [SerializeField]
+    private Guild playerGuild;
+    public Guild PlayerGuild
+    {
+        get => playerGuild;
+    }
 
     private List<GuildPartyModifier> modifiersToBuy;
 
@@ -20,9 +27,12 @@ public class GuildShopPanel : MonoBehaviour
     {
         modifiersToBuy = availableList.Modifiers.Where(mod => !activeList.Modifiers.Contains(mod)).ToList();
 
+        var transform = this.transform;
+
         foreach (var mod in modifiersToBuy) 
         {
-
+            var display = GameObject.Instantiate<GuildPartyModifierDisplay>(modifierDisplayPrefab, transform);
+            display.DisplayGuildPartyModifier(mod, this);
         }
     }
 
