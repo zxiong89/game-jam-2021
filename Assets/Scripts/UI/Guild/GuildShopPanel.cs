@@ -38,11 +38,13 @@ public class GuildShopPanel : MonoBehaviour
 
     public void BuyModifier(GuildPartyModifier mod)
     {
-
+        playerGuild.Gold -= mod.Cost;
+        activeList.Modifiers.Add(mod);
     }
 
     public void RentModifier(GuildPartyModifier mod)
     {
-
+        playerGuild.Gold -= mod.Rental;
+        activeList.Modifiers.Add(mod);
     }
 }

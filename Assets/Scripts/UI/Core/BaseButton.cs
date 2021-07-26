@@ -14,9 +14,15 @@ public class BaseButton : MonoBehaviour
     [SerializeField]
     private Button buttonComponent;
 
+    public bool Interactable
+    {
+        get => buttonComponent.interactable;
+        set => buttonComponent.interactable = value;
+    }
+
     public void SetText(string newText)
     {
-        buttonText.text = newText;  
+        buttonText.text = newText;
     }
 
     public void SetCallback(Action callback)
