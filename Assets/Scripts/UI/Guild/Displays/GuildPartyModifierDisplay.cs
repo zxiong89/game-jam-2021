@@ -21,24 +21,22 @@ public class GuildPartyModifierDisplay : MonoBehaviour
     [SerializeField]
     private GuildShopPanel shopPanel;
 
-    private GuildPartyModifier mod
-    {
-        get => this.mod;
-        set
-        {
-            this.mod = value;
-            nameDisplay.text = mod.Name;
-            descriptionDisplay.text = mod.Description;
-            buyButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
-            rentButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
-        }
-    }
+    private GuildPartyModifier mod;
 
     public void DisplayGuildPartyModifier(GuildPartyModifier mod, GuildShopPanel shopPanel)
     {
         this.shopPanel = shopPanel;
         this.mod = mod;
+        displayModifier();
+    }
+
+    private void displayModifier()
+    {
+        nameDisplay.text = mod.Name;
+        descriptionDisplay.text = mod.Description;
+        buyButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
+        rentButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
 
     public void BuyModifier()
