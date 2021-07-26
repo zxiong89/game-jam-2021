@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PartyExpIncreaseSmall
   m_EditorClassIdentifier: 
   Name: Small Quest Exp Bonus
+  Description: Increase quest experience by 10%
+  Cost: 30000
+  Rental: 3000
   Modifiers:
     PhyAtk: 0
     MagAtk: 0

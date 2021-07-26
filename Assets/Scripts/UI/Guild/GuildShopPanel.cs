@@ -9,6 +9,9 @@ public class GuildShopPanel : MonoBehaviour
     private GuildPartyModifierCollection activeList;
 
     [SerializeField]
+    private GuildPartyModifierCollection rentalList;
+
+    [SerializeField]
     private GuildPartyModifierCollection availableList;
 
     [SerializeField]
@@ -33,6 +36,7 @@ public class GuildShopPanel : MonoBehaviour
         {
             var display = GameObject.Instantiate<GuildPartyModifierDisplay>(modifierDisplayPrefab, transform);
             display.DisplayGuildPartyModifier(mod, this);
+            if (rentalList.Modifiers.Contains(mod)) display.SetAsRented();
         }
     }
 
@@ -45,6 +49,6 @@ public class GuildShopPanel : MonoBehaviour
     public void RentModifier(GuildPartyModifier mod)
     {
         playerGuild.Gold -= mod.Rental;
-        activeList.Modifiers.Add(mod);
+        rentalList.Modifiers.Add(mod);
     }
 }

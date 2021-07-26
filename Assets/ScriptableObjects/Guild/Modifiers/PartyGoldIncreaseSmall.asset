@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PartyGoldIncreaseSmall
   m_EditorClassIdentifier: 
   Name: Small Quest Gold Bonus
+  Description: Increase gold found questing by 10%
+  Cost: 30000
+  Rental: 3000
   Modifiers:
     PhyAtk: 0
     MagAtk: 0

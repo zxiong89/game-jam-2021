@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PartyMagAttackSmall
   m_EditorClassIdentifier: 
   Name: Small Mag Atk Bonus
+  Description: Increase party magical attack by 10%
+  Cost: 10000
+  Rental: 1000
   Modifiers:
     PhyAtk: 0
     MagAtk: 0.1

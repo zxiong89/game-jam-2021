@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PartyPhyAttackSmall
   m_EditorClassIdentifier: 
   Name: Small Phy Atk Bonus
+  Description: Increase party physical attack by 10%
+  Cost: 10000
+  Rental: 1000
   Modifiers:
     PhyAtk: 0.1
     MagAtk: 0

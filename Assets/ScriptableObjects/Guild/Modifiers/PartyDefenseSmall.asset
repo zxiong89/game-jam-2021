@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PartyDefenseSmall
   m_EditorClassIdentifier: 
   Name: Small Defense Bonus
+  Description: Increase party defense by 10%
+  Cost: 10000
+  Rental: 1000
   Modifiers:
     PhyAtk: 0
     MagAtk: 0

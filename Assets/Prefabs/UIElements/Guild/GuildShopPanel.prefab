@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeList: {fileID: 11400000, guid: aa2fe023d1e61ec44a462e93e1e2e457, type: 2}
+  rentalList: {fileID: 11400000, guid: 27202fa529d210b44beb688de7f9bd6a, type: 2}
   availableList: {fileID: 11400000, guid: b7f1cc67e13c9904bac8bb3cfa771e3c, type: 2}
   modifierDisplayPrefab: {fileID: 4570380442586063031, guid: 082f4d2892a9a9848b714c91410ea2ed,
     type: 3}

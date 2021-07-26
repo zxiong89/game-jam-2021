@@ -42,6 +42,11 @@ public class GuildPartyModifierDisplay : MonoBehaviour
     public void BuyModifier()
     {
         shopPanel?.BuyModifier(mod);
+        SetAsPurchased();
+    }
+
+    public void SetAsPurchased()
+    {
         buyButton.SetText(GenericStrings.Purchased);
         buyButton.Interactable = false;
         rentButton.gameObject.SetActive(false);
@@ -50,6 +55,11 @@ public class GuildPartyModifierDisplay : MonoBehaviour
     public void RentModifier()
     {
         shopPanel?.RentModifier(mod);
+        SetAsRented();
+    }
+
+    public void SetAsRented()
+    {
         rentButton.SetText(GenericStrings.Rented);
         rentButton.Interactable = false;
     }
