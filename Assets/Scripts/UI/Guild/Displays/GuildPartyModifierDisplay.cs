@@ -35,7 +35,11 @@ public class GuildPartyModifierDisplay : MonoBehaviour
         nameDisplay.text = mod.Name;
         descriptionDisplay.text = mod.Description;
         buyButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
-        rentButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
+        if (mod.Rental > 0)
+        {
+            rentButton.gameObject.SetActive(true);
+            rentButton.SetText(mod, shopPanel?.PlayerGuild.Gold);
+        }
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
 
