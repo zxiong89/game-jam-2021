@@ -16,9 +16,14 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     private QuestCollection activeQuests;
 
+    [SerializeField]
+    private TimedEventCollection timedEvents;
+
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
 
     public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
+
+    public TimedEventHandler TimedEventHandler { get; } = new TimedEventHandler();
 
     private float setSpeed = 1;
 
@@ -64,5 +69,6 @@ public class SimulationManager : MonoBehaviour
         this.UnitSimulator.UpdateUnits(allUnits.Units, playerGuild);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
         shopRosters.CheckHasUpdated();
+        this.TimedEventHandler.UpdateTimedEvents(timedEvents.timedEvents);
     }
 }

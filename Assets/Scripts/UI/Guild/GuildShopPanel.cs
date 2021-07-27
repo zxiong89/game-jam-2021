@@ -24,6 +24,9 @@ public class GuildShopPanel : MonoBehaviour
         get => playerGuild;
     }
 
+    [SerializeField]
+    private TimedEventCollection activeTimedEvents;
+
     private List<GuildPartyModifier> modifiersToBuy;
 
     private void Start()
@@ -50,5 +53,9 @@ public class GuildShopPanel : MonoBehaviour
     {
         playerGuild.Gold -= mod.Rental;
         rentalList.Modifiers.Add(mod);
+        activeTimedEvents.timedEvents.Add(new TimedEvent(() =>
+        {
+            rentalList.Modifiers.Remove(mod);
+        }));
     }
 }
