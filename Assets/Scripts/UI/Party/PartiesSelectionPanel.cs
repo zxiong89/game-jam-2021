@@ -21,7 +21,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     private Guild guild;
 
     [SerializeField]
-    private GuildPartyModifierCollection activeGuildPartyMods;
+    private GuildPartyModifierCollection[] activeGuildPartyMods;
 
     [Header("Events")]
     [SerializeField]
@@ -174,8 +174,9 @@ public class PartiesSelectionPanel : MonoBehaviour
 
         var oldQuest = party.FindQuestInCollection(pastQuests);
         if (oldQuest != null) pastQuests.Quests.Remove(oldQuest);
-
-        var newQuest = new Quest(party, locationData, activeGuildPartyMods.CalcModifiers());
+        
+        var newQuest = new Quest(party, locationData, 
+            GuildPartyModifierCollection.CalcModifiers(activeGuildPartyMods));
         activeQuests.Quests.Add(newQuest);
         pastQuests.Quests.Add(newQuest);
     }

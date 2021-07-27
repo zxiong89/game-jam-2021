@@ -8,10 +8,11 @@ public class GuildPartyModifierCollection : ScriptableObject
     public List<GuildPartyModifier> Modifiers = new List<GuildPartyModifier>();
 
     /// <summary>
-    /// Calculate and flatten the current active modifiers (if any)
+    /// Flatten an array of collections of guild party modifiers. Summation from 1.
     /// </summary>
+    /// <param name="collections"></param>
     /// <returns></returns>
-    public GuildPartyModifier CalcModifiers()
+    public static GuildPartyModifier CalcModifiers(GuildPartyModifierCollection[] collections)
     {
         var totalMod = new PartyStats()
         {
@@ -24,6 +25,39 @@ public class GuildPartyModifierCollection : ScriptableObject
         var totalExpMod = 1f;
         var totalGoldMod = 1f;
 
+        foreach (var col in collections)
+        {
+            var result = col.calcModifier();
+            totalMod += result.Modifiers;
+            totalExpMod += result.ExpModifier;
+            totalGoldMod += result.GoldModifier;
+        }
+
+        return new GuildPartyModifier()
+        {
+            Modifiers = totalMod,
+            ExpModifier = totalExpMod,
+            GoldModifier = totalGoldMod
+        };
+    }
+
+    /// <summary>
+    /// Flatten this collection of guild party modifiers. This is a summation from 0.
+    /// </summary>
+    /// <returns></returns>
+    private GuildPartyModifier calcModifier()
+    {
+        var totalMod = new PartyStats()
+        {
+            PhyAtk = 0,
+            MagAtk = 0,
+            Def = 0,
+            AtkSup = 0,
+            DefSup = 0
+        };
+        var totalExpMod = 0f;
+        var totalGoldMod = 0f;
+
         foreach (var mod in Modifiers)
         {
             totalMod += mod.Modifiers;
@@ -33,7 +67,6 @@ public class GuildPartyModifierCollection : ScriptableObject
 
         return new GuildPartyModifier()
         {
-            Name = "Calculated Guild Party Modifiers",
             Modifiers = totalMod,
             ExpModifier = totalExpMod,
             GoldModifier = totalGoldMod
