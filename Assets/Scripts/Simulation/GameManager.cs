@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         unitRosterManager.InPartyRoster = save.UnitRosterManager.InPartyRoster;
         shopRosters.SetRosters(save.ShopRosters);
         activeQuests.Quests = save.ActiveQuests.Quests;
-        activeParties.Parties = save.ActiveParties.Parties;
+        // TODO activeParties.parties = save.ActiveParties.parties;
         currentTime.Value = save.CurrentTime;
         playerGold.Value = save.PlayerGold;
     }

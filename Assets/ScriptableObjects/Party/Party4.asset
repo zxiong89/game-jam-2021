@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2d0fc8ef5454346a50813ce1f73cbe, type: 3}
-  m_Name: PlayerGuildGold
+  m_Script: {fileID: 11500000, guid: 79c8819b89f29ce46a7724fb9bba051f, type: 3}
+  m_Name: Party4
   m_EditorClassIdentifier: 
-  Value: 60000000
+  Party:
+    Name: Party 4

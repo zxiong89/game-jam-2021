@@ -143,7 +143,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     {
         if (args.PartyData == null) return;
 
-        for (var i = 0; i < activeParties.Parties.Length; i++)
+        for (var i = 0; i < activeParties.Parties.Count; i++)
         {
             if (activeParties.Parties[i] == args.PartyData)
             {
