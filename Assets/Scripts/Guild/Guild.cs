@@ -71,18 +71,40 @@ public class Guild : ScriptableObject
 
     private int setLevel(float exp)
     {
-        if (exp > FloatConstants.GuildLevel10) return 10;
-        if (exp > FloatConstants.GuildLevel9) return 9;
-        if (exp > FloatConstants.GuildLevel8) return 8;
-        if (exp > FloatConstants.GuildLevel7) return 7;
-        if (exp > FloatConstants.GuildLevel6) return 6;
-        if (exp > FloatConstants.GuildLevel5) return 5;
-        if (exp > FloatConstants.GuildLevel4) return 4;
-        if (exp > FloatConstants.GuildLevel3) return 3;
-        if (exp > FloatConstants.GuildLevel2) return 2;
+        if (exp > GameConstants.GuildLevel10) return 10;
+        if (exp > GameConstants.GuildLevel9) return 9;
+        if (exp > GameConstants.GuildLevel8) return 8;
+        if (exp > GameConstants.GuildLevel7) return 7;
+        if (exp > GameConstants.GuildLevel6) return 6;
+        if (exp > GameConstants.GuildLevel5) return 5;
+        if (exp > GameConstants.GuildLevel4) return 4;
+        if (exp > GameConstants.GuildLevel3) return 3;
+        if (exp > GameConstants.GuildLevel2) return 2;
         return 1;
     }
     #endregion
+
+    #region Scouting
+    [SerializeField]
+    private IntegerVariable questScoutingTier;
+
+    public int QuestScoutingTier
+    {
+        get
+        {
+            if (questScoutingTier.Value < 1) return 1;
+            else if (questScoutingTier.Value > GameConstants.MaxQuestScoutingTiers) return GameConstants.MaxQuestScoutingTiers;
+            return questScoutingTier.Value;
+        }
+        set
+        {
+            if (value < 1) value = 1;
+            else if (questScoutingTier.Value > GameConstants.MaxQuestScoutingTiers) value = GameConstants.MaxQuestScoutingTiers;
+            questScoutingTier.Value = value;
+        }
+    }
+    #endregion
+
 
     public void Initialize()
     {

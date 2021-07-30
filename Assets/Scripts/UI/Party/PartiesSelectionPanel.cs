@@ -188,7 +188,7 @@ public class PartiesSelectionPanel : MonoBehaviour
 
         var quest = partyData.Party.StopQuesting(activeQuests);
         guild.Gold += quest.GoldEarned;
-        guild.Exp += quest.ExpGained * FloatConstants.GuildExpPercent;
+        guild.Exp += quest.ExpGained * GameConstants.GuildExpPercent;
         GuildStatistics.AddQuestResult(quest);
     }
 

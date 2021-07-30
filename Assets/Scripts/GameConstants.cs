@@ -1,4 +1,4 @@
-﻿public static class FloatConstants
+﻿public static class GameConstants
 {
     public const float GuildExpPercent = 0.001f;
 
@@ -11,4 +11,6 @@
     public const float GuildLevel8 = 10e21f;
     public const float GuildLevel9 = 10e24f;
     public const float GuildLevel10 = 10e27f;
+
+    public const int MaxQuestScoutingTiers = 6;
 }

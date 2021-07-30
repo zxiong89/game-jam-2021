@@ -13,15 +13,15 @@ public class GuildExpDisplay : MonoBehaviour
 
     private float getMax(float exp)
     {
-        if (exp > FloatConstants.GuildLevel10) return 0;
-        if (exp > FloatConstants.GuildLevel9) return FloatConstants.GuildLevel10;
-        if (exp > FloatConstants.GuildLevel8) return FloatConstants.GuildLevel9;
-        if (exp > FloatConstants.GuildLevel7) return FloatConstants.GuildLevel8;
-        if (exp > FloatConstants.GuildLevel6) return FloatConstants.GuildLevel7;
-        if (exp > FloatConstants.GuildLevel5) return FloatConstants.GuildLevel6;
-        if (exp > FloatConstants.GuildLevel4) return FloatConstants.GuildLevel5;
-        if (exp > FloatConstants.GuildLevel3) return FloatConstants.GuildLevel4;
-        if (exp > FloatConstants.GuildLevel2) return FloatConstants.GuildLevel3;
-        return FloatConstants.GuildLevel2;
+        if (exp > GameConstants.GuildLevel10) return 0;
+        if (exp > GameConstants.GuildLevel9) return GameConstants.GuildLevel10;
+        if (exp > GameConstants.GuildLevel8) return GameConstants.GuildLevel9;
+        if (exp > GameConstants.GuildLevel7) return GameConstants.GuildLevel8;
+        if (exp > GameConstants.GuildLevel6) return GameConstants.GuildLevel7;
+        if (exp > GameConstants.GuildLevel5) return GameConstants.GuildLevel6;
+        if (exp > GameConstants.GuildLevel4) return GameConstants.GuildLevel5;
+        if (exp > GameConstants.GuildLevel3) return GameConstants.GuildLevel4;
+        if (exp > GameConstants.GuildLevel2) return GameConstants.GuildLevel3;
+        return GameConstants.GuildLevel2;
     }
 }
