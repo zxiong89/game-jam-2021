@@ -12,5 +12,5 @@
     public const float GuildLevel9 = 10e24f;
     public const float GuildLevel10 = 10e27f;
 
-    public const int MaxQuestScoutingTiers = 6;
+    public const int MaxQuestScoutingTiers = 3;
 }
