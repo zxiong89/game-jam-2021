@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private IntegerVariable playerGold;
 
+    [SerializeField]
+    private IntegerVariable questScoutingTier;
+
     public void SaveGame()
     {
         if (string.IsNullOrEmpty(filename.Value)) filename.Value = GenericStrings.DefaultFilename;
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
         activeParties.Reset();
         currentTime.Value = 0f;
         playerGold.Value = newGameGold;
+        questScoutingTier.Value = 1;
     }
 
     private void loadGame(string filename)
