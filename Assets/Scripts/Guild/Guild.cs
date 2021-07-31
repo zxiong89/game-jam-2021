@@ -96,12 +96,6 @@ public class Guild : ScriptableObject
             else if (questScoutingTier.Value > GameConstants.MaxQuestScoutingTiers) return GameConstants.MaxQuestScoutingTiers;
             return questScoutingTier.Value;
         }
-        set
-        {
-            if (value < 1) value = 1;
-            else if (questScoutingTier.Value > GameConstants.MaxQuestScoutingTiers) value = GameConstants.MaxQuestScoutingTiers;
-            questScoutingTier.Value = value;
-        }
     }
     #endregion
 

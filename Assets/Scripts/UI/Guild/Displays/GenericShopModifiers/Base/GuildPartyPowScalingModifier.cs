@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GuildPartyGenericShopDisplay))]
 
-public class GuildPartyPartyIncrement : MonoBehaviour
+public abstract class GuildPartyPowScalingModifier : MonoBehaviour
 {
     [SerializeField]
     private int basePrice;
 
     [SerializeField]
     private int priceScale;
-
-    [SerializeField]
-    private PartyCollection activeParties;
 
     private GuildPartyGenericShopDisplay display;
 
@@ -30,22 +25,26 @@ public class GuildPartyPartyIncrement : MonoBehaviour
 
     public void OnBuy()
     {
-        activeParties.NumberAvailable++;
+        onBuy();
         updateDisplayPriceOrDisable();
     }
 
+    protected abstract void onBuy();
+
     private void updateDisplayPriceOrDisable()
     {
-        int numAvailable = activeParties.NumberAvailable;
-
-        if (numAvailable > 0 && numAvailable < activeParties.MaximumAvailable)
-        {
-            int price = (int)(basePrice * Math.Pow(priceScale, numAvailable));
-            display.UpdateCost(price);
-        }
-        else
+        if (shouldDisableDisplay())
         {
             display.gameObject.SetActive(false);
         }
+        else
+        {
+            double pow = getPower();
+            int price = (int)(basePrice * Math.Pow(priceScale, pow < 1 ? 1 : pow));
+            display.UpdateCost(price);
+        }
     }
+
+    protected abstract bool shouldDisableDisplay();
+    protected abstract double getPower();
 }
