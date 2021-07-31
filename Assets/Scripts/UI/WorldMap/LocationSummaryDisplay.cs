@@ -23,7 +23,7 @@ public class LocationSummaryDisplay : MonoBehaviour
     public void DisplayLocationData()
     {
         nameDisplay.text = Data.Name;
-        description.text = Data.Description;
+        description.text = Data.ScoutLocation(1);
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
 }
