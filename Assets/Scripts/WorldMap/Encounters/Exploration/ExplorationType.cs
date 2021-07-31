@@ -4,7 +4,7 @@
 [CreateAssetMenu(menuName = "WorldMap/ExplorationType")]
 public class ExplorationType : ScriptableObject
 {
-    public bool IsSpecial = false;
+    public bool IsLair = false;
     public FloatRange Time;
     public IntegerRange Exp;
     public IntegerRange Gold;
