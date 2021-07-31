@@ -90,13 +90,14 @@ public class LocationData : ScriptableObject
     public string ScoutLocation(int tier)
     {
         var sb = new StringBuilder();
-        sb.Append(description);
+        sb.AppendLine(description);
         bool maxTier = tier >= GameConstants.MaxQuestScoutingTiers;
 
         if (tier > 1)
         {
             sb.AppendLine();
-            sb.Append($"Combat/Exploration Ratio: 1:{FloatExtensions.ToString(MaxEncounterRange / combatEncounterRate)}");
+            sb.AppendLine("Combat/Exploration Ratio:");
+            sb.AppendLine($"  1:{FloatExtensions.ToString(MaxEncounterRange / combatEncounterRate)}");
         }
 
         if (tier == 2)
@@ -115,6 +116,8 @@ public class LocationData : ScriptableObject
 
     private float minFloat(float f1, float f2) => f1 > f2 ? f2 : f1;
 
+    private float maxFloat(float f1, float f2) => f1 < f2 ? f2 : f1;
+
     private string formatRange(float f1, float f2) => $"{FloatExtensions.ToString(f1)} - {FloatExtensions.ToString(f2)}";
 
 
@@ -130,13 +133,16 @@ public class LocationData : ScriptableObject
             if (data.Type.IsBoss) continue;
             
             normalMinAtk = minFloat(normalMinAtk, data.Type.Atk.Min);
-            normalMaxAtk = minFloat(normalMaxAtk, data.Type.Atk.Max);
+            normalMaxAtk = maxFloat(normalMaxAtk, data.Type.Atk.Max);
             normalMinDef = minFloat(normalMinDef, data.Type.Def.Min);
-            normalMaxDef = minFloat(normalMaxDef, data.Type.Def.Max);
+            normalMaxDef = maxFloat(normalMaxDef, data.Type.Def.Max);
         }
 
-        sb.AppendLine($"Scouted Creature Attack Range: {formatRange(normalMinAtk, normalMaxAtk)}");
-        sb.AppendLine($"Scouted Creature Defense Range: {formatRange(normalMinDef, normalMaxDef)}");
+        sb.AppendLine();
+        sb.AppendLine("Scouted Creature Attack Range:");
+        sb.AppendLine($"  {formatRange(normalMinAtk, normalMaxAtk)}");
+        sb.AppendLine("Scouted Creature Attack Range:");
+        sb.AppendLine($"  {formatRange(normalMinDef, normalMaxDef)}");
     }
 
     private void addTier2ExplorationData(StringBuilder sb)
@@ -149,10 +155,12 @@ public class LocationData : ScriptableObject
             if (data.Type.IsLair) continue;
 
             normalMinTime = minFloat(normalMinTime, data.Type.Time.Min);
-            normalMaxTime = minFloat(normalMaxTime, data.Type.Time.Max);
+            normalMaxTime = maxFloat(normalMaxTime, data.Type.Time.Max);
         }
 
-        sb.AppendLine($"Scouted Exploration Time Range: {formatRange(normalMinTime, normalMaxTime)}");
+        sb.AppendLine();
+        sb.AppendLine("Scouted Exploration Time Range:");
+        sb.AppendLine($"  {formatRange(normalMinTime, normalMaxTime)}");
     }
 
     private void addTier3CombatData(StringBuilder sb)
@@ -185,44 +193,53 @@ public class LocationData : ScriptableObject
             {
                 bossSpawn += data.SpawnRate;
                 bossMinAtk = minFloat(bossMinAtk, data.Type.Atk.Min);
-                bossMaxAtk = minFloat(bossMaxAtk, data.Type.Atk.Max);
+                bossMaxAtk = maxFloat(bossMaxAtk, data.Type.Atk.Max);
                 bossMinDef = minFloat(bossMinDef, data.Type.Def.Min);
-                bossMaxDef = minFloat(bossMaxDef, data.Type.Def.Max);
+                bossMaxDef = maxFloat(bossMaxDef, data.Type.Def.Max);
 
                 bossMinGold = minFloat(bossMinGold, data.Type.Gold.Min);
-                bossMaxGold = minFloat(bossMaxGold, data.Type.Gold.Max);
+                bossMaxGold = maxFloat(bossMaxGold, data.Type.Gold.Max);
                 bossMinExp = minFloat(bossMinExp, data.Type.Exp.Min);
-                bossMaxExp = minFloat(bossMaxExp, data.Type.Exp.Max);
+                bossMaxExp = maxFloat(bossMaxExp, data.Type.Exp.Max);
             }
             else
             {
                 normalMinAtk = minFloat(normalMinAtk, data.Type.Atk.Min);
-                normalMaxAtk = minFloat(normalMaxAtk, data.Type.Atk.Max);
+                normalMaxAtk = maxFloat(normalMaxAtk, data.Type.Atk.Max);
                 normalMinDef = minFloat(normalMinDef, data.Type.Def.Min);
-                normalMaxDef = minFloat(normalMaxDef, data.Type.Def.Max);
+                normalMaxDef = maxFloat(normalMaxDef, data.Type.Def.Max);
 
                 normalMinGold = minFloat(normalMinGold, data.Type.Gold.Min);
-                normalMaxGold = minFloat(normalMaxGold, data.Type.Gold.Max);
+                normalMaxGold = maxFloat(normalMaxGold, data.Type.Gold.Max);
                 normalMinExp = minFloat(normalMinExp, data.Type.Exp.Min);
-                normalMaxExp = minFloat(normalMaxExp, data.Type.Exp.Max);
+                normalMaxExp = maxFloat(normalMaxExp, data.Type.Exp.Max);
             }
         }
 
+        sb.AppendLine();
         sb.AppendLine($"There is a {FloatExtensions.ToString(bossSpawn / maxSpawn * 100)} chance to encounter bosses.");
 
-        sb.ToString();
-        sb.AppendLine($"Scouted Non-Boss Attack Range: {formatRange(normalMinAtk, normalMaxAtk)}");
-        sb.AppendLine($"Scouted Non-Boss Defense Range: {formatRange(normalMinDef, normalMaxDef)}");
-        sb.AppendLine($"Scouted Non-Boss Gold Range: {formatRange(normalMinGold, normalMaxGold)}");
-        sb.AppendLine($"Scouted Non-Boss Exp Range: {formatRange(normalMinExp, normalMaxExp)}");
+        sb.AppendLine();
+        sb.AppendLine("Scouted Non-Boss Attack Range:");
+        sb.AppendLine($"  {formatRange(normalMinAtk, normalMaxAtk)}");
+        sb.AppendLine("Scouted Non-Boss Defense Range:");
+        sb.AppendLine($"  {formatRange(normalMinDef, normalMaxDef)}");
+        sb.AppendLine("Scouted Non-Boss Gold Range:");
+        sb.AppendLine($"  {formatRange(normalMinGold, normalMaxGold)}");
+        sb.AppendLine("Scouted Non-Boss Exp Range:");
+        sb.AppendLine($"  {formatRange(normalMinExp, normalMaxExp)}");
 
         if (bossSpawn <= 0f) return;
 
-        sb.ToString();
-        sb.AppendLine($"Scouted Boss Attack Range: {formatRange(bossMinAtk, bossMaxAtk)}");
-        sb.AppendLine($"Scouted Boss Defense Range: {formatRange(bossMinDef, bossMaxDef)}");
-        sb.AppendLine($"Scouted Boss Gold Range: {formatRange(bossMinGold, bossMaxGold)}");
-        sb.AppendLine($"Scouted Boss Exp Range: {formatRange(bossMinExp, bossMaxExp)}");
+        sb.AppendLine();
+        sb.AppendLine("Scouted Boss Attack Range:");
+        sb.AppendLine($"  {formatRange(bossMinAtk, bossMaxAtk)}");
+        sb.AppendLine("Scouted Boss Defense Range:");
+        sb.AppendLine($"  {formatRange(bossMinDef, bossMaxDef)}");
+        sb.AppendLine("Scouted Boss Gold Range:");
+        sb.AppendLine($"  {formatRange(bossMinGold, bossMaxGold)}");
+        sb.AppendLine("Scouted Boss Exp Range:");
+        sb.AppendLine($"  {formatRange(bossMinExp, bossMaxExp)}");
     }
 
     private void addTier3ExplorationData(StringBuilder sb)
@@ -252,36 +269,43 @@ public class LocationData : ScriptableObject
             {
                 lairSpawn += data.SpawnRate;
                 lairMinTime = minFloat(lairMinTime, data.Type.Time.Min);
-                lairMaxTime = minFloat(lairMaxTime, data.Type.Time.Max);
+                lairMaxTime = maxFloat(lairMaxTime, data.Type.Time.Max);
                 lairMinGold = minFloat(lairMinGold, data.Type.Gold.Min);
-                lairMaxGold = minFloat(lairMaxGold, data.Type.Gold.Max);
+                lairMaxGold = maxFloat(lairMaxGold, data.Type.Gold.Max);
                 lairMinExp = minFloat(lairMinExp, data.Type.Exp.Min);
-                lairMaxExp = minFloat(lairMaxExp, data.Type.Exp.Max);
+                lairMaxExp = maxFloat(lairMaxExp, data.Type.Exp.Max);
             }
             else
             {
                 normalMinTime = minFloat(normalMinTime, data.Type.Time.Min);
-                normalMaxTime = minFloat(normalMaxTime, data.Type.Time.Max);
+                normalMaxTime = maxFloat(normalMaxTime, data.Type.Time.Max);
                 normalMinGold = minFloat(normalMinGold, data.Type.Gold.Min);
-                normalMaxGold = minFloat(normalMaxGold, data.Type.Gold.Max);
+                normalMaxGold = maxFloat(normalMaxGold, data.Type.Gold.Max);
                 normalMinExp = minFloat(normalMinExp, data.Type.Exp.Min);
-                normalMaxExp = minFloat(normalMaxExp, data.Type.Exp.Max);
+                normalMaxExp = maxFloat(normalMaxExp, data.Type.Exp.Max);
             }
 
         }
 
+        sb.AppendLine();
         sb.AppendLine($"There is a {FloatExtensions.ToString(lairSpawn / maxSpawn * 100)} chance to discover a lair.");
 
         sb.AppendLine();
-        sb.AppendLine($"Scouted Non-Lair Time Range: {formatRange(normalMinTime, normalMaxTime)}");
-        sb.AppendLine($"Scouted Non-Lair Gold Range: {formatRange(normalMinGold, normalMaxGold)}");
-        sb.AppendLine($"Scouted Non-Lair Exp Range: {formatRange(normalMinExp, normalMaxExp)}");
+        sb.AppendLine("Scouted Non-Lair Time Range:");
+        sb.AppendLine($"  {formatRange(normalMinTime, normalMaxTime)}");
+        sb.AppendLine("Scouted Non-Lair Gold Range:");
+        sb.AppendLine($"  {formatRange(normalMinGold, normalMaxGold)}");
+        sb.AppendLine("Scouted Non-Lair Exp Range:");
+        sb.AppendLine($"  {formatRange(normalMinExp, normalMaxExp)}");
 
         if (lairSpawn <= 0f) return;
 
         sb.AppendLine();
-        sb.AppendLine($"Scouted Lair Time Range: {formatRange(lairMinTime, lairMaxTime)}");
-        sb.AppendLine($"Scouted Lair Gold Range: {formatRange(lairMinGold, lairMaxGold)}");
-        sb.AppendLine($"Scouted Lair Exp Range: {formatRange(lairMinExp, lairMaxExp)}");
+        sb.AppendLine("Scouted Lair Time Range:");
+        sb.AppendLine($"  {formatRange(lairMinTime, lairMaxTime)}");
+        sb.AppendLine("Scouted Lair Gold Range:");
+        sb.AppendLine($"  {formatRange(lairMinGold, lairMaxGold)}");
+        sb.AppendLine("Scouted Lair Exp Range:");
+        sb.AppendLine($"  {formatRange(lairMinExp, lairMaxExp)}");
     }
 }

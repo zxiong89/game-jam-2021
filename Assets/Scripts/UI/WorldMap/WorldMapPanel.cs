@@ -19,12 +19,15 @@ public class WorldMapPanel : MonoBehaviour
     [SerializeField]
     private ToggleGroup group;
 
+    [SerializeField]
+    private IntegerVariable questScoutingTier;
+
     private void Start()
     {
         foreach (var loc in data.Locations)
         {
             var summary = GameObject.Instantiate<LocationSummaryDisplay>(locationSummaryPrefab, content.transform);
-            summary.SetLocationData(loc);
+            summary.SetLocationData(loc, questScoutingTier.Value);
             summary.Toggle.group = group;
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(content.gameObject.GetComponent<RectTransform>());
