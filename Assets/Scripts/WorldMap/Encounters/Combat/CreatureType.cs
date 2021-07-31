@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="WorldMap/CreatureType")]
 public class CreatureType : ScriptableObject
 {
+    public bool IsBoss = false;
     public FloatRange Atk;
     public FloatRange Def;
     public float PhyResist;
