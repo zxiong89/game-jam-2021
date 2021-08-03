@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e2d0fc8ef5454346a50813ce1f73cbe, type: 3}
-  m_Name: QuestScoutingTier
+  m_Name: UnitScoutingTier
   m_EditorClassIdentifier: 
-  Value: 3
+  Value: 1
