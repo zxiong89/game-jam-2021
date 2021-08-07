@@ -48,7 +48,10 @@ MonoBehaviour:
   classDisplay: {fileID: 0}
   levelDisplay: {fileID: 0}
   levelClassDisplay: {fileID: 0}
+  ageDisplay: {fileID: 0}
   statsGroup: {fileID: 0}
+  traitsGroup: {fileID: 0}
+  unitScoutingTier: {fileID: 11400000, guid: 5355c55287504cf409256ab611583217, type: 2}
 --- !u!1 &7271580120125561509
 GameObject:
   m_ObjectHideFlags: 0

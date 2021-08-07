@@ -9,7 +9,7 @@ public class StatsGroup : MonoBehaviour
     [SerializeField]
     private SubStatsDisplay[] subStatDisplays; 
 
-    public void SetStats(StatBlock stats)
+    public void SetStats(StatBlock stats, int scoutingTier)
     {
         if (statDisplays == null || statDisplays.Length != 5) return;
 
@@ -19,12 +19,12 @@ public class StatsGroup : MonoBehaviour
 
             LabelValueDisplay curStatDisplay = statDisplays[i];
             BaseStat curStat = statsArr[i];
-            curStatDisplay.SetLabelValue(curStat.Abbreviation, FloatExtensions.ToString(curStat.Value));
+            curStatDisplay.SetLabelValue(curStat.Abbreviation, UnitScouting.ScoutStat(curStat.Value, scoutingTier));
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    public void SetSubStats(StatBlock stats)
+    public void SetSubStats(StatBlock stats, int scoutingTier)
     {
         if (subStatDisplays == null || subStatDisplays.Length != 5) return;
 
@@ -33,12 +33,12 @@ public class StatsGroup : MonoBehaviour
         {
             SubStatsDisplay subStatsDisplay = subStatDisplays[i];
             BaseStat curStat = statsArr[i];
-            setSubStatsForSingle(subStatsDisplay, curStat);
+            setSubStatsForSingle(subStatsDisplay, curStat, scoutingTier);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    private void setSubStatsForSingle(SubStatsDisplay subStats, BaseStat stat)
+    private void setSubStatsForSingle(SubStatsDisplay subStats, BaseStat stat, int scoutingTier)
     {
         if (subStats.StatDisplay.Length != 3) return;
 

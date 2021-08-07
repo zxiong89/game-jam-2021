@@ -25,6 +25,9 @@ public class UnitDisplay : MonoBehaviour
     [SerializeField]
     private TraitsGroup traitsGroup;
 
+    [SerializeField]
+    private IntegerVariable unitScoutingTier;
+
     public Unit currentUnit { get; set; }
 
     public void DisplayUnit(Unit unit)
@@ -35,10 +38,10 @@ public class UnitDisplay : MonoBehaviour
         DisplayClass(unit.Level, unit.Class.Data.Name);
         if (statsGroup != null)
         {
-            statsGroup?.SetStats(currentUnit.Stats);
-            statsGroup?.SetSubStats(currentUnit.Stats);
+            statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
+            statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
         }
-        if (traitsGroup != null) traitsGroup.DisplayTraits(unit.Traits);
+        if (traitsGroup != null) traitsGroup.DisplayTraits(unit.Traits, unitScoutingTier.Value);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
