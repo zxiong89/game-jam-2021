@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Classes:
   - Name: Druid
+    PrimaryStat: 4
+    SecondaryStat: 0
     FrontlineMod:
       PhyAtk: 0
       MagAtk: 0
@@ -122,6 +124,8 @@ MonoBehaviour:
         AtkSupMod: 1
         DefSupMod: 0
   - Name: Shaman
+    PrimaryStat: 4
+    SecondaryStat: 1
     FrontlineMod:
       PhyAtk: 0
       MagAtk: 0.5
@@ -230,6 +234,8 @@ MonoBehaviour:
         AtkSupMod: 2
         DefSupMod: 1
   - Name: Hunter
+    PrimaryStat: 4
+    SecondaryStat: 2
     FrontlineMod:
       PhyAtk: 0.5
       MagAtk: 0
@@ -338,6 +344,8 @@ MonoBehaviour:
         AtkSupMod: 0
         DefSupMod: 1
   - Name: Summoner
+    PrimaryStat: 4
+    SecondaryStat: 3
     FrontlineMod:
       PhyAtk: 0
       MagAtk: 0
@@ -446,6 +454,8 @@ MonoBehaviour:
         AtkSupMod: 1
         DefSupMod: 2
   - Name: Priest
+    PrimaryStat: 4
+    SecondaryStat: 4
     FrontlineMod:
       PhyAtk: 0
       MagAtk: 0

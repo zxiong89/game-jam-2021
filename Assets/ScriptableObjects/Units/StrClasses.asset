@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Classes:
   - Name: Berserker
+    PrimaryStat: 0
+    SecondaryStat: 0
     FrontlineMod:
       PhyAtk: 1
       MagAtk: 0
@@ -122,6 +124,8 @@ MonoBehaviour:
         AtkSupMod: 0
         DefSupMod: 0
   - Name: Barbarian
+    PrimaryStat: 0
+    SecondaryStat: 1
     FrontlineMod:
       PhyAtk: 1
       MagAtk: 0
@@ -230,6 +234,8 @@ MonoBehaviour:
         AtkSupMod: 0
         DefSupMod: 0
   - Name: Ranger
+    PrimaryStat: 0
+    SecondaryStat: 2
     FrontlineMod:
       PhyAtk: 0.9
       MagAtk: 0
@@ -338,6 +344,8 @@ MonoBehaviour:
         AtkSupMod: 0
         DefSupMod: 0
   - Name: Dark Knight
+    PrimaryStat: 0
+    SecondaryStat: 3
     FrontlineMod:
       PhyAtk: 0.5
       MagAtk: 0.4
@@ -446,6 +454,8 @@ MonoBehaviour:
         AtkSupMod: 0
         DefSupMod: 0
   - Name: Demon Hunter
+    PrimaryStat: 0
+    SecondaryStat: 4
     FrontlineMod:
       PhyAtk: 0.3
       MagAtk: 0.2

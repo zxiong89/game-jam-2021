@@ -2,6 +2,8 @@
 public class UnitClassData
 {
     public string Name;
+    public StatType PrimaryStat;
+    public StatType SecondaryStat;
     public PartyStats FrontlineMod;
     public PartyStats BacklineMod;
     public StrengthAugment Str;
