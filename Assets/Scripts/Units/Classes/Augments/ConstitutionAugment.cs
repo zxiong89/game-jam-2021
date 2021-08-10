@@ -10,9 +10,9 @@ public class ConstitutionAugment : BaseAugment
         if (baseStat is ConstitutionStat stat)
         {
             return 
-                StaminaAugment.AugmentPartyStat(stat.Stamina, formationMod)
-                + EnduranceAugment.AugmentPartyStat(stat.Endurance, formationMod)
-                + VitalityAugment.AugmentPartyStat(stat.Vitality, formationMod);
+                StaminaAugment.AugmentPartyStat(stat.Stamina + stat.partyModifier, formationMod)
+                + EnduranceAugment.AugmentPartyStat(stat.Endurance + stat.partyModifier, formationMod)
+                + VitalityAugment.AugmentPartyStat(stat.Vitality + stat.partyModifier, formationMod);
         }
         return new PartyStats();
     }

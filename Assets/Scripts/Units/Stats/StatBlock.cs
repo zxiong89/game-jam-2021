@@ -17,11 +17,11 @@ public class StatBlock
 
     public void UpdateStats(int level, int[] traitModifiers)
     {
-        Str.Update(level, traitModifiers[0]);
-        Con.Update(level, traitModifiers[1]);
-        Dex.Update(level, traitModifiers[2]);
-        Int.Update(level, traitModifiers[3]);
-        Wis.Update(level, traitModifiers[4]);
+        Str.Update(level);
+        Con.Update(level);
+        Dex.Update(level);
+        Int.Update(level);
+        Wis.Update(level);
     }
 
     public void RandomizeBaseStats(IntegerLimits baseStats)
@@ -43,4 +43,30 @@ public class StatBlock
     }
 
     public BaseStat[] GetStats() => new BaseStat[]{ Str, Con, Dex, Int, Wis };
+
+    public BaseStat GetStat(StatType type)
+    {
+        switch (type) 
+        {
+            case StatType.Str:
+                return Str;
+            case StatType.Dex:
+                return Dex;
+            case StatType.Con:
+                return Con;
+            case StatType.Int:
+                return Int;
+            case StatType.Wis:
+            default:
+                return Wis;
+        }
+    }
+
+    public void ResetPartyMods()
+    {
+        foreach(var stat in GetStats())
+        {
+            stat.partyModifier = 0;
+        }
+    }
 }

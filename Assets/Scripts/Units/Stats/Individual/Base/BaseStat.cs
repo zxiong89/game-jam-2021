@@ -8,6 +8,9 @@ public abstract class BaseStat
     public abstract string DisplayName { get; }
     public abstract string Abbreviation { get; }
 
+    public float passiveModifier = 0;
+
+    public float partyModifier = 0;
 
     protected abstract float[] getStats();
 
@@ -36,6 +39,6 @@ public abstract class BaseStat
     /// </summary>
     /// <param name="level"></param>
     /// <paarm name="traitModifiers"></paarm>
-    public abstract void Update(int level, int traitModifier);
+    public abstract void Update(int level);
 
 }

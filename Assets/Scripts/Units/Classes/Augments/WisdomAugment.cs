@@ -10,9 +10,9 @@ public class WisdomAugment : BaseAugment
         if (baseStat is WisdomStat stat)
         {
             return 
-                WillAugment.AugmentPartyStat(stat.Will, formationMod)
-                + SenseAugment.AugmentPartyStat(stat.Sense, formationMod)
-                + SpiritAugment.AugmentPartyStat(stat.Spirit, formationMod);
+                WillAugment.AugmentPartyStat(stat.Will + stat.partyModifier, formationMod)
+                + SenseAugment.AugmentPartyStat(stat.Sense + stat.partyModifier, formationMod)
+                + SpiritAugment.AugmentPartyStat(stat.Spirit + stat.partyModifier, formationMod);
         }
         return new PartyStats();
     }

@@ -22,11 +22,14 @@ public class WisdomStat : BaseStat
 
     #region Stat Base Public Methods
 
-    public override void Update(int level, int traitModifier)
+    public override void Update(int level)
     {
-        Will = StatExtensions.CalculateStat(level, WillBase, WillGrowth, traitModifier);
-        Sense = StatExtensions.CalculateStat(level, SenseBase, SenseGrowth, traitModifier);
-        Spirit = StatExtensions.CalculateStat(level, SpiritBase, SpiritGrowth, traitModifier);
+        Will = StatExtensions.CalculateStat(level, WillBase, WillGrowth,
+            passiveModifier, partyModifier);
+        Sense = StatExtensions.CalculateStat(level, SenseBase, SenseGrowth,
+            passiveModifier, partyModifier);
+        Spirit = StatExtensions.CalculateStat(level, SpiritBase, SpiritGrowth,
+            passiveModifier, partyModifier);
     }
 
     public override void RandomizeBaseStats(IntegerLimits baseStats)

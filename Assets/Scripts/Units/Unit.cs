@@ -95,15 +95,18 @@ public class Unit
 
     private void CalcTraitModifiers()
     {
-        var modifiers = new int[5];
         foreach(var trait in Traits)
         {
-            for (int i = 0; i < modifiers.Length; i++)
+            for (int i = 0; i < trait.TraitEffects.Count; i++)
             {
-                modifiers[i] += trait.StatModifiers[i];
+                if(trait.TraitEffects[i].GetEffectType() == TraitEffectType.Passive)
+                {
+                    var effect = trait.TraitEffects[i] as PassiveTraitEffect;
+                    var args = trait.TraitEffectArgs[i] as PassiveEffectArgs;
+                    effect.ApplyEffect(this, args);
+                }
             }
         }
-        TraitModifiers = modifiers;
     }
 
     public bool IsApprentice()
@@ -137,6 +140,22 @@ public class Unit
         if(ParentRoster != null)
         {
             ParentRoster.Remove(this);
+        }
+    }
+
+    public void ApplyPartyTraits(Party party)
+    {
+        foreach(var trait in Traits)
+        {
+            for (int i = 0; i < trait.TraitEffects.Count; i++)
+            {
+                if(trait.TraitEffects[i].GetEffectType() == TraitEffectType.Party)
+                {
+                    var effect = trait.TraitEffects[i] as PartyTraitEffect;
+                    var args = trait.TraitEffectArgs[i] as PartyTraitEffectArgs;
+                    effect.ApplyEffect(this, party, args);
+                }
+            }
         }
     }
     #endregion

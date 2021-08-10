@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -139,13 +140,19 @@ public class Party
     public void UpdatePartyStats()
     {
         stats = new PartyStats();
-        foreach (var f in frontLine.Units)
+        ApplyToParty((unit, isFront) => unit.Stats.ResetPartyMods());
+        ApplyToParty((unit, isFront) => unit.ApplyPartyTraits(this));
+        ApplyToParty((unit, isFront) => stats += unit.CalcContribution(isFront));
+    }
+
+    public void ApplyToParty(Action<Unit, bool> func)
+    {
+        foreach(var frontLiner in frontLine.Units)
         {
-            stats += f.CalcContribution(true);
+            func(frontLiner, true);
         }
-        foreach (var b in backLine.Units)
-        {
-            stats += b.CalcContribution(false);
+        foreach(var backLiner in backLine.Units) {
+            func(backLiner, false);
         }
     }
 
@@ -171,7 +178,7 @@ public class Party
     {
         if (!frontLine.AddUnit(unit)) return false;
 
-        stats += unit.CalcContribution(true);
+        UpdatePartyStats();
 
         return true;
     }
@@ -186,7 +193,7 @@ public class Party
     {
         if (!backLine.AddUnit(unit)) return false;
 
-        stats += unit.CalcContribution(false);
+        UpdatePartyStats();
 
         return true;
     }
@@ -203,13 +210,12 @@ public class Party
         if (unit == null) return false;
         if (frontLine.RemoveUnit(unit))
         {
-            stats -= unit.CalcContribution(true);
+            UpdatePartyStats();
             return true;
         }
-
-        if (backLine.RemoveUnit(unit))
+        else if (backLine.RemoveUnit(unit))
         {
-            stats -= unit.CalcContribution(false);
+            UpdatePartyStats();
             return true;
         }
 

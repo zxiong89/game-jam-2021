@@ -22,11 +22,14 @@ public class StrengthStat : BaseStat
 
     #region Stat Base Public Methods
 
-    public override void Update(int level, int traitModifier)
+    public override void Update(int level)
     {
-        Power = StatExtensions.CalculateStat(level, PowerBase, PowerGrowth, traitModifier);
-        Brawn = StatExtensions.CalculateStat(level, BrawnBase, BrawnGrowth, traitModifier);
-        Body = StatExtensions.CalculateStat(level, BodyBase, BodyGrowth, traitModifier);
+        Power = StatExtensions.CalculateStat(level, PowerBase, PowerGrowth,
+            passiveModifier, partyModifier);
+        Brawn = StatExtensions.CalculateStat(level, BrawnBase, BrawnGrowth,
+            passiveModifier, partyModifier);
+        Body = StatExtensions.CalculateStat(level, BodyBase, BodyGrowth,
+            passiveModifier, partyModifier);
     }
 
     public override void RandomizeBaseStats(IntegerLimits baseStats)

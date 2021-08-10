@@ -2,12 +2,12 @@
 
 public static class StatExtensions
 {
-    public static float CalculateStat(int level, float baseVal, GrowthFactor growth, int traitModifier)
+    public static float CalculateStat(int level, float baseVal, GrowthFactor growth, float addMod, float partyAddMod)
     {
-        return baseVal + traitModifier
+        return (baseVal + addMod + partyAddMod
             + (growth.EarlyMod * Mathf.Sqrt(level))
             + (growth.LinearMod * level)
-            + (growth.LateMod * Mathf.Pow(level, 2f));
+            + (growth.LateMod * Mathf.Pow(level, 2f)));
     }
 
     public static float Randomize(IntegerLimits baseStats) 

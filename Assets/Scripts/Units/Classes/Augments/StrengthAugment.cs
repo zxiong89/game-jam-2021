@@ -10,9 +10,9 @@ public class StrengthAugment : BaseAugment
         if (baseStat is StrengthStat stat)
         {
             return
-                PowerAugment.AugmentPartyStat(stat.Power, formationMod)
-                + BrawnAugment.AugmentPartyStat(stat.Brawn, formationMod)
-                + BodyAugment.AugmentPartyStat(stat.Body, formationMod);
+                PowerAugment.AugmentPartyStat(stat.Power + stat.partyModifier, formationMod)
+                + BrawnAugment.AugmentPartyStat(stat.Brawn + stat.partyModifier, formationMod)
+                + BodyAugment.AugmentPartyStat(stat.Body + stat.partyModifier, formationMod);
         }
         return new PartyStats();
     }

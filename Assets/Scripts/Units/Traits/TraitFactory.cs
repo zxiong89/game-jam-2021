@@ -6,14 +6,14 @@ using UnityEngine;
 public class TraitFactory : ScriptableObject
 {
     [SerializeField]
-    private TraitTemplate[] positiveTraits;
+    private Trait[] positiveTraits;
 
     [SerializeField]
-    private TraitTemplate[] negativeTraits;
-    private Trait GetNewTrait(TraitTemplate[] traits)
+    private Trait[] negativeTraits;
+    private Trait GetNewTrait(Trait[] traits)
     {
         int index = Random.Range(0, traits.Length);
-        return new Trait(traits[index]);
+        return traits[index];
     }
 
     public Trait GetPositiveTrait()

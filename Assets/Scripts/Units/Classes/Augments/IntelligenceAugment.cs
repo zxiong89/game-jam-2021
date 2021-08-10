@@ -10,9 +10,9 @@ public class IntelligenceAugment : BaseAugment
         if (baseStat is IntelligenceStat stat)
         {
             return 
-                IntellectAugment.AugmentPartyStat(stat.Intellect, formationMod)
-                + MindAugment.AugmentPartyStat(stat.Mind, formationMod)
-                + KnowledgeAugment.AugmentPartyStat(stat.Knowledge, formationMod);
+                IntellectAugment.AugmentPartyStat(stat.Intellect + stat.partyModifier, formationMod)
+                + MindAugment.AugmentPartyStat(stat.Mind + stat.partyModifier, formationMod)
+                + KnowledgeAugment.AugmentPartyStat(stat.Knowledge + stat.partyModifier, formationMod);
         }
         return new PartyStats();
     }

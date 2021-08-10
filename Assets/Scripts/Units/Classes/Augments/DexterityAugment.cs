@@ -10,9 +10,9 @@ public class DexterityAugment : BaseAugment
         if (baseStat is DexterityStat stat)
         {
             return
-                SpeedAugment.AugmentPartyStat(stat.Speed, formationMod)
-                + AgilityAugment.AugmentPartyStat(stat.Agility, formationMod)
-                + ReflexesAugment.AugmentPartyStat(stat.Reflexes, formationMod);
+                SpeedAugment.AugmentPartyStat(stat.Speed + stat.partyModifier, formationMod)
+                + AgilityAugment.AugmentPartyStat(stat.Agility + stat.partyModifier, formationMod)
+                + ReflexesAugment.AugmentPartyStat(stat.Reflexes + stat.partyModifier, formationMod);
         }
         return new PartyStats();
     }
