@@ -12,10 +12,10 @@ public class TraitDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI traitDescription;
 
-    public void SetTrait(string name, string description, Color textColor)
+    public void SetTrait(string name, string description, bool isPositive)
     {
         traitName.text = name + ":";
-        traitName.color = textColor;
+        traitName.color = (isPositive) ? new Color(0, .89f, 1f) : new Color(1f, .13f, 0);
         traitDescription.text = description;
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }

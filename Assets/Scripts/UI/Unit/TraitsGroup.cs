@@ -22,6 +22,6 @@ public class TraitsGroup : MonoBehaviour
     {
         GameObject newTraitObj = Instantiate(traitsPrefab, traitsContainer.transform);
         var newTrait = newTraitObj.GetComponent<TraitDisplay>();
-        newTrait.SetTrait(trait.Name, trait.Description, trait.Color);
+        newTrait.SetTrait(trait.name, trait.Description, trait.IsPositive);
     }
 }

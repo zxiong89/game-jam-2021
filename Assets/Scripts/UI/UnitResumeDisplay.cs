@@ -34,7 +34,7 @@ public class UnitResumeDisplay : MonoBehaviour
         var traitNames = new List<string>();
         foreach(var trait in unitToDisplay.Traits)
         {
-            traitNames.Add(trait.Name);
+            traitNames.Add(trait.name);
         }
         traitsText.text = string.Join(", ", traitNames.ToArray());
         feeText.text = fee.ToString() + " " + GenericStrings.CurrencySymbol;
