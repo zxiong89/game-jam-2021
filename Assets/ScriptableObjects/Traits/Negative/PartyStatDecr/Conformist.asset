@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc391c6636e74f4cb43de7151d049df, type: 3}
   m_Name: Conformist
   m_EditorClassIdentifier: 
-  description: 
+  description: Other party members get -8 Dex, -8 Wis
   isPositive: 0
   TraitEffects:
   - {fileID: 11400000, guid: af588d78bfad82247b58460f9cd3f40d, type: 2}

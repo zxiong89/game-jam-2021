@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc391c6636e74f4cb43de7151d049df, type: 3}
   m_Name: Passive
   m_EditorClassIdentifier: 
-  description: 
+  description: -30 Dex, -30 Int
   isPositive: 0
   TraitEffects:
   - {fileID: 11400000, guid: bc58f71258b2713419d224a90378a941, type: 2}

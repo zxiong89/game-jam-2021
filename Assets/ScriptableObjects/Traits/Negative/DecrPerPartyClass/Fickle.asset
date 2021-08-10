@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc391c6636e74f4cb43de7151d049df, type: 3}
   m_Name: Fickle
   m_EditorClassIdentifier: 
-  description: 
+  description: -15 Int for each primary Con class in the party
   isPositive: 0
   TraitEffects:
   - {fileID: 11400000, guid: 20a8977f99f2dfa4fbc0c84a3226522a, type: 2}
