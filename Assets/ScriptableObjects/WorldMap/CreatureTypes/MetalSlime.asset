@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b759c4664b373494ab240c73ea23d744, type: 3}
   m_Name: MetalSlime
   m_EditorClassIdentifier: 
+  IsBoss: 1
   Atk:
     Min: 10000
     Max: 20000

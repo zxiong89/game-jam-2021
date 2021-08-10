@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b725a64edc1cb4091f7a0ec39c5c0e, type: 3}
   m_Name: ActiveParties
   m_EditorClassIdentifier: 
-  Parties:
+  available: 3
+  parties:
   - {fileID: 11400000, guid: 7c1e59e2f045ede4a927e1d2434db1a6, type: 2}
   - {fileID: 11400000, guid: f5e1635e3efe2fa418b3039fa3288d12, type: 2}
   - {fileID: 11400000, guid: 9411be6ab9be12b4db4f26556ca2702b, type: 2}
+  - {fileID: 11400000, guid: 9a10c827483998a459fdff21536c3176, type: 2}
+  - {fileID: 11400000, guid: a5d7ec2fdba86f64d8076e307d5e0579, type: 2}
+  - {fileID: 11400000, guid: 6902247ab28a3074dbfac96a76f5f61f, type: 2}

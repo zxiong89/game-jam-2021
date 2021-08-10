@@ -21,20 +21,24 @@ public class Quest
     private float maxPartyHp;
 
     private int expGained;
+    public int ExpGained { get => expGained; }
 
     private int goldEarned;
     public int GoldEarned { get => goldEarned; }
 
-    private Dictionary<string, int> defeated = new Dictionary<string, int>();
-    private Dictionary<string, int> explored = new Dictionary<string, int>();
+    public Dictionary<string, int> Defeated = new Dictionary<string, int>();
+    public Dictionary<string, int> Explored = new Dictionary<string, int>();
 
-    public Quest(Party party, LocationData location)
+    private GuildPartyModifier guildPartyModifier;
+
+    public Quest(Party party, LocationData location, GuildPartyModifier guildPartyModifier)
     {
         LocationData = location;
         Party = party;
         maxPartyHp = party.CalcTotalDef();
         partyHp = maxPartyHp;
         IsActive = true;
+        this.guildPartyModifier = guildPartyModifier;
     }
 
     public string Log()
@@ -45,17 +49,17 @@ public class Quest
         sb.AppendLine($"  Earned {goldEarned} gold");
         sb.AppendLine($"  Gained {expGained} EXP");
         sb.AppendLine();
-        if (defeated.Keys.Count > 0)
+        if (Defeated.Keys.Count > 0)
         {
             sb.AppendLine();
             sb.AppendLine("  Defeated:");
-            sb.Append(formatLogCounter(defeated));
+            sb.Append(formatLogCounter(Defeated));
         }
-        if (explored.Keys.Count > 0)
+        if (Explored.Keys.Count > 0)
         {
             sb.AppendLine();
             sb.AppendLine("  Found:");
-            sb.Append(formatLogCounter(explored));
+            sb.Append(formatLogCounter(Explored));
         }
         return sb.ToString();
     }
@@ -89,7 +93,7 @@ public class Quest
         {
             if (curEncounter != null)
             {
-                var logCounter = curEncounter is Combat ? defeated : explored;
+                var logCounter = curEncounter is Combat ? Defeated : Explored;
 
                 if (logCounter.ContainsKey(curEncounter.LogString()))
                 {
@@ -103,12 +107,13 @@ public class Quest
             curEncounter = LocationData.SpawnEncounter();
         }
 
-        var results = curEncounter.Run(Party, turns);
+        var results = curEncounter.Run(Party, turns, guildPartyModifier.Modifiers);
         if (results.DamageTaken != null) partyHp -= results.DamageTaken.Value;
-        if (results.GoldGained != null) goldEarned += results.GoldGained.Value;
+        if (results.GoldGained != null) goldEarned += (int) (results.GoldGained.Value * guildPartyModifier.GoldModifier);
         if (results.ExpGained != null)
         {
-            Party.GiveExp(results.ExpGained.Value);
+            int exp = (int) (results.ExpGained.Value * guildPartyModifier.ExpModifier);
+            Party.GiveExp(exp);
             expGained += results.ExpGained.Value;
         }
 

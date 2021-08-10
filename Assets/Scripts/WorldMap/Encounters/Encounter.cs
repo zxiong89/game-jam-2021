@@ -6,7 +6,7 @@ public abstract class Encounter
     {
     }
 
-    public abstract EncounterResults Run(Party party, int turns);
+    public abstract EncounterResults Run(Party party, int turns, PartyStats globalMods);
     public abstract string LogString();
 
     public abstract bool IsComplete();

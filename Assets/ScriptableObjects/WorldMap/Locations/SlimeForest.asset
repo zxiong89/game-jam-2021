@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SlimeForest
   m_EditorClassIdentifier: 
   locationName: Slime Forest
-  description: A quiet green forest where many new adventurers begin their careers.
+  description: 'A forest familiar to novice adventurers, known for it''s many slow
+    moving slimes and for being quite safe. '
   combatEncounters:
   - Creatures:
     - Green Slime

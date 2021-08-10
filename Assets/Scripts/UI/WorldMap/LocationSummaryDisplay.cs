@@ -14,16 +14,16 @@ public class LocationSummaryDisplay : MonoBehaviour
 
     public LocationData Data { get; private set; }
 
-    public void SetLocationData(LocationData data)
+    public void SetLocationData(LocationData data, int tier)
     {
         this.Data = data;
-        DisplayLocationData();
+        DisplayLocationData(tier);
     }
 
-    public void DisplayLocationData()
+    public void DisplayLocationData(int tier)
     {
         nameDisplay.text = Data.Name;
-        description.text = Data.Description;
+        description.text = Data.ScoutLocation(tier);
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
 }

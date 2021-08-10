@@ -165,5 +165,4 @@ MonoBehaviour:
   playerGuild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
   shopRosters: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011, type: 2}
   activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
-  pausedSpeed: 0
-  activePauses: 0
+  timedEvents: {fileID: 11400000, guid: 75de952ef6fc46f4ca8a14c3d6b9be73, type: 2}

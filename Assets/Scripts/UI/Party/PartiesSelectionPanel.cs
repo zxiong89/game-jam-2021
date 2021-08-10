@@ -20,6 +20,9 @@ public class PartiesSelectionPanel : MonoBehaviour
     [SerializeField]
     private Guild guild;
 
+    [SerializeField]
+    private GuildPartyModifierCollection[] activeGuildPartyMods;
+
     [Header("Events")]
     [SerializeField]
     private PartyEvent onPartySelected;
@@ -140,7 +143,7 @@ public class PartiesSelectionPanel : MonoBehaviour
     {
         if (args.PartyData == null) return;
 
-        for (var i = 0; i < activeParties.Parties.Length; i++)
+        for (var i = 0; i < activeParties.Parties.Count; i++)
         {
             if (activeParties.Parties[i] == args.PartyData)
             {
@@ -171,8 +174,9 @@ public class PartiesSelectionPanel : MonoBehaviour
 
         var oldQuest = party.FindQuestInCollection(pastQuests);
         if (oldQuest != null) pastQuests.Quests.Remove(oldQuest);
-
-        var newQuest = new Quest(party, locationData);
+        
+        var newQuest = new Quest(party, locationData, 
+            GuildPartyModifierCollection.CalcModifiers(activeGuildPartyMods));
         activeQuests.Quests.Add(newQuest);
         pastQuests.Quests.Add(newQuest);
     }
@@ -184,6 +188,8 @@ public class PartiesSelectionPanel : MonoBehaviour
 
         var quest = partyData.Party.StopQuesting(activeQuests);
         guild.Gold += quest.GoldEarned;
+        guild.Exp += quest.ExpGained * GameConstants.GuildExpPercent;
+        GuildStatistics.AddQuestResult(quest);
     }
 
     public void OpenLastQuestLog()
