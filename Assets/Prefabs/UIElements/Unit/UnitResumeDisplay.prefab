@@ -1184,17 +1184,17 @@ PrefabInstance:
     - target: {fileID: 4156103357592928076, guid: c137438583a61474e90c7218911183dc,
         type: 3}
       propertyPath: m_Spacing.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4156103357592928076, guid: c137438583a61474e90c7218911183dc,
         type: 3}
       propertyPath: m_CellSize.x
-      value: 85
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4156103357592928076, guid: c137438583a61474e90c7218911183dc,
         type: 3}
       propertyPath: m_CellSize.y
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4156103357592928076, guid: c137438583a61474e90c7218911183dc,
         type: 3}
@@ -1204,7 +1204,7 @@ PrefabInstance:
     - target: {fileID: 4156103357592928076, guid: c137438583a61474e90c7218911183dc,
         type: 3}
       propertyPath: m_ConstraintCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4782646700775922669, guid: c137438583a61474e90c7218911183dc,
         type: 3}
@@ -1425,6 +1425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502742678472555547, guid: c137438583a61474e90c7218911183dc,
+        type: 3}
+      propertyPath: m_Spacing
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7510598841561918522, guid: c137438583a61474e90c7218911183dc,
         type: 3}
