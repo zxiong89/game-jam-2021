@@ -38,4 +38,19 @@ public abstract class BaseStat
     /// <paarm name="traitModifiers"></paarm>
     public abstract void Update(int level, int traitModifier);
 
+
+    private float growthSum = 0f;
+    private int growthNum = 0;
+    public float OverallGrowthScore
+    {
+        get => growthSum / growthNum;
+    }
+
+    public void AddToOverallGrowthRate(GrowthFactor growth, GrowthFactor meanLimits)
+    {
+        growthSum += growth.EarlyMod / meanLimits.EarlyMod;
+        growthSum += growth.LinearMod / meanLimits.LinearMod;
+        growthSum += growth.LateMod / meanLimits.LateMod;
+        growthNum += 3;
+    }
 }

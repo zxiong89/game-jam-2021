@@ -14,7 +14,7 @@ public class TraitsGroup : MonoBehaviour
     {
         if (scoutingTier <= 1)
         {
-            traitsContainer.SetActive(false);
+            this.gameObject.SetActive(false);
             return;
         }
 

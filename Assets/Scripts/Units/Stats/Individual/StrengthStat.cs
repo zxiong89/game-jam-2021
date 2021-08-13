@@ -38,9 +38,9 @@ public class StrengthStat : BaseStat
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        PowerGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
-        BrawnGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
-        BodyGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        PowerGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
+        BrawnGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
+        BodyGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
     }
 
     #endregion

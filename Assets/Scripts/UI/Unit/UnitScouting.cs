@@ -1,4 +1,5 @@
 ﻿using System;
+using Strings = GenericStrings;
 
 public static class UnitScouting 
 {
@@ -11,9 +12,25 @@ public static class UnitScouting
         return $"[ {FloatExtensions.ToString(lower + 1)} - {FloatExtensions.ToString(lower + range)} ]";
     }
 
-    public static string ScoutSubStat(float growthGrade, int scoutingTier)
+    public static string ScoutSubStat(float subStat, float stat, int scoutingTier)
     {
-        return "";
+        if (scoutingTier == 1) return string.Empty;
+        return gradeScore(subStat, stat, scoutingTier == 2 ? tier2Grades : tier3Grades);
+    }
+
+    private static readonly string[] tier2Grades = { Strings.GradeF, Strings.GradeE, Strings.GradeEPlus, Strings.GradeD, 
+        Strings.GradeDPlus, Strings.GradeC, Strings.GradeCPlus, Strings.GradeB, Strings.GradeBPlus, Strings.GradeA };
+
+    private static readonly string[] tier3Grades = { Strings.GradeF, Strings.GradeFPlus, 
+        Strings.GradeEMinus, Strings.GradeE, Strings.GradeEPlus, Strings.GradeDMinus, Strings.GradeD, Strings.GradeDPlus,
+        Strings.GradeCMinus, Strings.GradeC, Strings.GradeCPlus, Strings.GradeBMinus, Strings.GradeB, Strings.GradeBPlus,
+        Strings.GradeAMinus, Strings.GradeA, Strings.GradeAPlus, Strings.GradeSMinus, Strings.GradeS, Strings.GradeSPlus };
+
+    private static string gradeScore(float score, float total, string[] grades)
+    {
+        int index = score == total ? grades.Length - 1 : 
+            (int) Math.Floor((score / total) / (1f / grades.Length));
+        return grades[index];
     }
 
     private static float getRange(float stat, int scoutingTier)
