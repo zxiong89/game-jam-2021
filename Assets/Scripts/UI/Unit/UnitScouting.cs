@@ -9,7 +9,7 @@ public static class UnitScouting
         int quotient = (int) Math.Floor(stat / range);
         float lower = quotient * range;
 
-        return $"[ {FloatExtensions.ToString(lower + 1)} - {FloatExtensions.ToString(lower + range)} ]";
+        return $"[ { FloatExtensions.ToString(lower <= 0 ? 1 : lower)} - {FloatExtensions.ToString(lower + range)} ]";
     }
 
     public static string ScoutSubStat(float subStat, float stat, int scoutingTier)
