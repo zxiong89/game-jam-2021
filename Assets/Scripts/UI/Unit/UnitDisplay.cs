@@ -68,8 +68,8 @@ public class UnitDisplay : MonoBehaviour
     {
         if (statsGroup == null) return;
 
-        statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
-        statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
+        statsGroup?.SetGrowth(currentUnit.Stats, unitScoutingTier.Value);
+        statsGroup?.SetSubGrowth(currentUnit.Stats, unitScoutingTier.Value);
     }
 
 }

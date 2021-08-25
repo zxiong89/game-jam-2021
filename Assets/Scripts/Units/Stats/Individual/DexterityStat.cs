@@ -49,7 +49,5 @@ public class DexterityStat : BaseStat
 
     protected override float[] getStats() => new[] { Speed, Agility, Reflexes };
 
-    protected override GrowthFactor[] getGrowthFactors() => new[] { SpeedGrowth, AgilityGrowth, ReflexesGrowth };
-
     #endregion
 }

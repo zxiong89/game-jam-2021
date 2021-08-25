@@ -17,8 +17,11 @@ public class StatsAndGrowthSwitcher : MonoBehaviour
 
     private void Start()
     {
-        if (unitScoutingTier.Value < 2) return;
-        this.gameObject.SetActive(true);
+        if (unitScoutingTier.Value < 2)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
         showStatsBtn.onClick.AddListener(() => ShowStats());
         showGrowthBtn.onClick.AddListener(() => ShowGrowth());
     }

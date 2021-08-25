@@ -49,7 +49,5 @@ public class StrengthStat : BaseStat
 
     protected override float[] getStats() => new[] { Power, Brawn, Body };
 
-    protected override GrowthFactor[] getGrowthFactors() => new[] { PowerGrowth, BrawnGrowth, BodyGrowth };
-
     #endregion
 }

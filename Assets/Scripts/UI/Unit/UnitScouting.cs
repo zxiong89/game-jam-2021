@@ -12,10 +12,22 @@ public static class UnitScouting
         return $"[ { FloatExtensions.ToString(lower <= 0 ? 1 : lower)} - {FloatExtensions.ToString(lower + range)} ]";
     }
 
-    public static string ScoutSubStat(float subStat, float stat, int scoutingTier)
+    public static string ScoutGrowth(BaseStat growth, int scoutingTier)
     {
         if (scoutingTier == 1) return string.Empty;
-        return gradeScore(subStat, stat, scoutingTier == 2 ? tier2Grades : tier3Grades);
+        return gradeScore(growth.OverallGrowthScore, 1f, scoutingTier == 2 ? tier2Grades : tier3Grades);
+    }
+
+    public static string ScoutSubStat(float subStat, float maxSubStat, int scoutingTier)
+    {
+        if (scoutingTier == 1) return string.Empty;
+        return gradeScore(subStat, maxSubStat, scoutingTier == 2 ? tier2Grades : tier3Grades);
+    }
+
+    public static string ScoutSubGrowth(GrowthFactor subGrowth, int scoutingTier)
+    {
+        if (scoutingTier == 1) return string.Empty;
+        return gradeScore(subGrowth.Overall, 1f, scoutingTier == 2 ? tier2Grades : tier3Grades);
     }
 
     private static readonly string[] tier2Grades = { Strings.GradeF, Strings.GradeE, Strings.GradeEPlus, Strings.GradeD, 

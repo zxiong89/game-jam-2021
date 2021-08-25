@@ -49,8 +49,6 @@ public class WisdomStat : BaseStat
 
     protected override float[] getStats() => new[] { Will, Sense, Spirit };
 
-    protected override GrowthFactor[] getGrowthFactors() => new[] { WillGrowth, SenseGrowth, SpiritGrowth };
-
     #endregion
 
 }

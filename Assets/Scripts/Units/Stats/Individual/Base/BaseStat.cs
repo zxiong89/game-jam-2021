@@ -19,15 +19,6 @@ public abstract class BaseStat
         get => FloatExtensions.Average(getStats());
     }
 
-    protected abstract GrowthFactor[] getGrowthFactors();
-    /// <summary>
-    /// Returns the average intelligence growth factor
-    /// </summary>
-    public GrowthFactor Growth
-    {
-        get => GrowthFactor.Average(getGrowthFactors());
-    }
-
     public abstract void RandomizeBaseStats(IntegerLimits baseStats);
     public abstract void RandomizeGrowthStats(GrowthFactorLimits limits);
 
@@ -46,11 +37,9 @@ public abstract class BaseStat
         get => growthSum / growthNum;
     }
 
-    public void AddToOverallGrowthRate(GrowthFactor growth, GrowthFactor meanLimits)
+    public void AddToOverallGrowthRate(GrowthFactor growth)
     {
-        growthSum += growth.EarlyMod / meanLimits.EarlyMod;
-        growthSum += growth.LinearMod / meanLimits.LinearMod;
-        growthSum += growth.LateMod / meanLimits.LateMod;
-        growthNum += 3;
+        growthSum += growth.Overall;
+        growthNum++;
     }
 }

@@ -49,7 +49,5 @@ public class IntelligenceStat : BaseStat
 
     protected override float[] getStats() => new[] { Intellect, Mind, Knowledge };
 
-    protected override GrowthFactor[] getGrowthFactors() => new[] { IntellectGrowth, MindGrowth, KnowledgeGrowth };
-
     #endregion
 }

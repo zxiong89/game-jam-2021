@@ -50,7 +50,5 @@ public class ConstitutionStat : BaseStat
 
     protected override float[] getStats() => new[] { Stamina, Endurance, Vitality };
 
-    protected override GrowthFactor[] getGrowthFactors() => new[] { StaminaGrowth, EnduranceGrowth, VitalityGrowth };
-
     #endregion
 }
