@@ -36,11 +36,7 @@ public class UnitDisplay : MonoBehaviour
         unitName.text = unit.DisplayName;
         if (ageDisplay != null) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
         DisplayClass(unit.Level, unit.Class.Data.Name);
-        if (statsGroup != null)
-        {
-            statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
-            statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
-        }
+        DisplayStats();
         if (traitsGroup != null) traitsGroup.DisplayTraits(unit.Traits, unitScoutingTier.Value);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
@@ -58,6 +54,22 @@ public class UnitDisplay : MonoBehaviour
             levelClassDisplay.text = string.Format("{0} {1}", levelTxt, unitClass);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
+    }
+
+    public void DisplayStats() 
+    {
+        if (statsGroup == null) return;
+        
+        statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
+        statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
+    }
+
+    public void DisplayGrowth()
+    {
+        if (statsGroup == null) return;
+
+        statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
+        statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
     }
 
 }
