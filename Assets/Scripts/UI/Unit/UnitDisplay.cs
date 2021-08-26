@@ -56,20 +56,25 @@ public class UnitDisplay : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
-    public void DisplayStats() 
+    public void DisplayStats(bool rebuildLayout = false) 
     {
         if (statsGroup == null) return;
         
         statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
         statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
+
+        if (rebuildLayout) LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
+
     }
 
-    public void DisplayGrowth()
+    public void DisplayGrowth(bool rebuildLayout = false)
     {
         if (statsGroup == null) return;
 
         statsGroup?.SetGrowth(currentUnit.Stats, unitScoutingTier.Value);
         statsGroup?.SetSubGrowth(currentUnit.Stats, unitScoutingTier.Value);
+
+        if (rebuildLayout) LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
 }

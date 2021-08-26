@@ -28,13 +28,13 @@ public class StatsAndGrowthSwitcher : MonoBehaviour
 
     public void ShowStats()
     {
-        unitDisplay.DisplayStats();
+        unitDisplay.DisplayStats(true);
         activateButtons(false);
     }
 
     public void ShowGrowth()
     {
-        unitDisplay.DisplayGrowth();
+        unitDisplay.DisplayGrowth(true);
         activateButtons(true);
     }
 

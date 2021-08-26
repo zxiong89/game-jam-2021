@@ -35,17 +35,16 @@ public class StatsGroup : MonoBehaviour
             BaseStat curStat = statsArr[i];
             curStatDisplay.SetLabelValue(curStat.Abbreviation, transform(curStat));
         }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     public void SetSubStats(StatBlock stats, int scoutingTier)
     {
-        if (scoutingTier == 1)
+        if (scoutingTier < 2)
         {
-            disableSubDisplays();
+            setSubDisplaysStatus(false);
             return;
         }
-        
+
         setSubDisplays(stats, (BaseStat stat) => setSubStatFunc(stat, scoutingTier));
     }
 
@@ -122,9 +121,9 @@ public class StatsGroup : MonoBehaviour
 
     public void SetSubGrowth(StatBlock stats, int scoutingTier)
     {
-        if (scoutingTier < 3)
+        if (scoutingTier < 2)
         {
-            disableSubDisplays();
+            setSubDisplaysStatus(false);
             return;
         }
         setSubDisplays(stats, (BaseStat stat) => setSubGrowthFunc(stat, scoutingTier));
@@ -168,11 +167,11 @@ public class StatsGroup : MonoBehaviour
         return result;
     }
 
-    private void disableSubDisplays()
+    private void setSubDisplaysStatus(bool activate)
     {
         foreach (var display in subStatDisplays)
         {
-            display.SetActive(false);
+            display.SetActive(activate);
         }
     }
 
@@ -187,7 +186,6 @@ public class StatsGroup : MonoBehaviour
             BaseStat curStat = statsArr[i];
             setSubStatsForSingle(subStatsDisplay, curStat, transform);
         }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
 
