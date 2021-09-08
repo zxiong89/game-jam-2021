@@ -70,6 +70,12 @@ public class Unit
         private set { recruitmentData = value; }
     }
 
+    public int Greed
+    {
+        get;
+        set;
+    }
+
     #endregion
 
     #region Constructors
@@ -139,5 +145,6 @@ public class Unit
             ParentRoster.Remove(this);
         }
     }
+
     #endregion
 }
