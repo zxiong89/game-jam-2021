@@ -26,7 +26,7 @@ public class RecruitmentData
 
     public bool OfferContract(UnitContract contract)
     {
-        if (contract.Bid.TotalWorth() >= Fee) return true;
-        return false;
+        if (contract.TotalWorth < Fee) return false;
+        return true;
     }
 }

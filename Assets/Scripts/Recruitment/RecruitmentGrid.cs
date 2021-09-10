@@ -29,7 +29,8 @@ public class RecruitmentGrid : MonoBehaviour
     {
         GameObject resumeObj = Instantiate(resumePrefab, this.transform);
         var resume = resumeObj.GetComponent<UnitResumeDisplay>();
-        resume.SetResume(unit.RecruitmentData);
+        var data = RecruitmentDataFactory.GetOrAddData(unit);
+        resume.SetResume(data);
     }
 
     public void RefreshGridDisplay()

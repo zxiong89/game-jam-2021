@@ -35,9 +35,9 @@ public class UnitSimulator
     private int PayWages(Unit curUnit)
     {
         int amountToPay;
-        if(!curUnit.IsApprentice() && curUnit.IsInPlayerGuild())
+        if(!curUnit.IsApprentice() && curUnit.IsInPlayerGuild() && curUnit.Contract != null)
         {
-            amountToPay = curUnit.RecruitmentData.Fee / 100;
+            amountToPay = curUnit.Contract.GoldPerMonth;
         }
         else
         {

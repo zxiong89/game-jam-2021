@@ -75,8 +75,7 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
 
     private void TryHireUnit(GameObject hirePopup, RecruitmentData data)
     {
-        var bid = new RecruitmentBid(data.Fee, 0, 0);
-        var contract = UnitContract.CreateContract(playerGuild, bid);
+        var contract = UnitContract.CreateContract(playerGuild, data.Fee, 0, 0);
 
         if(contract == null)
         {
@@ -99,7 +98,7 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
             return;
         }
 
-        playerGuild.Gold -= contract.Bid.ImmediatePayment();
+        playerGuild.Gold -= contract.ImmediatePayment;
         playerGuild.Roster.Add(data.UnitForHire);
         grid.RefreshGridDisplay();
     }

@@ -24,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ae79594adf085245913e36e6d0ea851, type: 2}
   - {fileID: 11400000, guid: cd3c3b201f907d84a9518cc3bed9eaae, type: 2}
   GRID_LIMIT: 4
+  recruitmentDatas: {fileID: 11400000, guid: 4c9a02e8e1d334945bd4bb4df4e5fbb8, type: 2}
