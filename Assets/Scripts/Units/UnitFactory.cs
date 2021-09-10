@@ -30,6 +30,9 @@ public class UnitFactory : MonoBehaviour
     [SerializeField]
     private UnitRoster freeAgentRoster;
 
+    [SerializeField]
+    private IntegerLimits greedLimits;
+
     private void Awake()
     {
         LoadNames();
@@ -61,6 +64,10 @@ public class UnitFactory : MonoBehaviour
         var newUnit = new Unit(names[n], level, age, stats, classData, traits);
         activeUnits?.Units.Add(newUnit);
         freeAgentRoster?.Add(newUnit);
+
+        int g = Random.Range(greedLimits.Min, greedLimits.Max);
+        newUnit.Greed = g;
+
         return newUnit;
     }
 

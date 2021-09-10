@@ -75,20 +75,32 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
 
     private void TryHireUnit(GameObject hirePopup, RecruitmentData data)
     {
-        if(playerGuild.Gold < data.Fee)
+        var contract = UnitContract.CreateContract(playerGuild, data.Fee, 0, 0);
+
+        if(contract == null)
         {
             var popupArgs = new PopupEventArgs()
             {
                 Text = "You don't have enough gold!",
             };
             showPopup.Raise(popupArgs);
+            return;
         }
-        else
+
+        bool success = data.OfferContract(contract);
+        if (!success)
         {
-            playerGuild.Gold -= data.Fee;
-            playerGuild.Roster.Add(data.UnitForHire);
-            grid.RefreshGridDisplay();
+            var popupArgs = new PopupEventArgs()
+            {
+                Text = "Your offer was declined!",
+            };
+            showPopup.Raise(popupArgs);
+            return;
         }
+
+        playerGuild.Gold -= contract.ImmediatePayment;
+        playerGuild.Roster.Add(data.UnitForHire);
+        grid.RefreshGridDisplay();
     }
 
     public void LoadGlobals(Globals globals)

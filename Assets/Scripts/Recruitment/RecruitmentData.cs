@@ -24,4 +24,9 @@ public class RecruitmentData
         return hiringPrice;
     }
 
+    public bool OfferContract(UnitContract contract)
+    {
+        if (contract.TotalWorth < Fee) return false;
+        return true;
+    }
 }

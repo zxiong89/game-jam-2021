@@ -16,7 +16,6 @@ public class Unit
         {
             level = value;
             Stats?.UpdateStats(level, traitModifiers);
-            recruitmentData = null;
             ExperienceToLevel = (int)math.pow(level, 3);
         }
     }
@@ -59,15 +58,16 @@ public class Unit
     public UnitRoster ParentRoster;
     public bool IsRetired = false;
 
-    private RecruitmentData recruitmentData = null;
-
-    public RecruitmentData RecruitmentData
+    public UnitContract Contract
     {
-        get { 
-            if(recruitmentData == null) recruitmentData = new RecruitmentData(this);
-            return recruitmentData; 
-        }
-        private set { recruitmentData = value; }
+        get;
+        set;
+    }
+
+    public int Greed
+    {
+        get;
+        set;
     }
 
     #endregion
@@ -139,5 +139,6 @@ public class Unit
             ParentRoster.Remove(this);
         }
     }
+
     #endregion
 }
