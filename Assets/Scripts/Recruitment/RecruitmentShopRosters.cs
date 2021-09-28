@@ -133,6 +133,7 @@ public class RecruitmentShopRosters : ScriptableObject
 
         foreach (var unit in newRoster)
         {
+            unit.RecruitmentData.UpdateFee(unit, false);
             GetRoster(tier).Add(unit);
         }
     }

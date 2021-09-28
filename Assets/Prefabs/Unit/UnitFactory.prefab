@@ -56,3 +56,4 @@ MonoBehaviour:
   nameJsonFile: Names22k
   activeUnits: {fileID: 11400000, guid: e3befbc5e4c95fd47afa6eb7ffc9dc05, type: 2}
   freeAgentRoster: {fileID: 11400000, guid: dbd10a8f2cde48749959a7634a8a4dfb, type: 2}
+  currentTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}

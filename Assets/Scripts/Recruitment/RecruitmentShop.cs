@@ -75,7 +75,7 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
 
     private void TryHireUnit(GameObject hirePopup, RecruitmentData data)
     {
-        if(playerGuild.Gold < data.Fee)
+        if(playerGuild.Gold < data.HiringFee)
         {
             var popupArgs = new PopupEventArgs()
             {
@@ -85,7 +85,7 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
         }
         else
         {
-            playerGuild.Gold -= data.Fee;
+            playerGuild.Gold -= data.HiringFee;
             playerGuild.Roster.Add(data.UnitForHire);
             grid.RefreshGridDisplay();
         }

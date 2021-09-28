@@ -26,7 +26,11 @@ public struct PopupEventArgs
 
     public Action<GameObject> AcceptCallback { get; set; }
 
+    public Vector2? AcceptButtonSize { get; set; }
+
     public Action<GameObject> CancelCallback { get; set; }
+
+    public Vector2? CancelButtonSize { get; set; }
 
     public bool PausesTime { get; set; }
 }
