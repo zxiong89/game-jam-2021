@@ -19,11 +19,19 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     private TimedEventCollection timedEvents;
 
+    [SerializeField]
+    private FloatVariable currentTime;
+
+    [SerializeField]
+    private YearlyEventQueue yearlyEventQueue;
+
     public UnitSimulator UnitSimulator { get; } = new UnitSimulator();
 
     public QuestSimulator QuestSimulator { get; } = new QuestSimulator();
 
     public TimedEventHandler TimedEventHandler { get; } = new TimedEventHandler();
+
+    private YearlyEventSimulator YearlyEventSimulator = new YearlyEventSimulator();
 
     private float setSpeed = 1;
 
@@ -67,8 +75,10 @@ public class SimulationManager : MonoBehaviour
     private void FixedUpdate()
     {
         this.UnitSimulator.UpdateUnits(allUnits.Units, playerGuild);
+        this.UnitSimulator.UpdateUnits(allUnits, playerGuild, currentTime.Value, freeAgentRoster);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
         shopRosters.CheckHasUpdated();
         this.TimedEventHandler.UpdateTimedEvents(timedEvents.timedEvents);
+        this.YearlyEventSimulator.UpdateYearlyEvents(yearlyEventQueue, currentTime.Value);
     }
 }

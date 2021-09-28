@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private IntegerVariable questScoutingTier;
 
+    [SerializeField]
+    private YearlyEventQueue yearlyEventQueue;
+
     public void SaveGame()
     {
         if (string.IsNullOrEmpty(filename.Value)) filename.Value = GenericStrings.DefaultFilename;
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
         currentTime.Value = 0f;
         playerGold.Value = newGameGold;
         questScoutingTier.Value = 1;
+        yearlyEventQueue.Reset();
     }
 
     private void loadGame(string filename)
@@ -93,6 +97,7 @@ public class GameManager : MonoBehaviour
         // TODO activeParties.parties = save.ActiveParties.parties;
         currentTime.Value = save.CurrentTime;
         playerGold.Value = save.PlayerGold;
+        // TODO yearlyEventQueue
     }
 
     public static string GetFilePath(string filename) =>

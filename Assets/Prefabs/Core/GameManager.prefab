@@ -54,3 +54,4 @@ MonoBehaviour:
   currentTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
   playerGold: {fileID: 11400000, guid: 4a551af2b841510438263a3e33f4f012, type: 2}
   questScoutingTier: {fileID: 11400000, guid: 59420f7d7de8af249ba1ed5b4969ebf8, type: 2}
+  yearlyEventQueue: {fileID: 11400000, guid: 64e5c52536b1fbb47866a2c367c36934, type: 2}

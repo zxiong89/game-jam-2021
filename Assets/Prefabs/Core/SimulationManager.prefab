@@ -166,3 +166,5 @@ MonoBehaviour:
   shopRosters: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011, type: 2}
   activeQuests: {fileID: 11400000, guid: 8e3b028a8a21fb0428dddf752ea94073, type: 2}
   timedEvents: {fileID: 11400000, guid: 75de952ef6fc46f4ca8a14c3d6b9be73, type: 2}
+  currentTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
+  yearlyEventQueue: {fileID: 11400000, guid: 64e5c52536b1fbb47866a2c367c36934, type: 2}
