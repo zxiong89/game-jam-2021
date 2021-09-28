@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SimulationManager : MonoBehaviour
@@ -11,7 +9,13 @@ public class SimulationManager : MonoBehaviour
     private Guild playerGuild;
 
     [SerializeField]
+    private UnitRoster inPartyRoster;
+
+    [SerializeField]
     private RecruitmentShopRosters shopRosters;
+
+    [SerializeField]
+    private UnitRoster freeAgentRoster;
 
     [SerializeField]
     private QuestCollection activeQuests;
@@ -33,6 +37,8 @@ public class SimulationManager : MonoBehaviour
 
     private YearlyEventSimulator YearlyEventSimulator = new YearlyEventSimulator();
 
+    private UnitEventSimulator UnitEventSimulator = new UnitEventSimulator();
+    
     private float setSpeed = 1;
 
     private float activePauses = 0;
@@ -80,5 +86,6 @@ public class SimulationManager : MonoBehaviour
         shopRosters.CheckHasUpdated();
         this.TimedEventHandler.UpdateTimedEvents(timedEvents.timedEvents);
         this.YearlyEventSimulator.UpdateYearlyEvents(yearlyEventQueue, currentTime.Value);
+        this.UnitEventSimulator.UpdateUnitEvents(freeAgentRoster, playerGuild, inPartyRoster, allUnits);
     }
 }
