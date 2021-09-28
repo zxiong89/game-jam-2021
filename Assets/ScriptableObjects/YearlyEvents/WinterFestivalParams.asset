@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d2b3584f86d5e488b18cb15ba79f41, type: 3}
+  m_Name: WinterFestivalParams
+  m_EditorClassIdentifier: 
+  calendarTime: 11.5
+  playerGuild: {fileID: 11400000, guid: c8eded55909b5c042a3c0bd0bf91eff7, type: 2}
+  inPartyRoster: {fileID: 11400000, guid: 1f7af61ce8a49d94a91f96d41db29333, type: 2}
