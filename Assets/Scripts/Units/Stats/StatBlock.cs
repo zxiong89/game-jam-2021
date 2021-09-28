@@ -1,4 +1,7 @@
 ﻿
+using System;
+using UnityEngine;
+
 [System.Serializable]
 public class StatBlock
 {
@@ -40,7 +43,21 @@ public class StatBlock
         Dex.RandomizeGrowthStats(limits);
         Int.RandomizeGrowthStats(limits);
         Wis.RandomizeGrowthStats(limits);
+
+        var stats = GetStats();
+        overallGrowthScore = 0f;
+        foreach (var s in stats)
+        {
+            overallGrowthScore += s.OverallGrowthScore;
+        }
+        overallGrowthScore /= stats.Length;
     }
 
     public BaseStat[] GetStats() => new BaseStat[]{ Str, Con, Dex, Int, Wis };
+
+    private float overallGrowthScore = 0f;
+    public float OverallGrowthScore
+    {
+        get => overallGrowthScore;
+    }
 }

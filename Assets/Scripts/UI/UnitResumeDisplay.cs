@@ -23,6 +23,9 @@ public class UnitResumeDisplay : MonoBehaviour
     [SerializeField]
     private RecruitmentEvent recruitmentOfferEvent;
 
+    [SerializeField]
+    private IntegerVariable unitScoutingTier;
+
     private RecruitmentData recruitmentData;
 
     public void SetResume(RecruitmentData data)
@@ -30,13 +33,18 @@ public class UnitResumeDisplay : MonoBehaviour
         Unit unitToDisplay = data.UnitForHire;
         int fee = data.HiringFee;
         nameAndLevels.text = unitToDisplay.DisplayName + " " + GenericStrings.LevelAbbr + unitToDisplay.Level;
-        statsGroup.SetStats(unitToDisplay.Stats);
-        var traitNames = new List<string>();
-        foreach(var trait in unitToDisplay.Traits)
+        statsGroup.SetStats(unitToDisplay.Stats, unitScoutingTier.Value);
+
+        if (unitScoutingTier.Value > 1)
         {
-            traitNames.Add(trait.Name);
+            var traitNames = new List<string>();
+            foreach (var trait in unitToDisplay.Traits)
+            {
+                traitNames.Add(trait.Name);
+            }
+            traitsText.text = string.Join(", ", traitNames.ToArray());
         }
-        traitsText.text = string.Join(", ", traitNames.ToArray());
+
         feeText.text = fee.ToString() + " " + GenericStrings.CurrencySymbol;
         recruitmentData = data;
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());

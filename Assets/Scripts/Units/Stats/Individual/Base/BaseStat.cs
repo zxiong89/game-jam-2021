@@ -19,15 +19,6 @@ public abstract class BaseStat
         get => FloatExtensions.Average(getStats());
     }
 
-    protected abstract GrowthFactor[] getGrowthFactors();
-    /// <summary>
-    /// Returns the average intelligence growth factor
-    /// </summary>
-    public GrowthFactor Growth
-    {
-        get => GrowthFactor.Average(getGrowthFactors());
-    }
-
     public abstract void RandomizeBaseStats(IntegerLimits baseStats);
     public abstract void RandomizeGrowthStats(GrowthFactorLimits limits);
 
@@ -38,4 +29,17 @@ public abstract class BaseStat
     /// <paarm name="traitModifiers"></paarm>
     public abstract void Update(int level, int traitModifier);
 
+
+    private float growthSum = 0f;
+    private int growthNum = 0;
+    public float OverallGrowthScore
+    {
+        get => growthSum / growthNum;
+    }
+
+    public void AddToOverallGrowthRate(GrowthFactor growth)
+    {
+        growthSum += growth.Overall;
+        growthNum++;
+    }
 }

@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2d0fc8ef5454346a50813ce1f73cbe, type: 3}
-  m_Name: QuestScoutingTier
+  m_Script: {fileID: 11500000, guid: 4b395483a3a8507418d9515ad10ccdd6, type: 3}
+  m_Name: UnitGreedLimits
   m_EditorClassIdentifier: 
-  Value: 3
+  Min: 1
+  Mean: 50
+  Max: 100

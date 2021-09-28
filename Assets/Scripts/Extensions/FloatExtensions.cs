@@ -1,8 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 public static class FloatExtensions
 {
-    private readonly static Random rand = new Random();
+    public const float STD_DEVIATION = 1 / 3f;
+
+    private readonly static System.Random rand = new System.Random();
+
     /// <summary>
     /// Returns the average of a number of float variables
     /// </summary>
@@ -38,7 +42,7 @@ public static class FloatExtensions
     /// <param name="mean"></param>
     /// <param name="stdDev"> Standard deviation. </param>
     /// <returns></returns>
-    public static double NextGaussian(float stdDev = 1/3f)
+    public static double NextGaussian(float stdDev = STD_DEVIATION)
     {
         double randNormal;
         do
@@ -55,13 +59,16 @@ public static class FloatExtensions
     /// <param name="rand"></param>
     /// <param name="stdDev"></param>
     /// <returns></returns>
-    private static double nextGaussian(Random rand, float stdDev)
+    private static double nextGaussian(System.Random rand, float stdDev)
     {
         double u1 = rand.NextDouble();
         double u2 = rand.NextDouble();
         double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
         return stdDev * randStdNormal;
     }
+
+    public static float Normalize(float val, float min, float max) =>
+        (val - min) / (max - min);
 
     public static string ToString(float f) => f.ToString("N0");
 }

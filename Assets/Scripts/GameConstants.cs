@@ -13,4 +13,5 @@
     public const float GuildLevel10 = 10e27f;
 
     public const int MaxQuestScoutingTiers = 3;
+    public const int MaxUnitScoutingTiers = 3;
 }

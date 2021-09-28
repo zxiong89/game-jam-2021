@@ -38,9 +38,9 @@ public class WisdomStat : BaseStat
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        WillGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
-        SenseGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
-        SpiritGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        WillGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
+        SenseGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
+        SpiritGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
     }
 
     #endregion
@@ -48,8 +48,6 @@ public class WisdomStat : BaseStat
     #region StatBase Protected Methods
 
     protected override float[] getStats() => new[] { Will, Sense, Spirit };
-
-    protected override GrowthFactor[] getGrowthFactors() => new[] { WillGrowth, SenseGrowth, SpiritGrowth };
 
     #endregion
 

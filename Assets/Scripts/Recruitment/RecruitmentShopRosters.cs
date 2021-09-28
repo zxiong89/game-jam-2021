@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Recruitment Shop Rosters")]
+[CreateAssetMenu(menuName = "Recruitment/Shop Rosters")]
 [System.Serializable]
 public class RecruitmentShopRosters : ScriptableObject
 {
@@ -53,6 +53,7 @@ public class RecruitmentShopRosters : ScriptableObject
             r.Clear();
         }
         freeAgentRoster.Clear();
+        RecruitmentDataFactory.Clear();
         Initialize();
     }
 

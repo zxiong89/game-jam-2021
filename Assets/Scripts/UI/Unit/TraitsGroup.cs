@@ -10,8 +10,14 @@ public class TraitsGroup : MonoBehaviour
     [SerializeField]
     private GameObject traitsPrefab;
 
-    public void DisplayTraits(List<Trait> traits)
+    public void DisplayTraits(List<Trait> traits, int scoutingTier)
     {
+        if (scoutingTier <= 1)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
+
         foreach(var trait in traits)
         {
             AddTrait(trait);

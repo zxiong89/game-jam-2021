@@ -39,9 +39,9 @@ public class ConstitutionStat : BaseStat
 
     public override void RandomizeGrowthStats(GrowthFactorLimits limits)
     {
-        StaminaGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
-        EnduranceGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
-        VitalityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean);
+        StaminaGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
+        EnduranceGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
+        VitalityGrowth = GrowthFactor.Randomize(limits.Min, limits.Max, limits.Mean, this);
     }
 
     #endregion
@@ -49,8 +49,6 @@ public class ConstitutionStat : BaseStat
     #region StatBase Protected Methods
 
     protected override float[] getStats() => new[] { Stamina, Endurance, Vitality };
-
-    protected override GrowthFactor[] getGrowthFactors() => new[] { StaminaGrowth, EnduranceGrowth, VitalityGrowth };
 
     #endregion
 }

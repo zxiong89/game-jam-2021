@@ -25,6 +25,9 @@ public class UnitDisplay : MonoBehaviour
     [SerializeField]
     private TraitsGroup traitsGroup;
 
+    [SerializeField]
+    private IntegerVariable unitScoutingTier;
+
     public Unit currentUnit { get; set; }
 
     public void DisplayUnit(Unit unit)
@@ -33,12 +36,8 @@ public class UnitDisplay : MonoBehaviour
         unitName.text = unit.DisplayName;
         if (ageDisplay != null) ageDisplay.text = string.Format("{0} years old",unit.Age.ToString());
         DisplayClass(unit.Level, unit.Class.Data.Name);
-        if (statsGroup != null)
-        {
-            statsGroup?.SetStats(currentUnit.Stats);
-            statsGroup?.SetSubStats(currentUnit.Stats);
-        }
-        if (traitsGroup != null) traitsGroup.DisplayTraits(unit.Traits);
+        DisplayStats();
+        if (traitsGroup != null) traitsGroup.DisplayTraits(unit.Traits, unitScoutingTier.Value);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
@@ -55,6 +54,27 @@ public class UnitDisplay : MonoBehaviour
             levelClassDisplay.text = string.Format("{0} {1}", levelTxt, unitClass);
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
+    }
+
+    public void DisplayStats(bool rebuildLayout = false) 
+    {
+        if (statsGroup == null) return;
+        
+        statsGroup?.SetStats(currentUnit.Stats, unitScoutingTier.Value);
+        statsGroup?.SetSubStats(currentUnit.Stats, unitScoutingTier.Value);
+
+        if (rebuildLayout) LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
+
+    }
+
+    public void DisplayGrowth(bool rebuildLayout = false)
+    {
+        if (statsGroup == null) return;
+
+        statsGroup?.SetGrowth(currentUnit.Stats, unitScoutingTier.Value);
+        statsGroup?.SetSubGrowth(currentUnit.Stats, unitScoutingTier.Value);
+
+        if (rebuildLayout) LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 
 }

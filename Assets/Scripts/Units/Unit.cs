@@ -57,15 +57,16 @@ public class Unit : IScheduleable
     public UnitRoster ParentRoster;
     public bool IsRetired = false;
 
-    private RecruitmentData recruitmentData = null;
-
-    public RecruitmentData RecruitmentData
+    public UnitContract Contract
     {
-        get { 
-            if(recruitmentData == null) recruitmentData = new RecruitmentData(this);
-            return recruitmentData; 
-        }
-        private set { recruitmentData = value; }
+        get;
+        set;
+    }
+
+    public int Greed
+    {
+        get;
+        set;
     }
 
     public float UpdateTime { get; set; }
@@ -135,5 +136,6 @@ public class Unit : IScheduleable
             ParentRoster.Remove(this);
         }
     }
+
     #endregion
 }

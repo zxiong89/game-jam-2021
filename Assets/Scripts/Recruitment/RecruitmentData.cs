@@ -34,4 +34,9 @@ public class RecruitmentData
         HiringFee = CalcFee(unit, mustIncrease);
     }
 
+    public bool OfferContract(UnitContract contract)
+    {
+        if (contract.TotalWorth < Fee) return false;
+        return true;
+    }
 }

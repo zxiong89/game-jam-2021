@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private YearlyEventQueue yearlyEventQueue;
+    
+    private IntegerVariable unitScoutingTier;
 
     public void SaveGame()
     {
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         playerGold.Value = newGameGold;
         questScoutingTier.Value = 1;
         yearlyEventQueue.Reset();
+        unitScoutingTier.Value = 1;
     }
 
     private void loadGame(string filename)

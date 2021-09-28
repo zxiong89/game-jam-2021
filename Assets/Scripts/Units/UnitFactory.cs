@@ -32,6 +32,8 @@ public class UnitFactory : MonoBehaviour
 
     [SerializeField]
     private FloatVariable currentTime;
+    
+    private IntegerLimits greedLimits;
 
     private void Awake()
     {
@@ -65,6 +67,10 @@ public class UnitFactory : MonoBehaviour
         var newUnit = new Unit(names[n], level, age, stats, classData, traits, updateTime);
         activeUnits?.Units.Add(newUnit);
         freeAgentRoster?.Add(newUnit);
+
+        int g = Random.Range(greedLimits.Min, greedLimits.Max);
+        newUnit.Greed = g;
+
         return newUnit;
     }
 
