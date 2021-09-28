@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEngine;
 
 [System.Serializable]
-public class Unit
+public class Unit : IScheduleable
 {
     #region Fields/Properties
     public string DisplayName { get; set; }
@@ -16,7 +15,6 @@ public class Unit
         {
             level = value;
             Stats?.UpdateStats(level, traitModifiers);
-            recruitmentData = null;
             ExperienceToLevel = (int)math.pow(level, 3);
         }
     }
@@ -70,11 +68,12 @@ public class Unit
         private set { recruitmentData = value; }
     }
 
+    public float UpdateTime { get; set; }
     #endregion
 
     #region Constructors
 
-    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data, List<Trait> traits)
+    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data, List<Trait> traits, float updateTime)
     {
         DisplayName = name;
         Age = age;
@@ -83,6 +82,7 @@ public class Unit
         Traits = traits;
         CalcTraitModifiers();
         Level = level;
+        UpdateTime = updateTime;
     }
 
     #endregion
@@ -104,7 +104,7 @@ public class Unit
             }
         }
         TraitModifiers = modifiers;
-    }
+    } 
 
     public bool IsApprentice()
     {
@@ -117,17 +117,13 @@ public class Unit
         return rosterType == Roster.Guild || rosterType == Roster.Party;
     }
 
+    public bool IsInShop()
+    {
+        return ParentRoster.RosterType == Roster.Recruit;
+    }
+
     public void Retire()
     {
-        if (IsInPlayerGuild()) {
-            var args = new PopupEventArgs()
-            {
-                Text = DisplayName + " has retired.",
-                PausesTime = true
-            };
-            PopupMessage.ShowPopup(args);
-            EventLog.AddMessage(DisplayName + " has retired.", false);
-        }
         FreeUnit();
         IsRetired = true;
     }

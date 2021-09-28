@@ -25,6 +25,11 @@ public class BaseButton : MonoBehaviour
         buttonText.text = newText;
     }
 
+    public void SetSize(Vector2 newSize)
+    {
+        buttonComponent.GetComponent<RectTransform>().sizeDelta = newSize;
+    }
+
     public void SetCallback(Action callback)
     {
         buttonComponent.onClick.AddListener(() => callback.Invoke());

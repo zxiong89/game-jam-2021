@@ -30,6 +30,9 @@ public class UnitFactory : MonoBehaviour
     [SerializeField]
     private UnitRoster freeAgentRoster;
 
+    [SerializeField]
+    private FloatVariable currentTime;
+
     private void Awake()
     {
         LoadNames();
@@ -58,7 +61,8 @@ public class UnitFactory : MonoBehaviour
         traits.Add(traitFactory.GetPositiveTrait());
         traits.Add(traitFactory.GetNegativeTrait());
 
-        var newUnit = new Unit(names[n], level, age, stats, classData, traits);
+        float updateTime = currentTime.Value + 1 + UnityEngine.Random.Range(0f, SimulationConstants.SECONDS_PER_YEAR);
+        var newUnit = new Unit(names[n], level, age, stats, classData, traits, updateTime);
         activeUnits?.Units.Add(newUnit);
         freeAgentRoster?.Add(newUnit);
         return newUnit;

@@ -46,12 +46,12 @@ public class PopupDisplay : MonoBehaviour
 
         if(args.AcceptCallback != null)
         {
-            AddAcceptButton(GetButtonText(args.AcceptTextOverride, "Accept"), args.AcceptCallback);
-            AddCloseButton(GetButtonText(args.CloseTextOverride, "Cancel"), args.CancelCallback);
+            AddAcceptButton(GetButtonText(args.AcceptTextOverride, "Accept"), args.AcceptButtonSize, args.AcceptCallback);
+            AddCloseButton(GetButtonText(args.CloseTextOverride, "Cancel"), args.CancelButtonSize, args.CancelCallback);
         }
         else
         {
-            AddCloseButton(GetButtonText(args.CloseTextOverride, "Close"), args.CancelCallback);
+            AddCloseButton(GetButtonText(args.CloseTextOverride, "Close"), args.CancelButtonSize, args.CancelCallback);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
@@ -84,7 +84,7 @@ public class PopupDisplay : MonoBehaviour
         return button;
     }
 
-    private void AddCloseButton(string buttonText, Action<GameObject> callback = null)
+    private void AddCloseButton(string buttonText, Vector2? size, Action<GameObject> callback = null)
     {
         BaseButton button = CreateButton(buttonText);
         if (callback == null)
@@ -99,6 +99,7 @@ public class PopupDisplay : MonoBehaviour
                 ClosePopup();
             });
         }
+        if(size.HasValue) button.SetSize(size.Value);
     }
 
     private void ClosePopup()
@@ -108,12 +109,13 @@ public class PopupDisplay : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void AddAcceptButton(string buttonText, Action<GameObject> callback)
+    private void AddAcceptButton(string buttonText, Vector2? size, Action<GameObject> callback)
     {
         BaseButton button = CreateButton(buttonText);
         button.SetCallback(() => {
             callback(content);
             ClosePopup();
         });
+        if (size.HasValue) button.SetSize(size.Value);
     }
 }
