@@ -80,7 +80,7 @@ public class SimulationManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.UnitSimulator.UpdateUnits(allUnits.Units, playerGuild);
+        currentTime.Value += Time.deltaTime;
         this.UnitSimulator.UpdateUnits(allUnits, playerGuild, currentTime.Value, freeAgentRoster);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
         shopRosters.CheckHasUpdated();

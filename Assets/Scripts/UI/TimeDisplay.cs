@@ -15,7 +15,6 @@ public class TimeDisplay : MonoBehaviour
 
     private void Update()
     {
-        currentTime.Value += Time.deltaTime;
         (int years, int months, float monthsProgress) = CalculateTime(currentTime.Value);       
         display.text = DisplayTime(years, months);
         monthProgressDisplay.SetProgress(monthsProgress);
