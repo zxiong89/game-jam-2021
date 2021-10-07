@@ -6,11 +6,11 @@ public class UnitEventSimulator
     private float unitDeathCounter = 0;
     private float unitPoachedCounter = 0;
 
-    public void UpdateUnitEvents(UnitRoster freeAgentRoster, Guild playerGuild, UnitRoster inPartyRoster, UnitCollection activeUnits)
+    public void UpdateUnitEvents(UnitRoster freeAgentRoster, Guild playerGuild, UnitRoster inPartyRoster)
     {
         UnitWantsToJoinEvent(freeAgentRoster, playerGuild);
-        UnitDeath(freeAgentRoster, playerGuild, inPartyRoster, activeUnits);
-        UnitPoached(playerGuild, inPartyRoster, activeUnits);
+        UnitDeath(freeAgentRoster, playerGuild, inPartyRoster);
+        UnitPoached(playerGuild, inPartyRoster);
     }
 
     private void UnitWantsToJoinEvent(UnitRoster freeAgentRoster, Guild playerGuild)
@@ -21,18 +21,21 @@ public class UnitEventSimulator
             Unit randUnit = GetRandomUnit(freeAgentRoster);
             if (randUnit == null) return;
 
-            randUnit.RecruitmentData.UpdateFee(randUnit, false);
-            if(randUnit.RecruitmentData.HiringFee < playerGuild.Gold / 10)
+            var recruitData = RecruitmentDataFactory.GetOrAddData(randUnit);
+            recruitData.UpdateFee();
+            if (recruitData.Fee < playerGuild.Gold * .25f)
             {
                 PopupMessage.ShowPopup(new PopupEventArgs()
                 {
                     Text = randUnit.DisplayName + " wants to join your guild!\n" +
-                        "Their hiring fee is " + randUnit.RecruitmentData.HiringFee + "G",
+                        "Their hiring fee is " + 0 + "G",
                     AcceptTextOverride = "Hire",
                     AcceptCallback = (popupContent) =>
                     {
-                        playerGuild.Gold -= randUnit.RecruitmentData.HiringFee;
-                        playerGuild.Roster.Add(randUnit);
+                        PopupMessage.ShowPopup(new PopupEventArgs()
+                        {
+                            Text = "Add the hiring workflow here!"
+                        });
                     },
                     CloseTextOverride = "Refuse",
                     PausesTime = true
@@ -43,7 +46,7 @@ public class UnitEventSimulator
 
     }
 
-    private void UnitDeath(UnitRoster freeAgentRoster, Guild PlayerGuild, UnitRoster inPartyRoster, UnitCollection activeUnits)
+    private void UnitDeath(UnitRoster freeAgentRoster, Guild PlayerGuild, UnitRoster inPartyRoster)
     {
         unitDeathCounter += FloatExtensions.Randomize(10f, 15f, 20f) * TimeMultiplier() * GuildSizeMultiplier(PlayerGuild, inPartyRoster);
         if(unitDeathCounter > 100)
@@ -61,13 +64,12 @@ public class UnitEventSimulator
                 });
             }
             randUnit.Retire();
-            activeUnits.Units.Remove(randUnit);
             unitDeathCounter -= 100;
         }
 
     }
 
-    private void UnitPoached(Guild playerGuild, UnitRoster inPartyRoster, UnitCollection activeUnits)
+    private void UnitPoached(Guild playerGuild, UnitRoster inPartyRoster)
     {
         unitPoachedCounter += FloatExtensions.Randomize(12.5f, 18.75f, 25) * TimeMultiplier() * GuildSizeMultiplier(playerGuild, inPartyRoster);
         if(unitPoachedCounter > 100)
@@ -80,7 +82,6 @@ public class UnitEventSimulator
                 PausesTime = true
             });
             randUnit.Retire();
-            activeUnits.Units.Remove(randUnit);
             unitPoachedCounter -= 100;
         }
     }

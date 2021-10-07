@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "YearlyEvents/YearlyEventQueue")]
 public class YearlyEventQueue : ScriptableObject
 {
-    public MinSortedYearlyEventQueue<BaseYearlyEvent> YearlyEvents { get; private set; } = new MinSortedYearlyEventQueue<BaseYearlyEvent>();
+    public MinSortedQueue<BaseYearlyEvent> YearlyEvents { get; private set; } = new MinSortedQueue<BaseYearlyEvent>();
 
     [SerializeField]
     private List<BaseYearlyEventParams> startingYearlyEvents = new List<BaseYearlyEventParams>();

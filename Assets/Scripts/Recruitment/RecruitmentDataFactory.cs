@@ -16,6 +16,11 @@ public static class RecruitmentDataFactory
         return data;
     }
 
+    public static void RemoveData(Unit unit)
+    {
+        if (Cache.ContainsKey(unit)) Cache.Remove(unit);
+    }
+
     public static void Clear()
     {
         Cache.Clear();

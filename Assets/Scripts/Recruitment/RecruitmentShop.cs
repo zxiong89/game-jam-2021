@@ -24,6 +24,9 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
     [SerializeField]
     private PopupEvent showPopup;
 
+    [SerializeField]
+    private FloatVariable currentTime;
+
     private int curPage = 0;
 
     private void Start()
@@ -75,7 +78,7 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
 
     private void TryHireUnit(GameObject hirePopup, RecruitmentData data)
     {
-        var contract = UnitContract.CreateContract(playerGuild, data.Fee, 0, 0);
+        var contract = UnitContract.CreateContract(playerGuild, data.Fee, 0, 0, currentTime.Value);
 
         if(contract == null)
         {
@@ -98,6 +101,8 @@ public class RecruitmentShop : MonoBehaviour, IMainDisplay
             return;
         }
 
+        data.UnitForHire.Contract = contract;
+        ContractCollection.ActiveContracts.Add(new ScheduledUnitEvent(data.UnitForHire, contract.EndTime));
         playerGuild.Gold -= contract.ImmediatePayment;
         playerGuild.Roster.Add(data.UnitForHire);
         grid.RefreshGridDisplay();

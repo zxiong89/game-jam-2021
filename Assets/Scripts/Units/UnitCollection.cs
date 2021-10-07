@@ -1,8 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Units/UnitCollection")]
-public class UnitCollection : ScriptableObject
+public class UnitCollection
 {
-    public MinSortedYearlyEventQueue<Unit> Units { get; private set; } = new MinSortedYearlyEventQueue<Unit>();
+    private static MinSortedQueue<ScheduledUnitEvent> activeUnits;
+
+    public static MinSortedQueue<ScheduledUnitEvent> ActiveUnits
+    {
+        get {
+            if (activeUnits == null) activeUnits = new MinSortedQueue<ScheduledUnitEvent>();
+            return activeUnits; 
+        }
+    }
+
 }

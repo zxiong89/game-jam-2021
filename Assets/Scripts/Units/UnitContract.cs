@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitContract 
+public class UnitContract
 {
-    public static UnitContract CreateContract(Guild playerGuild, int goldPerMonth, int months, int signingBonus)
+    public static UnitContract CreateContract(Guild playerGuild, int goldPerMonth, int months, int signingBonus, float currentTime)
     {
         if (playerGuild.Gold < CalcImmediatePayment(goldPerMonth, signingBonus)) return null;
 
-        var c = new UnitContract(goldPerMonth, months, signingBonus);
+        var c = new UnitContract(goldPerMonth, months, signingBonus, currentTime);
 
         return c;
     }
@@ -17,7 +17,8 @@ public class UnitContract
     public int LengthMonthly { get; private set; }
     public int SigningBonus { get; private set; }
 
-    private UnitContract(int goldPerMonth, int months, int signingBonus)
+
+    private UnitContract(int goldPerMonth, int months, int signingBonus, float currentTime)
     {
         GoldPerMonth = goldPerMonth;
         LengthMonthly = months;
@@ -26,6 +27,7 @@ public class UnitContract
         ImmediatePayment = CalcImmediatePayment(goldPerMonth, signingBonus);
         TotalSalary = goldPerMonth * months;
         TotalWorth = signingBonus + TotalSalary;
+        EndTime = currentTime + (SimulationConstants.SECONDS_PER_YEAR / 12 * months);
     }
 
     private static int CalcImmediatePayment(int goldPerMonth, int signingBonus) =>
@@ -36,4 +38,6 @@ public class UnitContract
     public int TotalSalary { get; private set; }
 
     public int TotalWorth { get; private set; }
+
+    public float EndTime { get; private set; }
 }

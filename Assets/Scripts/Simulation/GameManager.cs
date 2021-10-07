@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         questScoutingTier.Value = 1;
         yearlyEventQueue.Reset();
         unitScoutingTier.Value = 1;
+        UnitCollection.ActiveUnits.Clear();
+        ContractCollection.ActiveContracts.Clear();
     }
 
     private void loadGame(string filename)

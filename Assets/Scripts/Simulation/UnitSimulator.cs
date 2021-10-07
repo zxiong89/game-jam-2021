@@ -9,12 +9,18 @@ public class UnitSimulator
     /// </summary>
     private float timeElapsed;
 
-    public void UpdateUnits(UnitCollection activeUnits, Guild playerGuild, float currentTime, UnitRoster freeAgentRoster)
+    public void UpdateUnits(Guild playerGuild, float currentTime, UnitRoster freeAgentRoster)
     {
-        while(activeUnits.Units.Peek()?.UpdateTime <= currentTime)
+        while(UnitCollection.ActiveUnits.Peek()?.UpdateTime <= currentTime)
         {
-            Unit curUnit = activeUnits.Units.GetNextAndRepeat();
-            UpdateUnit(curUnit, freeAgentRoster,activeUnits);
+            Unit curUnit = UnitCollection.ActiveUnits.GetNextAndRepeat(SimulationConstants.SECONDS_PER_YEAR).Unit;
+            UpdateUnit(curUnit, freeAgentRoster);
+        }
+
+        while (ContractCollection.ActiveContracts.Peek()?.UpdateTime <= currentTime)
+        {
+            Unit unit = ContractCollection.ActiveContracts.GetNext().Unit;
+            UpdateContract(unit, freeAgentRoster);
         }
 
         timeElapsed += Time.deltaTime;
@@ -54,12 +60,11 @@ public class UnitSimulator
         return amountToPay;
     }
 
-    private void UpdateUnit(Unit curUnit, UnitRoster freeAgentRoster, UnitCollection activeUnits)
+    private void UpdateUnit(Unit curUnit, UnitRoster freeAgentRoster)
     {
         UpdateAge(curUnit);
-        if (CheckRetired(curUnit, activeUnits)) return;
+        if (CheckRetired(curUnit)) return;
         UpdateLevel(curUnit);
-        UpdateRecruitmentInfo(curUnit, freeAgentRoster);
     }
 
     private void UpdateAge(Unit curUnit)
@@ -67,7 +72,7 @@ public class UnitSimulator
         curUnit.Age++;
     }
 
-    private bool CheckRetired(Unit curUnit, UnitCollection activeUnits)
+    private bool CheckRetired(Unit curUnit)
     {
         float rand = UnityEngine.Random.Range(0f, 1f);
 
@@ -85,7 +90,6 @@ public class UnitSimulator
                 EventLog.AddMessage(curUnit.DisplayName + " has retired.", false);
             }
             curUnit.Retire();
-            activeUnits.Units.Remove(curUnit);
             return true;
         }
 
@@ -104,28 +108,23 @@ public class UnitSimulator
         unit.Experience += expGained;
     }
 
-    private void UpdateRecruitmentInfo(Unit unit, UnitRoster freeAgentRoster)
+    private void UpdateContract(Unit unit, UnitRoster freeAgentRoster)
     {
-        if (unit.IsInPlayerGuild())
+        unit.EndContract();
+        freeAgentRoster.Add(unit);
+        PopupMessage.ShowPopup(new PopupEventArgs()
         {
-            if (UnityEngine.Random.Range(0, 10) != 0) return;
-            unit.RecruitmentData.UpdateFee(unit, true);
-            PopupMessage.ShowPopup(new PopupEventArgs()
+            Text = "The contract for " + unit.DisplayName + " has ended.",
+            AcceptTextOverride = "Renegotiate",
+            AcceptButtonSize = new Vector2(220,75),
+            AcceptCallback = (popup) =>
             {
-                PausesTime = true,
-                Text = unit.DisplayName + " is requesting a raise to " + unit.RecruitmentData.Wage + "G.",
-                AcceptTextOverride = "Give raise",
-                AcceptCallback = (content) => { },
-                AcceptButtonSize = new Vector2 (200, 75),
-                CloseTextOverride = "Let go",
-                CancelCallback = (content) => {
-                    freeAgentRoster.Add(unit);
-                },
-            });
-        }
-        else if(unit.IsInShop())
-        {
-            unit.RecruitmentData.UpdateFee(unit, false);
-        }
+                PopupMessage.ShowPopup(new PopupEventArgs()
+                {
+                    Text = "Add hiring workflow here!"
+                });
+            },
+            CloseTextOverride = "End"
+        });
     }
 }

@@ -3,9 +3,6 @@ using UnityEngine;
 public class SimulationManager : MonoBehaviour
 {
     [SerializeField]
-    private UnitCollection allUnits;
-
-    [SerializeField]
     private Guild playerGuild;
 
     [SerializeField]
@@ -81,11 +78,11 @@ public class SimulationManager : MonoBehaviour
     private void FixedUpdate()
     {
         currentTime.Value += Time.deltaTime;
-        this.UnitSimulator.UpdateUnits(allUnits, playerGuild, currentTime.Value, freeAgentRoster);
+        this.UnitSimulator.UpdateUnits(playerGuild, currentTime.Value, freeAgentRoster);
         this.QuestSimulator.UpdateQuests(activeQuests.Quests);
         shopRosters.CheckHasUpdated();
         this.TimedEventHandler.UpdateTimedEvents(timedEvents.timedEvents);
         this.YearlyEventSimulator.UpdateYearlyEvents(yearlyEventQueue, currentTime.Value);
-        this.UnitEventSimulator.UpdateUnitEvents(freeAgentRoster, playerGuild, inPartyRoster, allUnits);
+        this.UnitEventSimulator.UpdateUnitEvents(freeAgentRoster, playerGuild, inPartyRoster);
     }
 }

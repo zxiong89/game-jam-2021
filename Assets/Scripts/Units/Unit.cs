@@ -2,7 +2,7 @@
 using Unity.Mathematics;
 
 [System.Serializable]
-public class Unit : IScheduleable
+public class Unit
 {
     #region Fields/Properties
     public string DisplayName { get; set; }
@@ -68,13 +68,11 @@ public class Unit : IScheduleable
         get;
         set;
     }
-
-    public float UpdateTime { get; set; }
     #endregion
 
     #region Constructors
 
-    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data, List<Trait> traits, float updateTime)
+    public Unit(string name, int level, int age, StatBlock stats, UnitClassData data, List<Trait> traits)
     {
         DisplayName = name;
         Age = age;
@@ -83,7 +81,6 @@ public class Unit : IScheduleable
         Traits = traits;
         CalcTraitModifiers();
         Level = level;
-        UpdateTime = updateTime;
     }
 
     #endregion
@@ -123,9 +120,20 @@ public class Unit : IScheduleable
         return ParentRoster.RosterType == Roster.Recruit;
     }
 
+    public void EndContract()
+    {
+        if (Contract != null)
+        {
+            ContractCollection.ActiveContracts.Remove(FindUnitPredicate);
+        }
+    }
+
     public void Retire()
     {
         FreeUnit();
+        EndContract();
+        RecruitmentDataFactory.RemoveData(this);
+        UnitCollection.ActiveUnits.Remove(FindUnitPredicate);
         IsRetired = true;
     }
 
@@ -135,7 +143,10 @@ public class Unit : IScheduleable
         {
             ParentRoster.Remove(this);
         }
+
     }
+
+    private bool FindUnitPredicate(ScheduledUnitEvent unitEvent) => unitEvent.Unit == this;
 
     #endregion
 }

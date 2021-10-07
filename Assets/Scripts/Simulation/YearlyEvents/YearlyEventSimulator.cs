@@ -8,7 +8,7 @@ public class YearlyEventSimulator
     {
         if(events.YearlyEvents.Peek().UpdateTime < currentTime)
         {
-            events.YearlyEvents.GetNextAndRepeat().RunEvent();
+            events.YearlyEvents.GetNextAndRepeat(SimulationConstants.SECONDS_PER_YEAR).RunEvent();
         }
     }
 }

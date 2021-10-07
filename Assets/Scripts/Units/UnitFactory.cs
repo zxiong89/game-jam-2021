@@ -25,14 +25,12 @@ public class UnitFactory : MonoBehaviour
     private string[] names;
 
     [SerializeField]
-    private UnitCollection activeUnits;
-
-    [SerializeField]
     private UnitRoster freeAgentRoster;
 
     [SerializeField]
     private FloatVariable currentTime;
     
+    [SerializeField]
     private IntegerLimits greedLimits;
 
     private void Awake()
@@ -64,8 +62,8 @@ public class UnitFactory : MonoBehaviour
         traits.Add(traitFactory.GetNegativeTrait());
 
         float updateTime = currentTime.Value + 1 + UnityEngine.Random.Range(0f, SimulationConstants.SECONDS_PER_YEAR);
-        var newUnit = new Unit(names[n], level, age, stats, classData, traits, updateTime);
-        activeUnits?.Units.Add(newUnit);
+        var newUnit = new Unit(names[n], level, age, stats, classData, traits);
+        UnitCollection.ActiveUnits.Add(new ScheduledUnitEvent(newUnit, updateTime));
         freeAgentRoster?.Add(newUnit);
 
         int g = Random.Range(greedLimits.Min, greedLimits.Max);
