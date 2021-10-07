@@ -75,15 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bf001feee8b9d4c9b0b6969ec41f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ageLimits:
-  - {fileID: 11400000, guid: cc9e0473f1ca0d24dbb00c09ec71a7af, type: 2}
-  - {fileID: 11400000, guid: 7279e6b1da22e9d49a843d985a6a7f2e, type: 2}
-  - {fileID: 11400000, guid: 9ae79594adf085245913e36e6d0ea851, type: 2}
-  - {fileID: 11400000, guid: cd3c3b201f907d84a9518cc3bed9eaae, type: 2}
   shopRosters: {fileID: 11400000, guid: 1499f46041eb2ef46a5f17c64b989011, type: 2}
   resumePrefab: {fileID: 7854724789524646170, guid: 929fc55525c95bd419eb0c41638e88c5,
     type: 3}
-  GRID_LIMIT: 4
 --- !u!114 &8179666908818028202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +173,7 @@ MonoBehaviour:
   unitDetailsPopup: {fileID: 3033914906151439363, guid: 9e6d7d9eb83c7e94395f86909ad743cd,
     type: 3}
   showPopup: {fileID: 11400000, guid: 448c3c37bfcd54645baba8830a365654, type: 2}
+  currentTime: {fileID: 11400000, guid: 11cc54c31a5638247b4e996c1f170ef9, type: 2}
 --- !u!114 &1462676540
 MonoBehaviour:
   m_ObjectHideFlags: 0

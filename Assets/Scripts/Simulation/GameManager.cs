@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private YearlyEventQueue yearlyEventQueue;
     
+    [SerializeField]
     private IntegerVariable unitScoutingTier;
 
     public void SaveGame()

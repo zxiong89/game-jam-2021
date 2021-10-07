@@ -31,7 +31,7 @@ public class UnitResumeDisplay : MonoBehaviour
     public void SetResume(RecruitmentData data)
     {
         Unit unitToDisplay = data.UnitForHire;
-        int fee = data.HiringFee;
+        int fee = data.Fee;
         nameAndLevels.text = unitToDisplay.DisplayName + " " + GenericStrings.LevelAbbr + unitToDisplay.Level;
         statsGroup.SetStats(unitToDisplay.Stats, unitScoutingTier.Value);
 

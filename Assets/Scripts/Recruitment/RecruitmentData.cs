@@ -6,32 +6,29 @@ public class RecruitmentData
     private const float PRICE_SPREAD = .2f;
     private const float PRICE_MIN = 1f - PRICE_SPREAD;
     private const float PRICE_MAX = 1f + PRICE_SPREAD;
-    private const int WAGE_DIVISOR = 10;
 
     public Unit UnitForHire { get; set; }
-    public int HiringFee { get; set; }
-    public int Wage { get { return HiringFee / WAGE_DIVISOR; } }
+    public int Fee { get; set; }
 
     public RecruitmentData(Unit unit)
     {
         UnitForHire = unit;
-        HiringFee = CalcFee(unit, false);
+        Fee = CalcFee(unit);
     }
 
-    private int CalcFee(Unit unit, bool mustIncrease)
+    private int CalcFee(Unit unit)
     {
         float startingPrice = (Mathf.Pow(PRICE_SCALING_FACTOR, unit.Level) * 30);
-        float minimumPrice = (!mustIncrease) ? PRICE_MIN * startingPrice : Mathf.Max(PRICE_MIN * startingPrice, HiringFee + WAGE_DIVISOR);
-        float maximumPrice = (!mustIncrease) ? PRICE_MAX * startingPrice : Mathf.Max(PRICE_MAX * startingPrice, HiringFee + WAGE_DIVISOR);
-        startingPrice = minimumPrice + (maximumPrice - minimumPrice) / 2;
+        float minimumPrice = PRICE_MIN * startingPrice;
+        float maximumPrice = PRICE_MAX * startingPrice;
         int hiringPrice = Mathf.FloorToInt(FloatExtensions.Randomize(minimumPrice, maximumPrice, startingPrice));
         if (unit.IsApprentice()) hiringPrice /= 2;
         return hiringPrice;
     }
 
-    public void UpdateFee(Unit unit, bool mustIncrease)
+    public void UpdateFee()
     {
-        HiringFee = CalcFee(unit, mustIncrease);
+        Fee = CalcFee(UnitForHire);
     }
 
     public bool OfferContract(UnitContract contract)
